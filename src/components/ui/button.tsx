@@ -5,25 +5,26 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "../../lib/utils"
 
 const buttonVariants = cva(
-  "grdinline-flex grditems-center grdjustify-center grdwhitespace-nowrap grdrounded-md grdtext-sm grdfont-medium grdring-offset-white grdtransition-colors focus-visible:grdoutline-none focus-visible:grdring-2 focus-visible:grdring-slate-950 focus-visible:grdring-offset-2 disabled:grdpointer-events-none disabled:grdopacity-50 dark:grdring-offset-slate-950 dark:focus-visible:grdring-slate-300",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300",
   {
     variants: {
       variant: {
-        default: "grdbg-slate-900 grdtext-slate-50 hover:grdbg-slate-900/90 dark:grdbg-slate-50 dark:grdtext-slate-900 dark:hover:grdbg-slate-50/90",
+        default: "bg-slate-900 text-slate-50 hover:bg-slate-900/90 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/90",
+        primary: "bg-blue-500 text-white hover:bg-blue-600",
         destructive:
-          "grdbg-red-500 grdtext-slate-50 hover:grdbg-red-500/90 dark:grdbg-red-900 dark:grdtext-slate-50 dark:hover:grdbg-red-900/90",
+          "bg-red-500 text-slate-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90",
         outline:
-          "grdborder grdborder-slate-200 grdbg-white hover:grdbg-slate-100 hover:grdtext-slate-900 dark:grdborder-slate-800 dark:grdbg-slate-950 dark:hover:grdbg-slate-800 dark:hover:grdtext-slate-50",
+          "border border-slate-200 bg-white hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         secondary:
-          "grdbg-slate-100 grdtext-slate-900 hover:grdbg-slate-100/80 dark:grdbg-slate-800 dark:grdtext-slate-50 dark:hover:grdbg-slate-800/80",
-        ghost: "hover:grdbg-slate-100 hover:grdtext-slate-900 dark:hover:grdbg-slate-800 dark:hover:grdtext-slate-50",
-        link: "grdtext-slate-900 grdunderline-offset-4 hover:grdunderline dark:grdtext-slate-50",
+          "bg-slate-100 text-slate-900 hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
+        ghost: "hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50",
+        link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",
       },
       size: {
-        default: "grdh-10 grdpx-4 grdpy-2",
-        sm: "grdh-9 grdrounded-md grdpx-3",
-        lg: "grdh-11 grdrounded-md grdpx-8",
-        icon: "grdh-10 grdw-10",
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {
