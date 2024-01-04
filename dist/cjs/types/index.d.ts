@@ -1,3 +1,2 @@
-import "./index.css"
-
+import "./index.css";
 export { default as Header } from "./components/Header/Header";

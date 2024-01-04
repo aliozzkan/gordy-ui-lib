@@ -1,13 +1,15 @@
 import { FC } from "react";
+import { Button } from "../ui/button";
 
-interface HeaderProps {
+export interface HeaderProps {
   title: string;
 }
 
 const Header:FC<HeaderProps> = (props) => {
   return (
     <div>
-      <span>{props.title}</span>
+      <span className="text-red-500 bg-red-100 px-5 py-1 rounded-full">{props.title}</span>
+      <Button variant="destructive">Test</Button>
     </div>
   );
 };
