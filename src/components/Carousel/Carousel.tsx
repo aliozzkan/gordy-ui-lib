@@ -2,11 +2,6 @@ import {useState} from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from "swiper/modules";
 
-//styling
-import 'swiper/css';
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
 import {CarouselData} from "../../data/dummy/carousel"
 import LIcon from "../../components/lucid-icon/lucid-icon";
 
