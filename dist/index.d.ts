@@ -1,8 +1,7 @@
 import { FC } from 'react';
-import * as react_jsx_runtime from 'react/jsx-runtime';
 
 interface HeaderProps {
-    title: string;
+    username: string;
 }
 declare const Header: FC<HeaderProps>;
 
@@ -24,6 +23,6 @@ interface TravelPlannerProps {
 
 declare const TravelPlanner: FC<TravelPlannerProps>;
 
-declare const Carousel: (props: any) => react_jsx_runtime.JSX.Element;
+declare const Carousel: FC<any>;
 
 export { Carousel, Header, TravelPlanner };

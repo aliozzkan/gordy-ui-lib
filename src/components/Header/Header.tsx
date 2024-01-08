@@ -1,18 +1,18 @@
-import { FC } from "react";
-import { Button } from "../ui/button";
-import LIcon from "../lucid-icon/lucid-icon";
+import {FC, useState} from "react";
 
 export interface HeaderProps {
-  title: string;
+  username: string;
 }
 
 const Header:FC<HeaderProps> = (props) => {
+  const [UserName, setUserName] = useState(props.username)
   return (
-    <div>
-      <LIcon size={24} name="ChevronDown" />
-      <span className="text-red-500 bg-red-100 px-5 py-1 rounded-full">{props.title}</span>
-      <Button variant="destructive">Test name</Button>
-    </div>
+    <>
+      <div className="mb-2">Hosgeldiniz, {UserName}</div>
+      <input placeholder="giriniz" defaultValue={UserName} className="border px-3 py-2" type="text" onChange={e => {
+        return  setUserName(e.target.value)}
+      } />
+    </>
   );
 };
 

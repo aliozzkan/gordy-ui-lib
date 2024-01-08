@@ -1,9 +1,11 @@
-import {useState} from "react";
+import React, {FC, useState} from 'react';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from "swiper/modules";
 
 import {CarouselData} from "../../data/dummy/carousel"
 import LIcon from "../../components/lucid-icon/lucid-icon";
+import {TravelPlannerProps} from "@/components/TravelPlanner/TravelPlannerProps";
 
 const getSliderOwnCategoryName = (id: any) => {
   const category = CarouselData.categories.find(category => category.id === id)
@@ -93,15 +95,21 @@ const Sliders = (props : any) => {
 }
 
 
-export const Carousel = (props: any) => {
+export const Carousel :FC<any> = (props) => {
   const [activeCategoryId, setActiveCategoryId] = useState(props.activeCategoryId)
   const [activeSlider, setActiveSlider] = useState(props.activeSliderIndex)
   const [swiper, setSwiper] = useState<any>({});
+
+
+
   const categoryItemOnClick = (e: any) => {
     setActiveCategoryId(e)
     const willChangeSlider = props.sliderData.findIndex((slider: any) =>slider.categoryId == e)
     swiper.slideTo(willChangeSlider, 700)
   }
+
+
+
   const sliderOnChange = (e: any) => {
     setActiveSlider(e.activeIndex)
     const willChangeSlider = props.sliderData[e.activeIndex].categoryId

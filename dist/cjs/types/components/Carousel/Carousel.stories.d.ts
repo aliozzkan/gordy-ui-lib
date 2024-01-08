@@ -1,7 +1,8 @@
+/// <reference types="react" />
 import "../../index.css";
 declare const meta: {
     title: string;
-    component: (props: any) => import("react/jsx-runtime").JSX.Element;
+    component: import("react").FC<any>;
     parameters: {
         docs: {
             description: {

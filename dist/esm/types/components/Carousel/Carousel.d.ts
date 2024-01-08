@@ -1,2 +1,3 @@
-export declare const Carousel: (props: any) => import("react/jsx-runtime").JSX.Element;
+import { FC } from 'react';
+export declare const Carousel: FC<any>;
 export default Carousel;
