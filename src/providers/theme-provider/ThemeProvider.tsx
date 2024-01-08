@@ -1,7 +1,7 @@
 "use client";
 
 
-import type { ProviderProps } from "@/@types/types/provider-props.types";
+import type { ProviderProps } from "../../@types/types/provider-props.types";
 
 interface ThemeProviderProps extends ProviderProps {
   customClasses?: string;

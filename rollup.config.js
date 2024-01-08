@@ -47,6 +47,7 @@ export default [
       terser(),
       image()
     ],
+    external: ["react", "react-dom"]
   },
   {
     input: "dist/esm/types/index.d.ts",
