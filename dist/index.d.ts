@@ -23,6 +23,24 @@ interface TravelPlannerProps {
 
 declare const TravelPlanner: FC<TravelPlannerProps>;
 
-declare const Carousel: FC<any>;
+interface CarouselProps {
+    sliderData: any;
+    categoryData: any;
+    activeCategoryId?: number;
+    activeSliderIndex?: number;
+}
+declare const Carousel: FC<CarouselProps>;
 
-export { Carousel, Header, TravelPlanner };
+interface IconListProps {
+    maxItemLength: number;
+    title?: string;
+    className?: string;
+    wrapperBgColor?: string;
+    wrapperWidth?: string;
+    wrapperHeight?: string;
+    showArrows?: boolean;
+    showBullets?: boolean;
+}
+declare const IconList: FC<IconListProps>;
+
+export { Carousel, Header, IconList, TravelPlanner };

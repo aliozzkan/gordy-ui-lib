@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 
 import "../../index.css";
-import LIcon from "./lucid-icon";
+import LIcon from "./lucidIcon";
 
 const meta = {
   title: "GordyUI/LucideIcon",

@@ -12,20 +12,27 @@ const meta = {
         defaultValue: { summary: 'Konaklama seçenekleri' },
     },
     maxItemLength: {
+        description: "Gelebilecek en fazla icon listesini alir",
         defaultValue: { summary: 6 },
     },
     showArrows: {
+      description: "Slider'a ait olan ok tuslarini goster/gizle",
       defaultValue: { summary: true },
     },
     showBullets: {
+      description: "Slider'a ait olan dot'lari goster/gizle",
       defaultValue: { summary: true },
     },
     className: {},
-    wrapperBgColor: {},
+    wrapperBgColor: {
+      description: "kapsayicinin arkaplan rengini degistirir",
+    },
     wrapperWidth: {
+      description: "kapsayicinin genisligini degistirir",
         defaultValue: { summary: '100%' },
     },
     wrapperHeight: {
+      description: "kapsayicinin yuksekligini degistirir",
         defaultValue: { summary: 'auto' },
     },
   },

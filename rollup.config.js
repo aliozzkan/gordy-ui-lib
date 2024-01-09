@@ -50,7 +50,7 @@ export default [
     external: ["react", "react-dom"]
   },
   {
-    input: "dist/esm/types/index.d.ts",
+    input: "dist/esm/build/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts.default()],
     external: [/\.css$/, "react", "react-dom"], // telling rollup anything that is .css aren't part of type exports 

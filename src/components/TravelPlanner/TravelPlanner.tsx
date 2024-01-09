@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Button } from "../ui/button";
-import LIcon from "../lucid-icon/lucid-icon";
+import LIcon from "../lucidIcon/lucidIcon";
 import "../../index.css";
 import {travelPlannerData} from "../../data/dummy/travelplanner"
 import {TravelPlannerProps} from "../../components/TravelPlanner/TravelPlannerProps";

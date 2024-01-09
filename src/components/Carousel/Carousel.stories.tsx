@@ -17,19 +17,19 @@ const meta = {
   },
   argTypes: {
     sliderData: {
-      description: "Slider Listesini alir `array`",
+      description: "Slider Listesini alir",
     },
     categoryData: {
-      description: "Kategori Listesini alir `array`",
+      description: "Kategori Listesini alir",
     },
     activeCategoryId: {
-      description: "butonlarin initalstate'i icin kullanilir `number`",
+      description: "butonlarin initalstate'i icin kullanilir",
       table: {
         defaultValue: { summary: 0 },
       },
     },
     activeSliderIndex: {
-      description: "slider'in initalstate'i icin kullanilir `number`",
+      description: "slider'in initalstate'i icin kullanilir",
       table: {
         defaultValue: { summary: 0 },
       },

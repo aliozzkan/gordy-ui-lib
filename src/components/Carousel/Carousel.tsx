@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from "swiper/modules";
 
 import {CarouselData} from "../../data/dummy/carousel"
-import LIcon from "../../components/lucid-icon/lucid-icon";
+import LIcon from "../lucidIcon/lucidIcon";
 
 const getSliderOwnCategoryName = (id: any) => {
   const category = CarouselData.categories.find(category => category.id === id)
@@ -29,7 +29,7 @@ const SliderCategories = (props : any) => {
 const CategoryWrapper = (props: any) => {
 
   const categories: any[] = []
-  props.sliders.map((slider : any) => {
+  props.sliders && props.sliders.map((slider : any) => {
     // ayni kategoriden olanlari ele
     if (!categories.includes(slider.categoryId)){
       categories.push(slider.categoryId)
@@ -73,7 +73,7 @@ const Sliders = (props : any) => {
 
         }}
       >
-        {props.sliders.map((slide : any) => {
+        {props.sliders && props.sliders.map((slide : any) => {
           return (
             <SwiperSlide key={slide.uuid}>
               <img className="w-full" src={slide.imagePath} alt={`swiper img ${slide.uuid}`}/>
@@ -93,10 +93,16 @@ const Sliders = (props : any) => {
   )
 }
 
+export interface CarouselProps {
+  sliderData: any,
+  categoryData: any,
+  activeCategoryId?: number,
+  activeSliderIndex?: number,
+}
 
-export const Carousel :FC<any> = (props) => {
-  const [activeCategoryId, setActiveCategoryId] = useState(props.activeCategoryId)
-  const [activeSlider, setActiveSlider] = useState(props.activeSliderIndex)
+export const Carousel :FC<CarouselProps> = (props) => {
+  const [activeCategoryId, setActiveCategoryId] = useState(props?.activeCategoryId)
+  const [activeSlider, setActiveSlider] = useState(props?.activeSliderIndex)
   const [swiper, setSwiper] = useState<any>({});
 
 
