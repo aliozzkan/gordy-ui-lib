@@ -1,11 +1,11 @@
 import React, {FC} from "react";
-import {IconListDummy} from "../../data/dummy/iconList";
+import {MediaListDummy} from "../../data/dummy/mediaList";
 import {MedialibraryDummy} from "../../data/dummy/medialibrary";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from "swiper/modules";
 
-export interface IconListProps {
+export interface MediaListProps {
   maxItemLength: number;
   title?: string;
   className?: string;
@@ -16,27 +16,27 @@ export interface IconListProps {
   showBullets?: boolean;
 }
 
-const IconList:FC<IconListProps> = (props) => {
+const MediaList:FC<MediaListProps> = (props) => {
 
-  const IconMediaListForPost: number[] = [] // post service array list for medialibrary
-  const strategyData = IconListDummy.result.strategies.find(strategy => strategy.relation === "Data")
+  const MediaListForPost: number[] = [] // post service array list for medialibrary
+  const strategyData = MediaListDummy.result.strategies.find(strategy => strategy.relation === "Data")
   const items = strategyData && strategyData.input.Items!
-  items && items.map(item => IconMediaListForPost.push(item.MediaFileId))
+  items && items.map(item => MediaListForPost.push(item.MediaFileId))
 
   // post Media IDs to API => return images URL => example dummy data/dummy/medialibrary.ts
-  const mediaLibraryResult = MedialibraryDummy // etc.. await getMedialibrary(IconMediaListForPost)
+  const mediaLibraryResult = MedialibraryDummy // etc.. await getMedialibrary(MediaListForPost)
 
   const getMediaSrc = (mediaFileId: any) => mediaLibraryResult.find(media => media.id === mediaFileId)
 
   const noImage = () => {
-    return "https://place-hold.it/80x80"
+    return "https://place-hold.it/340x190"
   }
 
   const swiperProps = {
-    className: `w-full overflow-hidden mt-6 -mx-3 px-3 ${props.maxItemLength <= 6 ? "pb-7" : "pb-10"}`,
-    spaceBetween: 16,
+    className: `overflow-hidden mt-6 -mx-3 px-3 ${props.maxItemLength <= 4 ? "pb-7" : "pb-10"}`,
+    spaceBetween: 15,
     speed: 700,
-    slidesPerView: props.maxItemLength <= 6 ? props?.maxItemLength : 6,
+    slidesPerView: props.maxItemLength <= 4 ? props?.maxItemLength : 4,
     grabCursor:true,
     modules: [Pagination, Navigation],
     navigation:{
@@ -60,18 +60,23 @@ const IconList:FC<IconListProps> = (props) => {
         height :props.wrapperHeight,
       }} className={`accommodation_options relative ${props.className}`}>
       <div className="container">
-        <p className="text-gray-800 font-semibold text-2xl">{props.title || "Konaklama seçenekleri"}</p>
+        <p className="text-gray-800 font-semibold text-2xl">{props.title || "Popüler bölgeler"}</p>
 
         <Swiper {...swiperProps}>
           {Array.apply(null, Array(props.maxItemLength)).map((val, _index) => {
             return (
                 <SwiperSlide key={_index}
-                     className={`icon-box group w-full flex flex-col items-center border border-gray-200 bg-white text-sm font-medium text-color-800 
-                      cursor-pointer !transition-all hover:shadow-xl hover:text-primary-500 px-2 py-4`}
-                     style={{ borderRadius: 8 }}
+                     className={`media-box group w-full flex flex-col items-center border border-gray-200 bg-white
+                      cursor-pointer overflow-hidden !transition-all hover:shadow-xl hover:text-primary-500`}
+                     style={{ borderRadius: "8px" }}
                 >
-                  <img className="w-12 h-12 object-center object-contain" src={getMediaSrc(items![_index]?.MediaFileId)?.path || noImage()} alt={""} />
-                  <span className="mt-1">{items![_index]?.Text || "Test Icon"}</span>
+                  <div className="image-wrapper w-full h-[190px]">
+                    <img className="w-full h-full object-center object-cover" src={getMediaSrc(items![_index]?.MediaFileId)?.path || noImage()} alt={""} />
+                  </div>
+                  <div className="mt-1 w-full flex flex-col p-4">
+                    <span className="text-base font-semibold text-color-800 truncate" title={items![_index]?.Text}>{items![_index]?.Text || "Test Media Text"}</span>
+                    <span className="mt-0.5 text-sm font-normal text-gray-500 truncate" title={items![_index]?.subText}>{items![_index]?.subText || "Test Media subText"}</span>
+                  </div>
                 </SwiperSlide>
             )
           })}
@@ -90,4 +95,4 @@ const IconList:FC<IconListProps> = (props) => {
 }
 
 
-export default IconList
+export default MediaList
