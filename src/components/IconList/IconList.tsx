@@ -1,6 +1,5 @@
 import React, {FC} from "react";
 import {IconListDummy} from "../../data/dummy/iconList";
-import LIcon from "../lucid-icon/lucid-icon";
 import {MedialibraryDummy} from "../../data/dummy/medialibrary";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -64,7 +63,7 @@ const IconList:FC<IconListProps> = (props) => {
         <p className="text-gray-800 font-semibold text-2xl">{props.title || "Konaklama seçenekleri"}</p>
 
         <Swiper {...swiperProps}>
-          {Array.apply(null, Array(props.maxItemLength) || 6).map((val, _index) => {
+          {Array.apply(null, Array(props.maxItemLength)).map((val, _index) => {
             return (
                 <SwiperSlide key={_index}
                      className={`icon-box group w-full flex flex-col items-center border border-gray-200 bg-white text-sm font-medium text-color-800 
