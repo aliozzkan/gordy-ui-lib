@@ -5,7 +5,6 @@ import { Navigation, Pagination } from "swiper/modules";
 
 import {CarouselData} from "../../data/dummy/carousel"
 import LIcon from "../../components/lucid-icon/lucid-icon";
-import {TravelPlannerProps} from "@/components/TravelPlanner/TravelPlannerProps";
 
 const getSliderOwnCategoryName = (id: any) => {
   const category = CarouselData.categories.find(category => category.id === id)

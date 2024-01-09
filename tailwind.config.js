@@ -13,7 +13,11 @@ module.exports = {
       center: true,
       padding: "20px",
       screens: {
-        "2xl": "1080px",
+        sm: "540px",
+        md: "768px",
+        lg: "992px",
+        xl: "1200px",
+        "2xl": "1440px",
       },
     },
     extend: {
@@ -79,9 +83,31 @@ module.exports = {
           800: "#1D2939",
         },
       },
+      fontSize: {
+        xs: ["0.75rem", { lineHeight: "1.125rem" }],
+        sm: ["0.875rem", { lineHeight: "1.25rem" }],
+        base: ["1rem", { lineHeight: "1.5rem" }],
+        lg: ["1.125rem", { lineHeight: "1.75rem" }],
+        xl: ["1.25rem", { lineHeight: "1.875rem" }],
+        "2xl": ["1.5rem", { lineHeight: "2rem" }],
+        "3xl": ["1.875rem", { lineHeight: "2.375rem" }],
+        "4xl": ["2.25rem", { lineHeight: "2.75rem", letterSpacing: "-0.02rem" }],
+        "5xl": ["3rem", { lineHeight: "3.75rem", letterSpacing: "-0.02rem" }],
+        "6xl": ["3.75rem", { lineHeight: "4.5rem", letterSpacing: "-0.02rem" }],
+        "7xl": ["4.5rem", { lineHeight: "5.625rem", letterSpacing: "-0.02rem" }],
+      },
+      dropShadow: {
+        sm: "0px 1px 3px rgba(64, 64, 64, 0.1)",
+      },
       boxShadow: {
         xs: "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",
         lg: "0px 4px 6px -2px rgba(31, 76, 149, 0.03), 0px 12px 16px -4px rgba(31, 76, 149, 0.08)",
+        xl: "0px 8px 8px -4px rgba(31, 76, 149, 0.03), 0px 20px 24px -4px rgba(31, 76, 149, 0.08)",
+      },
+      custom_reset_css: {
+        ul: "m-0 p-0 list-none",
+        li: "m-0 p-0",
+        ol: "m-0 p-0 list-decimal",
       },
       keyframes: {
         "accordion-down": {
@@ -100,6 +126,28 @@ module.exports = {
     },
   },
   plugins: [
+    require("@tailwindcss/typography"),
     require("tailwindcss-animate"),
+    function ({ addComponents }) {
+      addComponents({
+        ".container": {
+          "@screen sm": {
+            maxWidth: "100%",
+          },
+          "@screen md": {
+            maxWidth: "720px",
+          },
+          "@screen lg": {
+            maxWidth: "960px",
+          },
+          "@screen xl": {
+            maxWidth: "1170px",
+          },
+          "@screen 2xl": {
+            maxWidth: "1250px",
+          },
+        },
+      })
+    },
   ],
 };
