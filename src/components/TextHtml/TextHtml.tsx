@@ -1,9 +1,9 @@
 import React, {FC, useState} from "react";
-import ReactQuill, {Quill} from 'react-quill';
+import ReactQuill from 'react-quill';
 import EditorToolbar, { modules, formats } from "./EditorToolbar";
 import 'react-quill/dist/quill.snow.css';
 
-export interface MediaListProps {
+export interface TextHtmlProps {
   content?: string;
   getContent?(content : any): any;
   className?: string;
@@ -12,7 +12,7 @@ export interface MediaListProps {
   wrapperHeight?: string;
 }
 
-const TextHtml:FC<MediaListProps> = (props) => {
+const TextHtml:FC<TextHtmlProps> = (props) => {
 
   const [Content, setContent] = useState(props.content);
 
