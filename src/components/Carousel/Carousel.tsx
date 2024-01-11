@@ -36,7 +36,7 @@ const CategoryWrapper = (props: any) => {
     }
   })
   return (
-    <div className={`categories flex items-center gap-4 text-gray-500 text-base font-medium justify-center ${props.className}`}>
+    <div className={`categories flex items-center gap-4 text-gray-500 text-base font-medium justify-center ${props.className || ""}`}>
       {categories.map((id: any, index) => {
         return (
           <SliderCategories key={index} index={index} sliderCategoryId={id} activeCategoryId={props.activeCategoryId} categoryItemOnClick={props.itemOnClick} />
@@ -51,7 +51,7 @@ const Sliders = (props : any) => {
   return (
     <>
       <Swiper
-        className={`w-full overflow-hidden ${props.className}`}
+        className={`w-full overflow-hidden ${props.className || ""}`}
         spaceBetween={30}
         speed={700}
         initialSlide={props?.activeSlider}

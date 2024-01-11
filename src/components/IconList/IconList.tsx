@@ -58,7 +58,7 @@ const IconList:FC<IconListProps> = (props) => {
         backgroundColor: props.wrapperBgColor,
         width :props.wrapperWidth,
         height :props.wrapperHeight,
-      }} className={`accommodation_options relative ${props.className}`}>
+      }} className={`icon-list relative ${props.className || ""}`}>
       <div className="container">
         <p className="text-gray-800 font-semibold text-2xl">{props.title || "Konaklama seçenekleri"}</p>
 

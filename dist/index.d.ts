@@ -43,7 +43,7 @@ interface IconListProps {
 }
 declare const IconList: FC<IconListProps>;
 
-interface MediaListProps {
+interface MediaListProps$1 {
     maxItemLength: number;
     title?: string;
     className?: string;
@@ -53,6 +53,16 @@ interface MediaListProps {
     showArrows?: boolean;
     showBullets?: boolean;
 }
-declare const MediaList: FC<MediaListProps>;
+declare const MediaList: FC<MediaListProps$1>;
 
-export { Carousel, Header, IconList, MediaList, TravelPlanner };
+interface MediaListProps {
+    content?: string;
+    getContent?(content: any): any;
+    className?: string;
+    wrapperBgColor?: string;
+    wrapperWidth?: string;
+    wrapperHeight?: string;
+}
+declare const TextHtml: FC<MediaListProps>;
+
+export { Carousel, Header, IconList, MediaList, TextHtml, TravelPlanner };

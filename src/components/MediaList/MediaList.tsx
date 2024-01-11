@@ -58,7 +58,7 @@ const MediaList:FC<MediaListProps> = (props) => {
         backgroundColor: props.wrapperBgColor,
         width :props.wrapperWidth,
         height :props.wrapperHeight,
-      }} className={`accommodation_options relative ${props.className}`}>
+      }} className={`media-list relative ${props.className || ""}`}>
       <div className="container">
         <p className="text-gray-800 font-semibold text-2xl">{props.title || "Popüler bölgeler"}</p>
 
