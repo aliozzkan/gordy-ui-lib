@@ -70,7 +70,6 @@ const Sliders = (props : any) => {
         pagination={{
           clickable: true,
           dynamicBullets: true,
-
         }}
       >
         {props.sliders && props.sliders.map((slide : any) => {
@@ -122,12 +121,10 @@ export const Carousel :FC<CarouselProps> = (props) => {
   }
 
   return (
-    <div>
-      <div className="container relative flex flex-col gap-6">
-        <CategoryWrapper itemOnClick={categoryItemOnClick} activeCategoryId={activeCategoryId} sliders={props.sliderData} categories={props.categoryData} />
-        <Sliders sliderOnChange={sliderOnChange} activeSlider={activeSlider} sliders={props.sliderData} setSwiper={setSwiper} />
-      </div>
-    </div>
+    <div className="container relative flex flex-col gap-6">
+    <CategoryWrapper itemOnClick={categoryItemOnClick} activeCategoryId={activeCategoryId} sliders={props.sliderData} categories={props.categoryData} />
+    <Sliders sliderOnChange={sliderOnChange} activeSlider={activeSlider} sliders={props.sliderData} setSwiper={setSwiper} />
+  </div>
   )
 
 }

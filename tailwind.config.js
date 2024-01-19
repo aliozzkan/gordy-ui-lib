@@ -25,6 +25,9 @@ module.exports = {
         primary: "var(--primary-border-radius)",
       },
       colors: {
+        dark: {
+          600: "#333333",
+        },
         primary: {
           50: "var(--color-primary-50)",
           100: "var(--color-primary-100)",
@@ -103,6 +106,7 @@ module.exports = {
         xs: "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",
         lg: "0px 4px 6px -2px rgba(31, 76, 149, 0.03), 0px 12px 16px -4px rgba(31, 76, 149, 0.08)",
         xl: "0px 8px 8px -4px rgba(31, 76, 149, 0.03), 0px 20px 24px -4px rgba(31, 76, 149, 0.08)",
+        xxl: "0px 24px 48px -12px rgba(31, 76, 149, 0.08)",
       },
       custom_reset_css: {
         ul: "m-0 p-0 list-none",

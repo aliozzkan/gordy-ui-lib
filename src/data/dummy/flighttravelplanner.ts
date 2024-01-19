@@ -1,0 +1,18 @@
+export const flightTravelPlannerData = {
+  title: "İş seyahatleri için uçak bileti planlayın",
+  subTitle: "Kendiniz veya iş arkadaşlarınız için uçak bileti ayarlayın. ",
+  buttonText: "Ara",
+  buttonBgColor: "#2E90FA",
+  buttonTextColor: "#FFFFFF",
+  inputDestinationText : "Nereden?",
+  inputReturnText : "Nereye?",
+  inputCheckinDateText: "Gidiş Tarihi",
+  inputCheckoutDateText: "Dönüş Tarihi",
+  inputPassengerAndCabinText: "Yolcu ve Kabin Seçimi",
+  inputPersonText: "Kişi Seçimi",
+  inputTravelReasonText: "Seyahat Nedeni",
+  wrapperBgColor: "",
+  wrapperWidth: "",
+  wrapperHeight: "",
+  disabled: false,
+}

@@ -1,4 +1,10 @@
-export interface TravelPlannerProps {
+
+export interface TabButtonProps {
+  label: string,
+  value: string | number | undefined
+}
+
+export interface TourTravelPlannerProps {
   className?: string;
   title?: string;
   subTitle?: string;
@@ -7,9 +13,11 @@ export interface TravelPlannerProps {
   buttonTextColor?: string;
   inputDestinationText?: string;
   inputCheckoutDateText?: string;
-  inputGuestInfoText?: string;
   wrapperBgColor?: string;
   wrapperWidth?: string;
   wrapperHeight?: string;
-  disabled?: boolean
+  disabled?: boolean;
+  tourType?: "Kultur" | "Yurt Disi" | "Gemi";
+  onSubmit?(e: any): void,
+  tabButtons?: TabButtonProps[],
 }

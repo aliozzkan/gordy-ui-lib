@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import IconList from "./IconList";
+import {IconListDummy} from "../../data/dummy/iconList";
 
 const meta = {
   title: "GordyUI/IconList",
@@ -46,6 +47,7 @@ type Story = StoryObj<typeof IconList>;
 
 const DefaultIconList = {
   args: {
+    strategy: IconListDummy,
     maxItemLength: 4,
     className: "my-5 py-4",
     wrapperBgColor: "#f3f3f3",

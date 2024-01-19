@@ -2,11 +2,11 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
-import TravelPlanner from "./TravelPlanner";
+import HotelTravelPlanner from "./HotelTravelPlanner";
 
 const meta = {
-  title: "GordyUI/TravelPlanner",
-  component: TravelPlanner,
+  title: "GordyUI/TP Hotel",
+  component: HotelTravelPlanner,
   argTypes: {
     title: {
       table: {
@@ -64,6 +64,7 @@ const meta = {
       },
     },
     disabled: {
+      description: "componenti kullanmak icin false, kilitlemek icin true degeri verin",
       table: {
         defaultValue: { summary: 'false' },
       },
@@ -71,16 +72,16 @@ const meta = {
   },
   tags: ["autodocs"],
   decorators: ThemeProviderDecorators,
-} satisfies Meta<typeof TravelPlanner>;
+} satisfies Meta<typeof HotelTravelPlanner>;
 
 export default meta;
 
-type Story = StoryObj<typeof TravelPlanner>;
+type Story = StoryObj<typeof HotelTravelPlanner>;
 
-const DefaultTravelPlanner = {
+const DefaultHotelTravelPlanner = {
   args: {
-    disabled: true
+    disabled: false
   },
 } satisfies Story;
 
-export { DefaultTravelPlanner };
+export { DefaultHotelTravelPlanner };

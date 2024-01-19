@@ -7,6 +7,7 @@ import { Navigation, Pagination } from "swiper/modules";
 
 export interface IconListProps {
   maxItemLength: number;
+  strategy: any;
   title?: string;
   className?: string;
   wrapperBgColor?: string;
@@ -19,9 +20,9 @@ export interface IconListProps {
 const IconList:FC<IconListProps> = (props) => {
 
   const IconMediaListForPost: number[] = [] // post service array list for medialibrary
-  const strategyData = IconListDummy.result.strategies.find(strategy => strategy.relation === "Data")
+  const strategyData = props.strategy && props.strategy.result.strategies.find((strategy : any) => strategy.relation === "Data")
   const items = strategyData && strategyData.input.Items!
-  items && items.map(item => IconMediaListForPost.push(item.MediaFileId))
+  items && items.map((item: any) => IconMediaListForPost.push(item.MediaFileId))
 
   // post Media IDs to API => return images URL => example dummy data/dummy/medialibrary.ts
   const mediaLibraryResult = MedialibraryDummy // etc.. await getMedialibrary(IconMediaListForPost)
@@ -70,8 +71,8 @@ const IconList:FC<IconListProps> = (props) => {
                       cursor-pointer !transition-all hover:shadow-xl hover:text-primary-500 px-2 py-4`}
                      style={{ borderRadius: 8 }}
                 >
-                  <img className="w-12 h-12 object-center object-contain" src={getMediaSrc(items![_index]?.MediaFileId)?.path || noImage()} alt={""} />
-                  <span className="mt-1">{items![_index]?.Text || "Test Icon"}</span>
+                  <img className="w-12 h-12 object-center object-contain" src={getMediaSrc(items && items![_index]?.MediaFileId)?.path || noImage()} alt={""} />
+                  <span className="mt-1">{items && items![_index]?.Text || "Test Icon"}</span>
                 </SwiperSlide>
             )
           })}

@@ -5,7 +5,7 @@ interface HeaderProps {
 }
 declare const Header: FC<HeaderProps>;
 
-interface TravelPlannerProps {
+interface HotelTravelPlannerProps {
     className?: string;
     title?: string;
     subTitle?: string;
@@ -21,7 +21,57 @@ interface TravelPlannerProps {
     disabled?: boolean;
 }
 
-declare const TravelPlanner: FC<TravelPlannerProps>;
+declare const HotelTravelPlanner: FC<HotelTravelPlannerProps>;
+
+interface TabButtonProps {
+    label: string;
+    value: string | number | undefined;
+}
+interface TourTravelPlannerProps {
+    className?: string;
+    title?: string;
+    subTitle?: string;
+    buttonText?: string;
+    buttonBgColor?: string;
+    buttonTextColor?: string;
+    inputDestinationText?: string;
+    inputCheckoutDateText?: string;
+    wrapperBgColor?: string;
+    wrapperWidth?: string;
+    wrapperHeight?: string;
+    disabled?: boolean;
+    tourType?: "Kultur" | "Yurt Disi" | "Gemi";
+    onSubmit?(e: any): void;
+    tabButtons?: TabButtonProps[];
+}
+
+interface FlightTravelPlannerProps {
+    className?: string;
+    title?: string;
+    subTitle?: string;
+    buttonText?: string;
+    buttonBgColor?: string;
+    buttonTextColor?: string;
+    inputDestinationText?: string;
+    inputReturnText?: string;
+    inputCheckinDateText?: string;
+    inputCheckoutDateText?: string;
+    inputPassengerAndCabinText?: string;
+    inputPersonText?: string;
+    inputTravelReasonText?: string;
+    wrapperBgColor?: string;
+    wrapperWidth?: string;
+    wrapperHeight?: string;
+    disabled?: boolean;
+    tourType?: "return" | "one-way" | "multi";
+    noReason: boolean;
+    tabButtons: TabButtonProps[];
+    onSubmit?(e: any): void;
+}
+
+declare const FlightTravelPlanner: FC<FlightTravelPlannerProps>;
+
+declare const TourTravelPlanner: FC<TourTravelPlannerProps>;
 
 interface CarouselProps {
     sliderData: any;
@@ -33,6 +83,7 @@ declare const Carousel: FC<CarouselProps>;
 
 interface IconListProps {
     maxItemLength: number;
+    strategy: any;
     title?: string;
     className?: string;
     wrapperBgColor?: string;
@@ -43,7 +94,7 @@ interface IconListProps {
 }
 declare const IconList: FC<IconListProps>;
 
-interface MediaListProps$1 {
+interface MediaListProps {
     maxItemLength: number;
     title?: string;
     className?: string;
@@ -53,9 +104,9 @@ interface MediaListProps$1 {
     showArrows?: boolean;
     showBullets?: boolean;
 }
-declare const MediaList: FC<MediaListProps$1>;
+declare const MediaList: FC<MediaListProps>;
 
-interface MediaListProps {
+interface TextHtmlProps {
     content?: string;
     getContent?(content: any): any;
     className?: string;
@@ -63,6 +114,6 @@ interface MediaListProps {
     wrapperWidth?: string;
     wrapperHeight?: string;
 }
-declare const TextHtml: FC<MediaListProps>;
+declare const TextHtml: FC<TextHtmlProps>;
 
-export { Carousel, Header, IconList, MediaList, TextHtml, TravelPlanner };
+export { Carousel, FlightTravelPlanner, Header, HotelTravelPlanner, IconList, MediaList, TextHtml, TourTravelPlanner };
