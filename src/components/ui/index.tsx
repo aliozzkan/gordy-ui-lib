@@ -1,7 +1,8 @@
 import {Button, buttonVariants} from "./button"
 import Input from "./input"
 import Wrapper from "./wrapper"
-import {H1, H5} from "./typing"
+import {H1, H5} from "./Typing"
+import {Dropdown} from "./Dropdown";
 
 
 export {
@@ -11,4 +12,5 @@ export {
   Wrapper,
   H5,
   H1,
+  Dropdown,
 }
