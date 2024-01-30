@@ -2,11 +2,11 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { ThemeProviderDecorators } from "../../../storybook/Decorator";
 import "../../../index.css";
-import CarRentalTravelPlanner from "./CarRentalTravelPlanner";
+import CorporateCarRentalTravelPlanner from "./CarRentalTravelPlanner";
 
 const meta = {
   title: "GordyUI/TP Car Rental Corporate",
-  component: CarRentalTravelPlanner,
+  component: CorporateCarRentalTravelPlanner,
   argTypes: {
     title: {
       table: {
@@ -82,16 +82,16 @@ const meta = {
   },
   tags: ["autodocs"],
   decorators: ThemeProviderDecorators,
-} satisfies Meta<typeof CarRentalTravelPlanner>;
+} satisfies Meta<typeof CorporateCarRentalTravelPlanner>;
 
 export default meta;
 
-type Story = StoryObj<typeof CarRentalTravelPlanner>;
+type Story = StoryObj<typeof CorporateCarRentalTravelPlanner>;
 
-const DefaultCarRentalTravelPlanner = {
+const DefaultCorporateCarRentalTravelPlanner = {
   args: {
     disabled: false
   },
 } satisfies Story;
 
-export { DefaultCarRentalTravelPlanner };
+export { DefaultCorporateCarRentalTravelPlanner };

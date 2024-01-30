@@ -1,4 +1,4 @@
-export interface CarRentalTravelPlannerProps {
+export interface CorporateCarRentalTravelPlannerProps {
   className?: string;
   title?: string;
   subTitle?: string;

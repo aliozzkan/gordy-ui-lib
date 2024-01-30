@@ -4,8 +4,20 @@ import * as react_jsx_runtime from 'react/jsx-runtime';
 import * as class_variance_authority_dist_types from 'class-variance-authority/dist/types';
 import { VariantProps } from 'class-variance-authority';
 
+interface TabItemListProps {
+    label?: string;
+    icon?: string;
+    isActive?: boolean;
+}
 interface HeaderProps {
-    username: string;
+    tabItemList?: TabItemListProps[];
+    logoUrl?: string;
+    showLanguageMenuItem?: boolean;
+    showHelpMenuItem?: boolean;
+    showMyRequestsMenuItem?: boolean;
+    showAccountDropdownItem?: boolean;
+    showLogo?: boolean;
+    showTabBar?: boolean;
 }
 declare const Header: FC<HeaderProps>;
 
@@ -76,6 +88,66 @@ interface FlightTravelPlannerProps {
 declare const FlightTravelPlanner: FC<FlightTravelPlannerProps>;
 
 declare const TourTravelPlanner: FC<TourTravelPlannerProps>;
+
+interface AgencyCarRentalTravelPlannerProps {
+    className?: string;
+    title?: string;
+    subTitle?: string;
+    buttonText?: string;
+    buttonBgColor?: string;
+    buttonTextColor?: string;
+    inputPickupLocationText?: string;
+    inputPickupDateText?: string;
+    inputDeliveryDateText?: string;
+    inputTimeText?: string;
+    inputDifferentLocationText?: string;
+    wrapperBgColor?: string;
+    wrapperWidth?: string;
+    wrapperHeight?: string;
+    disabled?: boolean;
+}
+
+declare const AgencyCarRentalTravelPlanner: FC<AgencyCarRentalTravelPlannerProps>;
+
+interface CorporateCarRentalTravelPlannerProps {
+    className?: string;
+    title?: string;
+    subTitle?: string;
+    buttonText?: string;
+    buttonBgColor?: string;
+    buttonTextColor?: string;
+    inputPickupLocationText?: string;
+    inputPickupDateText?: string;
+    inputDeliveryDateText?: string;
+    inputTimeText?: string;
+    inputPersonNumberText?: string;
+    inputPersonText?: string;
+    inputTravelReasonText?: string;
+    inputDifferentLocationText?: string;
+    wrapperBgColor?: string;
+    wrapperWidth?: string;
+    wrapperHeight?: string;
+    disabled?: boolean;
+}
+
+declare const CorporateCarRentalTravelPlanner: FC<CorporateCarRentalTravelPlannerProps>;
+
+interface ActivityTravelPlannerProps {
+    className?: string;
+    title?: string;
+    subTitle?: string;
+    buttonText?: string;
+    buttonBgColor?: string;
+    buttonTextColor?: string;
+    inputDestinationText?: string;
+    inputCheckoutDateText?: string;
+    wrapperBgColor?: string;
+    wrapperWidth?: string;
+    wrapperHeight?: string;
+    disabled?: boolean;
+}
+
+declare const ActivityTravelPlanner: FC<ActivityTravelPlannerProps>;
 
 interface CarouselProps {
     sliderData: any;
@@ -150,4 +222,4 @@ declare const Dropdown: {
     Item: (props: DropdownItemProps) => react_jsx_runtime.JSX.Element;
 };
 
-export { Carousel, Dropdown, FlightTravelPlanner, Header, HotelTravelPlanner, IconList, MediaList, TextHtml, TourTravelPlanner };
+export { ActivityTravelPlanner, AgencyCarRentalTravelPlanner, Carousel, CorporateCarRentalTravelPlanner, Dropdown, FlightTravelPlanner, Header, HotelTravelPlanner, IconList, MediaList, TextHtml, TourTravelPlanner };

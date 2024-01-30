@@ -1,15 +1,12 @@
-export interface AgencyCarRentalTravelPlannerProps {
+export interface ActivityTravelPlannerProps {
   className?: string;
   title?: string;
   subTitle?: string;
   buttonText?: string;
   buttonBgColor?: string;
   buttonTextColor?: string;
-  inputPickupLocationText?: string;
-  inputPickupDateText?: string;
-  inputDeliveryDateText?: string;
-  inputTimeText?: string;
-  inputDifferentLocationText?: string;
+  inputDestinationText?: string;
+  inputCheckoutDateText?: string;
   wrapperBgColor?: string;
   wrapperWidth?: string;
   wrapperHeight?: string;

@@ -1,14 +1,14 @@
 import {FC} from "react";
 import LIcon from "../../lucidIcon/lucidIcon";
 import {carRentalTravelPlannerDataCorporate} from "../../../data/dummy/carrentaltravelplanner"
-import {CarRentalTravelPlannerProps} from "./CarRentalTravelPlannerProps";
+import {CorporateCarRentalTravelPlannerProps} from "./CarRentalTravelPlannerProps";
 import {Input, Button, Wrapper, H1, H5} from "../../ui";
 import TPCard from "../../TPCard/TPCard";
 import Container from "../../Container/Container";
 import {flightTravelPlannerData} from "../../../data/dummy/flighttravelplanner";
 
 
-const CarRentalTravelPlanner: FC<CarRentalTravelPlannerProps> = ({
+const CorporateCarRentalTravelPlanner: FC<CorporateCarRentalTravelPlannerProps> = ({
        className,
        title,
        subTitle,
@@ -104,4 +104,4 @@ const CarRentalTravelPlanner: FC<CarRentalTravelPlannerProps> = ({
   );
 };
 
-export default CarRentalTravelPlanner;
+export default CorporateCarRentalTravelPlanner;

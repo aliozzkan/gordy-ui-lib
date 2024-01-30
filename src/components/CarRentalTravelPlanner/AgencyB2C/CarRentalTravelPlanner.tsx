@@ -1,13 +1,13 @@
 import { FC } from "react";
 import LIcon from "../../lucidIcon/lucidIcon";
 import {carRentalTravelPlannerDataAgency} from "../../../data/dummy/carrentaltravelplanner"
-import {CarRentalTravelPlannerProps} from "./CarRentalTravelPlannerProps";
+import {AgencyCarRentalTravelPlannerProps} from "./CarRentalTravelPlannerProps";
 import {Input, Button, Wrapper, H1, H5} from "../../ui";
 import TPCard from "../../TPCard/TPCard";
 import Container from "../../Container/Container";
 
 
-const CarRentalTravelPlanner:FC<CarRentalTravelPlannerProps> = ({
+const AgencyCarRentalTravelPlanner:FC<AgencyCarRentalTravelPlannerProps> = ({
     className,
     title,
     subTitle,
@@ -91,4 +91,4 @@ const CarRentalTravelPlanner:FC<CarRentalTravelPlannerProps> = ({
   );
 };
 
-export default CarRentalTravelPlanner;
+export default AgencyCarRentalTravelPlanner;

@@ -7,6 +7,7 @@ interface InputProps {
   leftIcon?: React.ReactElement
   rightIcon?: React.ReactElement
   innerRef?: React.RefObject<any>
+  onChange?(e: any): void
   placeholder?: string
   defaultValue?: string
 }
