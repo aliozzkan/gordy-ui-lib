@@ -4,8 +4,21 @@ import {Button, Dropdown} from "../ui";
 import Container from "../Container/Container";
 import {icons} from "lucide-react";
 
+
+export interface TabItemListProps {
+  label?: string
+  icon?: string
+  isActive?: boolean
+}
 export interface HeaderProps {
-  username: string;
+  tabItemList?: TabItemListProps[];
+  logoUrl?: string
+  showLanguageMenuItem?: boolean
+  showHelpMenuItem?: boolean
+  showMyRequestsMenuItem?: boolean
+  showAccountDropdownItem?: boolean
+  showLogo?: boolean
+  showTabBar?: boolean
 }
 export interface HeaderTabBarProps {
   icon: keyof typeof icons;
@@ -29,15 +42,17 @@ export const TabButton = (props: HeaderTabBarProps) => {
   </div>
 }
 
-const Header: FC<HeaderProps> = (props) => {
+const Header: FC<HeaderProps> = ({
+   tabItemList,
+   logoUrl,
+   showLanguageMenuItem = true,
+   showHelpMenuItem = true,
+   showMyRequestsMenuItem = true,
+   showAccountDropdownItem = true,
+   showTabBar = true,
+   showLogo = true}) => {
 
-  const TabItemList = [
-    {label: "Otel", icon: "Home", isActive: true},
-    {label: "Uçak", icon: "Plane"},
-    {label: "Transfer", icon: "CarFront"},
-  ]
-
-  const [ActiveTab, setActiveTab] = useState(TabItemList.find(item => item.isActive)!.label)
+  const [ActiveTab, setActiveTab] = useState(tabItemList && tabItemList.find(item => item.isActive)!.label)
 
 
   const renderHeaderDropdownItems = ({onClose, className, onClick, ref} : any) => {
@@ -105,49 +120,65 @@ const Header: FC<HeaderProps> = (props) => {
     <div className="main-header bg-white">
       <div className="top-bar border-b border-gray-200 py-3.5">
         <Container className="flex items-center">
-          <div className="logo-area mr-auto">
-            <a className="logo flex max-w-[120px] max-h-[40px]" href="javascript;">
-              <img
-                className="max-w-full max-h-full object-contain object-left"
-                src="https://place-hold.it/120x40" alt="logo"/>
-            </a>
-          </div>
+            <div className="logo-area mr-auto">
+              {showLogo && (
+                <a className="logo flex max-w-[120px] max-h-[40px]" href="javascript;">
+                  <img
+                    className="max-w-full max-h-full object-contain object-left"
+                    src={logoUrl ? logoUrl : "https://place-hold.it/120x40?text=logo bulunamadi"} alt="logo"/>
+                </a>
+              )}
+            </div>
+
           <nav>
             <ul className="flex gap-4">
-              <li className="flex items-center text-gray-500 text-sm font-medium">
-                <Button variant="ghost">
-                  <LIcon name="Globe" size={20}/>
-                  <span>Türkçe, TL</span>
-                </Button>
-              </li>
-              <li className="flex items-center text-gray-500 text-sm font-medium">
-                <Button variant="ghost">
-                  <LIcon name="HelpCircle" size={20}/>
-                  <span>Yardım</span>
-                </Button>
-              </li>
-              <li>
-                <Button variant="outline">
-                  <LIcon name="Inbox" size={20}/>
-                  <span>Taleplerim</span>
-                </Button>
-              </li>
-              <li>
+              {showLanguageMenuItem && (
+                <li className="flex items-center text-gray-500 text-sm font-medium">
+                  <Button variant="ghost">
+                    <LIcon name="Globe" size={20}/>
+                    <span>Türkçe, TL</span>
+                  </Button>
+                </li>
+              )}
+
+              {showHelpMenuItem && (
+                <li className="flex items-center text-gray-500 text-sm font-medium">
+                  <Button variant="ghost">
+                    <LIcon name="HelpCircle" size={20}/>
+                    <span>Yardım</span>
+                  </Button>
+                </li>
+              )}
+
+              {showMyRequestsMenuItem && (
+                <li>
+                  <Button variant="outline">
+                    <LIcon name="Inbox" size={20}/>
+                    <span>Taleplerim</span>
+                  </Button>
+                </li>
+              )}
+
+              {showAccountDropdownItem && (
+                <li>
                   <Dropdown items={renderHeaderDropdownItems} className="text-gray-800 text-sm rounded-xl mt-2">
                     <Button variant="outline">
                       <LIcon name="User" size={20}/>
                       <span>Can Yılmaz</span>
                     </Button>
                   </Dropdown>
-              </li>
+                </li>
+              )}
+
             </ul>
           </nav>
         </Container>
       </div>
       <div className="bottom-bar">
         <Container>
+          {showTabBar && (
             <div className="tab-item-group flex gap-8 text-gray-500 font-medium text-sm">
-              {TabItemList && TabItemList.map((item: any, index: number) => {
+              {tabItemList && tabItemList.map((item: any, index: number) => {
                 return (
                   <TabButton
                     key={item.label + index}
@@ -160,6 +191,8 @@ const Header: FC<HeaderProps> = (props) => {
                 )
               })}
             </div>
+          )}
+
         </Container>
       </div>
     </div>

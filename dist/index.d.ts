@@ -1,4 +1,8 @@
-import { FC } from 'react';
+import * as React from 'react';
+import { FC, PropsWithChildren } from 'react';
+import * as react_jsx_runtime from 'react/jsx-runtime';
+import * as class_variance_authority_dist_types from 'class-variance-authority/dist/types';
+import { VariantProps } from 'class-variance-authority';
 
 interface HeaderProps {
     username: string;
@@ -116,4 +120,34 @@ interface TextHtmlProps {
 }
 declare const TextHtml: FC<TextHtmlProps>;
 
-export { Carousel, FlightTravelPlanner, Header, HotelTravelPlanner, IconList, MediaList, TextHtml, TourTravelPlanner };
+interface DropdownProps extends PropsWithChildren, VariantProps<typeof dropdownContentVariants> {
+    className?: string;
+    items: any;
+    title?: string;
+    onSelect?(eventKey: any): void;
+    placement?: "topStart" | "topEnd" | "leftStart" | "rightStart" | "leftEnd" | "rightEnd" | "bottomStart" | "bottomEnd";
+    children?: React.JSX.Element | React.JSX.Element[];
+}
+interface DropDownMenuProps extends PropsWithChildren {
+    className?: string;
+    style?: React.CSSProperties;
+    ref?: any;
+    onSelect?(selectedIndex: string | undefined): void;
+    children?: React.JSX.Element | React.JSX.Element[];
+}
+interface DropdownItemProps extends PropsWithChildren {
+    className?: string;
+    onClick?(e: void): void;
+    eventKey?: string | number;
+    children?: React.JSX.Element | React.JSX.Element[] | string;
+}
+declare const dropdownContentVariants: (props?: ({
+    placement?: "topStart" | "topEnd" | "leftStart" | "rightStart" | "leftEnd" | "rightEnd" | "bottomStart" | "bottomEnd" | null | undefined;
+} & class_variance_authority_dist_types.ClassProp) | undefined) => string;
+declare const Dropdown: {
+    (props: DropdownProps): react_jsx_runtime.JSX.Element;
+    Menu: (props: DropDownMenuProps) => react_jsx_runtime.JSX.Element;
+    Item: (props: DropdownItemProps) => react_jsx_runtime.JSX.Element;
+};
+
+export { Carousel, Dropdown, FlightTravelPlanner, Header, HotelTravelPlanner, IconList, MediaList, TextHtml, TourTravelPlanner };

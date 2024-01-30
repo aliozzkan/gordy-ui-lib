@@ -93,7 +93,7 @@ export const Dropdown = (props: DropdownProps) => {
     <div className={`relative`} ref={MainDropdownRef}>
       {!title && React.cloneElement(<div>{children}</div> , { onClick: handleButtonOnClick , ref: childrenRef} ) }
 
-      {title && <button className="text-gray-800 text-sm rounded-xl border border-gray-200 rounded-lg px-4 py-2" onClick={handleButtonOnClick} ref={childrenRef}>{title}</button> }
+      {title && <button className="text-gray-800 text-sm rounded-xl border border-gray-200 px-4 py-2" onClick={handleButtonOnClick} ref={childrenRef}>{title}</button> }
 
       <div className="">
         {React.cloneElement(<Items className={cn(dropdownContentVariants({ placement, className }), ShowItems ? "opacity-100 pointer-events-auto select-auto translate-y-0" : "")}/>, {onClick: handleOnClick, onClose: handleOnClose})}
