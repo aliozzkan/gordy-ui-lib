@@ -18,11 +18,12 @@ export interface IconListProps {
 }
 
 const IconList:FC<IconListProps> = (props) => {
-
+  console.log(props.strategy);
   const IconMediaListForPost: number[] = [] // post service array list for medialibrary
-  const strategyData = props.strategy && props.strategy.result.strategies.find((strategy : any) => strategy.relation === "Data")
-  const items = strategyData && strategyData.input.Items!
-  items && items.map((item: any) => IconMediaListForPost.push(item.MediaFileId))
+  const items = props.strategy.data.items
+  items && items.map((item: any) => IconMediaListForPost.push(item.mediaFileId))
+
+  console.log(IconMediaListForPost);
 
   // post Media IDs to API => return images URL => example dummy data/dummy/medialibrary.ts
   const mediaLibraryResult = MedialibraryDummy // etc.. await getMedialibrary(IconMediaListForPost)

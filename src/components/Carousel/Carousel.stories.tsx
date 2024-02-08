@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import Carousel from "./Carousel";
-import {CarouselData} from "../../data/dummy/carousel";
+import {TabSliderStrategy} from "../../data/dummy/carousel";
 
 const meta = {
   title: "GordyUI/Carousel",
@@ -16,11 +16,8 @@ const meta = {
     },
   },
   argTypes: {
-    sliderData: {
-      description: "Slider Listesini alir",
-    },
-    categoryData: {
-      description: "Kategori Listesini alir",
+    strategy: {
+      description: "stratejisini alir",
     },
     activeCategoryId: {
       description: "butonlarin initalstate'i icin kullanilir",
@@ -45,10 +42,9 @@ type Story = StoryObj<typeof Carousel>;
 
 const DefaultCarousel = {
   args: {
-    sliderData: CarouselData.sliders,
-    categoryData: CarouselData.categories,
-    activeCategoryId: 2,
-    activeSliderIndex: 3,
+    strategy: TabSliderStrategy,
+    //activeCategoryId: 0,
+    activeSliderIndex: 0,
   },
 } satisfies Story;
 

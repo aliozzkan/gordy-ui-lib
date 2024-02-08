@@ -1,41 +1,201 @@
-export const CarouselData = {
-  categories: [
-    {name: "Yaz Fırsatları", id:"0"},
-    {name: "Erken Rezervasyon", id:"1"},
-    {name: "Etkinlikler", id:"2"},
-    {name: "Ödeme Kolaylıkları", id:"3"},
-  ],
-  sliders: [
-    {
-      uuid: "asdasdasdasd3213123",
-      categoryId: "1",
-      imagePath: "https://place-hold.it/1040x350?text=Erken Rezervasyon",
+export const TabSliderStrategy = {
+  "visual": {
+    "width": null,
+    "height": 0,
+    "style": {
+      "borderRadius": null,
+      "backgroundColor": null,
+      "color": null,
+      "position": null,
+      "fontWeight": null,
+      "fontFamily": null,
+      "fontSize": null,
+      "lineHeight": null,
+      "zIndex": null,
+      "opacity": null,
+      "paddingRight": null,
+      "paddingTop": null,
+      "paddingBottom": null,
+      "paddingLeft": null,
+      "marginRight": null,
+      "marginTop": null,
+      "marginBottom": null,
+      "marginLeft": null,
+      "left": null,
+      "top": null,
+      "right": null,
+      "bottom": null,
+      "cursor": null,
+      "borderBottom": null,
+      "borderTop": null,
+      "borderRight": null,
+      "borderLeft": null,
+      "gap": null,
+      "display": null,
+      "alignItems": null,
+      "padding": null,
+      "border": null,
+      "justifyContent": null,
+      "margin": null,
+      "flexDirection": null,
+      "width": null,
+      "textAlign": null,
+      "whiteSpace": null
     },
-    {
-      uuid: "asdasdasd3123",
-      categoryId: "1",
-      imagePath: "https://place-hold.it/1040x350?text=Erken Rezervasyon 2",
+    "paginationStyle": {
+      "layout": null,
+      "align": null,
+      "position": null,
+      "infiniteLoop": false,
+      "swipeNavigation": false,
+      "backgroundColor": null,
+      "color": null,
+      "fontWeight": null,
+      "fontFamily": null,
+      "borderRadius": null,
+      "fontSize": null,
+      "lineHeight": null,
+      "zIndex": null,
+      "opacity": null,
+      "paddingRight": null,
+      "paddingTop": null,
+      "paddingBottom": null,
+      "paddingLeft": null,
+      "marginRight": null,
+      "marginTop": null,
+      "marginBottom": null,
+      "marginLeft": null,
+      "left": null,
+      "top": null,
+      "right": null,
+      "bottom": null,
+      "cursor": null,
+      "borderBottom": null,
+      "borderTop": null,
+      "borderRight": null,
+      "borderLeft": null,
+      "gap": null,
+      "display": null,
+      "alignItems": null,
+      "padding": null,
+      "border": null,
+      "justifyContent": null,
+      "margin": null,
+      "flexDirection": null,
+      "width": null,
+      "textAlign": null,
+      "whiteSpace": null
     },
-    {
-      uuid: "asdasdasda",
-      categoryId: "0",
-      imagePath: "https://place-hold.it/1040x350?text=Yaz Fırsatları",
+    "arrowVisualStyle": {
+      "displayArrows": false,
+      "position": null,
+      "color": null,
+      "backgroundColor": null,
+      "fontWeight": null,
+      "fontFamily": null,
+      "borderRadius": null,
+      "fontSize": null,
+      "lineHeight": null,
+      "zIndex": null,
+      "opacity": null,
+      "paddingRight": null,
+      "paddingTop": null,
+      "paddingBottom": null,
+      "paddingLeft": null,
+      "marginRight": null,
+      "marginTop": null,
+      "marginBottom": null,
+      "marginLeft": null,
+      "left": null,
+      "top": null,
+      "right": null,
+      "bottom": null,
+      "cursor": null,
+      "borderBottom": null,
+      "borderTop": null,
+      "borderRight": null,
+      "borderLeft": null,
+      "gap": null,
+      "display": null,
+      "alignItems": null,
+      "padding": null,
+      "border": null,
+      "justifyContent": null,
+      "margin": null,
+      "flexDirection": null,
+      "width": null,
+      "textAlign": null,
+      "whiteSpace": null
     },
-    {
-      uuid: "asdasd3123",
-      categoryId: "2",
-      imagePath: "https://place-hold.it/1040x350?text=Etkinlikler",
+    "autoSlide": {
+      "autoSlide": false,
+      "pauseOnHover": false,
+      "delay": 0
     },
-    {
-      uuid: "asdasd31254",
-      categoryId: "2",
-      imagePath: "https://place-hold.it/1040x350?text=Etkinlikler 2",
-    },
-    {
-      uuid: "d3213123",
-      categoryId: "3",
-      type: 0, // media, video etc..
-      imagePath: "https://place-hold.it/1040x350?text=Ödeme Kolaylıkları",
-    },
-  ]
+    "settings": null,
+    "code": "e25e3abb-9777-477c-9d4c-c92e549b0c84",
+    "outputData": null,
+    "type": 1,
+    "name": "Visual.Molecule.TabSliderVisual",
+    "status": 1
+  },
+  "data": {
+    "items": [
+      {
+        "category": {
+          "categoryId": 64,
+          "categoryName": "Kampanyalar"
+        },
+        "sliders": [
+          {
+            "type": 0,
+            "imagePath": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-eac66cfd-e1af-4d81-8b84-0482f6e5295d.jpg",
+            "videoUrl": null,
+            "backgroundColor": null,
+            "order": 0
+          },
+          {
+            "type": 0,
+            "imagePath": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-f7a81ae4-c504-4ecb-972e-887063027233.jpg",
+            "videoUrl": null,
+            "backgroundColor": null,
+            "order": 0
+          }
+        ]
+      },
+      {
+        "category": {
+          "categoryId": 68,
+          "categoryName": "deneme kategori"
+        },
+        "sliders": [
+          {
+            "type": 0,
+            "imagePath": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-9b2dbbe0-b2c4-4466-80eb-154ae2680089.jpg",
+            "videoUrl": null,
+            "backgroundColor": null,
+            "order": 0
+          }
+        ]
+      }
+    ],
+    "code": "f7b49a31-004e-4953-a3c8-9b209e518f00",
+    "outputData": null,
+    "type": 2,
+    "name": "Data.Molecule.TabSlider",
+    "status": 1
+  },
+  "event": null,
+  "code": "ca614b34-345f-4ff1-901b-50bf5b4c9321",
+  "outputData": null,
+  "type": 5,
+  "name": "Tab Slider",
+  "status": 1,
+  "styles": {
+    "wrapperStyles": {
+      "backgroundColor": "#dddddd",
+      "width": "100%",
+      "height": "200px"
+    }
+  }
 }

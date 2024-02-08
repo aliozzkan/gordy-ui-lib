@@ -48,7 +48,7 @@ type Story = StoryObj<typeof IconList>;
 const DefaultIconList = {
   args: {
     strategy: IconListDummy,
-    maxItemLength: 4,
+    maxItemLength: IconListDummy.data.items.length,
     className: "my-5 py-4",
     wrapperBgColor: "#f3f3f3",
     showArrows: true,
