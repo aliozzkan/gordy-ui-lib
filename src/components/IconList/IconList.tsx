@@ -18,17 +18,7 @@ export interface IconListProps {
 }
 
 const IconList:FC<IconListProps> = (props) => {
-  console.log(props.strategy);
-  const IconMediaListForPost: number[] = [] // post service array list for medialibrary
   const items = props.strategy.data.items
-  items && items.map((item: any) => IconMediaListForPost.push(item.mediaFileId))
-
-  console.log(IconMediaListForPost);
-
-  // post Media IDs to API => return images URL => example dummy data/dummy/medialibrary.ts
-  const mediaLibraryResult = MedialibraryDummy // etc.. await getMedialibrary(IconMediaListForPost)
-
-  const getMediaSrc = (mediaFileId: any) => mediaLibraryResult.find(media => media.id === mediaFileId)
 
   const noImage = () => {
     return "https://place-hold.it/80x80"
@@ -53,7 +43,6 @@ const IconList:FC<IconListProps> = (props) => {
     },
   }
 
-
   return (
     <div
       style={{
@@ -72,8 +61,8 @@ const IconList:FC<IconListProps> = (props) => {
                       cursor-pointer !transition-all hover:shadow-xl hover:text-primary-500 px-2 py-4`}
                      style={{ borderRadius: 8 }}
                 >
-                  <img className="w-12 h-12 object-center object-contain" src={getMediaSrc(items && items![_index]?.MediaFileId)?.path || noImage()} alt={""} />
-                  <span className="mt-1">{items && items![_index]?.Text || "Test Icon"}</span>
+                  <img className="w-12 h-12 object-center object-contain" src={items && items![_index]?.imagePath || noImage()} alt={""} />
+                  <span className="block mt-1 truncate max-w-full">{items && items![_index]?.Text || "Test Icon"}</span>
                 </SwiperSlide>
             )
           })}
