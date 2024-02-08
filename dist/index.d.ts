@@ -10,6 +10,7 @@ interface TabItemListProps {
     isActive?: boolean;
 }
 interface HeaderProps {
+    className?: string;
     tabItemList?: TabItemListProps[];
     logoUrl?: string;
     showLanguageMenuItem?: boolean;
