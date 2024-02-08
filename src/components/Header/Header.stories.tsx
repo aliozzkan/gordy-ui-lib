@@ -8,6 +8,7 @@ const meta = {
   title: "GordyUI/Header",
   component: Header,
   argTypes: {
+    className: {},
     tabItemList: {
       description: "",
       defaultValue: { summary: 'true' }

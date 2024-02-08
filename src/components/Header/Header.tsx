@@ -11,6 +11,7 @@ export interface TabItemListProps {
   isActive?: boolean
 }
 export interface HeaderProps {
+  className?: string;
   tabItemList?: TabItemListProps[];
   logoUrl?: string
   showLanguageMenuItem?: boolean
@@ -43,6 +44,7 @@ export const TabButton = (props: HeaderTabBarProps) => {
 }
 
 const Header: FC<HeaderProps> = ({
+   className,
    tabItemList,
    logoUrl,
    showLanguageMenuItem = true,
@@ -117,7 +119,7 @@ const Header: FC<HeaderProps> = ({
   }
 
   return (
-    <div className="main-header bg-white">
+    <div className={`main-header bg-white z-10 ${className}`}>
       <div className="top-bar border-b border-gray-200 py-3.5">
         <Container className="flex items-center">
             <div className="logo-area mr-auto">
@@ -183,7 +185,6 @@ const Header: FC<HeaderProps> = ({
                   <TabButton
                     key={item.label + index}
                     onClick={(tabName: any) => {
-                      console.log(tabName + " " + index)
                       setActiveTab(tabName)
                     }} label={item.label} icon={item.icon} size={20}
                     isActive={ActiveTab === item.label}

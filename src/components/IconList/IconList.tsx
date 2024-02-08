@@ -18,7 +18,11 @@ export interface IconListProps {
 }
 
 const IconList:FC<IconListProps> = (props) => {
-  const items = props.strategy.data.items
+  const items = props?.strategy?.data?.items
+
+  if (!items){
+    return <></>
+  }
 
   const noImage = () => {
     return "https://place-hold.it/80x80"
