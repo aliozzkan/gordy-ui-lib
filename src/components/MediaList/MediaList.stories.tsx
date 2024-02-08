@@ -3,11 +3,15 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import MediaList from "./MediaList";
+import {MediaListStrategy} from "../../data/dummy/media";
 
 const meta = {
   title: "GordyUI/MediaList",
   component: MediaList,
   argTypes: {
+    strategy: {
+      description: "stratejisini alir",
+    },
     title: {
         defaultValue: { summary: 'Popüler bölgeler' },
     },
@@ -46,6 +50,7 @@ type Story = StoryObj<typeof MediaList>;
 
 const DefaultMediaList = {
   args: {
+    strategy: MediaListStrategy,
     maxItemLength: 3,
     className: "my-5 py-4",
     //wrapperBgColor: "#f3f3f3",

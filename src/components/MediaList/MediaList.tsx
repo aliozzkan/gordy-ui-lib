@@ -1,11 +1,10 @@
 import React, {FC} from "react";
-import {MediaListDummy} from "../../data/dummy/mediaList";
-import {MedialibraryDummy} from "../../data/dummy/medialibrary";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from "swiper/modules";
 
 export interface MediaListProps {
+  strategy: any,
   maxItemLength: number;
   title?: string;
   className?: string;
@@ -18,15 +17,26 @@ export interface MediaListProps {
 
 const MediaList:FC<MediaListProps> = (props) => {
 
-  const MediaListForPost: number[] = [] // post service array list for medialibrary
-  const strategyData = MediaListDummy.result.strategies.find(strategy => strategy.relation === "Data")
-  const items = strategyData && strategyData.input.Items!
-  items && items.map(item => MediaListForPost.push(item.MediaFileId))
+  const {strategy} = props
 
-  // post Media IDs to API => return images URL => example dummy data/dummy/medialibrary.ts
-  const mediaLibraryResult = MedialibraryDummy // etc.. await getMedialibrary(MediaListForPost)
+  const medias: any = []
+  strategy?.data?.items && strategy.data.items.map((item: any) => {
+    if (item?.medias) {
+      item.medias.map((slider: any) => {
+        slider["category"] = item.category
+      })
+      medias.push(
+        ...item.medias,
+      )
+    }
+  })
+  console.log(strategy);
+  console.log(medias);
 
-  const getMediaSrc = (mediaFileId: any) => mediaLibraryResult.find(media => media.id === mediaFileId)
+  if (!medias.length) {
+    return <></>
+  }
+
 
   const noImage = () => {
     return "https://place-hold.it/340x190"
@@ -63,19 +73,30 @@ const MediaList:FC<MediaListProps> = (props) => {
         <p className="text-gray-800 font-semibold text-2xl">{props.title || "Popüler bölgeler"}</p>
 
         <Swiper {...swiperProps}>
-          {Array.apply(null, Array(props.maxItemLength)).map((val, _index) => {
+          {Array.apply(null, Array(props.maxItemLength)).map((val, index) => {
             return (
-                <SwiperSlide key={_index}
+                <SwiperSlide key={index}
                      className={`media-box group w-full flex flex-col items-center border border-gray-200 bg-white
                       cursor-pointer overflow-hidden !transition-all hover:shadow-xl hover:text-primary-500`}
                      style={{ borderRadius: "8px" }}
                 >
                   <div className="image-wrapper w-full h-[190px]">
-                    <img className="w-full h-full object-center object-cover" src={getMediaSrc(items![_index]?.MediaFileId)?.path || noImage()} alt={""} />
+                    <img className="w-full h-full object-center object-cover" src={medias[index]?.imagePath || noImage()} alt={""} />
                   </div>
+
                   <div className="mt-1 w-full flex flex-col p-4">
-                    <span className="text-base font-semibold text-color-800 truncate" title={items![_index]?.Text}>{items![_index]?.Text || "Test Media Text"}</span>
-                    <span className="mt-0.5 text-sm font-normal text-gray-500 truncate" title={items![_index]?.subText}>{items![_index]?.subText || "Test Media subText"}</span>
+                    {!medias[index]?.title && (
+                      <span className="text-base font-semibold text-color-800 truncate" title={medias[index]?.subTitle}>{medias[index]?.subTitle || "Test Media subText"}</span>
+                    )}
+                    {medias[index]?.title && (
+                      <>
+                        <span className="text-base font-semibold text-color-800 truncate" title={medias[index]?.title}>{medias[index]?.title || "Test Media Text"}</span>
+                        {medias[index]?.displaySubTitle && (
+                          <span className="mt-0.5 text-sm font-normal text-gray-500 truncate" title={medias[index]?.subTitle}>{medias[index]?.subTitle || "Test Media subText"}</span>
+                        )}
+                      </>
+                    )}
+
                   </div>
                 </SwiperSlide>
             )

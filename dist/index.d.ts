@@ -171,6 +171,7 @@ interface IconListProps {
 declare const IconList: FC<IconListProps>;
 
 interface MediaListProps {
+    strategy: any;
     maxItemLength: number;
     title?: string;
     className?: string;
