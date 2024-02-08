@@ -65,8 +65,8 @@ const IconList:FC<IconListProps> = (props) => {
                       cursor-pointer !transition-all hover:shadow-xl hover:text-primary-500 px-2 py-4`}
                      style={{ borderRadius: 8 }}
                 >
-                  <img className="w-12 h-12 object-center object-contain" src={items && items![_index]?.imagePath || noImage()} alt={""} />
-                  <span className="block mt-1 truncate max-w-full">{items && items![_index]?.Text || "Test Icon"}</span>
+                  <img className="w-12 h-12 object-center object-contain" src={items && items![_index]?.mediaPath || noImage()} alt={""} />
+                  <span className="block mt-1 truncate max-w-full">{items && items![_index]?.text || "Test Icon"}</span>
                 </SwiperSlide>
             )
           })}

@@ -54,9 +54,9 @@ export const IconListDummy = {
     "items": [
       {
         "mediaFileId": 1042,
-        "imagePath": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-9b2dbbe0-b2c4-4466-80eb-154ae2680089.jpg",
+        "mediaPath": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-9b2dbbe0-b2c4-4466-80eb-154ae2680089.jpg",
         "textLangKey": "060f82a5-b66c-499a-bbbd-5c4fcba9bba2",
-        "Text": "tripty icon text",
+        "text": "tripty icon text",
         "style": {
           "textAlign": null,
           "backgroundColor": null,
@@ -100,9 +100,9 @@ export const IconListDummy = {
       },
       {
         "mediaFileId": 1043,
-        "imagePath": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-9b2dbbe0-b2c4-4466-80eb-154ae2680089.jpg",
+        "mediaPath": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-9b2dbbe0-b2c4-4466-80eb-154ae2680089.jpg",
         "textLangKey": "dcccdfe9-250c-4db3-9072-b87ba8dc4276",
-        "Text": "deneme icon text",
+        "text": "deneme icon text",
         "style": {
           "textAlign": null,
           "backgroundColor": null,
