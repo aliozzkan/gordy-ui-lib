@@ -79,7 +79,7 @@ const Sliders = (props: any) => {
       >
         {props.sliders && props.sliders.map((slide: any) => {
           return (
-            <SwiperSlide className="flex items-center justify-center w-full min-h-[150px]" key={slide.uuid}>
+            <SwiperSlide className="flex items-center justify-center w-full min-h-[150px]" key={slide.imagePath}>
               <img className="max-w-full object-cover object-center" src={slide.imagePath}
                    alt={`swiper img ${slide.uuid}`}/>
             </SwiperSlide>
