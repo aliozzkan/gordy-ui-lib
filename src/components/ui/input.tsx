@@ -22,7 +22,6 @@ const Input = ({
     ...args
    }: InputProps) => {
 
-  console.log(args);
   return (
     <div className={`input-box relative w-full flex items-center gap-2 border border-gray-200 rounded-lg overflow-hidden 
     shadow-xs text-gray-500 text-base dark:border-gray-800 dark:text-gray-200 ${className}`}>

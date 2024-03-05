@@ -88,7 +88,6 @@ const DefaultDropdown: Story = {
     title: "Dropdown"
   },
   render: (props) => {
-    console.log(props);
 
     return (
       <div className="flex items-center justify-center h-[60vh] pb-44">

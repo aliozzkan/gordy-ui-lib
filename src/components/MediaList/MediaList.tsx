@@ -30,8 +30,6 @@ const MediaList:FC<MediaListProps> = (props) => {
       )
     }
   })
-  console.log(strategy);
-  console.log(medias);
 
   if (!medias.length) {
     return <></>

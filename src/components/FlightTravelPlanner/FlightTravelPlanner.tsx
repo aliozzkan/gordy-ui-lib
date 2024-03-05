@@ -81,11 +81,9 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
     })
   }
   const removeFlight = (flight: any) => {
-    console.log(flight);
     const removeProperty = (dyProps: string) => ({ [dyProps]: _, ...rest }) => rest;
     const remove_random_property = removeProperty(flight);
     const removedFlightAmounts = remove_random_property(FlightAmounts)
-    console.log(removedFlightAmounts);
     setFlightAmounts(removedFlightAmounts)
   }
 
