@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import TourTravelPlanner from "./TourTravelPlanner";
+import {tourTravelPlannerStrategy} from "../../data/dummy/tourtravelplanner";
 
 const meta = {
   title: "GordyUI/TP Tour",
@@ -50,6 +51,9 @@ const meta = {
       table: {
       },
     },
+    backgroundImagePath: {
+      description: "arkaplan resmi url adresi"
+    },
     wrapperWidth: {
       table: {
         defaultValue: { summary: '100%' },
@@ -86,6 +90,7 @@ const DefaultTourTravelPlanner = {
   args: {
     disabled: false,
     tourType: "Kultur",
+    strategy: tourTravelPlannerStrategy,
     tabButtons: [
       {label: "Kültür Turları", value: "Kultur"},
       {label: "Yurt Dışı Turları", value: "Yurt Disi"},

@@ -3,37 +3,12 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import HotelTravelPlanner from "./HotelTravelPlanner";
+import {hotelTravelPlannerStrategy} from "../../data/dummy/hoteltravelplanner";
 
 const meta = {
   title: "GordyUI/TP Hotel",
   component: HotelTravelPlanner,
   argTypes: {
-    title: {
-      table: {
-        defaultValue: { summary: 'Title' },
-      },
-    },
-    subTitle: {
-      table: {
-        defaultValue: { summary: 'Sub-title' },
-      },
-    },
-    buttonText: {
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Otel ara' },
-      },
-    },
-    buttonBgColor: {
-      table: {
-        defaultValue: { summary: '#2E90FA' },
-      },
-    },
-    buttonTextColor: {
-      table: {
-        defaultValue: { summary: '#FFFFFF' },
-      },
-    },
     inputDestinationText: {
       table: {
         defaultValue: { summary: 'Nereye gidiyorsun?' },
@@ -49,18 +24,9 @@ const meta = {
         defaultValue: { summary: '2 misafir, 1 oda' },
       },
     },
-    wrapperBgColor: {
+    strategy: {
       table: {
-      },
-    },
-    wrapperWidth: {
-      table: {
-        defaultValue: { summary: '100%' },
-      },
-    },
-    wrapperHeight: {
-      table: {
-        defaultValue: { summary: 'auto' },
+        description: "",
       },
     },
     disabled: {
@@ -80,7 +46,8 @@ type Story = StoryObj<typeof HotelTravelPlanner>;
 
 const DefaultHotelTravelPlanner = {
   args: {
-    disabled: false
+    disabled: false,
+    strategy: hotelTravelPlannerStrategy,
   },
 } satisfies Story;
 

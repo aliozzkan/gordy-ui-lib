@@ -6,6 +6,7 @@ export interface TabButtonProps {
 
 export interface TourTravelPlannerProps {
   className?: string;
+  strategy: any
   title?: string;
   subTitle?: string;
   buttonText?: string;
@@ -20,4 +21,5 @@ export interface TourTravelPlannerProps {
   tourType?: "Kultur" | "Yurt Disi" | "Gemi";
   onSubmit?(e: any): void,
   tabButtons?: TabButtonProps[],
+  backgroundImagePath?: string,
 }

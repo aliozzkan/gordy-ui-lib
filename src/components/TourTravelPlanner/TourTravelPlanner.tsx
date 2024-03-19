@@ -7,19 +7,11 @@ import TPCard from "../TPCard/TPCard";
 import Container from "../Container/Container";
 import {Wrapper, H1, H5, Button, Input} from "../ui";
 
-
 const TourTravelPlanner:FC<TourTravelPlannerProps> = ({
     className,
-    title,
-    subTitle,
-    buttonText,
-    buttonBgColor,
-    buttonTextColor,
+    strategy,
     inputDestinationText,
     inputCheckoutDateText,
-    wrapperBgColor,
-    wrapperWidth,
-    wrapperHeight,
     disabled,
     tourType,
     onSubmit,
@@ -49,15 +41,19 @@ const TourTravelPlanner:FC<TourTravelPlannerProps> = ({
   return (
     <Wrapper
       style={{
-        backgroundColor: wrapperBgColor,
-        width :wrapperWidth,
-        height :wrapperHeight,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundImage: `url("${strategy.data?.backgroundImagePath}")`,
+        backgroundColor: strategy.visual?.style?.backgroundColor,
+        width :strategy.visual?.style?.width,
+        height :strategy.visual?.style?.height === 0 ? "auto" : strategy.visual?.style?.height,
     }}
       disabled={disabled}
       className={className}>
       <Container>
-        <H1>{title || tourTravelPlannerData.title}</H1>
-        <H5 className="mt-2" >{subTitle || tourTravelPlannerData.subTitle}</H5>
+        <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
+        <H5 style={strategy.data?.subTitleStyle} className="mt-2" >{strategy.data?.subTitle}</H5>
         <TPCard className="mt-6">
           <ButtonGroup disabled={disabled}>
             {tabButtons && tabButtons.map((list: TabButtonProps, index) => {
@@ -81,9 +77,7 @@ const TourTravelPlanner:FC<TourTravelPlannerProps> = ({
             </div>
             <div className="min-w-[124px] flex items-center">
               <Button onClick={() => onSubmit ? onSubmit(handleOnSubmit) : null} className="w-full" variant="primary"
-                      style={{backgroundColor: buttonBgColor || tourTravelPlannerData.buttonBgColor, color: buttonTextColor}}>
-                {buttonText || tourTravelPlannerData.buttonText}
-              </Button>
+                      style={strategy.data?.buttonStyle}>{strategy.data?.button}</Button>
             </div>
           </div>
         </TPCard>

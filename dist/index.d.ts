@@ -24,17 +24,10 @@ declare const Header: FC<HeaderProps>;
 
 interface HotelTravelPlannerProps {
     className?: string;
-    title?: string;
-    subTitle?: string;
-    buttonText?: string;
-    buttonBgColor?: string;
-    buttonTextColor?: string;
+    strategy?: any;
     inputDestinationText?: string;
     inputCheckoutDateText?: string;
     inputGuestInfoText?: string;
-    wrapperBgColor?: string;
-    wrapperWidth?: string;
-    wrapperHeight?: string;
     disabled?: boolean;
 }
 
@@ -46,6 +39,7 @@ interface TabButtonProps {
 }
 interface TourTravelPlannerProps {
     className?: string;
+    strategy: any;
     title?: string;
     subTitle?: string;
     buttonText?: string;
@@ -60,6 +54,7 @@ interface TourTravelPlannerProps {
     tourType?: "Kultur" | "Yurt Disi" | "Gemi";
     onSubmit?(e: any): void;
     tabButtons?: TabButtonProps[];
+    backgroundImagePath?: string;
 }
 
 interface FlightTravelPlannerProps {

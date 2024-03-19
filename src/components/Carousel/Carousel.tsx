@@ -41,7 +41,7 @@ const CategoryWrapper = (props: any) => {
       className={`categories flex items-center gap-4 text-gray-500 text-base font-medium justify-center ${props.className || ""}`}>
       {categories.map((category: any, index) => {
         return (
-          <SliderCategories key={index} index={index} sliderCategoryId={category?.id}
+          <SliderCategories key={category?.id || index} index={index} sliderCategoryId={category?.id}
                             sliderCategoryName={category?.name} activeCategoryId={props.activeCategoryId}
                             categoryItemOnClick={props.itemOnClick}/>
         )
@@ -77,9 +77,9 @@ const Sliders = (props: any) => {
           dynamicBullets: true,
         }}
       >
-        {props.sliders && props.sliders.map((slide: any) => {
+        {props.sliders && props.sliders.map((slide: any, index: number) => {
           return (
-            <SwiperSlide className="flex items-center justify-center w-full min-h-[150px]" key={slide.imagePath}>
+            <SwiperSlide className="flex items-center justify-center w-full min-h-[150px]" key={slide?.imagePath || index}>
               <img className="max-w-full object-cover object-center" src={slide.imagePath}
                    alt={`swiper img ${slide.uuid}`}/>
             </SwiperSlide>
