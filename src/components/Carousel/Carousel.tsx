@@ -4,6 +4,7 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation, Pagination} from "swiper/modules";
 
 import LIcon from "../lucidIcon/lucidIcon";
+import {Button} from "../ui";
 
 const SliderCategories = (props: any) => {
   const sliderCategoryName = props.sliderCategoryName ? props.sliderCategoryName : props.sliderCategoryId
@@ -52,11 +53,19 @@ const CategoryWrapper = (props: any) => {
 
 
 const Sliders = (props: any) => {
+
+  const {strategy} = props
+
+  const swiperId = Math.floor(Math.random() * 1000000000000)
+
+  const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows
+  const pagination = strategy?.visual?.paginationStyle?.swipeNavigation
   return (
     <>
       <Swiper
-        className={`w-full overflow-hidden ${props.className || ""}`}
+        className={`w-full overflow-hidden swiper-${swiperId} ${props.className || ""}`}
         spaceBetween={30}
+        style={{...strategy?.visual?.style}}
         speed={700}
         initialSlide={props?.activeSlider}
         slidesPerView={1}
@@ -68,32 +77,56 @@ const Sliders = (props: any) => {
           props.setSwiper(ev);
         }}
         navigation={{
-          enabled: true,
-          prevEl: ".swiper-button-prev",
-          nextEl: ".swiper-button-next",
+          enabled: displayArrows,
+          prevEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-prev`,
+          nextEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-next`,
         }}
-        pagination={{
-          clickable: true,
-          dynamicBullets: true,
-        }}
+        pagination={
+          pagination
+            ? {
+              clickable: pagination,
+              dynamicBullets: true,
+              dynamicMainBullets: 4,
+            }
+            : false
+        }
       >
         {props.sliders && props.sliders.map((slide: any, index: number) => {
           return (
-            <SwiperSlide className="flex items-center justify-center w-full min-h-[150px]" key={slide?.imagePath || index}>
-              <img className="max-w-full object-cover object-center" src={slide.imagePath}
-                   alt={`swiper img ${slide.uuid}`}/>
+            <SwiperSlide
+              key={index}
+              className="flex items-center justify-center w-full min-h-[150px]"
+              style={{backgroundColor: slide?.backgroundColor}}
+            >
+
+              {slide?.title && (
+                <div className="relative w-full px-10 py-16">
+                  <p className={"text-white drop-shadow-lg"} style={{...slide.textStyle, fontSize: "48px"}} dangerouslySetInnerHTML={{ __html: slide?.title }}></p>
+                  <a href={slide?.buttonActions?.link || undefined} target={slide?.buttonActions?.target || "_self"}>
+                    <Button variant="primary" className="px-8 text-base font-medium mt-6" style={{...slide?.buttonStyle}}>{slide?.buttonText}</Button>
+                  </a>
+                </div>
+              )}
+
+              {slide?.imagePath && (
+                <img className={`max-w-full object-cover object-center ${slide?.title ? "absolute h-full w-full object-cover object-center -z-10" : ""}`} src={slide.imagePath}
+                     alt={`swiper img ${slide.uuid}`}/>
+              )}
+
             </SwiperSlide>
           )
         })}
+        {displayArrows && (
+          <div className="swiper-navigation" style={{...strategy?.visual?.arrowVisualStyle}}>
+            <div className="swiper-button-prev">
+              <LIcon name="ArrowLeft"/>
+            </div>
+            <div className="swiper-button-next">
+              <LIcon name="ArrowRight"/>
+            </div>
+          </div>
+        )}
       </Swiper>
-      <div className="swiper-navigation">
-        <div className="swiper-button-prev">
-          <LIcon name="ArrowLeft"/>
-        </div>
-        <div className="swiper-button-next">
-          <LIcon name="ArrowRight"/>
-        </div>
-      </div>
     </>
   )
 }
@@ -116,16 +149,13 @@ export const Carousel: FC<CarouselProps> = (props) => {
   strategy?.data?.items && strategy.data.items.map((item: any) => {
     if (item?.sliders) {
       categories.push(item.category)
-    }
-  })
-  strategy?.data?.items && strategy.data.items.map((item: any) => {
-    if (item?.sliders) {
       item.sliders.map((slider: any) => {
         slider["category"] = item.category
       })
       sliders.push(
         ...item.sliders,
       )
+
     }
   })
 
@@ -150,7 +180,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
     <div className="gordy-carousel container relative flex flex-col gap-6">
       <CategoryWrapper itemOnClick={categoryItemOnClick} activeCategoryId={activeCategoryId} sliders={sliders}
                        categories={categories}/>
-      <Sliders sliderOnChange={sliderOnChange} activeSlider={activeSlider} sliders={sliders} setSwiper={setSwiper}/>
+      <Sliders sliderOnChange={sliderOnChange} activeSlider={activeSlider} strategy={strategy} sliders={sliders} setSwiper={setSwiper}/>
     </div>
   )
 
