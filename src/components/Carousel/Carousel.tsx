@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react';
 
 import {Swiper, SwiperSlide} from 'swiper/react';
-import {Navigation, Pagination} from "swiper/modules";
+import {Parallax, Navigation, Pagination} from "swiper/modules";
 
 import LIcon from "../lucidIcon/lucidIcon";
 import {Button} from "../ui";
@@ -66,13 +66,14 @@ const Sliders = (props: any) => {
         className={`w-full overflow-hidden swiper-${swiperId} ${props.className || ""}`}
         spaceBetween={30}
         style={{...strategy?.visual?.style}}
-        speed={700}
+        speed={1000}
+        parallax={true}
         initialSlide={props?.activeSlider}
         slidesPerView={1}
         grabCursor={true}
         autoHeight={true}
         onSlideChange={props.sliderOnChange}
-        modules={[Pagination, Navigation]}
+        modules={[Parallax, Pagination, Navigation]}
         onInit={(ev) => {
           props.setSwiper(ev);
         }}
@@ -95,21 +96,27 @@ const Sliders = (props: any) => {
           return (
             <SwiperSlide
               key={index}
-              className="flex items-center justify-center w-full min-h-[150px]"
+              className={`flex items-center w-full min-h-[150px] justify-center overflow-hidden`}
               style={{backgroundColor: slide?.backgroundColor}}
             >
 
-              {slide?.title && (
-                <div className="relative w-full px-10 py-16">
-                  <p className={"text-white drop-shadow-lg"} style={{...slide.textStyle, fontSize: "48px"}} dangerouslySetInnerHTML={{ __html: slide?.title }}></p>
-                  <a href={slide?.buttonActions?.link || undefined} target={slide?.buttonActions?.target || "_self"}>
-                    <Button variant="primary" className="px-8 text-base font-medium mt-6" style={{...slide?.buttonStyle}}>{slide?.buttonText}</Button>
-                  </a>
+              {(slide?.title || slide?.buttonText) && (
+                <div className="relative w-full px-10 py-16 shrink-0" data-swiper-parallax="20%">
+                  {slide?.title && (
+                    <p data-swiper-parallax="-200" className={`text-white drop-shadow-lg ${!slide?.titleStyle?.fontSize ? "text-5xl" : ""}`} style={{fontSize: "48px", ...slide.titleStyle}} dangerouslySetInnerHTML={{ __html: slide?.title }}></p>
+                    )
+                  }
+                  {slide?.buttonText && (
+                    <a href={slide?.buttonActions?.link || undefined} target={slide?.buttonActions?.target || "_self"}>
+                      <Button variant="primary" className="px-8 text-base font-medium mt-6" style={{...slide?.buttonStyle}}>{slide?.buttonText}</Button>
+                    </a>
+                  )
+                  }
                 </div>
               )}
 
               {slide?.imagePath && (
-                <img className={`max-w-full object-cover object-center ${slide?.title ? "absolute h-full w-full object-cover object-center -z-10" : ""}`} src={slide.imagePath}
+                <img className={`max-w-full object-cover object-center ${slide?.title || slide?.buttonText ? "absolute -z-10" : ""}`} src={slide.imagePath}
                      alt={`swiper img ${slide.uuid}`}/>
               )}
 
