@@ -189,8 +189,8 @@ export const Carousel: FC<CarouselProps> = (props) => {
 
   return (
     <div className="gordy-carousel container relative flex flex-col gap-6 overflow-hidden" style={{
-      ...strategy.visual.style,
-      width: strategy.visual.width,
+      ...strategy?.visual?.style,
+      width: strategy?.visual?.width,
       height: fixedHeightValue,
     }}>
       <CategoryWrapper itemOnClick={categoryItemOnClick} activeCategoryId={activeCategoryId} sliders={sliders}
