@@ -151,6 +151,9 @@ export const Carousel: FC<CarouselProps> = (props) => {
 
   const {strategy} = props
 
+  // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
+  const fixedHeightValue = strategy?.visual?.height === 0 ? "auto" : strategy?.visual?.height
+
   const categories: any = []
   const sliders: any = []
   strategy?.data?.items && strategy.data.items.map((item: any) => {
@@ -183,8 +186,13 @@ export const Carousel: FC<CarouselProps> = (props) => {
     setActiveCategoryId(willChangeSlider as unknown as number)
   }
 
+
   return (
-    <div className="gordy-carousel container relative flex flex-col gap-6">
+    <div className="gordy-carousel container relative flex flex-col gap-6 overflow-hidden" style={{
+      ...strategy.visual.style,
+      width: strategy.visual.width,
+      height: fixedHeightValue,
+    }}>
       <CategoryWrapper itemOnClick={categoryItemOnClick} activeCategoryId={activeCategoryId} sliders={sliders}
                        categories={categories}/>
       <Sliders sliderOnChange={sliderOnChange} activeSlider={activeSlider} strategy={strategy} sliders={sliders} setSwiper={setSwiper}/>
