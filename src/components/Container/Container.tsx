@@ -8,7 +8,7 @@ const Container = (props: ContainerProps) => {
   let {className} = props
 
   return (
-    <div className={`container ${className}`}>
+    <div className={`grd-container ${className}`}>
       {props?.children}
     </div>
 

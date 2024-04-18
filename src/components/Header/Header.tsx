@@ -35,9 +35,9 @@ export const TabButton = (props: HeaderTabBarProps) => {
 
   return <div
     onClick={() => props.onClick && props.onClick(props.label)}
-    className={`tab-button relative flex items-center gap-2 py-4 px-2 cursor-pointer transition duration-400 ${className}
-    after:absolute after:w-full after:bottom-0 after:left-0 after:border-b-2 after:border-transparent after:transition after:duration-400
-    ${props?.isActive ? "text-primary-500 after:content-[''] after:!border-primary-500" : ""}`}>
+    className={`tab-button grd-relative grd-flex grd-items-center grd-gap-2 grd-py-4 grd-px-2 grd-cursor-pointer grd-transition grd-duration-400 ${className}
+    after:grd-absolute after:grd-w-full after:grd-bottom-0 after:grd-left-0 after:grd-border-b-2 after:grd-border-transparent after:grd-transition after:grd-duration-400
+    ${props?.isActive ? "grd-text-primary-500 after:grd-content-[''] after:!grd-border-primary-500" : ""}`}>
     <LIcon name={props.icon} size={props.size || 20} />
     <span>{props.label}</span>
   </div>
@@ -85,30 +85,30 @@ const Header: FC<HeaderProps> = ({
         onSelect={handleSelect}
       >
         <Dropdown.Item
-          className="flex gap-3 items-center py-2.5 px-4 cursor-pointer"
+          className="grd-flex grd-gap-3 grd-items-center grd-py-2.5 grd-px-4 grd-cursor-pointer"
           eventKey={"myProfile"}
         >
-          <LIcon className="shrink-0" name="User" size={16}></LIcon>
+          <LIcon className="grd-shrink-0" name="User" size={16}></LIcon>
           <p>
             Profilim
           </p>
         </Dropdown.Item>
         <hr />
         <Dropdown.Item
-          className="flex gap-3 items-center py-2.5 px-4 cursor-pointer"
+          className="grd-flex grd-gap-3 grd-items-center grd-py-2.5 grd-px-4 grd-cursor-pointer"
           eventKey={"goPanel"}
         >
-          <LIcon className="shrink-0" name="User" size={16}></LIcon>
+          <LIcon className="grd-shrink-0" name="User" size={16}></LIcon>
           <p>
             EVA Corporate Panel’e git
           </p>
         </Dropdown.Item>
         <hr />
         <Dropdown.Item
-          className="flex gap-3 items-center py-2.5 px-4 cursor-pointer"
+          className="grd-flex grd-gap-3 grd-items-center grd-py-2.5 grd-px-4 grd-cursor-pointer"
           eventKey={"logout"}
         >
-          <LIcon className="shrink-0" name="LogOut" size={16}></LIcon>
+          <LIcon className="grd-shrink-0" name="LogOut" size={16}></LIcon>
           <p>
             Çıkış yap
           </p>
@@ -119,23 +119,23 @@ const Header: FC<HeaderProps> = ({
   }
 
   return (
-    <div className={`main-header bg-white z-10 ${className}`}>
-      <div className="top-bar border-b border-gray-200 py-3.5">
-        <Container className="flex items-center">
-            <div className="logo-area mr-auto">
+    <div className={`main-header grd-bg-white grd-z-10 ${className}`}>
+      <div className="top-bar grd-border-b grd-border-gray-200 grd-py-3.5">
+        <Container className="grd-flex grd-items-center">
+            <div className="logo-area grd-mr-auto">
               {showLogo && (
-                <a className="logo flex max-w-[120px] max-h-[40px]" href="javascript;">
+                <a className="logo grd-flex grd-max-w-[120px] grd-max-h-[40px]" href="javascript;">
                   <img
-                    className="max-w-full max-h-full object-contain object-left"
+                    className="grd-max-w-full grd-max-h-full grd-object-contain grd-object-left"
                     src={logoUrl ? logoUrl : "https://place-hold.it/120x40?text=logo bulunamadi"} alt="logo"/>
                 </a>
               )}
             </div>
 
           <nav>
-            <ul className="flex gap-4">
+            <ul className="grd-flex grd-gap-4">
               {showLanguageMenuItem && (
-                <li className="flex items-center text-gray-500 text-sm font-medium">
+                <li className="grd-flex grd-items-center grd-text-gray-500 grd-text-sm grd-font-medium">
                   <Button variant="ghost">
                     <LIcon name="Globe" size={20}/>
                     <span>Türkçe, TL</span>
@@ -144,7 +144,7 @@ const Header: FC<HeaderProps> = ({
               )}
 
               {showHelpMenuItem && (
-                <li className="flex items-center text-gray-500 text-sm font-medium">
+                <li className="grd-flex grd-items-center grd-text-gray-500 grd-text-sm grd-font-medium">
                   <Button variant="ghost">
                     <LIcon name="HelpCircle" size={20}/>
                     <span>Yardım</span>
@@ -163,7 +163,7 @@ const Header: FC<HeaderProps> = ({
 
               {showAccountDropdownItem && (
                 <li>
-                  <Dropdown items={renderHeaderDropdownItems} className="text-gray-800 text-sm rounded-xl mt-2">
+                  <Dropdown items={renderHeaderDropdownItems} className="grd-text-gray-800 grd-text-sm grd-rounded-xl grd-mt-2">
                     <Button variant="outline">
                       <LIcon name="User" size={20}/>
                       <span>Can Yılmaz</span>
@@ -179,7 +179,7 @@ const Header: FC<HeaderProps> = ({
       <div className="bottom-bar">
         <Container>
           {showTabBar && (
-            <div className="tab-item-group flex gap-8 text-gray-500 font-medium text-sm">
+            <div className="tab-item-group grd-flex grd-gap-8 grd-text-gray-500 grd-font-medium grd-text-sm">
               {tabItemList && tabItemList.map((item: any, index: number) => {
                 return (
                   <TabButton
