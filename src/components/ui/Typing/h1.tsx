@@ -10,7 +10,7 @@ const H1 = (props: H1Props) => {
   const {className= "", style} = props
 
   return (
-      <h1 style={style} className={`text-slate-800 text-4xl font-bold dark:text-white ${className}`}>
+      <h1 style={style} className={`grd-text-slate-800 grd-text-4xl grd-font-bold dark:grd-text-white ${className}`}>
         {props?.children}
       </h1>
     )

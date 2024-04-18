@@ -31,20 +31,20 @@ const HotelTravelPlanner:FC<HotelTravelPlannerProps> = ({
       className={className}>
       <Container>
         <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
-        <H5 style={strategy.data?.subTitleStyle} className="mt-2" >{strategy.data?.subTitle}</H5>
-        <TPCard className="!flex-row mt-6">
-          <div className="w-8/12 flex items-center gap-4">
-            <Input inputClassName="py-4" leftIcon={<LIcon size={20} name="Search" />}
+        <H5 style={strategy.data?.subTitleStyle} className="grd-mt-2" >{strategy.data?.subTitle}</H5>
+        <TPCard className="!grd-flex-row grd-mt-6">
+          <div className="grd-w-8/12 grd-flex grd-items-center grd-gap-4">
+            <Input inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="Search" />}
                  placeholder={inputDestinationText || travelPlannerData.inputDestinationText}/>
-            <Input inputClassName="py-4" leftIcon={<LIcon size={20} name="Calendar" />}
+            <Input inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="Calendar" />}
                    placeholder={inputCheckoutDateText || travelPlannerData.inputCheckoutDateText}/>
           </div>
-          <div className="w-4/12 flex items-center gap-4">
-            <Input inputClassName="py-4" leftIcon={<LIcon size={20} name="User" />}
+          <div className="grd-w-4/12 grd-flex grd-items-center grd-gap-4">
+            <Input inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="User" />}
                    placeholder={inputGuestInfoText || travelPlannerData.inputGuestInfoText}/>
 
             <Button
-              className="shrink-0 w-[98px] py-4 h-auto"
+              className="grd-shrink-0 grd-w-[98px] grd-py-4 grd-h-auto"
               variant="primary"
               style={strategy.data?.buttonStyle}>{strategy.data?.button}
             </Button>

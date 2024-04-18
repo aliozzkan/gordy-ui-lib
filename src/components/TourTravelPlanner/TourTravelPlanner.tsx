@@ -53,8 +53,8 @@ const TourTravelPlanner:FC<TourTravelPlannerProps> = ({
       className={className}>
       <Container>
         <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
-        <H5 style={strategy.data?.subTitleStyle} className="mt-2" >{strategy.data?.subTitle}</H5>
-        <TPCard className="mt-6">
+        <H5 style={strategy.data?.subTitleStyle} className="grd-mt-2" >{strategy.data?.subTitle}</H5>
+        <TPCard className="grd-mt-6">
           <ButtonGroup disabled={disabled}>
             {tabButtons && tabButtons.map((list: TabButtonProps, index) => {
               return (
@@ -67,7 +67,7 @@ const TourTravelPlanner:FC<TourTravelPlannerProps> = ({
             })}
           </ButtonGroup>
           <div className="grd-flex grd-flex-row grd-gap-4">
-            <div className="grd-w-full grd-flex igrd-tems-center grd-gap-4">
+            <div className="grd-w-full grd-flex grd-items-center grd-gap-4">
               <Input leftIcon={<LIcon size={20} name="Search" />}
                      onChange={(e: any) => setActiveLocation(e?.target?.value)}
                      placeholder={inputDestinationText || tourTravelPlannerData.inputDestinationText}/>

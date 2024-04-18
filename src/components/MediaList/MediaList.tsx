@@ -75,7 +75,7 @@ const MediaList:FC<MediaListProps> = (props) => {
             return (
                 <SwiperSlide key={index}
                      className={`media-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
-                      cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-primary-500`}
+                      grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-primary-500`}
                      style={{ borderRadius: "8px" }}
                 >
                   <div className="image-wrapper grd-w-full grd-h-[190px]">

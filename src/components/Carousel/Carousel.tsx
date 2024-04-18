@@ -63,7 +63,7 @@ const Sliders = (props: any) => {
   return (
     <>
       <Swiper
-        className={`w-full overflow-hidden swiper-${swiperId} ${props.className || ""}`}
+        className={`grd-w-full grd-overflow-hidden swiper-${swiperId} ${props.className || ""}`}
         spaceBetween={30}
         style={{...strategy?.visual?.style}}
         speed={1000}
@@ -96,19 +96,19 @@ const Sliders = (props: any) => {
           return (
             <SwiperSlide
               key={index}
-              className={`flex items-center w-full min-h-[150px] justify-center overflow-hidden`}
+              className={`grd-flex grd-items-center grd-w-full grd-min-h-[150px] grd-justify-center grd-overflow-hidden`}
               style={{backgroundColor: slide?.backgroundColor}}
             >
 
               {(slide?.title || slide?.buttonText) && (
-                <div className="relative w-full px-10 py-16 shrink-0" data-swiper-parallax="20%">
+                <div className="grd-relative grd-w-full grd-px-10 grd-py-16 grd-shrink-0" data-swiper-parallax="20%">
                   {slide?.title && (
-                    <p data-swiper-parallax="-200" className={`text-white drop-shadow-lg ${!slide?.titleStyle?.fontSize ? "text-5xl" : ""}`} style={{fontSize: "48px", ...slide.titleStyle}} dangerouslySetInnerHTML={{ __html: slide?.title }}></p>
+                    <p data-swiper-parallax="-200" className={`grd-text-white grd-drop-shadow-lg ${!slide?.titleStyle?.fontSize ? "grd-text-5xl" : ""}`} style={{fontSize: "48px", ...slide.titleStyle}} dangerouslySetInnerHTML={{ __html: slide?.title }}></p>
                     )
                   }
                   {slide?.buttonText && (
                     <a href={slide?.buttonActions?.link || undefined} target={slide?.buttonActions?.target || "_self"}>
-                      <Button variant="primary" className="px-8 text-base font-medium mt-6" style={{...slide?.buttonStyle}}>{slide?.buttonText}</Button>
+                      <Button variant="primary" className="grd-px-8 grd-text-base grd-font-medium grd-mt-6" style={{...slide?.buttonStyle}}>{slide?.buttonText}</Button>
                     </a>
                   )
                   }
@@ -116,8 +116,8 @@ const Sliders = (props: any) => {
               )}
 
               {slide?.imagePath && (
-                <img className={`max-w-full object-cover object-center ${slide?.title || slide?.buttonText ? "absolute -z-10" : ""}`} src={slide.imagePath}
-                     alt={`swiper img ${slide.uuid}`}/>
+                <img className={`grd-max-w-full grd-object-cover grd-object-center ${slide?.title || slide?.buttonText ? "grd-absolute -grd-z-10" : ""}`} src={slide.imagePath}
+                     alt={`grd-swiper img ${slide.uuid}`}/>
               )}
 
             </SwiperSlide>
@@ -183,7 +183,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
 
 
   return (
-    <div className="gordy-carousel container relative flex flex-col gap-6 overflow-hidden" style={{
+    <div className="gordy-carousel grd-container grd-relative grd-flex grd-flex-col grd-gap-6 grd-overflow-hidden" style={{
       ...strategy?.visual?.style,
       width: strategy?.visual?.width,
       height: fixedHeightValue,

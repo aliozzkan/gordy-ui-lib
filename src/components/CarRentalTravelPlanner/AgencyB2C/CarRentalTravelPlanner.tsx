@@ -39,7 +39,7 @@ const AgencyCarRentalTravelPlanner:FC<AgencyCarRentalTravelPlannerProps> = ({
         <H5 className="grd-mt-2">{subTitle || carRentalTravelPlannerDataAgency.subTitle}</H5>
         <TPCard className="grd-mt-6">
           <div className="grd-flex grd-flex-row grd-gap-4">
-            <div className="grd-w-4/12 flex grd-items-center grd-gap-4">
+            <div className="grd-w-4/12 grd-flex grd-items-center grd-gap-4">
               <Input inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="MapPin" />}
                      placeholder={inputPickupLocationText || carRentalTravelPlannerDataAgency.inputPickupLocationText}/>
             </div>

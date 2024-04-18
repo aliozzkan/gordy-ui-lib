@@ -23,17 +23,17 @@ const Input = ({
    }: InputProps) => {
 
   return (
-    <div className={`input-box relative w-full flex items-center gap-2 border border-gray-200 rounded-lg overflow-hidden 
-    shadow-xs text-gray-500 text-base dark:border-gray-800 dark:text-gray-200 ${className}`}>
-      {leftIcon && <div className={`!absolute !left-3.5 !pointer-events-none ${iconWrapperClassName}`}>
+    <div className={`input-box grd-relative grd-w-full grd-flex grd-items-center grd-gap-2 grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
+    grd-shadow-xs grd-text-gray-500 grd-text-base dark:grd-border-gray-800 dark:grd-text-gray-200 ${className}`}>
+      {leftIcon && <div className={`!grd-absolute !grd-left-3.5 !grd-pointer-events-none ${iconWrapperClassName}`}>
         {leftIcon}
       </div>}
       <input
         ref={innerRef}
-        className={`!w-full !text-sm !py-2.5 !outline-none dark:bg-dark-600 dark:placeholder:text-gray-200 ${inputClassName}${leftIcon ? " !pl-[42px] !pr-3.5" : ""}${rightIcon ? " !pr-[42px] !pl-3.5" : ""}`} type="text"
+        className={`!grd-w-full !grd-text-sm !grd-py-2.5 !grd-outline-none dark:grd-bg-dark-600 dark:grd-placeholder:grd-text-gray-200 ${inputClassName}${leftIcon ? " !grd-pl-[42px] !grd-pr-3.5" : ""}${rightIcon ? " !grd-pr-[42px] !grd-pl-3.5" : ""}`} type="text"
         {...args}
       />
-      {rightIcon && <div className={`!absolute !right-3.5 !pointer-events-none ${iconWrapperClassName}`}>
+      {rightIcon && <div className={`!grd-absolute !grd-right-3.5 !grd-pointer-events-none ${iconWrapperClassName}`}>
         {rightIcon}
       </div>}
     </div>

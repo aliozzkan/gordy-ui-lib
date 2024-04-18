@@ -43,8 +43,8 @@ const CorporateCarRentalTravelPlanner: FC<CorporateCarRentalTravelPlannerProps> 
         <H5 className="grd-mt-2">{subTitle || carRentalTravelPlannerDataCorporate.subTitle}</H5>
         <TPCard className="grd-mt-6">
 
-          <div className={`w-full grid grid-cols-4 items-center gap-4`}>
-            <Input className="col-span-2" inputClassName="py-4" leftIcon={<LIcon size={20} name="MapPin"/>}
+          <div className={`grd-w-full grd-grid grid-cols-4 grd-items-center grd-gap-4`}>
+            <Input className="grd-col-span-2" inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="MapPin"/>}
                    placeholder={inputPickupLocationText || carRentalTravelPlannerDataCorporate.inputPickupLocationText}/>
             <div className={`input-date-time-box grd-relative grd-w-full grd-flex grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
     grd-shadow-xs grd-text-gray-500 grd-text-base dark:grd-border-gray-800 dark:grd-text-gray-200 ${className}`}>
@@ -62,7 +62,7 @@ const CorporateCarRentalTravelPlanner: FC<CorporateCarRentalTravelPlannerProps> 
                 placeholder={inputTimeText || carRentalTravelPlannerDataCorporate.inputTimeText}/>
             </div>
             <div className={`input-date-time-box grd-relative grd-w-full grd-flex grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
-    grd-shadow-xs grd-text-gray-500 text-base dark:grd-border-gray-800 dark:grd-text-gray-200 ${className}`}>
+    grd-shadow-xs grd-text-gray-500 grd-text-base dark:grd-border-gray-800 dark:grd-text-gray-200 ${className}`}>
               <Input
                 className="grd-border-none !grd-w-7/12"
                 inputClassName="grd-py-4 grd-pl-10"

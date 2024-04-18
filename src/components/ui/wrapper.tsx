@@ -14,7 +14,7 @@ const Wrapper = (props: WrapperProps) => {
   return (
     <div
       style={props.style}
-      className={`bg-gray-50 dark:bg-dark-600 py-16 w-full ${className}${disabled ? " *:pointer-events-none cursor-not-allowed" : ""}`}>
+      className={`grd-bg-gray-50 dark:grd-bg-dark-600 grd-py-16 grd-w-full ${className}${disabled ? " *:grd-pointer-events-none grd-cursor-not-allowed" : ""}`}>
       {props?.children}
     </div>
   )

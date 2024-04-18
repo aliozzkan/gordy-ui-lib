@@ -7,10 +7,10 @@ interface ButtonGroupProps extends PropsWithChildren {
 
 const ButtonGroup = (props: ButtonGroupProps) => {
 
-  let {className= "gap-2"} = props
+  let {className= "grd-gap-2"} = props
 
   return (
-    <div className={`button-group inline-flex ${className} ${props?.disabled ? "*:pointer-events-none select-none cursor-not-allowed" : ""}`}>
+    <div className={`button-group grd-inline-flex ${className} ${props?.disabled ? "*:grd-pointer-events-none grd-select-none grd-cursor-not-allowed" : ""}`}>
       {props?.children}
     </div>
   )
