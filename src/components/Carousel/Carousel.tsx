@@ -169,11 +169,6 @@ export const Carousel: FC<CarouselProps> = (props) => {
     }
   })
 
-  if (!sliders.length) {
-    return <></>
-  }
-
-
   const categoryItemOnClick = (e: any) => {
     setActiveCategoryId(e)
     const willChangeSlider = sliders.findIndex((slider: any) => slider.category?.categoryId == e)
@@ -193,9 +188,14 @@ export const Carousel: FC<CarouselProps> = (props) => {
       width: strategy?.visual?.width,
       height: fixedHeightValue,
     }}>
-      <CategoryWrapper itemOnClick={categoryItemOnClick} activeCategoryId={activeCategoryId} sliders={sliders}
-                       categories={categories}/>
-      <Sliders sliderOnChange={sliderOnChange} activeSlider={activeSlider} strategy={strategy} sliders={sliders} setSwiper={setSwiper}/>
+      {sliders.length > 0 && (
+        <>
+          <CategoryWrapper itemOnClick={categoryItemOnClick} activeCategoryId={activeCategoryId} sliders={sliders}
+                           categories={categories}/>
+          <Sliders sliderOnChange={sliderOnChange} activeSlider={activeSlider} strategy={strategy} sliders={sliders} setSwiper={setSwiper}/>
+        </>
+      )}
+
     </div>
   )
 

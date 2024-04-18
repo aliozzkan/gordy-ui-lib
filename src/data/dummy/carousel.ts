@@ -1,10 +1,10 @@
 export const TabSliderStrategy = {
   "visual": {
     "width": null,
-    "height": 0,
+    "height": "500px",
     "style": {
       "borderRadius": null,
-      "backgroundColor": null,
+      "backgroundColor": "orange",
       "color": null,
       "position": null,
       "fontWeight": null,
