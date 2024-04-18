@@ -36,52 +36,52 @@ const AgencyCarRentalTravelPlanner:FC<AgencyCarRentalTravelPlannerProps> = ({
       className={className}>
       <Container>
         <H1>{title || carRentalTravelPlannerDataAgency.title}</H1>
-        <H5 className="mt-2">{subTitle || carRentalTravelPlannerDataAgency.subTitle}</H5>
-        <TPCard className="mt-6">
-          <div className="flex flex-row gap-4">
-            <div className="w-4/12 flex items-center gap-4">
-              <Input inputClassName="py-4" leftIcon={<LIcon size={20} name="MapPin" />}
+        <H5 className="grd-mt-2">{subTitle || carRentalTravelPlannerDataAgency.subTitle}</H5>
+        <TPCard className="grd-mt-6">
+          <div className="grd-flex grd-flex-row grd-gap-4">
+            <div className="grd-w-4/12 flex grd-items-center grd-gap-4">
+              <Input inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="MapPin" />}
                      placeholder={inputPickupLocationText || carRentalTravelPlannerDataAgency.inputPickupLocationText}/>
             </div>
-            <div className="w-8/12 flex items-center gap-4">
-              <div className={`input-date-time-box relative w-full flex border border-gray-200 rounded-lg overflow-hidden 
-    shadow-xs text-gray-500 text-base dark:border-gray-800 dark:text-gray-200 ${className}`}>
+            <div className="grd-w-8/12 grd-flex grd-items-center grd-gap-4">
+              <div className={`input-date-time-box grd-relative grd-w-full grd-flex grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
+    grd-shadow-xs grd-text-gray-500 grd-text-base dark:grd-border-gray-800 dark:grd-text-gray-200 ${className}`}>
                 <Input
-                  className="border-none !w-7/12"
-                  inputClassName="py-4 pl-10"
-                  iconWrapperClassName="!left-3"
+                  className="grd-border-none !grd-w-7/12"
+                  inputClassName="grd-py-4 grd-pl-10"
+                  iconWrapperClassName="!grd-left-3"
                   leftIcon={<LIcon size={20} name="Calendar" />}
                   placeholder={inputPickupDateText || carRentalTravelPlannerDataAgency.inputPickupDateText}/>
-                <div className="line border-l border-gray-200 dark:border-gray-800" />
+                <div className="line grd-border-l grd-border-gray-200 dark:grd-border-gray-800" />
                 <Input
-                  className="border-none !w-5/12"
-                  inputClassName="py-4 pr-7"
+                  className="grd-border-none !grd-w-5/12"
+                  inputClassName="grd-py-4 grd-pr-7"
                   rightIcon={<LIcon size={20} name="ChevronDown" />}
                   placeholder={inputTimeText || carRentalTravelPlannerDataAgency.inputTimeText}/>
               </div>
-              <div className={`input-date-time-box relative w-full flex border border-gray-200 rounded-lg overflow-hidden 
-    shadow-xs text-gray-500 text-base dark:border-gray-800 dark:text-gray-200 ${className}`}>
+              <div className={`input-date-time-box grd-relative grd-w-full grd-flex grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
+    grd-shadow-xs grd-text-gray-500 grd-text-base dark:grd-border-gray-800 dark:grd-text-gray-200 ${className}`}>
                 <Input
-                  className="border-none !w-7/12"
-                  inputClassName="py-4 pl-10"
-                  iconWrapperClassName="!left-3"
+                  className="grd-border-none !grd-w-7/12"
+                  inputClassName="grd-py-4 grd-pl-10"
+                  iconWrapperClassName="!grd-left-3"
                   leftIcon={<LIcon size={20} name="Calendar" />}
                   placeholder={inputDeliveryDateText || carRentalTravelPlannerDataAgency.inputDeliveryDateText}/>
-                <div className="line border-l border-gray-200 dark:border-gray-800" />
+                <div className="grd-line grd-border-l grd-border-gray-200 dark:grd-border-gray-800" />
                 <Input
-                  className="border-none !w-5/12"
-                  inputClassName="py-4 pr-7"
+                  className="grd-border-none !grd-w-5/12"
+                  inputClassName="grd-py-4 grd-pr-7"
                   rightIcon={<LIcon size={20} name="ChevronDown" />}
                   placeholder={inputTimeText || carRentalTravelPlannerDataAgency.inputTimeText}/>
               </div>
               <Button variant="primary"
-                      className="shrink-0 w-[98px] py-4 h-auto"
+                      className="grd-shrink-0 grd-w-[98px] grd-py-4 grd-h-auto"
                       style={{backgroundColor: buttonBgColor || carRentalTravelPlannerDataAgency.buttonBgColor, color: buttonTextColor}}>
                 {buttonText || carRentalTravelPlannerDataAgency.buttonText}
               </Button>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-gray-500 text-sm font-medium dark:text-white">
+          <div className="grd-flex grd-items-center grd-gap-2 grd-text-gray-500 grd-text-sm grd-font-medium dark:grd-text-white">
             <input id="differentLocation" type="checkbox" />
             <label htmlFor="differentLocation">{inputDifferentLocationText || carRentalTravelPlannerDataAgency.inputDifferentLocationText}</label>
           </div>

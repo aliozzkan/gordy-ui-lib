@@ -22,8 +22,8 @@ const TextHtml:FC<TextHtmlProps> = (props) => {
         backgroundColor: props.wrapperBgColor,
         width :props.wrapperWidth,
         height :props.wrapperHeight,
-      }} className={`text-html relative ${props.className || ""}`}>
-      <div className="container">
+      }} className={`text-html grd-relative ${props.className || ""}`}>
+      <div className="grd-container">
         <EditorToolbar />
         <ReactQuill
           theme="snow"

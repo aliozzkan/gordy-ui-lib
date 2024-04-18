@@ -16,8 +16,8 @@ const SliderCategories = (props: any) => {
   }
   return <div
     onClick={() => props.categoryItemOnClick(props.sliderCategoryId)}
-    className={`px-4 py-2.5 rounded-lg hover:shadow-xs border hover:border-blue-300 text-nowrap cursor-pointer transition duration-300 select-none 
-    ${activeCategory ? "border-primary-500 text-primary-500" : "border-transparent"}`}>
+    className={`grd-px-4 grd-py-2.5 grd-rounded-lg hover:grd-shadow-xs grd-border hover:grd-border-blue-300 grd-text-nowrap grd-cursor-pointer grd-transition grd-duration-300 grd-select-none 
+    ${activeCategory ? "grd-border-primary-500 grd-text-primary-500" : "grd-border-transparent"}`}>
     {sliderCategoryName}
   </div>
 
@@ -39,7 +39,7 @@ const CategoryWrapper = (props: any) => {
   })
   return (
     <div
-      className={`categories flex items-center gap-4 text-gray-500 text-base font-medium justify-center ${props.className || ""}`}>
+      className={`categories grd-flex grd-items-center grd-gap-4 grd-text-gray-500 grd-text-base grd-font-medium grd-justify-center ${props.className || ""}`}>
       {categories.map((category: any, index) => {
         return (
           <SliderCategories key={category?.id || index} index={index} sliderCategoryId={category?.id}

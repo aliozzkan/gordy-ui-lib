@@ -41,7 +41,7 @@ const MediaList:FC<MediaListProps> = (props) => {
   }
 
   const swiperProps = {
-    className: `overflow-hidden mt-6 -mx-3 px-3 ${props.maxItemLength <= 4 ? "pb-7" : "pb-10"}`,
+    className: `grd-overflow-hidden grd-mt-6 -grd-mx-3 grd-px-3 ${props.maxItemLength <= 4 ? "grd-pb-7" : "grd-pb-10"}`,
     spaceBetween: 15,
     speed: 700,
     slidesPerView: props.maxItemLength <= 4 ? props?.maxItemLength : 4,
@@ -66,31 +66,31 @@ const MediaList:FC<MediaListProps> = (props) => {
         backgroundColor: props.wrapperBgColor,
         width :props.wrapperWidth,
         height :props.wrapperHeight,
-      }} className={`media-list relative ${props.className || ""}`}>
-      <div className="container">
-        <p className="text-gray-800 font-semibold text-2xl">{props.title || "Popüler bölgeler"}</p>
+      }} className={`media-list grd-relative ${props.className || ""}`}>
+      <div className="grd-container">
+        <p className="grd-text-gray-800 grd-font-semibold grd-text-2xl">{props.title || "Popüler bölgeler"}</p>
 
         <Swiper {...swiperProps}>
           {Array.apply(null, Array(props.maxItemLength)).map((val, index) => {
             return (
                 <SwiperSlide key={index}
-                     className={`media-box group w-full flex flex-col items-center border border-gray-200 bg-white
-                      cursor-pointer overflow-hidden !transition-all hover:shadow-xl hover:text-primary-500`}
+                     className={`media-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
+                      cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-primary-500`}
                      style={{ borderRadius: "8px" }}
                 >
-                  <div className="image-wrapper w-full h-[190px]">
-                    <img className="w-full h-full object-center object-cover" src={medias[index]?.imagePath || noImage()} alt={""} />
+                  <div className="image-wrapper grd-w-full grd-h-[190px]">
+                    <img className="grd-w-full grd-h-full grd-object-center grd-object-cover" src={medias[index]?.imagePath || noImage()} alt={""} />
                   </div>
 
-                  <div className="mt-1 w-full flex flex-col p-4">
+                  <div className="grd-mt-1 grd-w-full grd-flex grd-flex-col grd-p-4">
                     {!medias[index]?.title && (
-                      <span className="text-base font-semibold text-color-800 truncate" title={medias[index]?.subTitle}>{medias[index]?.subTitle || "Test Media subText"}</span>
+                      <span className="grd-text-base grd-font-semibold grd-text-color-800 grd-truncate" title={medias[index]?.subTitle}>{medias[index]?.subTitle || "Test Media subText"}</span>
                     )}
                     {medias[index]?.title && (
                       <>
-                        <span className="text-base font-semibold text-color-800 truncate" title={medias[index]?.title}>{medias[index]?.title || "Test Media Text"}</span>
+                        <span className="grd-text-base grd-font-semibold grd-text-color-800 grd-truncate" title={medias[index]?.title}>{medias[index]?.title || "Test Media Text"}</span>
                         {medias[index]?.displaySubTitle && (
-                          <span className="mt-0.5 text-sm font-normal text-gray-500 truncate" title={medias[index]?.subTitle}>{medias[index]?.subTitle || "Test Media subText"}</span>
+                          <span className="grd-mt-0.5 grd-text-sm grd-font-normal grd-text-gray-500 grd-truncate" title={medias[index]?.subTitle}>{medias[index]?.subTitle || "Test Media subText"}</span>
                         )}
                       </>
                     )}

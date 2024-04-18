@@ -98,38 +98,38 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
       className={className}>
       <Container>
         <H1>{title || flightTravelPlannerData.title}</H1>
-        <H5 className="mt-2" >{subTitle || flightTravelPlannerData.subTitle}</H5>
+        <H5 className="grd-mt-2" >{subTitle || flightTravelPlannerData.subTitle}</H5>
 
-        <TPCard className="mt-6">
-          <div className="flex items-center">
-            <div className="button-group flex gap-2">
+        <TPCard className="grd-mt-6">
+          <div className="grd-flex grd-items-center">
+            <div className="grd-button-group grd-flex grd-gap-2">
               {tabButtons && tabButtons.map((list: TabButtonProps, index) => {
                 return (
                   <Button key={index}
                           variant="outline"
                           onClick={() => handleTabChange(list)}
-                          className={`text-gray-500 border-transparent
-                      ${ActiveTab === list.value ? "text-primary-500 !border-primary-200 shadow-xs dark:!border-primary-900 dark:!text-primary-600 dark:bg-dark-600" : ""}`}>{list.label}</Button>
+                          className={`grd-text-gray-500 grd-border-transparent
+                      ${ActiveTab === list.value ? "grd-text-primary-500 !grd-border-primary-200 grd-shadow-xs dark:!grd-border-primary-900 dark:!grd-text-primary-600 dark:grd-bg-dark-600" : ""}`}>{list.label}</Button>
                 )
               })}
             </div>
-            <div className="flex items-center ml-auto cursor-pointer select-none">
+            <div className="grd-flex grd-items-center grd-ml-auto grd-cursor-pointer grd-select-none">
               <input id="with-transfer" type="checkbox" />
-              <label htmlFor="with-transfer" className="text-gray-500 text-sm font-medium pl-2 cursor-pointer dark:text-gray-200">Aktarmasız</label>
+              <label htmlFor="with-transfer" className="grd-text-gray-500 grd-text-sm grd-font-medium grd-pl-2 grd-cursor-pointer dark:grd-text-gray-200">Aktarmasız</label>
             </div>
           </div>
 
-          <div className={`w-full grid group grid-cols-4 items-center gap-4`}>
+          <div className={`grd-w-full grd-grid grd-group grd-grid-cols-4 grd-items-center grd-gap-4`}>
             {Object.values(FlightAmounts).map((flight: any, index, ) => {
               const RotationChange = flight.itemRotation
               return (
-                <div className={`w-full grid items-center gap-4 ${ActiveTab === "return" ? "col-span-3 grid-cols-3" : "col-span-4 grid-cols-4"}`} key={Math.random()} >
+                <div className={`grd-w-full grd-grid grd-items-center grd-gap-4 ${ActiveTab === "return" ? "grd-col-span-3 grd-grid-cols-3" : "grd-col-span-4 grd-grid-cols-4"}`} key={Math.random()} >
                   {ActiveTab === "multi" && (
-                    <div className="multiple-flight-title-box col-span-4">
-                      <p className="text-black font-semibold text-sm -mb-2 dark:text-white">{index + 1}.Uçuş</p>
+                    <div className="multiple-flight-title-box grd-col-span-4">
+                      <p className="grd-text-black grd-font-semibold grd-text-sm -grd-mb-2 dark:grd-text-white">{index + 1}.Uçuş</p>
                     </div>
                   )}
-                  <div className={`relative flex gap-4${ActiveTab !== "multi" ? " col-span-2" : " col-span-3"}`}>
+                  <div className={`grd-relative grd-flex grd-gap-4${ActiveTab !== "multi" ? " grd-col-span-2" : " grd-col-span-3"}`}>
                     <Input className={`${RotationChange ? "order-3" : ""}  ${ActiveTab !== "multi"}`}
                            innerRef={destionationRef}
                            defaultValue="Istanbul"
@@ -137,8 +137,8 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
                            placeholder={inputDestinationText || flightTravelPlannerData.inputDestinationText}/>
                     <div
                       onClick={() => rightToLeftOnClick(`flight_${index}`)}
-                      className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2${!RotationChange ? " -rotate-180" : ""} group-has-[input] p-2 cursor-pointer text-gray-500 transition 
-                  hover:text-blue-500 hover:border-primary-100 shadow-xs rounded-full border border-gray-200 bg-white z-10 dark:bg-dark-600 dark:border-gray-800 dark:text-gray-200`}>
+                      className={`grd-absolute grd-top-1/2 grd-left-1/2 -grd-translate-x-1/2 -grd-translate-y-1/2${!RotationChange ? " -grd-rotate-180" : ""} grd-group-has-[input] grd-p-2 grd-cursor-pointer grd-text-gray-500 grd-transition 
+                  hover:tgrd-ext-blue-500 hover:grd-border-primary-100 grd-shadow-xs grd-rounded-full grd-border grd-border-gray-200 grd-bg-white grd-z-10 dark:grd-bg-dark-600 dark:grd-border-gray-800 dark:grd-text-gray-200`}>
                       <LIcon name="ArrowRightLeft" size={16} />
                     </div>
                     <Input
@@ -146,7 +146,7 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
                       placeholder={!RotationChange ? inputReturnText || flightTravelPlannerData.inputReturnText : inputDestinationText || flightTravelPlannerData.inputDestinationText}/>
                   </div>
 
-                  <div className={`flex items-center ${ActiveTab !== "return" && ActiveTab !== "multi" ? "col-span-2" : ActiveTab === "multi" ? "!col-span-1" : ""}`}>
+                  <div className={`grd-flex grd-items-center ${ActiveTab !== "return" && ActiveTab !== "multi" ? "grd-col-span-2" : ActiveTab === "multi" ? "!grd-col-span-1" : ""}`}>
                     <Input
                       leftIcon={<LIcon size={18} name="Calendar" />}
                       placeholder={inputCheckinDateText || flightTravelPlannerData.inputCheckinDateText}/>
@@ -154,7 +154,7 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
                     {ActiveTab === "multi" && index >= 2 && (
                       <div
                         onClick={() => removeFlight(Object.keys(FlightAmounts)[index])}
-                        className="multiple-flight-delete-icon pl-3 py-3 text-gray-500 cursor-pointer hover:text-red-500 dark:text-gray-200">
+                        className="multiple-flight-delete-icon grd-pl-3 grd-py-3 grd-text-gray-500 grd-cursor-pointer hover:grd-text-red-500 dark:grd-text-gray-200">
                         <LIcon name="X" size={18} />
                       </div>
                     )}
@@ -167,7 +167,7 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
               <div className="flex gap-2 col-span-4 b-4">
                 <div
                   onClick={() => addFlight(`flight_${Object.values(FlightAmounts).length}`)}
-                  className="inline-flex items-center text-primary-500 cursor-pointer hover:opacity-60 dark:text-primary-600">
+                  className="grd-inline-flex grd-items-center grd-text-primary-500 grd-cursor-pointer hover:grd-opacity-60 dark:grd-text-primary-600">
                   <LIcon name="Plus" size={20} />
                   <span className="font-medium text-sm">Uçuş Ekle</span>
                 </div>
@@ -177,15 +177,15 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
             <Input
               rightIcon={<LIcon size={18} name="ChevronDown" />}
               placeholder={inputPassengerAndCabinText || flightTravelPlannerData.inputPassengerAndCabinText}/>
-            <div className="col-span-2 flex grid-cols-3 gap-4">
+            <div className="grd-col-span-2 grd-flex grd-grid-cols-3 grd-gap-4">
               <Input
-                className={noReason ? "col-span-2" : ""}
+                className={noReason ? "grd-col-span-2" : ""}
                 rightIcon={<LIcon size={18} name="ChevronDown" />}
                 placeholder={inputPersonText || flightTravelPlannerData.inputPersonText}/>
               {!noReason && <Input rightIcon={<LIcon size={18} name="ChevronDown" />} placeholder={inputTravelReasonText || flightTravelPlannerData.inputTravelReasonText}/>}
             </div>
             <Button onClick={() => onSubmit ? onSubmit(handleOnSubmit) : null}
-                    className={`w-full group-[.is-disabled]:cursor-not-allowed col-span-1`} variant="primary"
+                    className={`grd-w-full group-[.is-disabled]:grd-cursor-not-allowed grd-col-span-1`} variant="primary"
                     style={{backgroundColor: buttonBgColor || flightTravelPlannerData.buttonBgColor, color: buttonTextColor}}>
               {buttonText || flightTravelPlannerData.buttonText}
             </Button>

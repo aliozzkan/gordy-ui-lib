@@ -29,7 +29,7 @@ const IconList:FC<IconListProps> = (props) => {
   }
 
   const swiperProps = {
-    className: `w-full overflow-hidden mt-6 -mx-3 px-3 ${props.maxItemLength <= 6 ? "pb-7" : "pb-10"}`,
+    className: `grd-w-full grd-overflow-hidden grd-mt-6 -grd-mx-3 grd-px-3 ${props.maxItemLength <= 6 ? "grd-pb-7" : "grd-pb-10"}`,
     spaceBetween: 16,
     speed: 700,
     slidesPerView: props.maxItemLength <= 6 ? props?.maxItemLength : 6,
@@ -53,16 +53,16 @@ const IconList:FC<IconListProps> = (props) => {
         backgroundColor: props.wrapperBgColor,
         width :props.wrapperWidth,
         height :props.wrapperHeight,
-      }} className={`icon-list relative ${props.className || ""}`}>
-      <div className="container">
-        <p className="text-gray-800 font-semibold text-2xl">{props.title || "Konaklama seçenekleri"}</p>
+      }} className={`icon-list grd-relative ${props.className || ""}`}>
+      <div className="grd-container">
+        <p className="grd-text-gray-800 grd-font-semibold grd-text-2xl">{props.title || "Konaklama seçenekleri"}</p>
 
         <Swiper {...swiperProps}>
           {Array.apply(null, Array(props.maxItemLength)).map((val, _index) => {
             return (
                 <SwiperSlide key={_index}
-                     className={`icon-box group w-full flex flex-col items-center border border-gray-200 bg-white text-sm font-medium text-color-800 
-                      cursor-pointer !transition-all hover:shadow-xl hover:text-primary-500 px-2 py-4`}
+                     className={`icon-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white grd-text-sm grd-font-medium grd-text-color-800 
+                      grd-cursor-pointer !grd-transition-all hover:sgrd-hadow-xl hover:grd-text-primary-500 grd-px-2 grd-py-4`}
                      style={{ borderRadius: 8 }}
                 >
                   <img className="w-12 h-12 object-center object-contain" src={items && items![_index]?.mediaPath || noImage()} alt={""} />

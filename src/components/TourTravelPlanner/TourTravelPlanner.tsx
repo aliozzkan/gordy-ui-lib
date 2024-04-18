@@ -61,13 +61,13 @@ const TourTravelPlanner:FC<TourTravelPlannerProps> = ({
               <Button key={index}
                       variant="outline"
                       onClick={() => handleTabChange(list)}
-                      className={`text-gray-500 border-transparent
-                      ${ActiveTab === list.value ? "text-primary-500 !border-primary-200 shadow-xs dark:!border-primary-900 dark:!text-primary-600 dark:bg-dark-600" : ""}`}>{list.label}</Button>
+                      className={`grd-text-gray-500 grd-border-transparent
+                      ${ActiveTab === list.value ? "grd-text-primary-500 !grd-border-primary-200 grd-shadow-xs dark:!grd-border-primary-900 dark:!grd-text-primary-600 dark:grd-bg-dark-600" : ""}`}>{list.label}</Button>
               )
             })}
           </ButtonGroup>
-          <div className="flex flex-row gap-4">
-            <div className="w-full flex items-center gap-4">
+          <div className="grd-flex grd-flex-row grd-gap-4">
+            <div className="grd-w-full grd-flex igrd-tems-center grd-gap-4">
               <Input leftIcon={<LIcon size={20} name="Search" />}
                      onChange={(e: any) => setActiveLocation(e?.target?.value)}
                      placeholder={inputDestinationText || tourTravelPlannerData.inputDestinationText}/>
@@ -75,8 +75,8 @@ const TourTravelPlanner:FC<TourTravelPlannerProps> = ({
                      onChange={(e: any) => setActiveDate(e?.target?.value)}
                      placeholder={inputCheckoutDateText || tourTravelPlannerData.inputCheckoutDateText}/>
             </div>
-            <div className="min-w-[124px] flex items-center">
-              <Button onClick={() => onSubmit ? onSubmit(handleOnSubmit) : null} className="w-full" variant="primary"
+            <div className="grd-min-w-[124px] grd-flex grd-items-center">
+              <Button onClick={() => onSubmit ? onSubmit(handleOnSubmit) : null} className="grd-w-full" variant="primary"
                       style={strategy.data?.buttonStyle}>{strategy.data?.button}</Button>
             </div>
           </div>
