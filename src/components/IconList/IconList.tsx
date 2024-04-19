@@ -8,7 +8,6 @@ import {Button} from "../ui";
 export interface IconListProps {
   maxItemLength: number;
   strategy: any;
-  title?: string;
   className?: string;
 }
 
@@ -17,9 +16,9 @@ const IconList:FC<IconListProps> = (props) => {
   const {strategy, maxItemLength} = props
 
   // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
-  const fixedHeightValue = strategy?.visual?.height === 0 ? "auto" : strategy?.visual?.height
+  const fixedHeightValue = strategy?.visual?.style?.height === 0 ? "auto" : strategy?.visual?.style?.height
 
-  const items = strategy?.data?.items
+  const items = strategy?.data?.items || strategy?.visual
   const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows
   const pagination = strategy?.visual?.paginationStyle?.swipeNavigation
   const swiperId = Math.floor(Math.random() * 1000000000000)
