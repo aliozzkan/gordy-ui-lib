@@ -14,8 +14,8 @@ const buttonVariants = cva(
       variant: {
         default: "grd-bg-slate-900 grd-text-gray-500 " +
           "dark:grd-bg-slate-50 dark:grd-text-slate-900",
-        primary: "grd-bg-primary-500 grd-text-white " +
-          "dark:!grd-bg-primary-600 dark:grd-text-dark-600",
+        primary: "grd-bg-blue-500 grd-text-white " +
+          "dark:!grd-bg-blue-600 dark:grd-text-dark-600",
         destructive:
           "grd-bg-red-500 grd-text-white " +
           "dark:grd-bg-red-900 dark:grd-text-gray-500",

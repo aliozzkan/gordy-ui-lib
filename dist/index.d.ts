@@ -157,11 +157,6 @@ interface IconListProps {
     strategy: any;
     title?: string;
     className?: string;
-    wrapperBgColor?: string;
-    wrapperWidth?: string;
-    wrapperHeight?: string;
-    showArrows?: boolean;
-    showBullets?: boolean;
 }
 declare const IconList: FC<IconListProps>;
 
