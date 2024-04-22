@@ -1,9 +1,8 @@
 import React, {FC} from "react";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Parallax, Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import LIcon from "../lucidIcon/lucidIcon";
-import {Button} from "../ui";
 
 export interface IconListProps {
   maxItemLength: number;
@@ -16,7 +15,7 @@ const IconList:FC<IconListProps> = (props) => {
   const {strategy, maxItemLength} = props
 
   // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
-  const fixedHeightValue = strategy?.visual?.style?.height === 0 ? "auto" : strategy?.visual?.style?.height
+  const fixedHeightValue = strategy?.visual?.style?.height === 0 ? undefined : strategy?.visual?.style?.height
 
   const items = strategy?.data?.items || strategy?.visual
   const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows
@@ -37,14 +36,14 @@ const IconList:FC<IconListProps> = (props) => {
     speed: 700,
     slidesPerView: maxItemLength <= 6 ? props?.maxItemLength : 6,
     grabCursor:true,
-    modules: [Parallax, Pagination, Navigation],
+    modules: [Pagination, Navigation],
     navigation: {
     enabled: displayArrows,
       prevEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-prev`,
       nextEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-next`,
   },
     pagination: pagination ? {
-        clickable: pagination,
+        clickable: true,
         dynamicBullets: true,
         dynamicMainBullets: 4,
       } : false
@@ -54,15 +53,14 @@ const IconList:FC<IconListProps> = (props) => {
     <div
       style={{
         ...strategy?.visual?.style,
-        width: strategy?.visual?.width,
         height: fixedHeightValue,
       }}
       className={`icon-list grd-relative ${props.className || ""}`}>
       <div className="grd-container">
-        <p data-swiper-parallax="-200"
-           className={`grd-text-gray-800 grd-font-semibold grd-drop-shadow-lg ${!strategy?.visual?.titleStyle?.fontSize ? "grd-text-2xl" : ""}`}
+        <p
+           className={`grd-text-gray-800 grd-font-semibold grd-drop-shadow-lg ${!strategy?.data?.titleStyle?.fontSize ? "grd-text-2xl" : ""}`}
            dangerouslySetInnerHTML={{ __html: strategy?.data?.title }}
-           style={{fontSize: "24px", ...strategy?.visual?.titleStyle}}>
+           style={{fontSize: "24px", ...strategy?.data?.titleStyle}}>
         </p>
 
 

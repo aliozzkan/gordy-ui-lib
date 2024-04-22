@@ -155,7 +155,6 @@ declare const Carousel: FC<CarouselProps>;
 interface IconListProps {
     maxItemLength: number;
     strategy: any;
-    title?: string;
     className?: string;
 }
 declare const IconList: FC<IconListProps>;

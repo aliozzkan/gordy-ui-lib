@@ -2,7 +2,7 @@
 
 module.exports = {
   prefix: "grd-",
-  darkMode: ['class', '[class*="dark"]'],
+  darkMode: ['class'],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",

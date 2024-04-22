@@ -10,9 +10,12 @@ const H1 = (props: H1Props) => {
   const {className= "", style} = props
 
   return (
-      <h1 style={style} className={`grd-text-gray-500 grd-text-xl grd-font-medium dark:grd-text-white ${className}`}>
+      <h5
+        style={style}
+        className={`grd-text-gray-500 grd-font-medium grd-drop-shadow-lg dark:grd-text-white ${!style?.fontSize ? "grd-text-xl" : ""}${className}`}
+      >
         {props?.children}
-      </h1>
+      </h5>
     )
 }
 

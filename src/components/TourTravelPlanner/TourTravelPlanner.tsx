@@ -1,7 +1,7 @@
 import {FC, useEffect, useState} from "react";
 import LIcon from "../lucidIcon/lucidIcon";
 import {TabButtonProps, TourTravelPlannerProps} from "./TourTravelPlannerProps";
-import {tourTravelPlannerData} from "../../data/dummy/tourtravelplanner";
+import {tourTravelPlannerData, tourTravelPlannerStrategy} from "../../data/dummy/tourtravelplanner";
 import ButtonGroup from "../ui/buttonGroup";
 import TPCard from "../TPCard/TPCard";
 import Container from "../Container/Container";
@@ -37,18 +37,23 @@ const TourTravelPlanner:FC<TourTravelPlannerProps> = ({
     ActiveLocation,
     ActiveDate
   }
+  const wrapperStyle = strategy.data?.backgroundImagePath ? {
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundImage: strategy.data?.backgroundImagePath ? `url("${strategy.data.backgroundImagePath}")` : undefined,
+  } : {}
+
+  // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
+  const fixedHeightValue = strategy?.visual?.style?.height === 0 ? undefined : strategy?.visual?.style?.height
 
   return (
     <Wrapper
       style={{
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundImage: `url("${strategy.data?.backgroundImagePath}")`,
-        backgroundColor: strategy.visual?.style?.backgroundColor,
-        width :strategy.visual?.style?.width,
-        height :strategy.visual?.style?.height === 0 ? "auto" : strategy.visual?.style?.height,
-    }}
+        ...strategy.visual?.style,
+        ...wrapperStyle,
+        height: fixedHeightValue,
+      }}
       disabled={disabled}
       className={className}>
       <Container>
@@ -77,7 +82,7 @@ const TourTravelPlanner:FC<TourTravelPlannerProps> = ({
             </div>
             <div className="grd-min-w-[124px] grd-flex grd-items-center">
               <Button onClick={() => onSubmit ? onSubmit(handleOnSubmit) : null} className="grd-w-full" variant="primary"
-                      style={strategy.data?.buttonStyle}>{strategy.data?.button}</Button>
+                      style={strategy.data?.buttonStyle}>{strategy.data?.button || tourTravelPlannerStrategy.data.button}</Button>
             </div>
           </div>
         </TPCard>

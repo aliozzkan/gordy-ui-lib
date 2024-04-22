@@ -1,6 +1,6 @@
 import { FC } from "react";
 import LIcon from "../lucidIcon/lucidIcon";
-import {travelPlannerData} from "../../data/dummy/hoteltravelplanner"
+import {hotelTravelPlannerStrategy, travelPlannerData} from "../../data/dummy/hoteltravelplanner"
 import {HotelTravelPlannerProps} from "./HotelTravelPlannerProps";
 import {Input, Button, Wrapper, H1, H5} from "../ui";
 import TPCard from "../TPCard/TPCard";
@@ -16,16 +16,22 @@ const HotelTravelPlanner:FC<HotelTravelPlannerProps> = ({
     disabled,
   }) => {
 
+  const wrapperStyle = strategy.data?.backgroundImagePath ? {
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundImage: strategy.data?.backgroundImagePath ? `url("${strategy.data.backgroundImagePath}")` : undefined,
+  } : {}
+
+  // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
+  const fixedHeightValue = strategy?.visual?.style?.height === 0 ? undefined : strategy?.visual?.style?.height
+
   return (
     <Wrapper
       style={{
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundImage: `url("${strategy.data?.backgroundImagePath}")`,
-        backgroundColor: strategy.visual?.style?.backgroundColor,
-        width :strategy.visual?.style?.width,
-        height :strategy.visual?.style?.height === 0 ? "auto" : strategy.visual?.style?.height,
+        ...strategy.visual?.style,
+        ...wrapperStyle,
+        height: fixedHeightValue,
     }}
       disabled={disabled}
       className={className}>
@@ -46,7 +52,7 @@ const HotelTravelPlanner:FC<HotelTravelPlannerProps> = ({
             <Button
               className="grd-shrink-0 grd-w-[98px] grd-py-4 grd-h-auto"
               variant="primary"
-              style={strategy.data?.buttonStyle}>{strategy.data?.button}
+              style={strategy.data?.buttonStyle}>{strategy.data?.button || hotelTravelPlannerStrategy.data.button}
             </Button>
           </div>
         </TPCard>

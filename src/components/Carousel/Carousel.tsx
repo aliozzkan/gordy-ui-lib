@@ -152,7 +152,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
   const {strategy} = props
 
   // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
-  const fixedHeightValue = strategy?.visual?.height === 0 ? "auto" : strategy?.visual?.height
+  const fixedHeightValue = strategy?.visual?.height === 0 ? undefined : strategy?.visual?.height
 
   const categories: any = []
   const sliders: any = []
