@@ -3,11 +3,11 @@ import type { Preview } from "@storybook/react";
 const preview: Preview = {
   globalTypes: {
     darkMode: {
-      defaultValue: true,
+      defaultValue: false,
     },
     // Optional (Default: 'dark')
     className: {
-      defaultValue: 'dark', // Set your custom dark mode class name
+      defaultValue: 'grd-dark', // Set your custom dark mode class name
     },
   },
   parameters: {
