@@ -148,7 +148,6 @@ declare const ActivityTravelPlanner: FC<ActivityTravelPlannerProps>;
 interface CarouselProps {
     strategy: any;
     activeCategoryId?: number;
-    activeSliderIndex?: number;
 }
 declare const Carousel: FC<CarouselProps>;
 

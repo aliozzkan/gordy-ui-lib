@@ -25,12 +25,6 @@ const meta = {
         defaultValue: { summary: 0 },
       },
     },
-    activeSliderIndex: {
-      description: "slider'in initalstate'i icin kullanilir",
-      table: {
-        defaultValue: { summary: 0 },
-      },
-    },
   },
   tags: ["autodocs"],
   decorators: ThemeProviderDecorators,
@@ -44,7 +38,6 @@ const DefaultCarousel = {
   args: {
     strategy: TabSliderStrategy,
     //activeCategoryId: 0,
-    activeSliderIndex: 0,
   },
 } satisfies Story;
 

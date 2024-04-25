@@ -1,94 +1,126 @@
 export const MediaListDummy = {
-  "success": true,
-  "result": {
-    "strategies": [
+  "visual": {
+    "style": null,
+    "settings": null,
+    "code": "8510ab71-cf5f-442b-8d4c-4bbb8e788fc7",
+    "outputData": null,
+    "type": 1,
+    "name": "Visual.Molecule.MediaListVisual",
+    "status": 1
+  },
+  "data": {
+    "items": [
       {
-        "code": "e0b87f45-c716-460c-9bb1-b80b0bc774a3",
-        "definitionId": 99,
-        "pDefinitionId": null,
-        "relation": "Component",
-        "relationType": 5,
-        "input": {}
-      },
-      {
-        "code": "e63d0241-7e4c-49a8-9142-d646e049f925",
-        "definitionId": 100,
-        "pDefinitionId": 99,
-        "relation": "Data",
-        "relationType": 2,
-        "input": {
-          "TitleLangKey": "a38ff655-5d02-4b67-98b1-538648b79bac",
-          "Items": [
-            {
-              "MediaFileId": 809,
-              "TextLangKey": "bd40db56-af9e-4df3-894e-474fd1d8b997",
-              "Style": {
-                "TextAlign": null,
-                "Cursor": null
-              },
-              "Text": "Antalya otelleri",
-              "subText": "Akdeniz’in incisi Antalya sizi bekliyor."
-            },
-            {
-              "MediaFileId": 809,
-              "TextLangKey": "db95c1da-1dbf-46a0-8316-c796415fc00d",
-              "Style": {
-                "TextAlign": null,
-                "Cursor": null
-              },
-              "Text": "Belek otelleri",
-              "subText": "Antalya’nın gözdesinde yerinizi ayırın."
-            },
-            {
-              "MediaFileId": 809,
-              "TextLangKey": "7de918d0-5996-474c-ae73-33a7ac91cf47",
-              "Style": {
-                "TextAlign": null,
-                "Cursor": null
-              },
-              "Text": "Bodrum otelleri",
-              "subText": "En güzel tatil Bodrum’da yapılır. En güzel tatil Bodrum’da yapılır."
-            },
-          ],
-          "Title": "test ensar comp"
+        "category": {
+          "categoryId": 123,
+          "order": 1,
+          "categoryName": "ensar media 1"
         },
-        "translateItems": [
+        "medias": [
           {
-            "name": null,
-            "key": "a38ff655-5d02-4b67-98b1-538648b79bac",
-            "langKey": "TitleLangKey",
-            "value": ""
+            "displaySubTitle": "true",
+            "displaySubTitleStyle": {
+              "textAlign": null,
+              "fontSize": null,
+              "fontFamily": null,
+              "color": null,
+              "fontWeight": null,
+              "visible": null,
+              "backgroundColor": null,
+              "position": null,
+              "borderRadius": null,
+              "lineHeight": null,
+              "zIndex": null,
+              "opacity": null,
+              "paddingRight": null,
+              "paddingTop": null,
+              "paddingBottom": null,
+              "paddingLeft": null,
+              "marginRight": null,
+              "marginTop": null,
+              "marginBottom": null,
+              "marginLeft": null,
+              "left": null,
+              "top": null,
+              "right": null,
+              "bottom": null,
+              "cursor": null,
+              "borderBottom": null,
+              "borderTop": null,
+              "borderRight": null,
+              "borderLeft": null,
+              "gap": null,
+              "display": null,
+              "alignItems": null,
+              "padding": null,
+              "border": null,
+              "justifyContent": null,
+              "margin": null,
+              "flexDirection": null,
+              "width": null,
+              "whiteSpace": null
+            },
+            "subTitle": "Otel ara",
+            "subTitleStyle": {
+              "textAlign": null,
+              "fontSize": null,
+              "fontFamily": null,
+              "color": null,
+              "fontWeight": null,
+              "visible": null,
+              "backgroundColor": null,
+              "position": null,
+              "borderRadius": null,
+              "lineHeight": null,
+              "zIndex": null,
+              "opacity": null,
+              "paddingRight": null,
+              "paddingTop": null,
+              "paddingBottom": null,
+              "paddingLeft": null,
+              "marginRight": null,
+              "marginTop": null,
+              "marginBottom": null,
+              "marginLeft": null,
+              "left": null,
+              "top": null,
+              "right": null,
+              "bottom": null,
+              "cursor": null,
+              "borderBottom": null,
+              "borderTop": null,
+              "borderRight": null,
+              "borderLeft": null,
+              "gap": null,
+              "display": null,
+              "alignItems": null,
+              "padding": null,
+              "border": null,
+              "justifyContent": null,
+              "margin": null,
+              "flexDirection": null,
+              "width": null,
+              "whiteSpace": null
+            },
+            "type": 0,
+            "imagePath": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-a0087c8d-b5bc-4400-9413-9d636d87a197.jpg",
+            "videoUrl": null,
+            "backgroundColor": null,
+            "order": 0
           }
         ]
-      },
-      {
-        "code": "3ede4c69-f5d2-4383-9d4d-2d217dcb8300",
-        "definitionId": 101,
-        "pDefinitionId": 99,
-        "relation": "Visual",
-        "relationType": 1,
-        "input": {
-          "Style": {
-            "DisplayTitle": null,
-            "Width": null,
-            "Height": 0,
-            "BackgroundColor": null,
-            "Cursor": null
-          },
-          "LayoutAndAlignment": {
-            "TextAlign": null,
-            "Align": null,
-            "NumberOfBoxesToShowType": null,
-            "NumberOfBoxesToShow": null,
-            "InCaseOfMoreThanSelectedNumberOfBoxes": null,
-            "Cursor": null
-          },
-          "Interaction": {
-            "MouseOnHover": null
-          },
-          "Settings": null
-        }
       }
-    ]
-  }
+    ],
+    "code": "1d4cd2de-4f1c-4c5b-9bfa-0990ab332e65",
+    "outputData": null,
+    "type": 2,
+    "name": "Gordios.Strategy.Web.Concrete.Data.Molecule.MediaListData",
+    "status": 1
+  },
+  "event": null,
+  "code": "828fda8c-f2da-4339-9682-c912926b5c3c",
+  "outputData": null,
+  "type": 5,
+  "name": "Media List",
+  "status": 1
 }

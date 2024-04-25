@@ -33,7 +33,6 @@ type Story = StoryObj<typeof TextHtml>;
 
 const DefaultTextHtml = {
   args: {
-    content: TextHtmlDummy,
     getContent(content: any) {
       console.log(content);
     }

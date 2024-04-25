@@ -1,23 +1,19 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useRef, useState} from 'react';
 
 import {Swiper, SwiperSlide} from 'swiper/react';
-import {Parallax, Navigation, Pagination} from "swiper/modules";
+import {Navigation, Pagination, Parallax} from "swiper/modules";
 
 import LIcon from "../lucidIcon/lucidIcon";
 import {Button} from "../ui";
 
 const SliderCategories = (props: any) => {
-  const sliderCategoryName = props.sliderCategoryName ? props.sliderCategoryName : props.sliderCategoryId
-  let activeCategory
-  if (props.activeCategoryId !== undefined) {
-    activeCategory = props.activeCategoryId == props.sliderCategoryId
-  } else {
-    activeCategory = props.index === 0
-  }
+  const categoryInfo = props.categoryInfo
+  const sliderCategoryName = categoryInfo?.name ? categoryInfo?.name : categoryInfo?.id
   return <div
-    onClick={() => props.categoryItemOnClick(props.sliderCategoryId)}
+    hidden={!categoryInfo?.visible}
+    onClick={() => props.categoryItemOnClick(props.categoryInfo?.id)}
     className={`grd-px-4 grd-py-2.5 grd-rounded-lg hover:grd-shadow-xs grd-border hover:grd-border-blue-300 grd-text-nowrap grd-cursor-pointer grd-transition grd-duration-300 grd-select-none 
-    ${activeCategory ? "grd-border-primary-500 grd-text-primary-500" : "grd-border-transparent"}`}>
+    ${props?.isActive ? "grd-border-primary-500 grd-text-primary-500" : "grd-border-transparent"}`}>
     {sliderCategoryName}
   </div>
 
@@ -25,32 +21,47 @@ const SliderCategories = (props: any) => {
 
 const CategoryWrapper = (props: any) => {
   const categories: any[] = []
-  props.sliders && props.sliders.map((slider: any) => {
+  const itemOnClick = props?.itemOnClick
+  const items = props?.items
+  items && items.map((item: any) => {
     // ayni kategoriden olanlari ele
     const findIncludesCategory = categories.find((category: any) => {
-      return category?.id === slider?.category?.categoryId
+      return category?.id === item?.category?.categoryId
     })
     if (!findIncludesCategory) {
       categories.push({
-        id: slider?.category?.categoryId,
-        name: slider?.category?.categoryName
+        id: item?.category?.categoryId,
+        name: item?.category?.categoryName,
+        order: item?.category?.categoryOrder,
+        visible: item?.category?.categoryVisible
       })
     }
   })
+  let orderedStrategyItems = categories.sort((a, b) => (a.order > b.order ? 1 : -1))
+
+  const getActiveCategory = () => {
+    return orderedStrategyItems && orderedStrategyItems?.find(category => {
+      return category?.id === props?.activeCategoryId
+    })
+  }
+  const activeIndex = getActiveCategory()
   return (
     <div
       className={`categories grd-flex grd-items-center grd-gap-4 grd-text-gray-500 grd-text-base grd-font-medium grd-justify-center ${props.className || ""}`}>
-      {categories.map((category: any, index) => {
+      {orderedStrategyItems.map((category: any, index) => {
         return (
-          <SliderCategories key={category?.id || index} index={index} sliderCategoryId={category?.id}
-                            sliderCategoryName={category?.name} activeCategoryId={props.activeCategoryId}
-                            categoryItemOnClick={props.itemOnClick}/>
+          <SliderCategories
+            key={category?.id || index}
+            index={index}
+            isActive={activeIndex ? activeIndex?.id === category?.id : index === 0}
+            categoryInfo={category}
+            categoryItemOnClick={itemOnClick}
+          />
         )
       })}
     </div>
   )
 }
-
 
 const Sliders = (props: any) => {
 
@@ -92,7 +103,7 @@ const Sliders = (props: any) => {
             : false
         }
       >
-        {props.sliders && props.sliders.map((slide: any, index: number) => {
+        {props?.sliders && props?.sliders.map((slide: any, index: number) => {
           return (
             <SwiperSlide
               key={index}
@@ -141,44 +152,43 @@ const Sliders = (props: any) => {
 export interface CarouselProps {
   strategy: any,
   activeCategoryId?: number,
-  activeSliderIndex?: number,
 }
 
 export const Carousel: FC<CarouselProps> = (props) => {
   const [activeCategoryId, setActiveCategoryId] = useState(props?.activeCategoryId)
-  const [activeSlider, setActiveSlider] = useState(props?.activeSliderIndex)
   const [swiper, setSwiper] = useState<any>({});
 
   const {strategy} = props
 
   // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
   const fixedHeightValue = strategy?.visual?.height === 0 ? undefined : strategy?.visual?.height
-
-  const categories: any = []
-  const sliders: any = []
-  strategy?.data?.items && strategy.data.items.map((item: any) => {
+  let orderedStrategyItems = strategy?.data?.items?.sort((a:any, b:any) => (a.category?.categoryOrder > b.category?.categoryOrder ? 1 : -1))
+  const categories: any = [],
+    sliders: any = []
+  orderedStrategyItems && orderedStrategyItems?.map((item: any) => {
     if (item?.sliders) {
+      sliders.push(...item.sliders)
+    }
+    if (item?.category){
       categories.push(item.category)
-      item.sliders.map((slider: any) => {
-        slider["category"] = item.category
-      })
-      sliders.push(
-        ...item.sliders,
-      )
-
     }
   })
 
   const categoryItemOnClick = (e: any) => {
     setActiveCategoryId(e)
-    const willChangeSlider = sliders.findIndex((slider: any) => slider.category?.categoryId == e)
-    swiper.slideTo(willChangeSlider, 700)
+    const itemIndex = categories.findIndex((category: any) => category?.categoryId == e),
+      willChangeSlider = orderedStrategyItems && orderedStrategyItems[itemIndex - 1]?.sliders?.length
+    let slideTo = 0
+    if (willChangeSlider){slideTo = willChangeSlider}
+    swiper.slideTo(slideTo, 700)
   }
 
   const sliderOnChange = (e: any) => {
-    setActiveSlider(e.activeIndex)
-    const willChangeSlider = sliders.length ? sliders[e.activeIndex]?.category?.categoryId : 0
-    setActiveCategoryId(willChangeSlider as unknown as number)
+    orderedStrategyItems.map((item: any) => {
+      item.sliders.map((slider: any) => {
+        if (slider?.Id === sliders[e.activeIndex]?.Id) setActiveCategoryId(item?.category?.categoryId)
+      })
+    })
   }
 
 
@@ -190,12 +200,10 @@ export const Carousel: FC<CarouselProps> = (props) => {
     }}>
       {sliders.length > 0 && (
         <>
-          <CategoryWrapper itemOnClick={categoryItemOnClick} activeCategoryId={activeCategoryId} sliders={sliders}
-                           categories={categories}/>
-          <Sliders sliderOnChange={sliderOnChange} activeSlider={activeSlider} strategy={strategy} sliders={sliders} setSwiper={setSwiper}/>
+          <CategoryWrapper activeCategoryId={activeCategoryId} itemOnClick={categoryItemOnClick} items={orderedStrategyItems}/>
+          <Sliders sliderOnChange={sliderOnChange} sliders={sliders} strategy={strategy} setSwiper={setSwiper}/>
         </>
       )}
-
     </div>
   )
 
