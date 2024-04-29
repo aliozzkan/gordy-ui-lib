@@ -55,7 +55,7 @@ const IconList:FC<IconListProps> = (props) => {
         ...strategy?.visual?.style,
         height: fixedHeightValue,
       }}
-      className={`icon-list grd-relative ${props.className || ""}`}>
+      className={`icon-list grd-relative grd-flex grd-flex-col grd-justify-center ${props.className || ""}`}>
       <div className="grd-container">
         <p
            className={`grd-text-gray-800 grd-font-semibold grd-drop-shadow-lg ${!strategy?.data?.titleStyle?.fontSize ? "grd-text-2xl" : ""}`}

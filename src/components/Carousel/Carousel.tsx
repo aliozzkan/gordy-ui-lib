@@ -76,7 +76,7 @@ const Sliders = (props: any) => {
       <Swiper
         className={`grd-w-full grd-overflow-hidden swiper-${swiperId} ${props.className || ""}`}
         spaceBetween={30}
-        style={{...strategy?.visual?.style}}
+        //style={{...strategy?.visual?.style}}
         speed={1000}
         parallax={true}
         initialSlide={props?.activeSlider}
@@ -193,7 +193,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
 
 
   return (
-    <div className="gordy-carousel grd-container grd-relative grd-flex grd-flex-col grd-gap-6 grd-overflow-hidden" style={{
+    <div className="gordy-carousel grd-container grd-relative grd-flex grd-flex-col grd-justify-center grd-gap-6 grd-overflow-hidden" style={{
       ...strategy?.visual?.style,
       width: strategy?.visual?.width,
       height: fixedHeightValue,

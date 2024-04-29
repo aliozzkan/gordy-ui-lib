@@ -1,6 +1,13 @@
 export const TabSliderStrategy = {
   "name": "Tab Slider",
   "code": "new-0137eb1c-1fea-423b-b0a2-46b74b9ed749",
+  "visual": {
+    width: "auto",
+    height: 0,
+    style: {
+      backgroundColor: null
+    }
+  },
   "data": {
     "items": [
       {
