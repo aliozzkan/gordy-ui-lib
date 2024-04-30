@@ -2,6 +2,7 @@ import React, {FC} from "react";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from "swiper/modules";
+import LIcon from "../lucidIcon/lucidIcon";
 
 export interface MediaListProps {
   strategy: any,
@@ -18,93 +19,108 @@ export interface MediaListProps {
 const MediaList:FC<MediaListProps> = (props) => {
 
   const {strategy} = props
+  // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
+  const fixedHeightValue = strategy?.visual?.style?.height === 0 ? undefined : strategy?.visual?.style?.height
 
   const medias: any = []
   strategy?.data?.items && strategy.data.items.map((item: any) => {
-    if (item?.medias) {
-      item.medias.map((slider: any) => {
-        slider["category"] = item.category
-      })
-      medias.push(
-        ...item.medias,
-      )
-    }
+    if (item?.medias) medias.push(...item.medias)
   })
 
-  if (!medias.length) {
+  if (!medias.length && !strategy?.visual?.style) {
     return <></>
   }
 
+  const swiperId = Math.floor(Math.random() * 1000000000000)
 
-  const noImage = () => {
-    return "https://place-hold.it/340x190"
-  }
-
-  const swiperProps = {
-    className: `grd-overflow-hidden grd-mt-6 -grd-mx-3 grd-px-3 ${props.maxItemLength <= 4 ? "grd-pb-7" : "grd-pb-10"}`,
-    spaceBetween: 15,
-    speed: 700,
-    slidesPerView: props.maxItemLength <= 4 ? props?.maxItemLength : 4,
-    grabCursor:true,
-    modules: [Pagination, Navigation],
-    navigation:{
-      enabled: props.showArrows !== undefined ? props.showArrows : true,
-      prevEl: ".swiper-navigation .swiper-button-prev",
-      nextEl: ".swiper-navigation .swiper-button-next",
-    },
-    pagination:{
-      enabled: props.showBullets !== undefined ? props.showBullets : true,
-      clickable: true,
-      dynamicBullets: true,
-    },
-  }
-
+  const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows
+  const pagination = strategy?.visual?.paginationStyle?.swipeNavigation
 
   return (
     <div
       style={{
-        backgroundColor: props.wrapperBgColor,
-        width :props.wrapperWidth,
-        height :props.wrapperHeight,
-      }} className={`media-list grd-relative ${props.className || ""}`}>
+        ...strategy?.visual?.style,
+        height: fixedHeightValue,
+      }}
+      className={`media-list grd-relative grd-flex grd-justify-center grd-items-center grd-mx-auto grd-py-5 ${props.className || ""}`}>
       <div className="grd-container">
-        <p className="grd-text-gray-800 grd-font-semibold grd-text-2xl">{props.title || "Popüler bölgeler"}</p>
+        <p
+          className={`grd-text-gray-800 grd-font-semibold grd-drop-shadow-lg grd-mb-6 ${!strategy?.data?.titleStyle?.fontSize ? "grd-text-2xl" : ""}`}
+          dangerouslySetInnerHTML={{ __html: strategy?.data?.title }}
+          style={{fontSize: "24px", ...strategy?.data?.titleStyle}}>
+        </p>
 
-        <Swiper {...swiperProps}>
-          {Array.apply(null, Array(props.maxItemLength)).map((val, index) => {
+        <Swiper
+          className={`grd-w-full grd-overflow-hidden ${pagination && strategy?.data?.items && strategy?.data?.items.length > 4 ? "grd-pb-10" : ""} swiper-${swiperId} ${props.className || ""}`}
+          spaceBetween={15}
+          //style={{...strategy?.visual?.style}}
+          speed={1000}
+          slidesPerView={strategy?.data?.items ? strategy?.data?.items.length >= 4 ? 4 : strategy?.data?.items.length : 1}
+          grabCursor={true}
+          autoHeight={true}
+          modules={[Pagination, Navigation]}
+          navigation={{
+            enabled: displayArrows,
+            prevEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-prev`,
+            nextEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-next`,
+          }}
+          pagination={
+            pagination
+              ? {
+                clickable: pagination,
+                dynamicBullets: true,
+                dynamicMainBullets: 4,
+              }
+              : false
+          }>
+          {medias.map((media: any, index: number) => {
             return (
                 <SwiperSlide key={index}
                      className={`media-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
                       grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-primary-500`}
                      style={{ borderRadius: "8px" }}
                 >
-                  <div className="image-wrapper grd-w-full grd-h-[190px]">
-                    <img className="grd-w-full grd-h-full grd-object-center grd-object-cover" src={medias[index]?.imagePath || noImage()} alt={""} />
-                  </div>
+                  <a className="grd-block grd-w-full" href={media?.link || undefined} target={media?.actions?.target || "_self"}>
+                    <div className="image-wrapper grd-h-[190px] grd-w-full" style={{backgroundColor: media?.backgroundColor}}>
+                      {media?.imagePath && (
+                        <img className="grd-w-full grd-h-full grd-object-center grd-object-cover" src={media?.imagePath} alt={""} />
+                      )}
+                    </div>
 
-                  <div className="grd-mt-1 grd-w-full grd-flex grd-flex-col grd-p-4">
-                    {!medias[index]?.title && (
-                      <span className="grd-text-base grd-font-semibold grd-text-color-800 grd-truncate" title={medias[index]?.subTitle}>{medias[index]?.subTitle || "Test Media subText"}</span>
-                    )}
-                    {medias[index]?.title && (
-                      <>
-                        <span className="grd-text-base grd-font-semibold grd-text-color-800 grd-truncate" title={medias[index]?.title}>{medias[index]?.title || "Test Media Text"}</span>
-                        {medias[index]?.displaySubTitle && (
-                          <span className="grd-mt-0.5 grd-text-sm grd-font-normal grd-text-gray-500 grd-truncate" title={medias[index]?.subTitle}>{medias[index]?.subTitle || "Test Media subText"}</span>
-                        )}
-                      </>
-                    )}
+                    <div className="grd-mt-1 grd-w-full grd-flex grd-flex-col grd-p-4">
+                      {!media.title && (
+                        <span
+                          style={{...media.subTitleStyle}}
+                          className="grd-text-base grd-font-semibold grd-text-color-800 grd-truncate" title={media?.subTitle} dangerouslySetInnerHTML={{ __html: media?.subTitle }} />
+                      )}
+                      {media.title && (
+                        <>
+                          <span
+                            style={{...media.titleStyle}}
+                            className="grd-text-base grd-font-semibold grd-text-color-800 grd-truncate" title={media?.title} dangerouslySetInnerHTML={{ __html: media?.title }} />
+                          {media?.displaySubTitle && (
+                            <span
+                              style={{...media.subTitleStyle}}
+                              className="grd-mt-0.5 grd-text-sm grd-font-normal grd-text-gray-500 grd-truncate" title={media?.subTitle} dangerouslySetInnerHTML={{ __html: media?.subTitle }} />
+                          )}
+                        </>
+                      )}
 
-                  </div>
+                    </div>
+                  </a>
                 </SwiperSlide>
             )
           })}
         </Swiper>
 
-        {props.showArrows && (
-          <div className="swiper-navigation">
-            <div className="swiper-button-prev"/>
-            <div className="swiper-button-next"/>
+        {displayArrows && (
+          <div className="swiper-navigation" style={{...strategy?.visual?.arrowVisualStyle}}>
+            <div className="swiper-button-prev">
+              <LIcon name="ArrowLeft"/>
+            </div>
+            <div className="swiper-button-next">
+              <LIcon name="ArrowRight"/>
+            </div>
           </div>
         )}
 

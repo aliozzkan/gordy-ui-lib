@@ -31,10 +31,10 @@ const IconList:FC<IconListProps> = (props) => {
   }
 
   const swiperProps = {
-    className: `grd-w-full grd-overflow-hidden grd-mt-6 -grd-mx-3 grd-px-3 ${maxItemLength <= 6 ? "grd-pb-7" : "grd-pb-10"}`,
+    className: `grd-w-full grd-overflow-hidden grd-mt-6 -grd-mx-3 grd-px-3 swiper-${swiperId} ${pagination && strategy?.data?.items && strategy?.data?.items.length > 6 ? "grd-pb-10" : ""}`,
     spaceBetween: 16,
     speed: 700,
-    slidesPerView: maxItemLength <= 6 ? props?.maxItemLength : 6,
+    slidesPerView: strategy?.data?.items ? strategy?.data?.items.length >= 6 ? 6 : strategy?.data?.items.length : 1,
     grabCursor:true,
     modules: [Pagination, Navigation],
     navigation: {
@@ -55,7 +55,7 @@ const IconList:FC<IconListProps> = (props) => {
         ...strategy?.visual?.style,
         height: fixedHeightValue,
       }}
-      className={`icon-list grd-relative grd-flex grd-flex-col grd-justify-center ${props.className || ""}`}>
+      className={`icon-list grd-relative grd-flex grd-justify-center grd-items-center grd-mx-auto grd-py-5 ${props.className || ""}`}>
       <div className="grd-container">
         <p
            className={`grd-text-gray-800 grd-font-semibold grd-drop-shadow-lg ${!strategy?.data?.titleStyle?.fontSize ? "grd-text-2xl" : ""}`}
@@ -67,7 +67,7 @@ const IconList:FC<IconListProps> = (props) => {
         <Swiper {...swiperProps}>
           {Array.apply(null, Array(props.maxItemLength)).map((val, _index) => {
             return (
-                <SwiperSlide key={_index}
+                <SwiperSlide className="grd-w-full" key={_index}
                 >
                   <a className={`icon-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white grd-text-sm grd-font-medium grd-text-color-800 
                       grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-primary-500 grd-px-2 grd-py-4`}

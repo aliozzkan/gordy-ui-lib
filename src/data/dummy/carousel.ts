@@ -2,11 +2,14 @@ export const TabSliderStrategy = {
   "name": "Tab Slider",
   "code": "new-0137eb1c-1fea-423b-b0a2-46b74b9ed749",
   "visual": {
-    width: "auto",
-    height: 0,
+    width: "50%",
+    height: "auto",
     style: {
-      backgroundColor: null
-    }
+      backgroundColor: "red"
+    },
+    paginationStyle: {
+      swipeNavigation: true
+    },
   },
   "data": {
     "items": [
@@ -19,7 +22,7 @@ export const TabSliderStrategy = {
         },
         "sliders": [
           {
-            "imagePath": "data:image/png;base64,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",
+            "imagePath": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-9b2dbbe0-b2c4-4466-80eb-154ae2680089.jpg",
             "Id": "new-256ae5c4-bc8d-45ac-a8c5-59e162f7fb33",
             "imageName": "tripy-logo.png",
             "backgroundColor": null,
