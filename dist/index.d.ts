@@ -87,19 +87,12 @@ declare const TourTravelPlanner: FC<TourTravelPlannerProps>;
 
 interface AgencyCarRentalTravelPlannerProps {
     className?: string;
-    title?: string;
-    subTitle?: string;
-    buttonText?: string;
-    buttonBgColor?: string;
-    buttonTextColor?: string;
+    strategy?: any;
     inputPickupLocationText?: string;
     inputPickupDateText?: string;
     inputDeliveryDateText?: string;
     inputTimeText?: string;
     inputDifferentLocationText?: string;
-    wrapperBgColor?: string;
-    wrapperWidth?: string;
-    wrapperHeight?: string;
     disabled?: boolean;
 }
 
@@ -107,11 +100,7 @@ declare const AgencyCarRentalTravelPlanner: FC<AgencyCarRentalTravelPlannerProps
 
 interface CorporateCarRentalTravelPlannerProps {
     className?: string;
-    title?: string;
-    subTitle?: string;
-    buttonText?: string;
-    buttonBgColor?: string;
-    buttonTextColor?: string;
+    strategy?: any;
     inputPickupLocationText?: string;
     inputPickupDateText?: string;
     inputDeliveryDateText?: string;
@@ -120,9 +109,6 @@ interface CorporateCarRentalTravelPlannerProps {
     inputPersonText?: string;
     inputTravelReasonText?: string;
     inputDifferentLocationText?: string;
-    wrapperBgColor?: string;
-    wrapperWidth?: string;
-    wrapperHeight?: string;
     disabled?: boolean;
 }
 
@@ -130,16 +116,10 @@ declare const CorporateCarRentalTravelPlanner: FC<CorporateCarRentalTravelPlanne
 
 interface ActivityTravelPlannerProps {
     className?: string;
-    title?: string;
-    subTitle?: string;
-    buttonText?: string;
-    buttonBgColor?: string;
-    buttonTextColor?: string;
+    strategy?: any;
     inputDestinationText?: string;
     inputCheckoutDateText?: string;
-    wrapperBgColor?: string;
-    wrapperWidth?: string;
-    wrapperHeight?: string;
+    inputGuestInfoText?: string;
     disabled?: boolean;
 }
 

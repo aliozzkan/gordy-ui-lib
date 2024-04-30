@@ -1,6 +1,6 @@
 import { FC } from "react";
 import LIcon from "../../lucidIcon/lucidIcon";
-import {carRentalTravelPlannerDataAgency} from "../../../data/dummy/carrentaltravelplanner"
+import {carRentalTravelPlannerAgencyStrategy, carRentalTravelPlannerDataAgency} from "../../../data/dummy/carrentaltravelplanner"
 import {AgencyCarRentalTravelPlannerProps} from "./CarRentalTravelPlannerProps";
 import {Input, Button, Wrapper, H1, H5} from "../../ui";
 import TPCard from "../../TPCard/TPCard";
@@ -9,34 +9,38 @@ import Container from "../../Container/Container";
 
 const AgencyCarRentalTravelPlanner:FC<AgencyCarRentalTravelPlannerProps> = ({
     className,
-    title,
-    subTitle,
-    buttonText,
-    buttonBgColor,
-    buttonTextColor,
+    strategy,
     inputPickupLocationText,
     inputPickupDateText,
     inputDeliveryDateText,
     inputTimeText,
     inputDifferentLocationText,
-    wrapperBgColor,
-    wrapperWidth,
-    wrapperHeight,
     disabled,
   }) => {
+
+  const wrapperStyle = strategy.data?.backgroundImagePath ? {
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundImage: strategy.data?.backgroundImagePath ? `url("${strategy.data.backgroundImagePath}")` : undefined,
+  } : {}
+
+  // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
+  const fixedHeightValue = strategy?.visual?.style?.height === 0 ? undefined : strategy?.visual?.style?.height
+
 
   return (
     <Wrapper
       style={{
-        backgroundColor: wrapperBgColor,
-        width :wrapperWidth,
-        height :wrapperHeight,
+        ...strategy.visual?.style,
+        ...wrapperStyle,
+        height: fixedHeightValue,
     }}
       disabled={disabled}
       className={className}>
       <Container>
-        <H1>{title || carRentalTravelPlannerDataAgency.title}</H1>
-        <H5 className="grd-mt-2">{subTitle || carRentalTravelPlannerDataAgency.subTitle}</H5>
+        <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
+        <H5 style={strategy.data?.subTitleStyle} className="grd-mt-2" >{strategy.data?.subTitle}</H5>
         <TPCard className="grd-mt-6">
           <div className="grd-flex grd-flex-row grd-gap-4">
             <div className="grd-w-4/12 grd-flex grd-items-center grd-gap-4">
@@ -74,10 +78,10 @@ const AgencyCarRentalTravelPlanner:FC<AgencyCarRentalTravelPlannerProps> = ({
                   rightIcon={<LIcon size={20} name="ChevronDown" />}
                   placeholder={inputTimeText || carRentalTravelPlannerDataAgency.inputTimeText}/>
               </div>
-              <Button variant="primary"
-                      className="grd-shrink-0 grd-w-[98px] grd-py-4 grd-h-auto"
-                      style={{backgroundColor: buttonBgColor || carRentalTravelPlannerDataAgency.buttonBgColor, color: buttonTextColor}}>
-                {buttonText || carRentalTravelPlannerDataAgency.buttonText}
+              <Button
+                className="grd-shrink-0 grd-w-[98px] grd-py-4 grd-h-auto"
+                variant="primary"
+                style={strategy.data?.buttonStyle}>{strategy.data?.button || carRentalTravelPlannerAgencyStrategy.data.button}
               </Button>
             </div>
           </div>

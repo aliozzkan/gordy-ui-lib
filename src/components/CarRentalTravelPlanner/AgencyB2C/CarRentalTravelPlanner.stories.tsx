@@ -3,35 +3,15 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeProviderDecorators } from "../../../storybook/Decorator";
 import "../../../index.css";
 import AgencyCarRentalTravelPlannerProps from "./CarRentalTravelPlanner";
+import {carRentalTravelPlannerAgencyStrategy} from "../../../data/dummy/carrentaltravelplanner";
 
 const meta = {
   title: "GordyUI/TP Car Rental Agency",
   component: AgencyCarRentalTravelPlannerProps,
   argTypes: {
-    title: {
+    strategy: {
       table: {
-        defaultValue: { summary: 'Title' },
-      },
-    },
-    subTitle: {
-      table: {
-        defaultValue: { summary: 'Sub-title' },
-      },
-    },
-    buttonText: {
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Otel ara' },
-      },
-    },
-    buttonBgColor: {
-      table: {
-        defaultValue: { summary: '#2E90FA' },
-      },
-    },
-    buttonTextColor: {
-      table: {
-        defaultValue: { summary: '#FFFFFF' },
+        defaultValue: { summary: 'stratejisini alir' },
       },
     },
     inputPickupLocationText: {
@@ -59,20 +39,6 @@ const meta = {
         defaultValue: { summary: 'Teslim noktası farklı' },
       },
     },
-    wrapperBgColor: {
-      table: {
-      },
-    },
-    wrapperWidth: {
-      table: {
-        defaultValue: { summary: '100%' },
-      },
-    },
-    wrapperHeight: {
-      table: {
-        defaultValue: { summary: 'auto' },
-      },
-    },
     disabled: {
       description: "componenti kullanmak icin false, kilitlemek icin true degeri verin",
       table: {
@@ -90,7 +56,8 @@ type Story = StoryObj<typeof AgencyCarRentalTravelPlannerProps>;
 
 const DefaultAgencyCarRentalTravelPlannerProps = {
   args: {
-    disabled: false
+    disabled: false,
+    strategy: carRentalTravelPlannerAgencyStrategy,
   },
 } satisfies Story;
 

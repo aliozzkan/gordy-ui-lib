@@ -3,35 +3,15 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import ActivityTravelPlanner from "./ActivityTravelPlanner";
+import {activityTravelPlannerStrategy} from "../../data/dummy/activitytravelplanner";
 
 const meta = {
   title: "GordyUI/TP Activity",
   component: ActivityTravelPlanner,
   argTypes: {
-    title: {
+    strategy: {
       table: {
-        defaultValue: { summary: 'Yapılacak harika şeyleri keşfedin!' },
-      },
-    },
-    subTitle: {
-      table: {
-        defaultValue: { summary: 'Aktiviteler, konserler, atölyeler ve çok daha fazlası' },
-      },
-    },
-    buttonText: {
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Ara' },
-      },
-    },
-    buttonBgColor: {
-      table: {
-        defaultValue: { summary: '#2E90FA' },
-      },
-    },
-    buttonTextColor: {
-      table: {
-        defaultValue: { summary: '#FFFFFF' },
+        defaultValue: { summary: 'stratejisini alir' },
       },
     },
     inputDestinationText: {
@@ -42,20 +22,6 @@ const meta = {
     inputCheckoutDateText: {
       table: {
         defaultValue: { summary: 'Tarihler' },
-      },
-    },
-    wrapperBgColor: {
-      table: {
-      },
-    },
-    wrapperWidth: {
-      table: {
-        defaultValue: { summary: '100%' },
-      },
-    },
-    wrapperHeight: {
-      table: {
-        defaultValue: { summary: 'auto' },
       },
     },
     disabled: {
@@ -75,7 +41,8 @@ type Story = StoryObj<typeof ActivityTravelPlanner>;
 
 const DefaultActivityTravelPlanner = {
   args: {
-    disabled: false
+    disabled: false,
+    strategy: activityTravelPlannerStrategy,
   },
 } satisfies Story;
 

@@ -1,10 +1,6 @@
 export interface CorporateCarRentalTravelPlannerProps {
   className?: string;
-  title?: string;
-  subTitle?: string;
-  buttonText?: string;
-  buttonBgColor?: string;
-  buttonTextColor?: string;
+  strategy?: any;
   inputPickupLocationText?: string;
   inputPickupDateText?: string;
   inputDeliveryDateText?: string;
@@ -13,8 +9,5 @@ export interface CorporateCarRentalTravelPlannerProps {
   inputPersonText?: string;
   inputTravelReasonText?: string;
   inputDifferentLocationText?: string;
-  wrapperBgColor?: string;
-  wrapperWidth?: string;
-  wrapperHeight?: string;
   disabled?: boolean;
 }

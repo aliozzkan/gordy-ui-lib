@@ -9,6 +9,11 @@ const meta = {
   title: "GordyUI/TP Hotel",
   component: HotelTravelPlanner,
   argTypes: {
+    strategy: {
+      table: {
+        defaultValue: { summary: 'stratejisini alir' },
+      },
+    },
     inputDestinationText: {
       table: {
         defaultValue: { summary: 'Nereye gidiyorsun?' },
@@ -22,11 +27,6 @@ const meta = {
     inputGuestInfoText: {
       table: {
         defaultValue: { summary: '2 misafir, 1 oda' },
-      },
-    },
-    strategy: {
-      table: {
-        description: "",
       },
     },
     disabled: {
