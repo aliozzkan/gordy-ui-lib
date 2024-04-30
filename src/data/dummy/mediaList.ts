@@ -24,7 +24,9 @@ export const MediaListDummy = {
             "Id": "new-1a7eb88e-8e22-41bd-b768-4f1bc17a2316",
             "imageName": "tripy-logo.png",
             "backgroundColor": null,
-            "title": "asdad",
+            "title": "a",
+            "subTitle": "dfsdfsd",
+            "displaySubTitle": true,
             "chosen": false,
             "selected": false
           },

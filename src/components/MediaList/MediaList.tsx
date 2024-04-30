@@ -88,30 +88,23 @@ const MediaList:FC<MediaListProps> = (props) => {
                      style={{ borderRadius: "8px" }}
                 >
                   <a className="grd-block grd-w-full" href={media?.link || undefined} target={media?.actions?.target || "_self"}>
-                    <div className="image-wrapper grd-h-[190px] grd-w-full" style={{backgroundColor: media?.backgroundColor}}>
+                    <div className="image-wrapper grd-flex grd-items-center grd-justify-center grd-h-[190px] grd-w-full" style={{backgroundColor: media?.backgroundColor}}>
                       {media?.imagePath && (
-                        <img className="grd-w-full grd-h-full grd-object-center grd-object-cover" src={media?.imagePath} alt={""} />
+                        <img className="grd-max-w-full grd-max-h-full grd-object-center grd-object-cover" src={media?.imagePath} alt={""} />
                       )}
                     </div>
 
                     <div className="grd-mt-1 grd-w-full grd-flex grd-flex-col grd-p-4">
-                      {!media.title && (
-                        <span
-                          style={{...media.subTitleStyle}}
-                          className="grd-text-base grd-font-semibold grd-text-color-800 grd-truncate" title={media?.subTitle} dangerouslySetInnerHTML={{ __html: media?.subTitle }} />
-                      )}
-                      {media.title && (
-                        <>
+                        {(media.title) && (
                           <span
                             style={{...media.titleStyle}}
                             className="grd-text-base grd-font-semibold grd-text-color-800 grd-truncate" title={media?.title} dangerouslySetInnerHTML={{ __html: media?.title }} />
-                          {media?.displaySubTitle && (
-                            <span
-                              style={{...media.subTitleStyle}}
-                              className="grd-mt-0.5 grd-text-sm grd-font-normal grd-text-gray-500 grd-truncate" title={media?.subTitle} dangerouslySetInnerHTML={{ __html: media?.subTitle }} />
-                          )}
-                        </>
-                      )}
+                        )}
+                        {media?.displaySubTitle && (
+                          <span
+                            style={{...media.subTitleStyle}}
+                            className="grd-mt-0.5 grd-text-sm grd-font-normal grd-text-gray-500 grd-truncate" title={media?.subTitle} dangerouslySetInnerHTML={{ __html: media?.subTitle }} />
+                        )}
 
                     </div>
                   </a>
