@@ -20,14 +20,20 @@ const MediaList:FC<MediaListProps> = (props) => {
 
   const {strategy} = props
   // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
-  const fixedHeightValue = strategy?.visual?.style?.height === 0 ? undefined : strategy?.visual?.style?.height
+  const fixedHeightValue = strategy?.visual?.height === 0 ? undefined : strategy?.visual?.height
 
   const medias: any = []
+  let itemLength = 0
   strategy?.data?.items && strategy.data.items.map((item: any) => {
-    if (item?.medias) medias.push(...item.medias)
+    if (item?.medias) {
+      medias.push(...item.medias)
+      item.medias.map(() => {
+        itemLength++
+      })
+    }
   })
 
-  if (!medias.length && !strategy?.visual?.style) {
+  if (!medias.length && !strategy?.visual?.style && !strategy?.data?.title &&  !strategy?.data?.titleStyle) {
     return <></>
   }
 
@@ -40,6 +46,7 @@ const MediaList:FC<MediaListProps> = (props) => {
     <div
       style={{
         ...strategy?.visual?.style,
+        width: strategy?.visual?.width,
         height: fixedHeightValue,
       }}
       className={`media-list grd-relative grd-flex grd-justify-center grd-items-center grd-mx-auto grd-py-5 ${props.className || ""}`}>
@@ -51,11 +58,11 @@ const MediaList:FC<MediaListProps> = (props) => {
         </p>
 
         <Swiper
-          className={`grd-w-full grd-overflow-hidden ${pagination && strategy?.data?.items && strategy?.data?.items.length > 4 ? "grd-pb-10" : ""} swiper-${swiperId} ${props.className || ""}`}
+          className={`grd-w-full grd-overflow-hidden ${pagination && itemLength > 4 ? "grd-pb-10" : ""} swiper-${swiperId} ${props.className || ""}`}
           spaceBetween={15}
           //style={{...strategy?.visual?.style}}
           speed={1000}
-          slidesPerView={strategy?.data?.items ? strategy?.data?.items.length >= 4 ? 4 : strategy?.data?.items.length : 1}
+          slidesPerView={strategy?.data?.items ? itemLength >= 4 ? 4 : itemLength : 1}
           grabCursor={true}
           autoHeight={true}
           modules={[Pagination, Navigation]}
