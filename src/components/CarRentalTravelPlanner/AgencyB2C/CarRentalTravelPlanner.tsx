@@ -49,7 +49,7 @@ const AgencyCarRentalTravelPlanner:FC<AgencyCarRentalTravelPlannerProps> = ({
             </div>
             <div className="grd-w-8/12 grd-flex grd-items-center grd-gap-4">
               <div className={`input-date-time-box grd-relative grd-w-full grd-flex grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
-    grd-shadow-xs grd-text-gray-500 grd-text-base dark:grd-border-gray-800 dark:grd-text-gray-200 ${className}`}>
+    grd-shadow-xs grd-text-gray-500 grd-text-base dark:grd-border-gray-800 dark:grd-text-gray-200`}>
                 <Input
                   className="grd-border-none !grd-w-7/12"
                   inputClassName="grd-py-4 grd-pl-10"
@@ -64,7 +64,7 @@ const AgencyCarRentalTravelPlanner:FC<AgencyCarRentalTravelPlannerProps> = ({
                   placeholder={inputTimeText || carRentalTravelPlannerDataAgency.inputTimeText}/>
               </div>
               <div className={`input-date-time-box grd-relative grd-w-full grd-flex grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
-    grd-shadow-xs grd-text-gray-500 grd-text-base dark:grd-border-gray-800 dark:grd-text-gray-200 ${className}`}>
+    grd-shadow-xs grd-text-gray-500 grd-text-base dark:grd-border-gray-800 dark:grd-text-gray-200`}>
                 <Input
                   className="grd-border-none !grd-w-7/12"
                   inputClassName="grd-py-4 grd-pl-10"
@@ -79,7 +79,7 @@ const AgencyCarRentalTravelPlanner:FC<AgencyCarRentalTravelPlannerProps> = ({
                   placeholder={inputTimeText || carRentalTravelPlannerDataAgency.inputTimeText}/>
               </div>
               <Button
-                className="grd-shrink-0 grd-w-[98px] grd-py-4 grd-h-auto"
+                className="grd-shrink-0 grd-w-[98px] grd-py-4"
                 variant="primary"
                 style={strategy.data?.buttonStyle}>{strategy.data?.button || carRentalTravelPlannerAgencyStrategy.data.button}
               </Button>

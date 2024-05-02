@@ -125,6 +125,26 @@ interface ActivityTravelPlannerProps {
 
 declare const ActivityTravelPlanner: FC<ActivityTravelPlannerProps>;
 
+interface TransferTravelPlannerProps {
+    className?: string;
+    strategy?: any;
+    inputDestinationText?: string;
+    inputReturnText?: string;
+    inputCheckinDateText?: string;
+    inputCheckoutDateText?: string;
+    inputPassengerAmountText?: string;
+    inputPassengerText?: string;
+    inputTravelReasonText?: string;
+    disabled?: boolean;
+    tourType?: "return" | "one-way";
+    tpType?: "Agency" | "Corporate";
+    noReason?: boolean;
+    tabButtons?: TabButtonProps[];
+    onSubmit?(e: any): void;
+}
+
+declare const TransferTravelPlanner: FC<TransferTravelPlannerProps>;
+
 interface CarouselProps {
     strategy: any;
     activeCategoryId?: number;
@@ -191,4 +211,4 @@ declare const Dropdown: {
     Item: (props: DropdownItemProps) => react_jsx_runtime.JSX.Element;
 };
 
-export { ActivityTravelPlanner, AgencyCarRentalTravelPlanner, Carousel, CorporateCarRentalTravelPlanner, Dropdown, FlightTravelPlanner, Header, HotelTravelPlanner, IconList, MediaList, TextHtml, TourTravelPlanner };
+export { ActivityTravelPlanner, AgencyCarRentalTravelPlanner, Carousel, CorporateCarRentalTravelPlanner, Dropdown, FlightTravelPlanner, Header, HotelTravelPlanner, IconList, MediaList, TextHtml, TourTravelPlanner, TransferTravelPlanner };
