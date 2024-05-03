@@ -30,7 +30,6 @@ const DefaultIconList = {
   args: {
     strategy: IconListDummy,
     maxItemLength: IconListDummy.data.items.length,
-    className: "my-5 py-4",
   },
 } satisfies Story;
 

@@ -1,7 +1,7 @@
 import {FC, useEffect, useRef, useState} from "react";
 import LIcon from "../lucidIcon/lucidIcon";
 import {FlightTravelPlannerProps} from "./FlightTravelPlannerProps";
-import {flightTravelPlannerData} from "../../data/dummy/flighttravelplanner";
+import {flightTravelPlannerData, flightTravelPlannerStrategy} from "../../data/dummy/flighttravelplanner";
 import Container from "../Container/Container";
 import TPCard from "../TPCard/TPCard";
 import {Wrapper,H1, H5, Button, Input} from "../ui";
@@ -9,11 +9,7 @@ import {TabButtonProps} from "../TourTravelPlanner/TourTravelPlannerProps";
 
 const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
     className,
-    title,
-    subTitle,
-    buttonText,
-    buttonBgColor,
-    buttonTextColor,
+    strategy,
     inputDestinationText,
     inputReturnText,
     inputCheckinDateText,
@@ -21,9 +17,6 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
     inputPassengerAndCabinText,
     inputPersonText,
     inputTravelReasonText,
-    wrapperBgColor,
-    wrapperWidth,
-    wrapperHeight,
     disabled,
     tourType,
     onSubmit,
@@ -87,19 +80,29 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
     setFlightAmounts(removedFlightAmounts)
   }
 
+  const wrapperStyle = strategy.data?.backgroundImagePath ? {
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundImage: strategy.data?.backgroundImagePath ? `url("${strategy.data.backgroundImagePath}")` : undefined,
+  } : {}
+
+  // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
+  const fixedHeightValue = strategy?.visual?.style?.height === 0 ? undefined : strategy?.visual?.style?.height
+
+
   return (
     <Wrapper
       style={{
-        backgroundColor: wrapperBgColor,
-        width :wrapperWidth,
-        height :wrapperHeight,
-    }}
+        ...strategy.visual?.style,
+        ...wrapperStyle,
+        height: fixedHeightValue,
+      }}
       disabled={disabled}
-      className={className}>
+      className={`grd-flex grd-justify-center grd-items-center grd-mx-auto ${className ? className : ""}`}>
       <Container>
-        <H1>{title || flightTravelPlannerData.title}</H1>
-        <H5 className="grd-mt-2" >{subTitle || flightTravelPlannerData.subTitle}</H5>
-
+        <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
+        <H5 style={strategy.data?.subTitleStyle} className="grd-mt-2" >{strategy.data?.subTitle}</H5>
         <TPCard className="grd-mt-6">
           <div className="grd-flex grd-items-center">
             <div className="grd-button-group grd-flex grd-gap-2">
@@ -113,8 +116,8 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
                 )
               })}
             </div>
-            <div className="grd-flex grd-items-center grd-ml-auto grd-cursor-pointer grd-select-none">
-              <input id="with-transfer" type="checkbox" />
+            <div className="grd-flex grd-items-center grd-ml-auto grd-select-none">
+              <input className="grd-cursor-pointer" id="with-transfer" type="checkbox" />
               <label htmlFor="with-transfer" className="grd-text-gray-500 grd-text-sm grd-font-medium grd-pl-2 grd-cursor-pointer dark:grd-text-gray-200">Aktarmasız</label>
             </div>
           </div>
@@ -184,10 +187,11 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
                 placeholder={inputPersonText || flightTravelPlannerData.inputPersonText}/>
               {!noReason && <Input rightIcon={<LIcon size={18} name="ChevronDown" />} placeholder={inputTravelReasonText || flightTravelPlannerData.inputTravelReasonText}/>}
             </div>
-            <Button onClick={() => onSubmit ? onSubmit(handleOnSubmit) : null}
-                    className={`grd-w-full group-[.is-disabled]:grd-cursor-not-allowed grd-col-span-1`} variant="primary"
-                    style={{backgroundColor: buttonBgColor || flightTravelPlannerData.buttonBgColor, color: buttonTextColor}}>
-              {buttonText || flightTravelPlannerData.buttonText}
+            <Button
+              onClick={() => onSubmit ? onSubmit(handleOnSubmit) : null}
+             className={`grd-w-full group-[.is-disabled]:grd-cursor-not-allowed grd-col-span-1`}
+              variant="primary"
+              style={strategy.data?.buttonStyle}>{strategy.data?.button || flightTravelPlannerStrategy.data.button}
             </Button>
           </div>
         </TPCard>

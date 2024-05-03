@@ -3,11 +3,13 @@ import React, {FC} from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from "swiper/modules";
 import LIcon from "../lucidIcon/lucidIcon";
+import {Wrapper} from "../ui";
 
 export interface IconListProps {
   maxItemLength: number;
   strategy: any;
   className?: string;
+  disabled?: boolean;
 }
 
 const IconList:FC<IconListProps> = (props) => {
@@ -50,11 +52,12 @@ const IconList:FC<IconListProps> = (props) => {
   }
 
   return (
-    <div
+    <Wrapper
       style={{
         ...strategy?.visual?.style,
         height: fixedHeightValue,
       }}
+      disabled={props?.disabled}
       className={`icon-list grd-relative grd-flex grd-justify-center grd-items-center grd-mx-auto grd-py-5 ${props.className || ""}`}>
       <div className="grd-container">
         <p
@@ -65,7 +68,7 @@ const IconList:FC<IconListProps> = (props) => {
 
 
         <Swiper {...swiperProps}>
-          {Array.apply(null, Array(props.maxItemLength)).map((val, _index) => {
+          {Array.apply(null, Array(maxItemLength)).map((val, _index) => {
             return (
                 <SwiperSlide className="grd-w-full" key={_index}
                 >
@@ -98,7 +101,7 @@ const IconList:FC<IconListProps> = (props) => {
         )}
 
       </div>
-    </div>
+    </Wrapper>
   )
 }
 

@@ -7,9 +7,6 @@ export const transferTravelPlannerData = {
   inputPassengerTextAgency: "Yolcular",
   inputPassengerTextCorporate: "Kişi Seçimi",
   inputTravelReasonText: "Seyahat Nedeni",
-  wrapperBgColor: "",
-  wrapperWidth: "",
-  wrapperHeight: "",
   disabled: false,
 }
 

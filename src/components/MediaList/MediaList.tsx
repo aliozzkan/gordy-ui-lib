@@ -3,17 +3,12 @@ import React, {FC} from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from "swiper/modules";
 import LIcon from "../lucidIcon/lucidIcon";
+import {Wrapper} from "../ui";
 
 export interface MediaListProps {
   strategy: any,
-  maxItemLength: number;
-  title?: string;
   className?: string;
-  wrapperBgColor?: string;
-  wrapperWidth?: string;
-  wrapperHeight?: string;
-  showArrows?: boolean;
-  showBullets?: boolean;
+  disabled?: boolean;
 }
 
 const MediaList:FC<MediaListProps> = (props) => {
@@ -43,12 +38,13 @@ const MediaList:FC<MediaListProps> = (props) => {
   const pagination = strategy?.visual?.paginationStyle?.swipeNavigation
 
   return (
-    <div
+    <Wrapper
       style={{
         ...strategy?.visual?.style,
         width: strategy?.visual?.width,
         height: fixedHeightValue,
       }}
+      disabled={props?.disabled}
       className={`media-list grd-relative grd-flex grd-justify-center grd-items-center grd-mx-auto grd-py-5 ${props.className || ""}`}>
       <div className="grd-container">
         <p
@@ -125,7 +121,7 @@ const MediaList:FC<MediaListProps> = (props) => {
         )}
 
       </div>
-    </div>
+    </Wrapper>
   )
 }
 

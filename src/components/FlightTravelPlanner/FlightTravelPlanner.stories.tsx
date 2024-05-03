@@ -3,39 +3,12 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import FlightTravelPlanner from "./FlightTravelPlanner";
+import {flightTravelPlannerStrategy} from "../../data/dummy/flighttravelplanner";
 
 const meta = {
   title: "GordyUI/TP Flight",
   component: FlightTravelPlanner,
   argTypes: {
-    title: {
-      table: {
-        defaultValue: { summary: 'Hayalinizdeki turu keşfedin!' },
-      },
-    },
-    tourType: {
-      description: "secili <b>TAB'i</b> gostermek icin kullanilir, belirtilmezse default olarak <u>ilk deger</u> kabul edilir <i>(Kültür Turları)</i>",
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: "undefined" },
-      },
-    },
-    buttonText: {
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Ara' },
-      },
-    },
-    buttonBgColor: {
-      table: {
-        defaultValue: { summary: '#2E90FA' },
-      },
-    },
-    buttonTextColor: {
-      table: {
-        defaultValue: { summary: '#FFFFFF' },
-      },
-    },
     inputDestinationText: {
       table: {
         defaultValue: { summary: 'Bölge, tur adı veya tema arayın' },
@@ -44,20 +17,6 @@ const meta = {
     inputCheckoutDateText: {
       table: {
         defaultValue: { summary: 'Dönem seçimi' },
-      },
-    },
-    wrapperBgColor: {
-      table: {
-      },
-    },
-    wrapperWidth: {
-      table: {
-        defaultValue: { summary: '100%' },
-      },
-    },
-    wrapperHeight: {
-      table: {
-        defaultValue: { summary: 'auto' },
       },
     },
     disabled: {
@@ -85,7 +44,7 @@ type Story = StoryObj<typeof FlightTravelPlanner>;
 const DefaultFlightTravelPlanner = {
   args: {
     disabled: false,
-    noReason: false,
+    strategy: flightTravelPlannerStrategy,
     tourType: "return",
     tabButtons: [
       {label: "Gidiş Dönüş", value: "return"},
