@@ -30,7 +30,7 @@ const Input = ({
       </div>}
       <input
         ref={innerRef}
-        className={`!grd-w-full !grd-text-sm !grd-py-2.5 !grd-outline-none dark:grd-bg-dark-600 dark:grd-placeholder:grd-text-gray-200 ${inputClassName}${leftIcon ? " !grd-pl-[42px] !grd-pr-3.5" : ""}${rightIcon ? " !grd-pr-[42px] !grd-pl-3.5" : ""}`} type="text"
+        className={`!grd-w-full !grd-text-sm !grd-py-2.5 !grd-outline-none dark:grd-bg-dark-600 grd-border-none dark:grd-placeholder:grd-text-gray-200 ${inputClassName}${leftIcon ? " !grd-pl-[42px] !grd-pr-3.5" : ""}${rightIcon ? " !grd-pr-[42px] !grd-pl-3.5" : ""}`} type="text"
         {...args}
       />
       {rightIcon && <div className={`!grd-absolute !grd-right-3.5 !grd-pointer-events-none ${iconWrapperClassName}`}>
