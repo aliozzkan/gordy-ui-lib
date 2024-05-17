@@ -59,11 +59,7 @@ interface TourTravelPlannerProps {
 
 interface FlightTravelPlannerProps {
     className?: string;
-    title?: string;
-    subTitle?: string;
-    buttonText?: string;
-    buttonBgColor?: string;
-    buttonTextColor?: string;
+    strategy?: any;
     inputDestinationText?: string;
     inputReturnText?: string;
     inputCheckinDateText?: string;
@@ -71,13 +67,10 @@ interface FlightTravelPlannerProps {
     inputPassengerAndCabinText?: string;
     inputPersonText?: string;
     inputTravelReasonText?: string;
-    wrapperBgColor?: string;
-    wrapperWidth?: string;
-    wrapperHeight?: string;
     disabled?: boolean;
     tourType?: "return" | "one-way" | "multi";
-    noReason: boolean;
-    tabButtons: TabButtonProps[];
+    noReason?: boolean;
+    tabButtons?: TabButtonProps[];
     onSubmit?(e: any): void;
 }
 
@@ -155,19 +148,14 @@ interface IconListProps {
     maxItemLength: number;
     strategy: any;
     className?: string;
+    disabled?: boolean;
 }
 declare const IconList: FC<IconListProps>;
 
 interface MediaListProps {
     strategy: any;
-    maxItemLength: number;
-    title?: string;
     className?: string;
-    wrapperBgColor?: string;
-    wrapperWidth?: string;
-    wrapperHeight?: string;
-    showArrows?: boolean;
-    showBullets?: boolean;
+    disabled?: boolean;
 }
 declare const MediaList: FC<MediaListProps>;
 

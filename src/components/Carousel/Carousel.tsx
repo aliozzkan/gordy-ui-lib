@@ -176,11 +176,19 @@ export const Carousel: FC<CarouselProps> = (props) => {
 
   const categoryItemOnClick = (e: any) => {
     setActiveCategoryId(e)
-    const itemIndex = categories.findIndex((category: any) => category?.categoryId == e),
-      willChangeSlider = orderedStrategyItems && orderedStrategyItems[itemIndex - 1]?.sliders?.length
-    let slideTo = 0
-    if (willChangeSlider){slideTo = willChangeSlider}
-    swiper.slideTo(slideTo, 700)
+    const itemIndex = categories.findIndex((category: any) => category?.categoryId == e);
+      //willChangeSlider = orderedStrategyItems && orderedStrategyItems[itemIndex - 1]?.sliders?.length
+
+    let willChangeSliderList = [],
+      index = 0
+
+    do {
+      if (itemIndex){
+        willChangeSliderList.push(...orderedStrategyItems[index].sliders);
+        index = index + 1
+      } else break
+    } while (index < itemIndex);
+    swiper.slideTo(willChangeSliderList?.length, 700)
   }
 
   const sliderOnChange = (e: any) => {
