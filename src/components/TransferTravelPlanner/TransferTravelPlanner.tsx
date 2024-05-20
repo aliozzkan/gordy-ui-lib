@@ -113,7 +113,7 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
                     <Input className={`${RotationChange ? "order-3" : ""}  ${ActiveTab !== "return"}`}
                            innerRef={destionationRef}
                            leftIcon={<LIcon size={18} name="MapPin" />}
-                           placeholder={!RotationChange ? inputReturnText || transferTravelPlannerData.inputReturnText : inputDestinationText || transferTravelPlannerData.inputDestinationText}/>
+                           placeholder={!RotationChange ? inputDestinationText || transferTravelPlannerData.inputDestinationText : inputReturnText || transferTravelPlannerData.inputReturnText}/>
                     <div
                       onClick={() => rightToLeftOnClick(`transfer_${index}`)}
                       className={`grd-absolute grd-top-1/2 grd-left-1/2 -grd-translate-x-1/2 -grd-translate-y-1/2${!RotationChange ? " -grd-rotate-180" : ""} grd-group-has-[input] grd-p-2 grd-cursor-pointer grd-text-gray-500 grd-transition 

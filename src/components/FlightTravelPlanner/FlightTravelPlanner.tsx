@@ -133,7 +133,7 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
                     <Input className={`${RotationChange ? "order-3" : ""}  ${ActiveTab !== "multi"}`}
                            innerRef={destionationRef}
                            leftIcon={<LIcon size={18} name="Plane" />}
-                           placeholder={!RotationChange ? inputReturnText || flightTravelPlannerData.inputReturnText : inputDestinationText || flightTravelPlannerData.inputDestinationText}/>
+                           placeholder={!RotationChange ? inputDestinationText || flightTravelPlannerData.inputDestinationText : inputReturnText || flightTravelPlannerData.inputReturnText}/>
                     <div
                       onClick={() => rightToLeftOnClick(`flight_${index}`)}
                       className={`grd-absolute grd-top-1/2 grd-left-1/2 -grd-translate-x-1/2 -grd-translate-y-1/2${!RotationChange ? " -grd-rotate-180" : ""} grd-group-has-[input] grd-p-2 grd-cursor-pointer grd-text-gray-500 grd-transition 
