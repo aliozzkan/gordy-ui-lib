@@ -80,7 +80,7 @@ const MediaList:FC<MediaListProps> = (props) => {
             return (
                 <SwiperSlide key={index}
                      className={`media-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
-                      grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-primary-500`}
+                      grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-blue-500`}
                      style={{ borderRadius: "8px" }}
                 >
                   <a className="grd-block grd-w-full" href={media?.link || undefined} target={media?.actions?.target || "_self"}>

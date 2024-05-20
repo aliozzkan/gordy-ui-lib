@@ -13,7 +13,7 @@ const SliderCategories = (props: any) => {
     hidden={!categoryInfo?.visible}
     onClick={() => props.categoryItemOnClick(props.categoryInfo?.id)}
     className={`grd-px-4 grd-py-2.5 grd-rounded-lg hover:grd-shadow-xs grd-border hover:grd-border-blue-300 grd-text-nowrap grd-cursor-pointer grd-transition grd-duration-300 grd-select-none 
-    ${props?.isActive ? "grd-border-primary-500 grd-text-primary-500" : "grd-border-transparent"}`}>
+    ${props?.isActive ? "grd-border-blue-500 grd-text-blue-500" : "grd-border-transparent"}`}>
     {sliderCategoryName}
   </div>
 

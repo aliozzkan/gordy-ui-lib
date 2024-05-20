@@ -12,12 +12,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "grd-bg-slate-900 grd-text-gray-500 " +
+        default: "grd-border grd-border-transparent grd-bg-slate-900 grd-text-gray-500 " +
           "dark:grd-bg-slate-50 dark:grd-text-slate-900",
-        primary: "grd-bg-blue-500 grd-text-white " +
+        primary: "grd-border grd-border-transparent grd-bg-blue-500 grd-text-white " +
           "dark:!grd-bg-blue-600 dark:grd-text-dark-600",
         destructive:
-          "grd-bg-red-500 grd-text-white " +
+          "grd-border grd-border-transparent grd-bg-red-500 grd-text-white " +
           "dark:grd-bg-red-900 dark:grd-text-gray-500",
         outline:
           "grd-border grd-border-gray-200 grd-bg-white grd-transition grd-duration-400 grd-text-gray-500 " +
@@ -26,11 +26,11 @@ const buttonVariants = cva(
           "grd-border grd-border-blue-200 grd-bg-white grd-transition grd-duration-400 grd-text-blue-500 grd-shadow-xs " +
           "dark:!grd-border-blue-900 dark:!grd-text-blue-600 dark:grd-bg-dark-600",
         secondary:
-          "grd-bg-slate-100 grd-text-slate-900 " +
+          "grd-border grd-border-transparent grd-bg-slate-100 grd-text-slate-900 " +
           "dark:grd-bg-slate-800 dark:grd-text-gray-500",
-        ghost: "hover:grd-bg-slate-100 hover:grd-text-slate-900 " +
+        ghost: "grd-border grd-border-transparent hover:grd-bg-slate-100 hover:grd-text-slate-900 " +
           "dark:grd-text-gray-100 dark:hover:grd-bg-dark-500 dark:hover:grd-text-gray-100",
-        link: "grd-text-slate-900 grd-underline-offset-4 " +
+        link: "grd-border grd-border-transparent grd-text-slate-900 grd-underline-offset-4 " +
           "hover:grd-underline dark:grd-text-gray-500",
       },
       size: {

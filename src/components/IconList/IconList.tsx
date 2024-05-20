@@ -73,7 +73,7 @@ const IconList:FC<IconListProps> = (props) => {
                 <SwiperSlide className="grd-w-full" key={_index}
                 >
                   <a className={`icon-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white grd-text-sm grd-font-medium grd-text-color-800 
-                      grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-primary-500 grd-px-2 grd-py-4`}
+                      grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-blue-500 grd-px-2 grd-py-4`}
                      style={{
                        ...items![_index]?.style,
                        borderRadius: 8

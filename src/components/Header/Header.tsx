@@ -37,7 +37,7 @@ export const TabButton = (props: HeaderTabBarProps) => {
     onClick={() => props.onClick && props.onClick(props.label)}
     className={`tab-button grd-relative grd-flex grd-items-center grd-gap-2 grd-py-4 grd-px-2 grd-cursor-pointer grd-transition grd-duration-400 ${className}
     after:grd-absolute after:grd-w-full after:grd-bottom-0 after:grd-left-0 after:grd-border-b-2 after:grd-border-transparent after:grd-transition after:grd-duration-400
-    ${props?.isActive ? "grd-text-primary-500 after:grd-content-[''] after:!grd-border-primary-500" : ""}`}>
+    ${props?.isActive ? "grd-text-blue-500 after:grd-content-[''] after:!grd-border-blue-500" : ""}`}>
     <LIcon name={props.icon} size={props.size || 20} />
     <span>{props.label}</span>
   </div>
