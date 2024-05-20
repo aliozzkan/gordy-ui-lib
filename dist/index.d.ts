@@ -69,6 +69,7 @@ interface FlightTravelPlannerProps {
     inputTravelReasonText?: string;
     disabled?: boolean;
     tourType?: "return" | "one-way" | "multi";
+    tpType?: "Agency" | "Corporate";
     noReason?: boolean;
     tabButtons?: TabButtonProps[];
     onSubmit?(e: any): void;

@@ -9,6 +9,13 @@ const meta = {
   title: "GordyUI/TP Flight",
   component: FlightTravelPlanner,
   argTypes: {
+    tpType: {
+      description: "Tp tipini degistirmek icin kullanilir, belirtilmezse default olarak <u>ilk deger</u> kabul edilir <i>(Agency)</i>",
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: "undefined" },
+      },
+    },
     inputDestinationText: {
       table: {
         defaultValue: { summary: 'Bölge, tur adı veya tema arayın' },
@@ -51,6 +58,7 @@ const DefaultFlightTravelPlanner = {
       {label: "Tek Yön", value: "one-way"},
       {label: "Çoklu Uçuş", value: "multi"},
     ],
+    tpType: "Agency",
     onSubmit(e: any) {
       console.log(e);
     }
