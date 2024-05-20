@@ -93,10 +93,8 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
               {tabButtons && tabButtons.map((list: TabButtonProps, index) => {
                 return (
                   <Button key={index}
-                          variant="outline"
-                          onClick={() => handleTabChange(list)}
-                          className={`grd-text-gray-500 grd-border-transparent
-                      ${ActiveTab === list.value ? "grd-text-primary-500 !grd-border-primary-200 grd-shadow-xs dark:!grd-border-primary-900 dark:!grd-text-primary-600 dark:grd-bg-dark-600" : ""}`}>{list.label}</Button>
+                          variant={ActiveTab === list.value ? "outline-primary" : "ghost"}
+                          onClick={() => handleTabChange(list)}>{list.label}</Button>
                 )
               })}
             </div>
@@ -117,7 +115,7 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
                     <div
                       onClick={() => rightToLeftOnClick(`transfer_${index}`)}
                       className={`grd-absolute grd-top-1/2 grd-left-1/2 -grd-translate-x-1/2 -grd-translate-y-1/2${!RotationChange ? " -grd-rotate-180" : ""} grd-group-has-[input] grd-p-2 grd-cursor-pointer grd-text-gray-500 grd-transition 
-                  hover:grd-text-blue-500 hover:grd-border-primary-100 grd-shadow-xs grd-rounded-full grd-border grd-border-gray-200 grd-bg-white grd-z-10 dark:grd-bg-dark-600 dark:grd-border-gray-800 dark:grd-text-gray-200`}>
+                  hover:grd-text-blue-500 hover:grd-border-blue-100 grd-shadow-xs grd-rounded-full grd-border grd-border-gray-200 grd-bg-white grd-z-10 dark:grd-bg-dark-600 dark:grd-border-gray-800 dark:grd-text-gray-200`}>
                       <LIcon name="ArrowRightLeft" size={16} />
                     </div>
                     <Input

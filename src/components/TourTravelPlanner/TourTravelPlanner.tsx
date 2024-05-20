@@ -64,10 +64,8 @@ const TourTravelPlanner:FC<TourTravelPlannerProps> = ({
             {tabButtons && tabButtons.map((list: TabButtonProps, index) => {
               return (
               <Button key={index}
-                      variant="outline"
-                      onClick={() => handleTabChange(list)}
-                      className={`grd-text-gray-500 grd-border-transparent
-                      ${ActiveTab === list.value ? "grd-text-primary-500 !grd-border-primary-200 grd-shadow-xs dark:!grd-border-primary-900 dark:!grd-text-primary-600 dark:grd-bg-dark-600" : ""}`}>{list.label}</Button>
+                      variant={ActiveTab === list.value ? "outline-primary" : "ghost"}
+                      onClick={() => handleTabChange(list)}>{list.label}</Button>
               )
             })}
           </ButtonGroup>

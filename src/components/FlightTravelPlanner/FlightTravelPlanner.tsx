@@ -116,7 +116,7 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
             </div>
             <div className="grd-flex grd-items-center grd-gap-8 grd-ml-auto grd-font-medium grd-text-sm grd-select-none">
               {isAgency && (
-                <div className="grd-flex grd-items-center grd-text-primary-500 grd-cursor-not-allowed">
+                <div className="grd-flex grd-items-center grd-text-blue-500 grd-cursor-not-allowed">
                   <p className="grd-pr-1">1 Yolcu, Ekonomi</p>
                   <LIcon className="grd-mt-0.5" size={18} name="ChevronDown"/>
                 </div>
@@ -146,7 +146,7 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
                     <div
                       onClick={() => rightToLeftOnClick(`flight_${index}`)}
                       className={`grd-absolute grd-top-1/2 grd-left-1/2 -grd-translate-x-1/2 -grd-translate-y-1/2${!RotationChange ? " -grd-rotate-180" : ""} grd-group-has-[input] grd-p-2 grd-cursor-pointer grd-text-gray-500 grd-transition 
-                  hover:grd-text-blue-500 hover:grd-border-primary-100 grd-shadow-xs grd-rounded-full grd-border grd-border-gray-200 grd-bg-white grd-z-10 dark:grd-bg-dark-600 dark:grd-border-gray-800 dark:grd-text-gray-200`}>
+                  hover:grd-text-blue-500 hover:grd-border-blue-100 grd-shadow-xs grd-rounded-full grd-border grd-border-gray-200 grd-bg-white grd-z-10 dark:grd-bg-dark-600 dark:grd-border-gray-800 dark:grd-text-gray-200`}>
                       <LIcon name="ArrowRightLeft" size={16} />
                     </div>
                     <Input
@@ -175,7 +175,7 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
               <div className="flex gap-2 col-span-4 b-4">
                 <div
                   onClick={() => addFlight(`flight_${Object.values(FlightAmounts).length}`)}
-                  className="grd-inline-flex grd-items-center grd-text-primary-500 grd-cursor-pointer hover:grd-opacity-60 dark:grd-text-primary-600">
+                  className="grd-inline-flex grd-items-center grd-text-blue-500 grd-cursor-pointer hover:grd-opacity-60 dark:grd-text-blue-600">
                   <LIcon name="Plus" size={20} />
                   <span className="grd-font-medium grd-text-sm">Uçuş Ekle</span>
                 </div>
