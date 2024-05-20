@@ -52,9 +52,6 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
   const handleOnSubmit = {}
 
   const rightToLeftOnClick = (flight: any) => {
-    if (!destionationRef.current!["value"]){
-      return false
-    }
     setFlightAmounts({
       ...FlightAmounts,
       [flight]: {
@@ -135,9 +132,8 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
                   <div className={`grd-relative grd-flex grd-gap-4${ActiveTab !== "multi" ? " grd-col-span-2" : " grd-col-span-3"}`}>
                     <Input className={`${RotationChange ? "order-3" : ""}  ${ActiveTab !== "multi"}`}
                            innerRef={destionationRef}
-                           defaultValue="Istanbul"
                            leftIcon={<LIcon size={18} name="Plane" />}
-                           placeholder={inputDestinationText || flightTravelPlannerData.inputDestinationText}/>
+                           placeholder={!RotationChange ? inputReturnText || flightTravelPlannerData.inputReturnText : inputDestinationText || flightTravelPlannerData.inputDestinationText}/>
                     <div
                       onClick={() => rightToLeftOnClick(`flight_${index}`)}
                       className={`grd-absolute grd-top-1/2 grd-left-1/2 -grd-translate-x-1/2 -grd-translate-y-1/2${!RotationChange ? " -grd-rotate-180" : ""} grd-group-has-[input] grd-p-2 grd-cursor-pointer grd-text-gray-500 grd-transition 

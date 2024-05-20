@@ -56,9 +56,6 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
   const handleOnSubmit = {}
 
   const rightToLeftOnClick = (transfer: any) => {
-    if (!destionationRef.current!["value"]){
-      return false
-    }
     setTransferAmounts({
       ...TransferAmounts,
       [transfer]: {
@@ -115,9 +112,8 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
                   <div className={`grd-relative grd-flex grd-w-full grd-gap-4`}>
                     <Input className={`${RotationChange ? "order-3" : ""}  ${ActiveTab !== "return"}`}
                            innerRef={destionationRef}
-                           defaultValue="Istanbul"
                            leftIcon={<LIcon size={18} name="MapPin" />}
-                           placeholder={!RotationChange ? inputReturnText || transferTravelPlannerData.inputDestinationText : inputDestinationText || transferTravelPlannerData.inputReturnText}/>
+                           placeholder={!RotationChange ? inputReturnText || transferTravelPlannerData.inputReturnText : inputDestinationText || transferTravelPlannerData.inputDestinationText}/>
                     <div
                       onClick={() => rightToLeftOnClick(`transfer_${index}`)}
                       className={`grd-absolute grd-top-1/2 grd-left-1/2 -grd-translate-x-1/2 -grd-translate-y-1/2${!RotationChange ? " -grd-rotate-180" : ""} grd-group-has-[input] grd-p-2 grd-cursor-pointer grd-text-gray-500 grd-transition 
