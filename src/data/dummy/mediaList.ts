@@ -15,7 +15,7 @@ export const MediaListDummy = {
         "category": {
           "categoryId": 123,
           "categoryName": "ensar media 1",
-          "categoryOrder": 1,
+          "order": 1,
           "categoryVisible": true
         },
         "medias": [

@@ -32,11 +32,12 @@ const CategoryWrapper = (props: any) => {
       categories.push({
         id: item?.category?.categoryId,
         name: item?.category?.categoryName,
-        order: item?.category?.categoryOrder,
+        order: item?.category?.order,
         visible: item?.category?.categoryVisible
       })
     }
   })
+
   let orderedStrategyItems = categories.sort((a, b) => (a.order > b.order ? 1 : -1))
 
   const getActiveCategory = () => {
@@ -71,6 +72,15 @@ const Sliders = (props: any) => {
 
   const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows
   const pagination = strategy?.visual?.paginationStyle?.swipeNavigation
+
+
+  const getImageHeight = (img: any, loadedItemIndex: number) => {
+    return new Promise((resolve) => {
+      resolve({target: img.target})
+    })
+  }
+
+
   return (
     <>
       <Swiper
@@ -79,7 +89,7 @@ const Sliders = (props: any) => {
         //style={{...strategy?.visual?.style}}
         speed={1000}
         parallax={true}
-        initialSlide={props?.activeSlider}
+        initialSlide={props?.activeSliderIndex}
         slidesPerView={1}
         grabCursor={true}
         autoHeight={true}
@@ -104,6 +114,7 @@ const Sliders = (props: any) => {
         }
       >
         {props?.sliders && props?.sliders.map((slide: any, index: number) => {
+
           return (
             <SwiperSlide
               key={index}
@@ -112,10 +123,10 @@ const Sliders = (props: any) => {
             >
 
               {(slide?.title || slide?.buttonText) && (
-                <div className="grd-relative grd-w-full grd-px-10 grd-py-16 grd-shrink-0" data-swiper-parallax="20%">
+                <div className="grd-w-full grd-px-10 grd-py-16 grd-shrink-0" data-swiper-parallax="20%">
                   {slide?.title && (
                     <p data-swiper-parallax="-200" className={`grd-text-white grd-drop-shadow-lg ${!slide?.titleStyle?.fontSize ? "grd-text-5xl" : ""}`} style={{fontSize: "48px", ...slide.titleStyle}} dangerouslySetInnerHTML={{ __html: slide?.title }}></p>
-                    )
+                  )
                   }
                   {slide?.buttonText && (
                     <a href={slide?.buttonActions?.link || undefined} target={slide?.buttonActions?.target || "_self"}>
@@ -127,7 +138,9 @@ const Sliders = (props: any) => {
               )}
 
               {slide?.imagePath && (
-                <img className={`grd-max-w-full grd-object-cover grd-object-center ${slide?.title || slide?.buttonText ? "grd-absolute -grd-z-10" : ""}`} src={slide.imagePath}
+                <img onLoad={(e) => getImageHeight(e, index).then((res: any) => {
+                  res.target.parentNode.style.minHeight = `${res.target.height < 150 ? 150 : `${res.target.height}px`}`
+                })} className={`grd-max-w-full grd-object-cover grd-object-center ${slide?.title || slide?.buttonText ? "grd-absolute -grd-z-10" : ""}`} src={slide.imagePath}
                      alt={`grd-swiper img ${slide.uuid}`}/>
               )}
 
@@ -152,17 +165,19 @@ const Sliders = (props: any) => {
 export interface CarouselProps {
   strategy: any,
   activeCategoryId?: number,
+  activeSliderIndex?: number,
 }
 
 export const Carousel: FC<CarouselProps> = (props) => {
   const [activeCategoryId, setActiveCategoryId] = useState(props?.activeCategoryId)
+  const [activeSliderIndex] = useState(props?.activeSliderIndex)
   const [swiper, setSwiper] = useState<any>({});
 
   const {strategy} = props
 
   // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
   const fixedHeightValue = strategy?.visual?.height === 0 ? undefined : strategy?.visual?.height
-  let orderedStrategyItems = strategy?.data?.items?.sort((a:any, b:any) => (a.category?.categoryOrder > b.category?.categoryOrder ? 1 : -1))
+  let orderedStrategyItems = strategy?.data?.items?.sort((a:any, b:any) => (a.category?.order > b.category?.order ? 1 : -1))
   const categories: any = [],
     sliders: any = []
   orderedStrategyItems && orderedStrategyItems?.map((item: any) => {
@@ -177,7 +192,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
   const categoryItemOnClick = (e: any) => {
     setActiveCategoryId(e)
     const itemIndex = categories.findIndex((category: any) => category?.categoryId == e);
-      //willChangeSlider = orderedStrategyItems && orderedStrategyItems[itemIndex - 1]?.sliders?.length
+    //willChangeSlider = orderedStrategyItems && orderedStrategyItems[itemIndex - 1]?.sliders?.length
 
     let willChangeSliderList = [],
       index = 0
@@ -194,7 +209,9 @@ export const Carousel: FC<CarouselProps> = (props) => {
   const sliderOnChange = (e: any) => {
     orderedStrategyItems.map((item: any) => {
       item.sliders.map((slider: any) => {
-        if (slider?.Id === sliders[e.activeIndex]?.Id) setActiveCategoryId(item?.category?.categoryId)
+        if (slider?.id === sliders[e.activeIndex]?.id) {
+          setActiveCategoryId(item?.category?.categoryId)
+        }
       })
     })
   }
@@ -209,7 +226,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
       {sliders.length > 0 && (
         <>
           <CategoryWrapper activeCategoryId={activeCategoryId} itemOnClick={categoryItemOnClick} items={orderedStrategyItems}/>
-          <Sliders sliderOnChange={sliderOnChange} sliders={sliders} strategy={strategy} setSwiper={setSwiper}/>
+          <Sliders activeSliderIndex={activeSliderIndex} sliderOnChange={sliderOnChange} sliders={sliders} strategy={strategy} setSwiper={setSwiper}/>
         </>
       )}
     </div>

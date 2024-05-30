@@ -38,6 +38,7 @@ const DefaultCarousel = {
   args: {
     strategy: TabSliderStrategy,
     //activeCategoryId: 0,
+    activeSliderIndex: 0,
   },
 } satisfies Story;
 
