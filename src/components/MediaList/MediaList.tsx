@@ -66,56 +66,58 @@ const MediaList: FC<MediaListProps> = (props) => {
           style={{ fontSize: "24px", ...strategy?.data?.titleStyle }}
         ></p>
 
-        <div className="grd-space-y-2 grd-mb-2">
-          {[...medias].splice(0, 2).map((media: any, index: number) => {
-            return (
-              <div
-                key={index}
-                className={`media-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
+        {matches && (
+          <div className="grd-space-y-2 grd-mb-2">
+            {[...medias].splice(0, 2).map((media: any, index: number) => {
+              return (
+                <div
+                  key={index}
+                  className={`media-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
                   grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-blue-500`}
-                style={{ borderRadius: "8px" }}
-              >
-                <a
-                  className="grd-block grd-w-full"
-                  href={media?.link || undefined}
-                  target={media?.actions?.target || "_self"}
+                  style={{ borderRadius: "8px" }}
                 >
-                  <div
-                    className="image-wrapper grd-flex grd-items-center grd-justify-center grd-h-[190px] grd-w-full"
-                    style={{ backgroundColor: media?.backgroundColor }}
+                  <a
+                    className="grd-block grd-w-full"
+                    href={media?.link || undefined}
+                    target={media?.actions?.target || "_self"}
                   >
-                    {media?.imagePath && (
-                      <img
-                        className="grd-max-w-full grd-max-h-full grd-object-center grd-object-cover"
-                        src={media?.imagePath}
-                        alt={""}
-                      />
-                    )}
-                  </div>
+                    <div
+                      className="image-wrapper grd-flex grd-items-center grd-justify-center grd-h-[190px] grd-w-full"
+                      style={{ backgroundColor: media?.backgroundColor }}
+                    >
+                      {media?.imagePath && (
+                        <img
+                          className="grd-max-w-full grd-max-h-full grd-object-center grd-object-cover"
+                          src={media?.imagePath}
+                          alt={""}
+                        />
+                      )}
+                    </div>
 
-                  <div className="grd-mt-1 grd-w-full grd-flex grd-flex-col grd-p-4">
-                    {media.title && (
-                      <span
-                        style={{ ...media.titleStyle }}
-                        className="grd-text-base grd-font-semibold grd-text-color-800 grd-truncate"
-                        title={media?.title}
-                        dangerouslySetInnerHTML={{ __html: media?.title }}
-                      />
-                    )}
-                    {media?.displaySubTitle && (
-                      <span
-                        style={{ ...media.subTitleStyle }}
-                        className="grd-mt-0.5 grd-text-sm grd-font-normal grd-text-gray-500 grd-truncate"
-                        title={media?.subTitle}
-                        dangerouslySetInnerHTML={{ __html: media?.subTitle }}
-                      />
-                    )}
-                  </div>
-                </a>
-              </div>
-            );
-          })}
-        </div>
+                    <div className="grd-mt-1 grd-w-full grd-flex grd-flex-col grd-p-4">
+                      {media.title && (
+                        <span
+                          style={{ ...media.titleStyle }}
+                          className="grd-text-base grd-font-semibold grd-text-color-800 grd-truncate"
+                          title={media?.title}
+                          dangerouslySetInnerHTML={{ __html: media?.title }}
+                        />
+                      )}
+                      {media?.displaySubTitle && (
+                        <span
+                          style={{ ...media.subTitleStyle }}
+                          className="grd-mt-0.5 grd-text-sm grd-font-normal grd-text-gray-500 grd-truncate"
+                          title={media?.subTitle}
+                          dangerouslySetInnerHTML={{ __html: media?.subTitle }}
+                        />
+                      )}
+                    </div>
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+        )}
 
         <Swiper
           className={`grd-w-full grd-overflow-hidden ${
