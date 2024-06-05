@@ -1,41 +1,49 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import LIcon from "../lucidIcon/lucidIcon";
-import {Wrapper} from "../ui";
+import { Wrapper } from "../ui";
+import { useMediaQuery } from "usehooks-ts";
 
 export interface MediaListProps {
-  strategy: any,
+  strategy: any;
   className?: string;
   disabled?: boolean;
 }
 
-const MediaList:FC<MediaListProps> = (props) => {
-
-  const {strategy} = props
+const MediaList: FC<MediaListProps> = (props) => {
+  const matches = useMediaQuery("(max-width: 768px)");
+  const { strategy } = props;
   // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
-  const fixedHeightValue = strategy?.visual?.height === 0 ? undefined : strategy?.visual?.height
+  const fixedHeightValue =
+    strategy?.visual?.height === 0 ? undefined : strategy?.visual?.height;
 
-  const medias: any = []
-  let itemLength = 0
-  strategy?.data?.items && strategy.data.items.map((item: any) => {
-    if (item?.medias) {
-      medias.push(...item.medias)
-      item.medias.map(() => {
-        itemLength++
-      })
-    }
-  })
+  const medias: any = [];
+  let itemLength = 0;
+  strategy?.data?.items &&
+    strategy.data.items.map((item: any) => {
+      if (item?.medias) {
+        medias.push(...item.medias);
+        item.medias.map(() => {
+          itemLength++;
+        });
+      }
+    });
 
-  if (!medias.length && !strategy?.visual?.style && !strategy?.data?.title &&  !strategy?.data?.titleStyle) {
-    return <></>
+  if (
+    !medias.length &&
+    !strategy?.visual?.style &&
+    !strategy?.data?.title &&
+    !strategy?.data?.titleStyle
+  ) {
+    return <></>;
   }
 
-  const swiperId = Math.floor(Math.random() * 1000000000000)
+  const swiperId = Math.floor(Math.random() * 1000000000000);
 
-  const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows
-  const pagination = strategy?.visual?.paginationStyle?.swipeNavigation
+  const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows;
+  const pagination = strategy?.visual?.paginationStyle?.swipeNavigation;
 
   return (
     <Wrapper
@@ -45,20 +53,86 @@ const MediaList:FC<MediaListProps> = (props) => {
         height: fixedHeightValue,
       }}
       disabled={props?.disabled}
-      className={`media-list grd-relative grd-flex grd-justify-center grd-items-center grd-mx-auto grd-py-5 ${props.className || ""}`}>
+      className={`media-list grd-relative grd-flex grd-justify-center grd-items-center grd-mx-auto grd-py-5 ${
+        props.className || ""
+      }`}
+    >
       <div className="grd-container">
         <p
-          className={`grd-text-gray-800 grd-font-semibold grd-drop-shadow-lg grd-mb-6 ${!strategy?.data?.titleStyle?.fontSize ? "grd-text-2xl" : ""}`}
+          className={`grd-text-gray-800 grd-font-semibold grd-drop-shadow-lg grd-mb-6 ${
+            !strategy?.data?.titleStyle?.fontSize ? "grd-text-2xl" : ""
+          }`}
           dangerouslySetInnerHTML={{ __html: strategy?.data?.title }}
-          style={{fontSize: "24px", ...strategy?.data?.titleStyle}}>
-        </p>
+          style={{ fontSize: "24px", ...strategy?.data?.titleStyle }}
+        ></p>
+
+        <div className="grd-space-y-2 grd-mb-2">
+          {[...medias].splice(0, 2).map((media: any, index: number) => {
+            return (
+              <div
+                key={index}
+                className={`media-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
+                  grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-blue-500`}
+                style={{ borderRadius: "8px" }}
+              >
+                <a
+                  className="grd-block grd-w-full"
+                  href={media?.link || undefined}
+                  target={media?.actions?.target || "_self"}
+                >
+                  <div
+                    className="image-wrapper grd-flex grd-items-center grd-justify-center grd-h-[190px] grd-w-full"
+                    style={{ backgroundColor: media?.backgroundColor }}
+                  >
+                    {media?.imagePath && (
+                      <img
+                        className="grd-max-w-full grd-max-h-full grd-object-center grd-object-cover"
+                        src={media?.imagePath}
+                        alt={""}
+                      />
+                    )}
+                  </div>
+
+                  <div className="grd-mt-1 grd-w-full grd-flex grd-flex-col grd-p-4">
+                    {media.title && (
+                      <span
+                        style={{ ...media.titleStyle }}
+                        className="grd-text-base grd-font-semibold grd-text-color-800 grd-truncate"
+                        title={media?.title}
+                        dangerouslySetInnerHTML={{ __html: media?.title }}
+                      />
+                    )}
+                    {media?.displaySubTitle && (
+                      <span
+                        style={{ ...media.subTitleStyle }}
+                        className="grd-mt-0.5 grd-text-sm grd-font-normal grd-text-gray-500 grd-truncate"
+                        title={media?.subTitle}
+                        dangerouslySetInnerHTML={{ __html: media?.subTitle }}
+                      />
+                    )}
+                  </div>
+                </a>
+              </div>
+            );
+          })}
+        </div>
 
         <Swiper
-          className={`grd-w-full grd-overflow-hidden ${pagination && itemLength > 4 ? "grd-pb-10" : ""} swiper-${swiperId} ${props.className || ""}`}
+          className={`grd-w-full grd-overflow-hidden ${
+            pagination && itemLength > 4 ? "grd-pb-10" : ""
+          } swiper-${swiperId} ${props.className || ""}`}
           spaceBetween={15}
           //style={{...strategy?.visual?.style}}
           speed={1000}
-          slidesPerView={strategy?.data?.items ? itemLength >= 4 ? 4 : itemLength : 1}
+          slidesPerView={
+            matches
+              ? 2
+              : strategy?.data?.items
+              ? itemLength >= 4
+                ? 4
+                : itemLength
+              : 1
+          }
           grabCursor={true}
           autoHeight={true}
           modules={[Pagination, Navigation]}
@@ -70,60 +144,81 @@ const MediaList:FC<MediaListProps> = (props) => {
           pagination={
             pagination
               ? {
-                clickable: pagination,
-                dynamicBullets: true,
-                dynamicMainBullets: 4,
-              }
+                  clickable: pagination,
+                  dynamicBullets: true,
+                  dynamicMainBullets: 4,
+                }
               : false
-          }>
-          {medias.map((media: any, index: number) => {
-            return (
-                <SwiperSlide key={index}
-                     className={`media-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
+          }
+        >
+          {(matches ? [...medias].slice(2) : medias).map(
+            (media: any, index: number) => {
+              return (
+                <SwiperSlide
+                  key={index}
+                  className={`media-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
                       grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-blue-500`}
-                     style={{ borderRadius: "8px" }}
+                  style={{ borderRadius: "8px" }}
                 >
-                  <a className="grd-block grd-w-full" href={media?.link || undefined} target={media?.actions?.target || "_self"}>
-                    <div className="image-wrapper grd-flex grd-items-center grd-justify-center grd-h-[190px] grd-w-full" style={{backgroundColor: media?.backgroundColor}}>
+                  <a
+                    className="grd-block grd-w-full"
+                    href={media?.link || undefined}
+                    target={media?.actions?.target || "_self"}
+                  >
+                    <div
+                      className="image-wrapper grd-flex grd-items-center grd-justify-center grd-h-[190px] grd-w-full"
+                      style={{ backgroundColor: media?.backgroundColor }}
+                    >
                       {media?.imagePath && (
-                        <img className="grd-max-w-full grd-max-h-full grd-object-center grd-object-cover" src={media?.imagePath} alt={""} />
+                        <img
+                          className="grd-max-w-full grd-max-h-full grd-object-center grd-object-cover"
+                          src={media?.imagePath}
+                          alt={""}
+                        />
                       )}
                     </div>
 
                     <div className="grd-mt-1 grd-w-full grd-flex grd-flex-col grd-p-4">
-                        {(media.title) && (
-                          <span
-                            style={{...media.titleStyle}}
-                            className="grd-text-base grd-font-semibold grd-text-color-800 grd-truncate" title={media?.title} dangerouslySetInnerHTML={{ __html: media?.title }} />
-                        )}
-                        {media?.displaySubTitle && (
-                          <span
-                            style={{...media.subTitleStyle}}
-                            className="grd-mt-0.5 grd-text-sm grd-font-normal grd-text-gray-500 grd-truncate" title={media?.subTitle} dangerouslySetInnerHTML={{ __html: media?.subTitle }} />
-                        )}
-
+                      {media.title && (
+                        <span
+                          style={{ ...media.titleStyle }}
+                          className="grd-text-base grd-font-semibold grd-text-color-800 grd-truncate"
+                          title={media?.title}
+                          dangerouslySetInnerHTML={{ __html: media?.title }}
+                        />
+                      )}
+                      {media?.displaySubTitle && (
+                        <span
+                          style={{ ...media.subTitleStyle }}
+                          className="grd-mt-0.5 grd-text-sm grd-font-normal grd-text-gray-500 grd-truncate"
+                          title={media?.subTitle}
+                          dangerouslySetInnerHTML={{ __html: media?.subTitle }}
+                        />
+                      )}
                     </div>
                   </a>
                 </SwiperSlide>
-            )
-          })}
+              );
+            }
+          )}
         </Swiper>
 
         {displayArrows && (
-          <div className="swiper-navigation" style={{...strategy?.visual?.arrowVisualStyle}}>
+          <div
+            className="swiper-navigation"
+            style={{ ...strategy?.visual?.arrowVisualStyle }}
+          >
             <div className="swiper-button-prev">
-              <LIcon name="ArrowLeft"/>
+              <LIcon name="ArrowLeft" />
             </div>
             <div className="swiper-button-next">
-              <LIcon name="ArrowRight"/>
+              <LIcon name="ArrowRight" />
             </div>
           </div>
         )}
-
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
-
-export default MediaList
+export default MediaList;
