@@ -98,8 +98,8 @@ const IconList: FC<IconListProps> = (props) => {
                     ...items![_index]?.style,
                     borderRadius: 8,
                   }}
-                  href={items![_index]?.link || undefined}
-                  target={items![_index]?.actions?.target || "_self"}
+                  href={items![_index]?.url || undefined}
+                  target={items![_index]?.target || "_blank"}
                 >
                   <img
                     className="grd-w-12 grd-h-12 grd-object-center grd-object-contain"

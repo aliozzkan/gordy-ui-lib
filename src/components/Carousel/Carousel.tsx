@@ -68,17 +68,21 @@ const Sliders = (props: any) => {
 
   const {strategy} = props
 
+  const sliderTextAreaRef = useRef<any>([])
+
   const swiperId = Math.floor(Math.random() * 1000000000000)
 
   const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows
   const pagination = strategy?.visual?.paginationStyle?.swipeNavigation
 
-
-  const getImageHeight = (img: any, loadedItemIndex: number) => {
-    return new Promise((resolve) => {
-      resolve({target: img.target})
-    })
-  }
+  useEffect(() => {
+    if (sliderTextAreaRef.current){
+      sliderTextAreaRef.current.map((textArea: any) => {
+        const height = textArea.clientHeight
+        textArea.parentNode.style.minHeight = `${height}px`
+      })
+    }
+  }, [sliderTextAreaRef.current])
 
 
   return (
@@ -123,7 +127,9 @@ const Sliders = (props: any) => {
             >
 
               {(slide?.title || slide?.buttonText) && (
-                <div className="grd-w-full grd-px-10 grd-py-16 grd-shrink-0" data-swiper-parallax="20%">
+                <div
+                  ref={el => sliderTextAreaRef.current[index] = el}
+                  className="grd-w-full grd-px-10 grd-py-16 grd-shrink-0 grd-absolute grd-z-10" data-swiper-parallax="20%">
                   {slide?.title && (
                     <p data-swiper-parallax="-200" className={`grd-text-white grd-drop-shadow-lg ${!slide?.titleStyle?.fontSize ? "grd-text-5xl" : ""}`} style={{fontSize: "48px", ...slide.titleStyle}} dangerouslySetInnerHTML={{ __html: slide?.title }}></p>
                   )
@@ -138,9 +144,7 @@ const Sliders = (props: any) => {
               )}
 
               {slide?.imagePath && (
-                <img onLoad={(e) => getImageHeight(e, index).then((res: any) => {
-                  res.target.parentNode.style.minHeight = `${res.target.height < 150 ? 150 : `${res.target.height}px`}`
-                })} className={`grd-max-w-full grd-object-cover grd-object-center ${slide?.title || slide?.buttonText ? "grd-absolute -grd-z-10" : ""}`} src={slide.imagePath}
+                <img className={`grd-max-w-full grd-object-cover grd-object-center`} src={slide.imagePath}
                      alt={`grd-swiper img ${slide.uuid}`}/>
               )}
 
