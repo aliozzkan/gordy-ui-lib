@@ -4,7 +4,7 @@ export const TabSliderStrategy = {
     "height": null,
     "style": {
       "borderRadius": null,
-      "backgroundColor": null,
+      "backgroundColor": "red",
       "color": null,
       "position": null,
       "fontWeight": null,

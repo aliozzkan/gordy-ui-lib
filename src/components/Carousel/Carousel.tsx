@@ -222,16 +222,16 @@ export const Carousel: FC<CarouselProps> = (props) => {
 
 
   return (
-    <div className="gordy-carousel grd-container grd-relative grd-flex grd-flex-col grd-justify-center grd-gap-6 grd-py-5 grd-overflow-hidden" style={{
+    <div className="gordy-carousel grd-relative grd-flex grd-flex-col grd-justify-center grd-py-5 grd-overflow-hidden" style={{
       ...strategy?.visual?.style,
       width: strategy?.visual?.width,
       height: fixedHeightValue,
     }}>
       {sliders.length > 0 && (
-        <>
+        <div className="grd-container grd-flex grd-flex-col grd-gap-6">
           <CategoryWrapper activeCategoryId={activeCategoryId} itemOnClick={categoryItemOnClick} items={orderedStrategyItems}/>
           <Sliders activeSliderIndex={activeSliderIndex} sliderOnChange={sliderOnChange} sliders={sliders} strategy={strategy} setSwiper={setSwiper}/>
-        </>
+        </div>
       )}
     </div>
   )
