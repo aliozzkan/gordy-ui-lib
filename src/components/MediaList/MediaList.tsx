@@ -78,8 +78,8 @@ const MediaList: FC<MediaListProps> = (props) => {
                 >
                   <a
                     className="grd-block grd-w-full"
-                    href={media?.link || undefined}
-                    target={media?.actions?.target || "_self"}
+                    href={media?.itemAction?.link || undefined}
+                    target={media?.itemAction?.target || "_self"}
                   >
                     <div
                       className="image-wrapper grd-flex grd-items-center grd-justify-center grd-h-[190px] grd-w-full"
@@ -164,8 +164,8 @@ const MediaList: FC<MediaListProps> = (props) => {
                 >
                   <a
                     className="grd-block grd-w-full"
-                    href={media?.link || undefined}
-                    target={media?.actions?.target || "_self"}
+                    href={media?.itemAction?.link || undefined}
+                    target={media?.itemAction?.target || "_self"}
                   >
                     <div
                       className="image-wrapper grd-flex grd-items-center grd-justify-center grd-h-[190px] grd-w-full"
