@@ -4,6 +4,7 @@ import { ThemeProviderDecorators } from "../../../storybook/Decorator";
 import "../../../index.css";
 import AgencyCarRentalTravelPlannerProps from "./CarRentalTravelPlanner";
 import {carRentalTravelPlannerAgencyStrategy} from "../../../data/dummy/carrentaltravelplanner";
+import {design} from "../../../data/dummy/design";
 
 const meta = {
   title: "GordyUI/TP Car Rental Agency",
@@ -58,6 +59,7 @@ const DefaultAgencyCarRentalTravelPlannerProps = {
   args: {
     disabled: false,
     strategy: carRentalTravelPlannerAgencyStrategy,
+    design: design,
   },
 } satisfies Story;
 

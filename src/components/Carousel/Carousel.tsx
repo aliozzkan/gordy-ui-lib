@@ -5,14 +5,33 @@ import {Navigation, Pagination, Parallax} from "swiper/modules";
 
 import LIcon from "../lucidIcon/lucidIcon";
 import {Button} from "../ui";
+import {design} from "../../data/dummy/design";
+import {hexIsLight} from "../../helpers/hexIsLight";
 
 const SliderCategories = (props: any) => {
   const categoryInfo = props.categoryInfo
+  const style = props.style
+  const activeItemStyle = props.activeItemStyle
   const sliderCategoryName = categoryInfo?.name ? categoryInfo?.name : categoryInfo?.id
+
+  let styles = {
+    ...style,
+  }
+
+  if (props?.isActive){
+    styles = {
+      ...styles,
+      ...activeItemStyle,
+    }
+  }
+
   return <div
     hidden={!categoryInfo?.visible}
     onClick={() => props.categoryItemOnClick(props.categoryInfo?.id)}
-    className={`grd-px-4 grd-py-2.5 grd-rounded-lg hover:grd-shadow-xs grd-border hover:grd-border-blue-300 grd-text-nowrap grd-cursor-pointer grd-transition grd-duration-300 grd-select-none 
+    style={{
+      ...styles,
+    }}
+    className={`grd-px-4 grd-py-2.5 grd-rounded-lg hover:grd-shadow-xs grd-border hover:grd-border-gray-300 grd-text-nowrap grd-cursor-pointer grd-transition grd-duration-300 grd-select-none 
     ${props?.isActive ? "grd-border-blue-500 grd-text-blue-500" : "grd-border-transparent"}`}>
     {sliderCategoryName}
   </div>
@@ -22,6 +41,8 @@ const SliderCategories = (props: any) => {
 const CategoryWrapper = (props: any) => {
   const categories: any[] = []
   const itemOnClick = props?.itemOnClick
+  const itemStyle = props?.itemStyle
+  const activeItemStyle = props?.activeItemStyle
   const items = props?.items
   items && items.map((item: any) => {
     // ayni kategoriden olanlari ele
@@ -57,6 +78,8 @@ const CategoryWrapper = (props: any) => {
             isActive={activeIndex ? activeIndex?.id === category?.id : index === 0}
             categoryInfo={category}
             categoryItemOnClick={itemOnClick}
+            style={itemStyle}
+            activeItemStyle={activeItemStyle}
           />
         )
       })}
@@ -68,12 +91,17 @@ const Sliders = (props: any) => {
 
   const {strategy} = props
 
+  const design = props?.design
+
   const sliderTextAreaRef = useRef<any>([])
 
   const swiperId = Math.floor(Math.random() * 1000000000000)
 
   const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows
   const pagination = strategy?.visual?.paginationStyle?.swipeNavigation
+
+  //styles
+  document.body.style.setProperty("--swiper-theme-color", design?.button?.backgroundColor || "#007aff")
 
   useEffect(() => {
     if (sliderTextAreaRef.current){
@@ -96,6 +124,7 @@ const Sliders = (props: any) => {
         initialSlide={props?.activeSliderIndex}
         slidesPerView={1}
         grabCursor={true}
+        style={props?.style}
         autoHeight={true}
         onSlideChange={props.sliderOnChange}
         modules={[Parallax, Pagination, Navigation]}
@@ -123,7 +152,10 @@ const Sliders = (props: any) => {
             <SwiperSlide
               key={index}
               className={`grd-flex grd-items-center grd-w-full grd-min-h-[150px] grd-justify-center grd-overflow-hidden`}
-              style={{backgroundColor: slide?.backgroundColor}}
+              style={{
+                ...props?.slideStyle,
+                backgroundColor: slide?.backgroundColor,
+            }}
             >
 
               {(slide?.title || slide?.buttonText) && (
@@ -136,7 +168,21 @@ const Sliders = (props: any) => {
                   }
                   {slide?.buttonText && (
                     <a href={slide?.buttonActions?.link || undefined} target={slide?.buttonActions?.target || "_self"}>
-                      <Button variant="primary" className="grd-px-8 grd-text-base grd-font-medium grd-mt-6" style={{...slide?.buttonStyle}}>{slide?.buttonText}</Button>
+                      <Button
+                        variant="primary"
+                        className="grd-px-8 grd-text-base grd-font-medium grd-mt-6"
+                        style={{
+                          ...props?.design?.button,
+                          ...slide?.buttonStyle,
+                          borderRadius: slide?.buttonStyle?.borderRadius || design?.button?.borderRadius,
+                          backgroundColor: slide?.buttonStyle?.backgroundColor || design?.button?.backgroundColor,
+                          color: (!slide?.buttonStyle?.color && !design?.button?.color) ? (hexIsLight(design?.button?.backgroundColor || design?.button?.backgroundColor)
+                            ? "black"
+                            : "white") : (slide?.buttonStyle?.color || design?.button?.color),
+                      }}
+                      >
+
+                        {slide?.buttonText}</Button>
                     </a>
                   )
                   }
@@ -170,6 +216,7 @@ export interface CarouselProps {
   strategy: any,
   activeCategoryId?: number,
   activeSliderIndex?: number,
+  design?: any,
 }
 
 export const Carousel: FC<CarouselProps> = (props) => {
@@ -178,6 +225,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
   const [swiper, setSwiper] = useState<any>({});
 
   const {strategy} = props
+  const design = props?.design
 
   // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
   const fixedHeightValue = strategy?.visual?.height === 0 ? undefined : strategy?.visual?.height
@@ -229,8 +277,28 @@ export const Carousel: FC<CarouselProps> = (props) => {
     }}>
       {sliders.length > 0 && (
         <div className="grd-container grd-flex grd-flex-col grd-gap-6">
-          <CategoryWrapper activeCategoryId={activeCategoryId} itemOnClick={categoryItemOnClick} items={orderedStrategyItems}/>
-          <Sliders activeSliderIndex={activeSliderIndex} sliderOnChange={sliderOnChange} sliders={sliders} strategy={strategy} setSwiper={setSwiper}/>
+          <CategoryWrapper
+            activeCategoryId={activeCategoryId}
+            itemOnClick={categoryItemOnClick}
+            items={orderedStrategyItems}
+            activeItemStyle={{
+              borderColor: design?.button?.borderColor,
+              color: design?.button?.borderColor,
+            }}
+            itemStyle={{
+              textDecoration: design?.link?.style,
+            }}
+          />
+          <Sliders
+            activeSliderIndex={activeSliderIndex}
+            sliderOnChange={sliderOnChange}
+            sliders={sliders}
+            strategy={strategy}
+            setSwiper={setSwiper}
+            design={design}
+            style={{borderRadius: design?.borderRadius}}
+            slideStyle={{borderRadius: design?.borderRadius}}
+          />
         </div>
       )}
     </div>

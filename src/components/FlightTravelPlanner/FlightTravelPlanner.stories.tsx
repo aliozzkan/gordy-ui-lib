@@ -4,6 +4,7 @@ import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import FlightTravelPlanner from "./FlightTravelPlanner";
 import {flightTravelPlannerStrategy} from "../../data/dummy/flighttravelplanner";
+import {design} from "../../data/dummy/design";
 
 const meta = {
   title: "GordyUI/TP Flight",
@@ -59,6 +60,7 @@ const DefaultFlightTravelPlanner = {
       {label: "Çoklu Uçuş", value: "multi"},
     ],
     tpType: "Agency",
+    design: design,
     onSubmit(e: any) {
       console.log(e);
     }

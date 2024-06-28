@@ -5,11 +5,13 @@ import {HotelTravelPlannerProps} from "./HotelTravelPlannerProps";
 import {Input, Button, Wrapper, H1, H5} from "../ui";
 import TPCard from "../TPCard/TPCard";
 import Container from "../Container/Container";
+import {hexIsLight} from "../../helpers/hexIsLight";
 
 
 const HotelTravelPlanner:FC<HotelTravelPlannerProps> = ({
     className,
     strategy,
+    design,
     inputDestinationText,
     inputCheckoutDateText,
     inputGuestInfoText,
@@ -38,21 +40,36 @@ const HotelTravelPlanner:FC<HotelTravelPlannerProps> = ({
       <Container>
         <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
         <H5 style={strategy.data?.subTitleStyle} className="grd-mt-2" >{strategy.data?.subTitle}</H5>
-        <TPCard className="!grd-flex-row grd-mt-6">
+        <TPCard
+          className="!grd-flex-row grd-mt-6"
+          style={{borderRadius: design?.borderRadius}}
+        >
           <div className="grd-w-8/12 grd-flex grd-items-center grd-gap-4">
             <Input inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="Search" />}
+                   style={{borderRadius: design?.borderRadius}}
                  placeholder={inputDestinationText || travelPlannerData.inputDestinationText}/>
             <Input inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="Calendar" />}
+                   style={{borderRadius: design?.borderRadius}}
                    placeholder={inputCheckoutDateText || travelPlannerData.inputCheckoutDateText}/>
           </div>
           <div className="grd-w-4/12 grd-flex grd-items-center grd-gap-4">
             <Input inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="User" />}
+                   style={{borderRadius: design?.borderRadius}}
                    placeholder={inputGuestInfoText || travelPlannerData.inputGuestInfoText}/>
 
             <Button
               className="grd-shrink-0 grd-w-[98px] grd-py-4 grd-h-auto"
               variant="primary"
-              style={strategy.data?.buttonStyle}>{strategy.data?.button || hotelTravelPlannerStrategy.data.button}
+              style={{
+                ...design?.button,
+                ...strategy.data?.buttonStyle,
+                borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
+                backgroundColor: strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor,
+                color: (!strategy.data?.buttonStyle?.color && !design?.button?.color) ? (hexIsLight(strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor)
+                  ? "black"
+                  : "white") : (strategy.data?.buttonStyle?.color || design?.button?.color),
+              }}
+            >{strategy.data?.button || hotelTravelPlannerStrategy.data.button}
             </Button>
           </div>
         </TPCard>

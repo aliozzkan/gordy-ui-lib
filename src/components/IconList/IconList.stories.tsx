@@ -4,6 +4,7 @@ import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import IconList from "./IconList";
 import {IconListDummy} from "../../data/dummy/iconList";
+import {design} from "../../data/dummy/design";
 
 const meta = {
   title: "GordyUI/IconList",
@@ -30,6 +31,7 @@ const DefaultIconList = {
   args: {
     strategy: IconListDummy,
     maxItemLength: IconListDummy.data.items.length,
+    design: design,
   },
 } satisfies Story;
 

@@ -4,6 +4,7 @@ import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import TourTravelPlanner from "./TourTravelPlanner";
 import {tourTravelPlannerStrategy} from "../../data/dummy/tourtravelplanner";
+import {design} from "../../data/dummy/design";
 
 const meta = {
   title: "GordyUI/TP Tour",
@@ -96,6 +97,7 @@ const DefaultTourTravelPlanner = {
       {label: "Yurt Dışı Turları", value: "Yurt Disi"},
       {label: "Gemi Turları", value: "Gemi"},
     ],
+    design: design,
     onSubmit(e: any) {
       console.log(e);
     }

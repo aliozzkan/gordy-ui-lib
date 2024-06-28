@@ -4,6 +4,7 @@ import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import TransferTravelPlanner from "./TransferTravelPlanner";
 import {transferTravelPlannerStrategy} from "../../data/dummy/transfertravelplanner";
+import {design} from "../../data/dummy/design";
 
 const meta = {
   title: "GordyUI/TP Transfer",
@@ -66,6 +67,7 @@ const DefaultTransferTravelPlanner = {
       {label: "Gidiş Dönüş", value: "return"},
       {label: "Tek Yön", value: "one-way"},
     ],
+    design: design,
     onSubmit(e: any) {
       console.log(e);
     }

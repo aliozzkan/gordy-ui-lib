@@ -3,6 +3,7 @@ import {TabButtonProps} from "../TourTravelPlanner/TourTravelPlannerProps";
 export interface TransferTravelPlannerProps {
   className?: string;
   strategy?: any;
+  design?: any;
   inputDestinationText?: string;
   inputReturnText?: string;
   inputCheckinDateText?: string;

@@ -1,4 +1,4 @@
-import {FC, useEffect, useRef, useState} from "react";
+import React, {FC, useEffect, useRef, useState} from "react";
 import LIcon from "../lucidIcon/lucidIcon";
 import {FlightTravelPlannerProps} from "./FlightTravelPlannerProps";
 import {flightTravelPlannerData, flightTravelPlannerStrategy} from "../../data/dummy/flighttravelplanner";
@@ -6,10 +6,12 @@ import Container from "../Container/Container";
 import TPCard from "../TPCard/TPCard";
 import {Wrapper,H1, H5, Button, Input} from "../ui";
 import {TabButtonProps} from "../TourTravelPlanner/TourTravelPlannerProps";
+import {hexIsLight} from "../../helpers/hexIsLight";
 
 const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
     className,
     strategy,
+    design,
     inputDestinationText,
     inputReturnText,
     inputCheckinDateText,
@@ -103,12 +105,28 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
       <Container>
         <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
         <H5 style={strategy.data?.subTitleStyle} className="grd-mt-2" >{strategy.data?.subTitle}</H5>
-        <TPCard className="grd-mt-6">
+        <TPCard
+          className="grd-mt-6"
+          style={{borderRadius: design?.borderRadius}}
+        >
           <div className="grd-flex grd-items-center">
             <div className="grd-button-group grd-flex grd-gap-2">
               {tabButtons && tabButtons.map((list: TabButtonProps, index) => {
+                const isActive = ActiveTab === list.value
+
+                let style: React.CSSProperties = {
+                  borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
+                }
+                if (isActive){
+                  style = {
+                    ...style,
+                    borderColor: strategy.data?.buttonStyle?.borderColor || design?.button?.borderColor,
+                    color: strategy.data?.buttonStyle?.borderColor || design?.button?.borderColor,}
+                }
+
                 return (
                   <Button key={index}
+                          style={style}
                           variant={ActiveTab === list.value ? "outline-primary" : "ghost"}
                           onClick={() => handleTabChange(list)}>{list.label}</Button>
                 )
@@ -116,7 +134,11 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
             </div>
             <div className="grd-flex grd-items-center grd-gap-8 grd-ml-auto grd-font-medium grd-text-sm grd-select-none">
               {isAgency && (
-                <div className="grd-flex grd-items-center grd-text-blue-500 grd-cursor-not-allowed">
+                <div
+                  style={{
+                    color: strategy.data?.buttonStyle?.borderColor || design?.button?.borderColor
+                  }}
+                  className="grd-flex grd-items-center grd-text-blue-500 grd-cursor-not-allowed">
                   <p className="grd-pr-1">1 Yolcu, Ekonomi</p>
                   <LIcon className="grd-mt-0.5" size={18} name="ChevronDown"/>
                 </div>
@@ -142,6 +164,7 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
                     <Input className={`${RotationChange ? "order-3" : ""}  ${ActiveTab !== "multi"}`}
                            innerRef={destionationRef}
                            leftIcon={<LIcon size={18} name="Plane" />}
+                           style={{borderRadius: design?.borderRadius}}
                            placeholder={!RotationChange ? inputDestinationText || flightTravelPlannerData.inputDestinationText : inputReturnText || flightTravelPlannerData.inputReturnText}/>
                     <div
                       onClick={() => rightToLeftOnClick(`flight_${index}`)}
@@ -151,12 +174,14 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
                     </div>
                     <Input
                       leftIcon={<LIcon size={18} className="rotate-45" name="Plane" />}
+                      style={{borderRadius: design?.borderRadius}}
                       placeholder={!RotationChange ? inputReturnText || flightTravelPlannerData.inputReturnText : inputDestinationText || flightTravelPlannerData.inputDestinationText}/>
                   </div>
 
                   <div className={`grd-flex grd-items-center ${ActiveTab !== "return" && ActiveTab !== "multi" ? "grd-col-span-1" : ActiveTab === "multi" ? "!grd-col-span-1" : ""}`}>
                     <Input
                       leftIcon={<LIcon size={18} name="Calendar" />}
+                      style={{borderRadius: design?.borderRadius}}
                       placeholder={inputCheckinDateText || flightTravelPlannerData.inputCheckinDateText}/>
 
                     {ActiveTab === "multi" && index >= 2 && (
@@ -175,24 +200,32 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
               <div className="flex gap-2 col-span-4 b-4">
                 <div
                   onClick={() => addFlight(`flight_${Object.values(FlightAmounts).length}`)}
+                  style={{
+                    color: strategy.data?.buttonStyle?.borderColor || design?.button?.borderColor
+                  }}
                   className="grd-inline-flex grd-items-center grd-text-blue-500 grd-cursor-pointer hover:grd-opacity-60 dark:grd-text-blue-600">
                   <LIcon name="Plus" size={20} />
                   <span className="grd-font-medium grd-text-sm">Uçuş Ekle</span>
                 </div>
               </div>
             )}
-            {ActiveTab === "return" && <Input leftIcon={<LIcon size={18} name="Calendar" />} placeholder={inputCheckoutDateText || flightTravelPlannerData.inputCheckoutDateText}/>}
+            {ActiveTab === "return" && <Input leftIcon={<LIcon size={18} name="Calendar" />}
+                                              style={{borderRadius: design?.borderRadius}}
+                                              placeholder={inputCheckoutDateText || flightTravelPlannerData.inputCheckoutDateText}/>}
             {!isAgency && (
               <>
                 <Input
                   rightIcon={<LIcon size={18} name="ChevronDown"/>}
+                  style={{borderRadius: design?.borderRadius}}
                   placeholder={inputPassengerAndCabinText || flightTravelPlannerData.inputPassengerAndCabinText}/>
                 <div className="grd-col-span-2 grd-flex grd-grid-cols-3 grd-gap-4">
                   <Input
                     className={noReason ? "grd-col-span-2" : ""}
                     rightIcon={<LIcon size={18} name="ChevronDown"/>}
+                    style={{borderRadius: design?.borderRadius}}
                     placeholder={inputPersonText || flightTravelPlannerData.inputPersonText}/>
                   {!noReason && <Input rightIcon={<LIcon size={18} name="ChevronDown"/>}
+                                       style={{borderRadius: design?.borderRadius}}
 		                                   placeholder={inputTravelReasonText || flightTravelPlannerData.inputTravelReasonText}/>}
                 </div>
               </>
@@ -202,7 +235,13 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
                 onClick={() => addFlight(`flight_${Object.values(FlightAmounts).length}`)}
                 className={`grd-w-full group-[.is-disabled]:grd-cursor-not-allowed grd-col-span-1`}
                 variant="outline-primary"
-                style={strategy.data?.buttonStyle}>
+                style={{
+                  borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
+                  borderColor: strategy.data?.buttonStyle?.borderColor || design?.button?.borderColor,
+                  color: strategy.data?.buttonStyle?.borderColor || design?.button?.borderColor
+                }}
+
+              >
                 <LIcon name="Plus" size={20} />
                 <span className="grd-font-medium grd-text-sm">Uçuş Ekle</span>
               </Button>
@@ -211,7 +250,16 @@ const FlightTravelPlanner:FC<FlightTravelPlannerProps> = ({
               onClick={() => onSubmit ? onSubmit(handleOnSubmit) : null}
              className={`grd-w-full group-[.is-disabled]:grd-cursor-not-allowed grd-col-span-1`}
               variant="primary"
-              style={strategy.data?.buttonStyle}>{strategy.data?.button || flightTravelPlannerStrategy.data.button}
+              style={{
+                ...design?.button,
+                ...strategy.data?.buttonStyle,
+                borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
+                backgroundColor: strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor,
+                color: (!strategy.data?.buttonStyle?.color && !design?.button?.color) ? (hexIsLight(strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor)
+                  ? "black"
+                  : "white") : (strategy.data?.buttonStyle?.color || design?.button?.color),
+              }}
+            >{strategy.data?.button || flightTravelPlannerStrategy.data.button}
             </Button>
           </div>
         </TPCard>

@@ -4,6 +4,7 @@ import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import HotelTravelPlanner from "./HotelTravelPlanner";
 import {hotelTravelPlannerStrategy} from "../../data/dummy/hoteltravelplanner";
+import {design} from "../../data/dummy/design";
 
 const meta = {
   title: "GordyUI/TP Hotel",
@@ -48,6 +49,7 @@ const DefaultHotelTravelPlanner = {
   args: {
     disabled: false,
     strategy: hotelTravelPlannerStrategy,
+    design: design,
   },
 } satisfies Story;
 

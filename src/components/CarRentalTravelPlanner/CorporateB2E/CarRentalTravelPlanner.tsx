@@ -5,11 +5,13 @@ import {CorporateCarRentalTravelPlannerProps} from "./CarRentalTravelPlannerProp
 import {Input, Button, Wrapper, H1, H5} from "../../ui";
 import TPCard from "../../TPCard/TPCard";
 import Container from "../../Container/Container";
+import {hexIsLight} from "../../../helpers/hexIsLight";
 
 
 const CorporateCarRentalTravelPlanner:FC<CorporateCarRentalTravelPlannerProps> = ({
     className,
     strategy,
+    design,
     inputPickupLocationText,
     inputPickupDateText,
     inputDeliveryDateText,
@@ -44,12 +46,18 @@ const CorporateCarRentalTravelPlanner:FC<CorporateCarRentalTravelPlannerProps> =
       <Container>
         <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
         <H5 style={strategy.data?.subTitleStyle} className="grd-mt-2" >{strategy.data?.subTitle}</H5>
-        <TPCard className="grd-mt-6">
+        <TPCard
+          className="grd-mt-6"
+          style={{borderRadius: design?.borderRadius}}
+        >
 
           <div className={`grd-w-full grd-grid grid-cols-4 grd-items-center grd-gap-4`}>
             <Input className="grd-col-span-2" inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="MapPin"/>}
+                   style={{borderRadius: design?.borderRadius}}
                    placeholder={inputPickupLocationText || carRentalTravelPlannerDataCorporate.inputPickupLocationText}/>
-            <div className={`input-date-time-box grd-relative grd-w-full grd-flex grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
+            <div
+              style={{borderRadius: design?.borderRadius}}
+              className={`input-date-time-box grd-relative grd-w-full grd-flex grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
     grd-shadow-xs grd-text-gray-500 grd-text-base dark:grd-border-gray-800 dark:grd-text-gray-200`}>
               <Input
                 className="grd-border-none !grd-w-7/12"
@@ -64,7 +72,9 @@ const CorporateCarRentalTravelPlanner:FC<CorporateCarRentalTravelPlannerProps> =
                 rightIcon={<LIcon size={20} name="ChevronDown"/>}
                 placeholder={inputTimeText || carRentalTravelPlannerDataCorporate.inputTimeText}/>
             </div>
-            <div className={`input-date-time-box grd-relative grd-w-full grd-flex grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
+            <div
+              style={{borderRadius: design?.borderRadius}}
+              className={`input-date-time-box grd-relative grd-w-full grd-flex grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
     grd-shadow-xs grd-text-gray-500 grd-text-base dark:grd-border-gray-800 dark:grd-text-gray-200`}>
               <Input
                 className="grd-border-none !grd-w-7/12"
@@ -81,18 +91,30 @@ const CorporateCarRentalTravelPlanner:FC<CorporateCarRentalTravelPlannerProps> =
             </div>
             <Input
               rightIcon={<LIcon size={18} name="ChevronDown"/>}
+              style={{borderRadius: design?.borderRadius}}
               placeholder={inputPersonNumberText || carRentalTravelPlannerDataCorporate.inputPersonNumberText}/>
             <Input
               rightIcon={<LIcon size={18} name="ChevronDown"/>}
+              style={{borderRadius: design?.borderRadius}}
               placeholder={inputPersonText || carRentalTravelPlannerDataCorporate.inputPersonText}/>
             <Input rightIcon={<LIcon size={18} name="ChevronDown"/>}
+              style={{borderRadius: design?.borderRadius}}
                    placeholder={inputTravelReasonText || carRentalTravelPlannerDataCorporate.inputTravelReasonText}/>
 
 
             <Button
               className="grd-shrink-0 grd-py-4"
               variant="primary"
-              style={strategy.data?.buttonStyle}>{strategy.data?.button || activityTravelPlannerCorporateStrategy.data.button}
+              style={{
+                ...design?.button,
+                ...strategy.data?.buttonStyle,
+                borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
+                backgroundColor: strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor,
+                color: (!strategy.data?.buttonStyle?.color && !design?.button?.color) ? (hexIsLight(strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor)
+                  ? "black"
+                  : "white") : (strategy.data?.buttonStyle?.color || design?.button?.color),
+              }}
+            >{strategy.data?.button || activityTravelPlannerCorporateStrategy.data.button}
             </Button>
             <div className="grd-col-span-4 grd-flex grd-items-center grd-gap-2 grd-text-gray-500 grd-text-sm grd-font-medium dark:grd-text-white">
               <input id="differentLocation" type="checkbox"/>

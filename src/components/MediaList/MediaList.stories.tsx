@@ -4,6 +4,7 @@ import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import MediaList from "./MediaList";
 import {MediaListDummy} from "../../data/dummy/mediaList";
+import {design} from "../../data/dummy/design";
 
 const meta = {
   title: "GordyUI/MediaList",
@@ -26,6 +27,7 @@ const DefaultMediaList = {
   args: {
     strategy: MediaListDummy,
     //className: "my-5 py-4",
+    design: design,
   },
 } satisfies Story;
 

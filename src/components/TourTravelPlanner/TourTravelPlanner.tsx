@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import LIcon from "../lucidIcon/lucidIcon";
 import {TabButtonProps, TourTravelPlannerProps} from "./TourTravelPlannerProps";
 import {tourTravelPlannerData, tourTravelPlannerStrategy} from "../../data/dummy/tourtravelplanner";
@@ -6,10 +6,12 @@ import ButtonGroup from "../ui/buttonGroup";
 import TPCard from "../TPCard/TPCard";
 import Container from "../Container/Container";
 import {Wrapper, H1, H5, Button, Input} from "../ui";
+import {hexIsLight} from "../../helpers/hexIsLight";
 
 const TourTravelPlanner:FC<TourTravelPlannerProps> = ({
     className,
     strategy,
+    design,
     inputDestinationText,
     inputCheckoutDateText,
     disabled,
@@ -59,11 +61,29 @@ const TourTravelPlanner:FC<TourTravelPlannerProps> = ({
       <Container>
         <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
         <H5 style={strategy.data?.subTitleStyle} className="grd-mt-2" >{strategy.data?.subTitle}</H5>
-        <TPCard className="grd-mt-6">
+        <TPCard
+          className="grd-mt-6"
+          style={{borderRadius: design?.borderRadius}}
+        >
           <ButtonGroup disabled={disabled}>
             {tabButtons && tabButtons.map((list: TabButtonProps, index) => {
+
+              const isActive = ActiveTab === list.value
+
+              let style: React.CSSProperties = {
+                borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
+              }
+              if (isActive){
+                style = {
+                  ...style,
+                  borderColor: strategy.data?.buttonStyle?.borderColor || design?.button?.borderColor,
+                  color: strategy.data?.buttonStyle?.borderColor || design?.button?.borderColor,}
+              }
+
+
               return (
               <Button key={index}
+                      style={style}
                       variant={ActiveTab === list.value ? "outline-primary" : "ghost"}
                       onClick={() => handleTabChange(list)}>{list.label}</Button>
               )
@@ -73,14 +93,25 @@ const TourTravelPlanner:FC<TourTravelPlannerProps> = ({
             <div className="grd-w-full grd-flex grd-items-center grd-gap-4">
               <Input leftIcon={<LIcon size={20} name="Search" />}
                      onChange={(e: any) => setActiveLocation(e?.target?.value)}
+                     style={{borderRadius: design?.borderRadius}}
                      placeholder={inputDestinationText || tourTravelPlannerData.inputDestinationText}/>
               <Input leftIcon={<LIcon size={20} name="Calendar" />}
                      onChange={(e: any) => setActiveDate(e?.target?.value)}
+                     style={{borderRadius: design?.borderRadius}}
                      placeholder={inputCheckoutDateText || tourTravelPlannerData.inputCheckoutDateText}/>
             </div>
             <div className="grd-min-w-[124px] grd-flex grd-items-center">
               <Button onClick={() => onSubmit ? onSubmit(handleOnSubmit) : null} className="grd-w-full" variant="primary"
-                      style={strategy.data?.buttonStyle}>{strategy.data?.button || tourTravelPlannerStrategy.data.button}</Button>
+                  style={{
+                    ...design?.button,
+                    ...strategy.data?.buttonStyle,
+                    borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
+                    backgroundColor: strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor,
+                    color: (!strategy.data?.buttonStyle?.color && !design?.button?.color) ? (hexIsLight(strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor)
+                      ? "black"
+                      : "white") : (strategy.data?.buttonStyle?.color || design?.button?.color),
+                  }}
+              >{strategy.data?.button || tourTravelPlannerStrategy.data.button}</Button>
             </div>
           </div>
         </TPCard>

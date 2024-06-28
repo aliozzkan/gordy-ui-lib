@@ -29,6 +29,7 @@ export const MediaListDummy = {
               "target": "_blank"
             },
             "title": "a",
+            "titleStyle": {},
             "subTitle": "dfsdfsd",
             "displaySubTitle": true,
           },

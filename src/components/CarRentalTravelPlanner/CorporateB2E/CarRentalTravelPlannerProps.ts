@@ -1,6 +1,7 @@
 export interface CorporateCarRentalTravelPlannerProps {
   className?: string;
   strategy?: any;
+  design?: any;
   inputPickupLocationText?: string;
   inputPickupDateText?: string;
   inputDeliveryDateText?: string;

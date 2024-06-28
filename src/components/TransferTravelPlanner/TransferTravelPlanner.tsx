@@ -1,4 +1,4 @@
-import {FC, useEffect, useRef, useState} from "react";
+import React, {FC, useEffect, useRef, useState} from "react";
 import LIcon from "../lucidIcon/lucidIcon";
 import {TransferTravelPlannerProps} from "./TransferTravelPlannerProps";
 import {transferTravelPlannerData, transferTravelPlannerStrategy} from "../../data/dummy/transfertravelplanner";
@@ -7,10 +7,13 @@ import TPCard from "../TPCard/TPCard";
 import {Wrapper,H1, H5, Button, Input} from "../ui";
 import {TabButtonProps} from "../TourTravelPlanner/TourTravelPlannerProps";
 import {carRentalTravelPlannerDataAgency} from "../../data/dummy/carrentaltravelplanner";
+import "./TravePlanner.css"
+import {hexIsLight} from "../../helpers/hexIsLight";
 
 const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
     className,
     strategy,
+    design,
     inputDestinationText,
     inputReturnText,
     inputCheckinDateText,
@@ -87,14 +90,33 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
       <Container>
         <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
         <H5 style={strategy.data?.subTitleStyle} className="grd-mt-2" >{strategy.data?.subTitle}</H5>
-        <TPCard className="grd-mt-6">
+        <TPCard
+          className="grd-mt-6"
+          style={{borderRadius: design?.borderRadius}}
+        >
           <div className="grd-flex grd-items-center">
             <div className="grd-button-group grd-flex grd-gap-2">
               {tabButtons && tabButtons.map((list: TabButtonProps, index) => {
+
+                const isActive = ActiveTab === list.value
+
+                let style: React.CSSProperties = {
+                  borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
+                }
+                if (isActive){
+                  style = {
+                    ...style,
+                    borderColor: strategy.data?.buttonStyle?.borderColor || design?.button?.borderColor,
+                    color: strategy.data?.buttonStyle?.borderColor || design?.button?.borderColor,}
+                }
+
                 return (
-                  <Button key={index}
-                          variant={ActiveTab === list.value ? "outline-primary" : "ghost"}
-                          onClick={() => handleTabChange(list)}>{list.label}</Button>
+                  <Button
+                    className="tab-button"
+                    key={index}
+                    style={style}
+                    variant={isActive ? "outline-primary" : "ghost"}
+                    onClick={() => handleTabChange(list)}>{list.label}</Button>
                 )
               })}
             </div>
@@ -111,6 +133,7 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
                     <Input className={`${RotationChange ? "order-3" : ""}  ${ActiveTab !== "return"}`}
                            innerRef={destionationRef}
                            leftIcon={<LIcon size={18} name="MapPin" />}
+                           style={{borderRadius: design?.borderRadius}}
                            placeholder={!RotationChange ? inputDestinationText || transferTravelPlannerData.inputDestinationText : inputReturnText || transferTravelPlannerData.inputReturnText}/>
                     <div
                       onClick={() => rightToLeftOnClick(`transfer_${index}`)}
@@ -120,12 +143,15 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
                     </div>
                     <Input
                       leftIcon={<LIcon size={18} className="rotate-45" name="MapPin" />}
+                      style={{borderRadius: design?.borderRadius}}
                       placeholder={!RotationChange ? inputReturnText || transferTravelPlannerData.inputReturnText : inputDestinationText || transferTravelPlannerData.inputDestinationText}/>
                   </div>
                 </div>
               )
             })}
-            <div className={`input-date-time-box grd-relative grd-w-full grd-flex grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
+            <div
+              style={{borderRadius: design?.borderRadius}}
+              className={`input-date-time-box grd-relative grd-w-full grd-flex grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
                       grd-shadow-xs grd-text-gray-500 grd-text-base dark:grd-border-gray-800 dark:grd-text-gray-200
                        ${ActiveTab === "return" ? isAgency ? "grd-col-span-4" : "grd-col-span-3" : isAgency ? "grd-col-span-3" : "grd-col-span-3"}
                       `}>
@@ -144,7 +170,9 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
                 placeholder={carRentalTravelPlannerDataAgency.inputTimeText}/>
             </div>
             {ActiveTab === "return" && (
-              <div className={`input-date-time-box grd-relative grd-w-full grd-flex grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
+              <div
+                style={{borderRadius: design?.borderRadius}}
+                className={`input-date-time-box grd-relative grd-w-full grd-flex grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
                       grd-shadow-xs grd-text-gray-500 grd-text-base dark:grd-border-gray-800 dark:grd-text-gray-200 
                       ${isAgency ? "grd-col-span-4" : "grd-col-span-3"}`}>
                 <Input
@@ -152,6 +180,7 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
                   inputClassName="grd-py-4 grd-pl-10"
                   iconWrapperClassName="!grd-left-3"
                   leftIcon={<LIcon size={20} name="Calendar" />}
+                  style={{borderRadius: design?.borderRadius}}
                   placeholder={inputCheckoutDateText || transferTravelPlannerData.inputCheckoutDateText}/>
                 <div className="grd-line grd-border-l grd-border-gray-200 dark:grd-border-gray-800" />
                 <Input
@@ -159,6 +188,7 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
                   inputClassName="grd-py-4 grd-pr-7"
                   leftIcon={ActiveTab === "return" && isAgency ? <LIcon size={20} name="Clock" /> : undefined}
                   rightIcon={<LIcon size={20} name="ChevronDown" />}
+                  style={{borderRadius: design?.borderRadius}}
                   placeholder={carRentalTravelPlannerDataAgency.inputTimeText}/>
               </div>
             )}
@@ -166,6 +196,7 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
                 <Input
                   className={"grd-col-span-3"}
                   rightIcon={<LIcon size={18} name="ChevronDown" />}
+                  style={{borderRadius: design?.borderRadius}}
                   placeholder={inputPassengerAmountText || transferTravelPlannerData.inputPassengerAmountText}/>
             )}
             <div className={`grd-flex grd-gap-4
@@ -175,6 +206,7 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
                 //className={noReason ? "grd-col-span-2" : ""}
                 leftIcon={<LIcon size={18} name="User" />}
                 rightIcon={<LIcon size={18} name="ChevronDown" />}
+                style={{borderRadius: design?.borderRadius}}
                 placeholder={inputPassengerText || isAgency ? transferTravelPlannerData.inputPassengerTextAgency : transferTravelPlannerData.inputPassengerTextCorporate}/>
             </div>
             {!isAgency && (
@@ -182,6 +214,7 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
                 {!noReason && <Input
 		              className={"grd-col-span-3"}
 		              rightIcon={<LIcon size={18} name="ChevronDown" />}
+		              style={{borderRadius: design?.borderRadius}}
 		              placeholder={inputTravelReasonText || transferTravelPlannerData.inputTravelReasonText}/>}
               </>
             )}
@@ -190,7 +223,16 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
                  ${ActiveTab === "return" ? isAgency ? "grd-col-span-2" : "grd-col-span-3" : isAgency ? "grd-col-span-1" : "grd-col-span-3"}
               `}
               variant="primary"
-              style={strategy.data?.buttonStyle}>{strategy.data?.button || transferTravelPlannerStrategy.data.button}
+              style={{
+                ...design?.button,
+                ...strategy.data?.buttonStyle,
+                borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
+                backgroundColor: strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor,
+                color: (!strategy.data?.buttonStyle?.color && !design?.button?.color) ? (hexIsLight(strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor)
+                  ? "black"
+                  : "white") : (strategy.data?.buttonStyle?.color || design?.button?.color),
+              }}
+            >{strategy.data?.button || transferTravelPlannerStrategy.data.button}
             </Button>
           </div>
         </TPCard>

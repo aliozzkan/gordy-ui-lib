@@ -5,17 +5,24 @@ import { Navigation, Pagination } from "swiper/modules";
 import LIcon from "../lucidIcon/lucidIcon";
 import { Wrapper } from "../ui";
 import { useMediaQuery } from "usehooks-ts";
+import "./IconList.css"
 
 export interface IconListProps {
   maxItemLength: number;
   strategy: any;
   className?: string;
   disabled?: boolean;
+  design?: any;
 }
 
 const IconList: FC<IconListProps> = (props) => {
   const matches = useMediaQuery("(max-width: 768px)");
   const { strategy, maxItemLength } = props;
+  const design = props?.design
+
+  //styles
+  document.body.style.setProperty("--gordy-link-hover-color", design?.link?.color)
+  document.body.style.setProperty("--swiper-theme-color", design?.button?.backgroundColor || "#007aff")
 
   // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
   const fixedHeightValue =
@@ -90,13 +97,14 @@ const IconList: FC<IconListProps> = (props) => {
         <Swiper {...swiperProps}>
           {Array.apply(null, Array(maxItemLength)).map((val, _index) => {
             return (
-              <SwiperSlide className="grd-w-full" key={_index}>
+              <SwiperSlide className="grd-w-full"
+                     key={_index}>
                 <a
                   className={`icon-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white grd-text-sm grd-font-medium grd-text-color-800 
                       grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-blue-500 grd-px-2 grd-py-4`}
                   style={{
                     ...items![_index]?.style,
-                    borderRadius: 8,
+                    borderRadius: design?.borderRadius,
                   }}
                   href={items![_index]?.url || undefined}
                   target={items![_index]?.target || "_blank"}
@@ -106,7 +114,9 @@ const IconList: FC<IconListProps> = (props) => {
                     src={(items && items![_index]?.mediaPath) || noImage()}
                     alt={""}
                   />
-                  <span className="grd-block grd-mt-1 grd-truncate grd-max-w-full">
+                  <span style={{
+                    textDecoration: design?.link?.style,
+                  }} className={`grd-block grd-mt-1 grd-truncate grd-max-w-full`}>
                     {(items && items![_index]?.text) || "null"}
                   </span>
                 </a>

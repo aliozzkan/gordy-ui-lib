@@ -6,7 +6,8 @@ export interface TabButtonProps {
 
 export interface TourTravelPlannerProps {
   className?: string;
-  strategy: any
+  strategy?: any
+  design?: any
   title?: string;
   subTitle?: string;
   buttonText?: string;

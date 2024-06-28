@@ -4,7 +4,7 @@ export const IconListDummy = {
       "displayTitle": null,
       "width": null,
       "height": "auto",
-      "backgroundColor": "red",
+      "backgroundColor": null,
       "color": null,
       "position": null,
       "fontWeight": null,
@@ -444,11 +444,4 @@ export const IconListDummy = {
   "type": 5,
   "name": "Icon List",
   "status": 1,
-  "styles": {
-    "wrapperStyles": {
-      "backgroundColor": "#dddddd",
-      "width": "100%",
-      "height": "200px"
-    }
-  }
 }

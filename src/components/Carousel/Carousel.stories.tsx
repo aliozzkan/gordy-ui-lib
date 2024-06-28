@@ -4,6 +4,7 @@ import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import Carousel from "./Carousel";
 import {TabSliderStrategy} from "../../data/dummy/carousel";
+import {design} from "../../data/dummy/design";
 
 const meta = {
   title: "GordyUI/Carousel",
@@ -39,6 +40,7 @@ const DefaultCarousel = {
     strategy: TabSliderStrategy,
     //activeCategoryId: 0,
     activeSliderIndex: 0,
+    design: design,
   },
 } satisfies Story;
 

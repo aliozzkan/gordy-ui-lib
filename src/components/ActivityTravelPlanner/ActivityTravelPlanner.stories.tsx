@@ -4,6 +4,7 @@ import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import ActivityTravelPlanner from "./ActivityTravelPlanner";
 import {activityTravelPlannerStrategy} from "../../data/dummy/activitytravelplanner";
+import {design} from "../../data/dummy/design";
 
 const meta = {
   title: "GordyUI/TP Activity",
@@ -43,6 +44,7 @@ const DefaultActivityTravelPlanner = {
   args: {
     disabled: false,
     strategy: activityTravelPlannerStrategy,
+    design: design,
   },
 } satisfies Story;
 

@@ -10,6 +10,7 @@ interface InputProps {
   onChange?(e: any): void
   placeholder?: string
   defaultValue?: string
+  style?: any
 }
 
 const Input = ({
@@ -19,12 +20,16 @@ const Input = ({
      leftIcon,
      rightIcon,
      innerRef,
+     style,
     ...args
    }: InputProps) => {
 
   return (
-    <div className={`input-box grd-relative grd-w-full grd-flex grd-items-center grd-gap-2 grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
-    grd-shadow-xs grd-text-gray-500 grd-text-base dark:grd-border-gray-800 dark:grd-text-gray-200 ${className}`}>
+    <div
+      className={`input-box grd-relative grd-w-full grd-flex grd-items-center grd-gap-2 grd-border grd-border-gray-200 grd-rounded-lg grd-overflow-hidden 
+      grd-shadow-xs grd-text-gray-500 grd-text-base dark:grd-border-gray-800 dark:grd-text-gray-200 ${className}`}
+      style={style}
+    >
       {leftIcon && <div className={`!grd-absolute !grd-left-3.5 !grd-pointer-events-none ${iconWrapperClassName}`}>
         {leftIcon}
       </div>}

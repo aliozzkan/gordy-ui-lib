@@ -5,19 +5,26 @@ import { Navigation, Pagination } from "swiper/modules";
 import LIcon from "../lucidIcon/lucidIcon";
 import { Wrapper } from "../ui";
 import { useMediaQuery } from "usehooks-ts";
+import "./MediaList.css"
 
 export interface MediaListProps {
   strategy: any;
   className?: string;
   disabled?: boolean;
+  design?: any;
 }
 
 const MediaList: FC<MediaListProps> = (props) => {
   const matches = useMediaQuery("(max-width: 768px)");
   const { strategy } = props;
+  const design = props?.design
   // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
   const fixedHeightValue =
     strategy?.visual?.height === 0 ? undefined : strategy?.visual?.height;
+
+  //styles
+  document.body.style.setProperty("--gordy-link-hover-color", design?.link?.color)
+  document.body.style.setProperty("--swiper-theme-color", design?.button?.backgroundColor || "#007aff")
 
   const medias: any = [];
   let itemLength = 0;
@@ -74,7 +81,7 @@ const MediaList: FC<MediaListProps> = (props) => {
                   key={index}
                   className={`media-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
                   grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-blue-500`}
-                  style={{ borderRadius: "8px" }}
+                  style={{ borderRadius: design?.borderRadius }}
                 >
                   <a
                     className="grd-block grd-w-full"
@@ -124,7 +131,9 @@ const MediaList: FC<MediaListProps> = (props) => {
             pagination && itemLength > 4 ? "grd-pb-10" : ""
           } swiper-${swiperId} ${props.className || ""}`}
           spaceBetween={15}
-          //style={{...strategy?.visual?.style}}
+          style={{
+            borderRadius: design?.borderRadius
+          }}
           speed={1000}
           slidesPerView={
             matches
@@ -160,7 +169,7 @@ const MediaList: FC<MediaListProps> = (props) => {
                   key={index}
                   className={`media-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
                       grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-blue-500`}
-                  style={{ borderRadius: "8px" }}
+                  style={{ borderRadius: design?.borderRadius }}
                 >
                   <a
                     className="grd-block grd-w-full"
@@ -183,8 +192,10 @@ const MediaList: FC<MediaListProps> = (props) => {
                     <div className="grd-mt-1 grd-w-full grd-flex grd-flex-col grd-p-4">
                       {media.title && (
                         <span
-                          style={{ ...media.titleStyle }}
-                          className="grd-text-base grd-font-semibold grd-text-color-800 grd-truncate"
+                          style={{
+                            ...media.titleStyle,
+                        }}
+                          className="title-area grd-text-base grd-font-semibold grd-text-color-800 grd-truncate grd-transition"
                           title={media?.title}
                           dangerouslySetInnerHTML={{ __html: media?.title }}
                         />

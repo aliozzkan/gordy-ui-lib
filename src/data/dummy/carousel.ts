@@ -4,7 +4,7 @@ export const TabSliderStrategy = {
     "height": null,
     "style": {
       "borderRadius": null,
-      "backgroundColor": "red",
+      "backgroundColor": null,
       "color": null,
       "position": null,
       "fontWeight": null,
@@ -47,7 +47,7 @@ export const TabSliderStrategy = {
       "align": null,
       "position": null,
       "infiniteLoop": false,
-      "swipeNavigation": false,
+      "swipeNavigation": true,
       "backgroundColor": null,
       "color": null,
       "fontWeight": null,
@@ -208,7 +208,7 @@ export const TabSliderStrategy = {
             "buttonStyle": {
               "fontSize": null,
               "fontWeight": null,
-              "color": "#ea6161",
+              "color": null,
               "display": null,
               "backgroundColor": null,
               "position": null,
