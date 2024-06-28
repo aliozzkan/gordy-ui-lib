@@ -14,6 +14,8 @@ export interface MediaListProps {
   design?: any;
 }
 
+const SWIPER_THRESHOLD = 2;
+
 const MediaList: FC<MediaListProps> = (props) => {
   const matches = useMediaQuery("(max-width: 768px)");
   const { strategy } = props;
@@ -52,6 +54,9 @@ const MediaList: FC<MediaListProps> = (props) => {
   const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows;
   const pagination = strategy?.visual?.paginationStyle?.swipeNavigation;
 
+  const isMobile = matches;
+  const isNoSwiper = isMobile && itemLength <= SWIPER_THRESHOLD;
+
   return (
     <Wrapper
       style={{
@@ -73,9 +78,9 @@ const MediaList: FC<MediaListProps> = (props) => {
           style={{ fontSize: "24px", ...strategy?.data?.titleStyle }}
         ></p>
 
-        {matches && (
+        {isNoSwiper && (
           <div className="grd-space-y-2 grd-mb-2">
-            {[...medias].splice(0, 2).map((media: any, index: number) => {
+            {medias.map((media: any, index: number) => {
               return (
                 <div
                   key={index}
@@ -85,8 +90,8 @@ const MediaList: FC<MediaListProps> = (props) => {
                 >
                   <a
                     className="grd-block grd-w-full"
-                    href={media?.itemAction?.link || undefined}
-                    target={media?.itemAction?.target || "_self"}
+                    href={media?.link || undefined}
+                    target={media?.actions?.target || "_self"}
                   >
                     <div
                       className="image-wrapper grd-flex grd-items-center grd-justify-center grd-h-[190px] grd-w-full"
@@ -126,44 +131,44 @@ const MediaList: FC<MediaListProps> = (props) => {
           </div>
         )}
 
-        <Swiper
-          className={`grd-w-full grd-overflow-hidden ${
-            pagination && itemLength > 4 ? "grd-pb-10" : ""
-          } swiper-${swiperId} ${props.className || ""}`}
-          spaceBetween={15}
-          style={{
-            borderRadius: design?.borderRadius
-          }}
-          speed={1000}
-          slidesPerView={
-            matches
-              ? 2
-              : strategy?.data?.items
-              ? itemLength >= 4
-                ? 4
-                : itemLength
-              : 1
-          }
-          grabCursor={true}
-          autoHeight={true}
-          modules={[Pagination, Navigation]}
-          navigation={{
-            enabled: displayArrows,
-            prevEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-prev`,
-            nextEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-next`,
-          }}
-          pagination={
-            pagination
-              ? {
-                  clickable: pagination,
-                  dynamicBullets: true,
-                  dynamicMainBullets: 4,
-                }
-              : false
-          }
-        >
-          {(matches ? [...medias].slice(2) : medias).map(
-            (media: any, index: number) => {
+        {!isNoSwiper && (
+          <Swiper
+            className={`grd-w-full grd-overflow-hidden ${
+              pagination && itemLength > 4 ? "grd-pb-10" : ""
+            } swiper-${swiperId} ${props.className || ""}`}
+            spaceBetween={15}
+            style={{
+              borderRadius: design?.borderRadius
+            }}
+            speed={1000}
+            slidesPerView={
+              isMobile
+                ? 2
+                : strategy?.data?.items
+                ? itemLength >= 4
+                  ? 4
+                  : itemLength
+                : 1
+            }
+            grabCursor={true}
+            autoHeight={true}
+            modules={[Pagination, Navigation]}
+            navigation={{
+              enabled: displayArrows,
+              prevEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-prev`,
+              nextEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-next`,
+            }}
+            pagination={
+              pagination
+                ? {
+                    clickable: pagination,
+                    dynamicBullets: true,
+                    dynamicMainBullets: 4,
+                  }
+                : false
+            }
+          >
+            {medias.map((media: any, index: number) => {
               return (
                 <SwiperSlide
                   key={index}
@@ -173,8 +178,8 @@ const MediaList: FC<MediaListProps> = (props) => {
                 >
                   <a
                     className="grd-block grd-w-full"
-                    href={media?.itemAction?.link || undefined}
-                    target={media?.itemAction?.target || "_self"}
+                    href={media?.link || undefined}
+                    target={media?.actions?.target || "_self"}
                   >
                     <div
                       className="image-wrapper grd-flex grd-items-center grd-justify-center grd-h-[190px] grd-w-full"
@@ -212,9 +217,9 @@ const MediaList: FC<MediaListProps> = (props) => {
                   </a>
                 </SwiperSlide>
               );
-            }
-          )}
-        </Swiper>
+            })}
+          </Swiper>
+        )}
 
         {displayArrows && (
           <div
