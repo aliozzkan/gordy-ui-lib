@@ -199,10 +199,11 @@ const MediaList: FC<MediaListProps> = (props) => {
                         <span
                           style={{
                             ...media.titleStyle,
+                            textDecoration: design?.link?.style
                         }}
                           className="title-area grd-text-base grd-font-semibold grd-text-color-800 grd-truncate grd-transition"
                           title={media?.title}
-                          dangerouslySetInnerHTML={{ __html: media?.title }}
+                          dangerouslySetInnerHTML={{ __html: "asdasdasds" }}
                         />
                       )}
                       {media?.displaySubTitle && (

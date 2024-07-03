@@ -102,6 +102,7 @@ const TransferTravelPlanner:FC<TransferTravelPlannerProps> = ({
 
                 let style: React.CSSProperties = {
                   borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
+                  textDecoration: design?.link?.style,
                 }
                 if (isActive){
                   style = {

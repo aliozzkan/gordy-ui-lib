@@ -1,3 +1,3 @@
 .icon-box:hover .grd-block.grd-mt-1.grd-truncate.grd-max-w-full {
-  color: var(--gordy-link-hover-color);
+  color: var(--gordy-link-hover-color) !important;
 }

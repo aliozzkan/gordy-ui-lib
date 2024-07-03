@@ -25,6 +25,7 @@ declare const Header: FC<HeaderProps>;
 interface HotelTravelPlannerProps {
     className?: string;
     strategy?: any;
+    design?: any;
     inputDestinationText?: string;
     inputCheckoutDateText?: string;
     inputGuestInfoText?: string;
@@ -39,7 +40,8 @@ interface TabButtonProps {
 }
 interface TourTravelPlannerProps {
     className?: string;
-    strategy: any;
+    strategy?: any;
+    design?: any;
     title?: string;
     subTitle?: string;
     buttonText?: string;
@@ -60,6 +62,7 @@ interface TourTravelPlannerProps {
 interface FlightTravelPlannerProps {
     className?: string;
     strategy?: any;
+    design?: any;
     inputDestinationText?: string;
     inputReturnText?: string;
     inputCheckinDateText?: string;
@@ -82,6 +85,7 @@ declare const TourTravelPlanner: FC<TourTravelPlannerProps>;
 interface AgencyCarRentalTravelPlannerProps {
     className?: string;
     strategy?: any;
+    design?: any;
     inputPickupLocationText?: string;
     inputPickupDateText?: string;
     inputDeliveryDateText?: string;
@@ -95,6 +99,7 @@ declare const AgencyCarRentalTravelPlanner: FC<AgencyCarRentalTravelPlannerProps
 interface CorporateCarRentalTravelPlannerProps {
     className?: string;
     strategy?: any;
+    design?: any;
     inputPickupLocationText?: string;
     inputPickupDateText?: string;
     inputDeliveryDateText?: string;
@@ -111,6 +116,7 @@ declare const CorporateCarRentalTravelPlanner: FC<CorporateCarRentalTravelPlanne
 interface ActivityTravelPlannerProps {
     className?: string;
     strategy?: any;
+    design?: any;
     inputDestinationText?: string;
     inputCheckoutDateText?: string;
     inputGuestInfoText?: string;
@@ -122,6 +128,7 @@ declare const ActivityTravelPlanner: FC<ActivityTravelPlannerProps>;
 interface TransferTravelPlannerProps {
     className?: string;
     strategy?: any;
+    design?: any;
     inputDestinationText?: string;
     inputReturnText?: string;
     inputCheckinDateText?: string;
@@ -143,6 +150,7 @@ interface CarouselProps {
     strategy: any;
     activeCategoryId?: number;
     activeSliderIndex?: number;
+    design?: any;
 }
 declare const Carousel: FC<CarouselProps>;
 
@@ -151,6 +159,7 @@ interface IconListProps {
     strategy: any;
     className?: string;
     disabled?: boolean;
+    design?: any;
 }
 declare const IconList: FC<IconListProps>;
 
@@ -158,6 +167,7 @@ interface MediaListProps {
     strategy: any;
     className?: string;
     disabled?: boolean;
+    design?: any;
 }
 declare const MediaList: FC<MediaListProps>;
 

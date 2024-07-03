@@ -174,7 +174,7 @@ const Sliders = (props: any) => {
                         style={{
                           ...props?.design?.button,
                           ...slide?.buttonStyle,
-                          borderRadius: slide?.buttonStyle?.borderRadius || design?.button?.borderRadius,
+                          borderRadius: slide?.buttonStyle?.borderRadius || design?.borderRadius,
                           backgroundColor: slide?.buttonStyle?.backgroundColor || design?.button?.backgroundColor,
                           color: (!slide?.buttonStyle?.color && !design?.button?.color) ? (hexIsLight(design?.button?.backgroundColor || design?.button?.backgroundColor)
                             ? "black"
@@ -287,6 +287,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
             }}
             itemStyle={{
               textDecoration: design?.link?.style,
+              borderRadius: design?.borderRadius,
             }}
           />
           <Sliders

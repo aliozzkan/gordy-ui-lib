@@ -1,5 +1,5 @@
 export const design = {
-  "borderRadius": "24px",
+  "borderRadius": "44px",
   "button": {
     "backgroundColor": "#950b9f",
     "borderColor": "#950b9f",

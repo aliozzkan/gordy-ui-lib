@@ -1,5 +1,5 @@
 .media-box:hover .title-area {
-    color: var(--gordy-link-hover-color);
+    color: var(--gordy-link-hover-color) !important;
 }
 
 
