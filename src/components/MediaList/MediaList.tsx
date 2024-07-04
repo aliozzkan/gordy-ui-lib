@@ -203,7 +203,7 @@ const MediaList: FC<MediaListProps> = (props) => {
                         }}
                           className="title-area grd-text-base grd-font-semibold grd-text-color-800 grd-truncate grd-transition"
                           title={media?.title}
-                          dangerouslySetInnerHTML={{ __html: "asdasdasds" }}
+                          dangerouslySetInnerHTML={{ __html: media?.title }}
                         />
                       )}
                       {media?.displaySubTitle && (
