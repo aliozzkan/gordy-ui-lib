@@ -33,9 +33,7 @@ type Story = StoryObj<typeof TextHtml>;
 
 const DefaultTextHtml = {
   args: {
-    getContent(content: any) {
-      console.log(content);
-    }
+    content: ""
   },
 } satisfies Story;
 
