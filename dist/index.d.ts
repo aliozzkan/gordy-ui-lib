@@ -173,7 +173,6 @@ declare const MediaList: FC<MediaListProps>;
 
 interface TextHtmlProps {
     content?: string;
-    getContent?(content: any): any;
     className?: string;
     wrapperBgColor?: string;
     wrapperWidth?: string;
