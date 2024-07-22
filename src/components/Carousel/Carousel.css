@@ -1,0 +1,5 @@
+@media screen and (max-width:768px) {
+    .item-text-area {
+        font-size: 6vw !important;
+    }
+}

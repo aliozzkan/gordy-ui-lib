@@ -6,3 +6,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
+:root {
+    --font-multiplier-value: 0.0691666666666667;
+    --font-unit: vmax;
+}
+

@@ -8,6 +8,7 @@ export { default as AgencyCarRentalTravelPlanner } from "./components/CarRentalT
 export { default as CorporateCarRentalTravelPlanner } from "./components/CarRentalTravelPlanner/CorporateB2E/CarRentalTravelPlanner";
 export { default as ActivityTravelPlanner } from "./components/ActivityTravelPlanner/ActivityTravelPlanner";
 export { default as TransferTravelPlanner } from "./components/TransferTravelPlanner/TransferTravelPlanner";
+export { default as LayoutContainer } from "./components/LayoutContainer/LayoutContainer";
 export { default as Carousel } from "./components/Carousel/Carousel";
 export { default as IconList } from "./components/IconList/IconList";
 export { default as MediaList } from "./components/MediaList/MediaList";

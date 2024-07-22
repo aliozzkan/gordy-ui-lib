@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FC, PropsWithChildren } from 'react';
+import { FC, ComponentProps, PropsWithChildren } from 'react';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import * as class_variance_authority_dist_types from 'class-variance-authority/dist/types';
 import { VariantProps } from 'class-variance-authority';
@@ -146,6 +146,10 @@ interface TransferTravelPlannerProps {
 
 declare const TransferTravelPlanner: FC<TransferTravelPlannerProps>;
 
+interface LayoutContainerProps extends ComponentProps<"div"> {
+}
+declare const LayoutContainer: FC<LayoutContainerProps>;
+
 interface CarouselProps {
     strategy: any;
     activeCategoryId?: number;
@@ -210,4 +214,4 @@ declare const Dropdown: {
     Item: (props: DropdownItemProps) => react_jsx_runtime.JSX.Element;
 };
 
-export { ActivityTravelPlanner, AgencyCarRentalTravelPlanner, Carousel, CorporateCarRentalTravelPlanner, Dropdown, FlightTravelPlanner, Header, HotelTravelPlanner, IconList, MediaList, TextHtml, TourTravelPlanner, TransferTravelPlanner };
+export { ActivityTravelPlanner, AgencyCarRentalTravelPlanner, Carousel, CorporateCarRentalTravelPlanner, Dropdown, FlightTravelPlanner, Header, HotelTravelPlanner, IconList, LayoutContainer, MediaList, TextHtml, TourTravelPlanner, TransferTravelPlanner };

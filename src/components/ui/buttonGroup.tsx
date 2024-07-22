@@ -10,7 +10,7 @@ const ButtonGroup = (props: ButtonGroupProps) => {
   let {className= "grd-gap-2"} = props
 
   return (
-    <div className={`button-group grd-inline-flex ${className} ${props?.disabled ? "*:grd-pointer-events-none grd-select-none grd-cursor-not-allowed" : ""}`}>
+    <div className={`button-group grd-inline-flex grd-overflow-auto ${className} ${props?.disabled ? "*:grd-pointer-events-none grd-select-none grd-cursor-not-allowed" : ""}`}>
       {props?.children}
     </div>
   )

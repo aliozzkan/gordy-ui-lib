@@ -1,23 +1,22 @@
-import React, {PropsWithChildren} from "react";
+import React, {ComponentProps} from "react";
 
-interface H1Props extends PropsWithChildren {
+interface H5Props extends ComponentProps<"h5">{
   className?: string;
   style?: React.CSSProperties;
 }
 
-const H1 = (props: H1Props) => {
-
-  const {className= "", style} = props
+const H5 = ({children, className, style, ...props}: H5Props) => {
 
   return (
       <h5
         style={style}
-        className={`grd-text-gray-500 grd-font-medium grd-drop-shadow-lg dark:grd-text-white ${!style?.fontSize ? "grd-text-xl " : ""}${className}`}
+        className={`grd-text-gray-500 grd-font-medium grd-drop-shadow-lg dark:grd-text-white !grd-leading-[normal] grd-text-base @xl:grd-text-[calc(var(--font-multiplier-value)*20vmax)] ${className}`}
+        {...props}
       >
-        {props?.children}
+        {children}
       </h5>
     )
 }
 
 
-export default H1
+export default H5

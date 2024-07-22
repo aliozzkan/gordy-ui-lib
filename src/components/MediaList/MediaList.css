@@ -1,5 +1,14 @@
 .media-box:hover .title-area {
     color: var(--gordy-link-hover-color) !important;
 }
-
+@media screen and (max-width:768px) {
+    .title-heading {
+        font-size: 6vw !important;
+    }
+}
+@media screen and (max-width:480px) {
+    .title-heading {
+        font-size: 8vw !important;
+    }
+}
 

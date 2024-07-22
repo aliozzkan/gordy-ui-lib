@@ -49,15 +49,9 @@ const IconList: FC<IconListProps> = (props) => {
         ? "grd-pb-10"
         : ""
     }`,
-    spaceBetween: 16,
+    spaceBetween: 12,
     speed: 700,
-    slidesPerView: matches
-      ? 2
-      : strategy?.data?.items
-      ? strategy?.data?.items.length >= 6
-        ? 6
-        : strategy?.data?.items.length
-      : 1,
+    slidesPerView: 3,
     grabCursor: true,
     modules: [Pagination, Navigation],
     navigation: {
@@ -72,6 +66,25 @@ const IconList: FC<IconListProps> = (props) => {
           dynamicMainBullets: 4,
         }
       : false,
+
+    breakpoints:{
+      768: {
+        slidesPerView: strategy?.data?.items
+          ? strategy?.data?.items.length >= 4
+            ? 4
+            : strategy?.data?.items.length
+          : 1,
+        spaceBetween: 16,
+
+      },
+      1024: {
+        slidesPerView: strategy?.data?.items
+          ? strategy?.data?.items.length >= 6
+            ? 6
+            : strategy?.data?.items.length
+          : 1,
+      },
+    }
   };
 
   return (
@@ -97,7 +110,7 @@ const IconList: FC<IconListProps> = (props) => {
         <Swiper {...swiperProps}>
           {Array.apply(null, Array(maxItemLength)).map((val, _index) => {
             return (
-              <SwiperSlide className="grd-w-full"
+              <SwiperSlide className="grd-w-full  grd-min-w-[106px]"
                      key={_index}>
                 <a
                   className={`icon-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white grd-text-sm grd-font-medium grd-text-color-800 

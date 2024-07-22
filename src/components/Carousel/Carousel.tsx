@@ -1,12 +1,14 @@
 import React, {FC, useEffect, useRef, useState} from 'react';
 
-import {Swiper, SwiperSlide} from 'swiper/react';
-import {Navigation, Pagination, Parallax} from "swiper/modules";
+// import Swiper core and required modules
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Navigation, A11y, Parallax, Pagination } from "swiper/modules"
 
 import LIcon from "../lucidIcon/lucidIcon";
 import {Button} from "../ui";
-import {design} from "../../data/dummy/design";
 import {hexIsLight} from "../../helpers/hexIsLight";
+import LayoutContainer from "../LayoutContainer/LayoutContainer";
+import "./Carousel.css"
 
 const SliderCategories = (props: any) => {
   const categoryInfo = props.categoryInfo
@@ -69,7 +71,7 @@ const CategoryWrapper = (props: any) => {
   const activeIndex = getActiveCategory()
   return (
     <div
-      className={`categories grd-flex grd-items-center grd-gap-4 grd-text-gray-500 grd-text-base grd-font-medium grd-justify-center ${props.className || ""}`}>
+      className={`categories grd-items-center grd-gap-4 grd-text-gray-500 grd-text-base grd-font-medium grd-justify-center ${props.className || ""}`}>
       {orderedStrategyItems.map((category: any, index) => {
         return (
           <SliderCategories
@@ -116,18 +118,22 @@ const Sliders = (props: any) => {
   return (
     <>
       <Swiper
-        className={`grd-w-full grd-overflow-hidden ${pagination && strategy?.data?.items && strategy?.data?.items.length ? "grd-pb-10" : ""} swiper-${swiperId} ${props.className || ""}`}
-        spaceBetween={30}
+        className={`grd-w-full mx-0 grd-overflow-hidden grd-transition-all ${pagination && strategy?.data?.items && strategy?.data?.items.length ? "grd-pb-10" : ""} swiper-${swiperId} ${props.className || ""}`}
         //style={{...strategy?.visual?.style}}
+        //speed={1000}
+        parallax={false}
+        spaceBetween={12}
+        slidesPerView={"auto"}
         speed={1000}
-        parallax={true}
-        initialSlide={props?.activeSliderIndex}
-        slidesPerView={1}
+        loop={true}
+        centeredSlides={true}
+        initialSlide={props?.activeSliderIndex || 0}
+        //slidesPerView={1}
         grabCursor={true}
         style={props?.style}
         autoHeight={true}
         onSlideChange={props.sliderOnChange}
-        modules={[Parallax, Pagination, Navigation]}
+        modules={[Parallax, Pagination, A11y, Navigation]}
         onInit={(ev) => {
           props.setSwiper(ev);
         }}
@@ -145,32 +151,44 @@ const Sliders = (props: any) => {
             }
             : false
         }
+        breakpoints={{
+          480: {
+            loop:false,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            centeredSlides: false,
+            parallax: true,
+          },
+        }}
       >
         {props?.sliders && props?.sliders.map((slide: any, index: number) => {
 
           return (
             <SwiperSlide
               key={index}
-              className={`grd-flex grd-items-center grd-w-full grd-min-h-[150px] grd-justify-center grd-overflow-hidden`}
+              className={`grd-flex @md:grd-items-center grd-w-10/12 grd-transition-all !grd-h-[200px] @sm:!grd-h-auto @sm:grd-min-h-[240px] grd-overflow-hidden`}
               style={{
                 ...props?.slideStyle,
                 backgroundColor: slide?.backgroundColor,
             }}
             >
-
               {(slide?.title || slide?.buttonText) && (
                 <div
                   ref={el => sliderTextAreaRef.current[index] = el}
-                  className="grd-w-full grd-px-10 grd-py-16 grd-shrink-0 grd-absolute grd-z-10" data-swiper-parallax="20%">
+                  className="grd-h-full grd-mb-0 @lg:grd-mb-5 @md:grd-h-auto grd-flex grd-flex-col grd-px-4 @md:grd-px-5 @lg:grd-px-10 grd-py-4 @md:grd-py-8 @lg:grd-py-16 grd-shrink-0 grd-absolute grd-z-10" data-swiper-parallax="20%">
                   {slide?.title && (
-                    <p data-swiper-parallax="-200" className={`grd-text-white grd-drop-shadow-lg ${!slide?.titleStyle?.fontSize ? "grd-text-5xl" : ""}`} style={{fontSize: "48px", ...slide.titleStyle}} dangerouslySetInnerHTML={{ __html: slide?.title }}></p>
+                    <p
+                      data-swiper-parallax="-200"
+                      className={`item-text-area grd-text-white grd-drop-shadow-lg @sm:!grd-leading-[normal] grd-text-xl @md:grd-text-3xl @xl:grd-text-5xl grd-line-clamp-2 @md:grd-line-clamp-none`}
+                      style={slide.titleStyle}
+                      dangerouslySetInnerHTML={{ __html: slide?.title }} />
                   )
                   }
                   {slide?.buttonText && (
-                    <a href={slide?.buttonActions?.link || undefined} target={slide?.buttonActions?.target || "_self"}>
+                    <a className="@md:grd-mt-0 grd-mt-9" href={slide?.buttonActions?.link || undefined} target={slide?.buttonActions?.target || "_self"}>
                       <Button
                         variant="primary"
-                        className="grd-px-8 grd-text-base grd-font-medium grd-mt-6"
+                        className="grd-px-8 grd-text-base grd-font-medium @md:grd-mt-6 grd-py-2 grd-h-auto"
                         style={{
                           ...props?.design?.button,
                           ...slide?.buttonStyle,
@@ -188,12 +206,12 @@ const Sliders = (props: any) => {
                   }
                 </div>
               )}
-
               {slide?.imagePath && (
-                <img className={`grd-max-w-full grd-object-cover grd-object-center`} src={slide.imagePath}
-                     alt={`grd-swiper img ${slide.uuid}`}/>
+                <div className="grd-hidden @sm:grd-flex image-area grd-items-center grd-justify-center grd-overflow-hidden grd-max-h-[450px] grd-w-full">
+                  <img className={`grd-max-w-[inherit] grd-w-full grd-h-full @sm:grd-max-w-full @sm:grd-w-auto @sm:grd-h-auto grd-object-cover grd-object-right @sm:grd-object-center grd-m-auto`} src={slide.imagePath}
+                       alt={`grd-swiper img ${slide.uuid}`}/>
+                </div>
               )}
-
             </SwiperSlide>
           )
         })}
@@ -270,39 +288,42 @@ export const Carousel: FC<CarouselProps> = (props) => {
 
 
   return (
-    <div className="gordy-carousel grd-relative grd-flex grd-flex-col grd-justify-center grd-py-5 grd-overflow-hidden" style={{
-      ...strategy?.visual?.style,
-      width: strategy?.visual?.width,
-      height: fixedHeightValue,
-    }}>
-      {sliders.length > 0 && (
-        <div className="grd-container grd-flex grd-flex-col grd-gap-6">
-          <CategoryWrapper
-            activeCategoryId={activeCategoryId}
-            itemOnClick={categoryItemOnClick}
-            items={orderedStrategyItems}
-            activeItemStyle={{
-              borderColor: design?.button?.borderColor,
-              color: design?.button?.borderColor,
-            }}
-            itemStyle={{
-              textDecoration: design?.link?.style,
-              borderRadius: design?.borderRadius,
-            }}
-          />
-          <Sliders
-            activeSliderIndex={activeSliderIndex}
-            sliderOnChange={sliderOnChange}
-            sliders={sliders}
-            strategy={strategy}
-            setSwiper={setSwiper}
-            design={design}
-            style={{borderRadius: design?.borderRadius}}
-            slideStyle={{borderRadius: design?.borderRadius}}
-          />
-        </div>
-      )}
-    </div>
+    <LayoutContainer>
+      <div className="gordy-carousel grd-relative grd-flex grd-flex-col grd-justify-center grd-py-5 grd-overflow-hidden" style={{
+        ...strategy?.visual?.style,
+        width: strategy?.visual?.width,
+        height: fixedHeightValue,
+      }}>
+        {sliders.length > 0 && (
+          <div className="grd-container grd-flex grd-flex-col grd-gap-6">
+            <CategoryWrapper
+              className={`grd-hidden @md:grd-flex`}
+              activeCategoryId={activeCategoryId}
+              itemOnClick={categoryItemOnClick}
+              items={orderedStrategyItems}
+              activeItemStyle={{
+                borderColor: design?.button?.borderColor,
+                color: design?.button?.borderColor,
+              }}
+              itemStyle={{
+                textDecoration: design?.link?.style,
+                borderRadius: design?.borderRadius,
+              }}
+            />
+            <Sliders
+              activeSliderIndex={activeSliderIndex}
+              sliderOnChange={sliderOnChange}
+              sliders={sliders}
+              strategy={strategy}
+              setSwiper={setSwiper}
+              design={design}
+              style={{borderRadius: design?.borderRadius}}
+              slideStyle={{borderRadius: design?.borderRadius}}
+            />
+          </div>
+        )}
+      </div>
+    </LayoutContainer>
   )
 
 }

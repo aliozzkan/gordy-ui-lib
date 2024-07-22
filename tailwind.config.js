@@ -18,6 +18,17 @@ module.exports = {
       },
     },
     extend: {
+      fontSize: {
+        "primary-color": "var(--primary-color)",
+        "secondary-color": "var(--secondary-color)"
+      },
+      containers: {
+        'xl': '1024px',
+        'lg': '992px',
+        'md': '768px',
+        'sm': '480px',
+        'xs': '350px',
+      },
       borderRadius: {
         primary: "var(--primary-border-radius)",
       },
@@ -126,6 +137,7 @@ module.exports = {
     },
   },
   plugins: [
+    require('@tailwindcss/container-queries'),
     require("tailwindcss-animate"),
   ],
 };

@@ -57,9 +57,9 @@ export const hotelTravelPlannerStrategy = {
     "status": 1
   },
   "data": {
-    "title": "title",
+    "title": "Sıradaki konaklamanızı bulun.",
     "titleLangKey": "74d549c5-8c99-420d-82a5-0ceac472c750",
-    "subTitle": "subtitle",
+    "subTitle": "Oteller, evler ve çok daha fazlası için fırsatları kaçırmayın...",
     "subTitleLangKey": "00df16a7-5add-4eef-9d0a-7b0b4df1012e",
     "backgroundImagePath": undefined,
     "button": "Otel Ara",

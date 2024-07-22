@@ -6,6 +6,7 @@ import {Input, Button, Wrapper, H1, H5} from "../ui";
 import TPCard from "../TPCard/TPCard";
 import Container from "../Container/Container";
 import {hexIsLight} from "../../helpers/hexIsLight";
+import LayoutContainer from "../LayoutContainer/LayoutContainer";
 
 
 const ActivityTravelPlanner:FC<ActivityTravelPlannerProps> = ({
@@ -29,29 +30,30 @@ const ActivityTravelPlanner:FC<ActivityTravelPlannerProps> = ({
 
 
   return (
-    <Wrapper
-      style={{
-        ...strategy.visual?.style,
-        ...wrapperStyle,
-        height: fixedHeightValue,
-    }}
-      disabled={disabled}
-      className={className}>
-      <Container>
-        <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
-        <H5 style={strategy.data?.subTitleStyle} className="grd-mt-2" >{strategy.data?.subTitle}</H5>
-        <TPCard
-          className="!grd-flex-row grd-mt-6"
-          style={{borderRadius: design?.borderRadius}}
-        >
+    <LayoutContainer>
+      <Wrapper
+        style={{
+          ...strategy.visual?.style,
+          ...wrapperStyle,
+          height: fixedHeightValue,
+        }}
+        disabled={disabled}
+        className={className}>
+        <Container>
+          <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
+          <H5 style={strategy.data?.subTitleStyle} className="grd-mt-2" >{strategy.data?.subTitle}</H5>
+          <TPCard
+            className="grd-mt-6 !grd-flex-col @md:!grd-flex-row"
+            style={{borderRadius: design?.borderRadius}}
+          >
             <Input inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="Search" />}
                    style={{borderRadius: design?.borderRadius}}
-                 placeholder={inputDestinationText || activityTravelPlannerData.inputDestinationText}/>
+                   placeholder={inputDestinationText || activityTravelPlannerData.inputDestinationText}/>
             <Input inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="Calendar" />}
                    style={{borderRadius: design?.borderRadius}}
                    placeholder={inputCheckoutDateText || activityTravelPlannerData.inputCheckoutDateText}/>
             <Button
-              className="grd-shrink-0 grd-w-[98px] grd-py-4 grd-h-auto"
+              className="grd-shrink-0 @md:grd-w-[98px] grd-py-2.5 @md:grd-py-4 grd-h-auto"
               variant="primary"
               style={{
                 ...design?.button,
@@ -64,9 +66,10 @@ const ActivityTravelPlanner:FC<ActivityTravelPlannerProps> = ({
               }}
             >{strategy.data?.button || activityTravelPlannerStrategy.data.button}
             </Button>
-        </TPCard>
-      </Container>
-    </Wrapper>
+          </TPCard>
+        </Container>
+      </Wrapper>
+    </LayoutContainer>
   );
 };
 

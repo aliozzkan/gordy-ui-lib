@@ -64,9 +64,9 @@ export const activityTravelPlannerStrategy = {
     "status": 1
   },
   "data": {
-    "title": "title",
+    "title": "Yapılacak harika şeyleri keşfedin!",
     "titleLangKey": "74d549c5-8c99-420d-82a5-0ceac472c752",
-    "subTitle": "subtitle",
+    "subTitle": "Aktiviteler, konserler, atölyeler ve çok daha fazlası",
     "subTitleLangKey": "00df16a7-5add-4eef-9d0a-7b0b4df1012a",
     "backgroundImagePath": undefined,
     "button": "Ara",
