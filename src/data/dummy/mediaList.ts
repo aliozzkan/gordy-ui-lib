@@ -3,7 +3,7 @@ export const MediaListDummy = {
   "code": "new-6d739e2c-6c97-4b66-adf7-fe8d54ddd24a",
   visual: {
     "style": {
-      "backgroundColor": "#cc6161"
+      "backgroundColor": ""
     },
     paginationStyle: {
       swipeNavigation: true
@@ -85,8 +85,8 @@ export const MediaListDummy = {
     ],
     "title": "React component sharing inside two different projects",
     "titleStyle": {
-      "color": "#ea5d5d",
-      "fontSize": "48px",
+      "color": null,
+      "fontSize": null,
       "display": "block"
     }
   },

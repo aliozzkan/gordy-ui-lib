@@ -6,7 +6,6 @@ import {Input, Button, Wrapper, H1, H5} from "../ui";
 import TPCard from "../TPCard/TPCard";
 import Container from "../Container/Container";
 import {hexIsLight} from "../../helpers/hexIsLight";
-import LayoutContainer from "../LayoutContainer/LayoutContainer";
 
 
 const ActivityTravelPlanner:FC<ActivityTravelPlannerProps> = ({
@@ -30,46 +29,44 @@ const ActivityTravelPlanner:FC<ActivityTravelPlannerProps> = ({
 
 
   return (
-    <LayoutContainer>
-      <Wrapper
-        style={{
-          ...strategy.visual?.style,
-          ...wrapperStyle,
-          height: fixedHeightValue,
-        }}
-        disabled={disabled}
-        className={className}>
-        <Container>
-          <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
-          <H5 style={strategy.data?.subTitleStyle} className="grd-mt-2" >{strategy.data?.subTitle}</H5>
-          <TPCard
-            className="grd-mt-6 !grd-flex-col @md:!grd-flex-row"
-            style={{borderRadius: design?.borderRadius}}
-          >
-            <Input inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="Search" />}
-                   style={{borderRadius: design?.borderRadius}}
-                   placeholder={inputDestinationText || activityTravelPlannerData.inputDestinationText}/>
-            <Input inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="Calendar" />}
-                   style={{borderRadius: design?.borderRadius}}
-                   placeholder={inputCheckoutDateText || activityTravelPlannerData.inputCheckoutDateText}/>
-            <Button
-              className="grd-shrink-0 @md:grd-w-[98px] grd-py-2.5 @md:grd-py-4 grd-h-auto"
-              variant="primary"
-              style={{
-                ...design?.button,
-                ...strategy.data?.buttonStyle,
-                borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
-                backgroundColor: strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor,
-                color: (!strategy.data?.buttonStyle?.color && !design?.button?.color) ? (hexIsLight(strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor)
-                  ? "black"
-                  : "white") : (strategy.data?.buttonStyle?.color || design?.button?.color),
-              }}
-            >{strategy.data?.button || activityTravelPlannerStrategy.data.button}
-            </Button>
-          </TPCard>
-        </Container>
-      </Wrapper>
-    </LayoutContainer>
+    <Wrapper
+      style={{
+        ...strategy.visual?.style,
+        ...wrapperStyle,
+        height: fixedHeightValue,
+      }}
+      disabled={disabled}
+      className={className}>
+      <Container>
+        <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
+        <H5 style={strategy.data?.subTitleStyle} className="grd-mt-2" >{strategy.data?.subTitle}</H5>
+        <TPCard
+          className="grd-mt-6 !grd-flex-col @md:!grd-flex-row"
+          style={{borderRadius: design?.borderRadius}}
+        >
+          <Input inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="Search" />}
+                 style={{borderRadius: design?.borderRadius}}
+                 placeholder={inputDestinationText || activityTravelPlannerData.inputDestinationText}/>
+          <Input inputClassName="grd-py-4" leftIcon={<LIcon size={20} name="Calendar" />}
+                 style={{borderRadius: design?.borderRadius}}
+                 placeholder={inputCheckoutDateText || activityTravelPlannerData.inputCheckoutDateText}/>
+          <Button
+            className="grd-shrink-0 @md:grd-w-[98px] grd-py-2.5 @md:grd-py-4 grd-h-auto"
+            variant="primary"
+            style={{
+              ...design?.button,
+              ...strategy.data?.buttonStyle,
+              borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
+              backgroundColor: strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor,
+              color: (!strategy.data?.buttonStyle?.color && !design?.button?.color) ? (hexIsLight(strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor)
+                ? "black"
+                : "white") : (strategy.data?.buttonStyle?.color || design?.button?.color),
+            }}
+          >{strategy.data?.button || activityTravelPlannerStrategy.data.button}
+          </Button>
+        </TPCard>
+      </Container>
+    </Wrapper>
   );
 };
 

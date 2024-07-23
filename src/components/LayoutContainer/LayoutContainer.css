@@ -1,0 +1,24 @@
+@media screen and (max-width:1024px) {
+    .grd-heading-h1 {
+        font-size: 24px !important;
+    }
+    .grd-heading-h5, .grd-heading-h4 {
+        font-size: 20px !important;
+    }
+}
+
+@media screen and (max-width:768px) {
+    /*carousel*/
+    .item-text-area {
+        font-size: 6vw !important;
+    }
+}
+@media screen and (max-width:480px) {
+    /*titles*/
+    .grd-heading-h1 {
+        font-size: 18px !important;
+    }
+    .grd-heading-h5, .grd-heading-h4 {
+        font-size: 16px !important;
+    }
+}

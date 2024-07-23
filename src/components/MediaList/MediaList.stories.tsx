@@ -5,6 +5,7 @@ import "../../index.css";
 import MediaList from "./MediaList";
 import {MediaListDummy} from "../../data/dummy/mediaList";
 import {design} from "../../data/dummy/design";
+import LayoutContainer from "../LayoutContainer/LayoutContainer";
 
 const meta = {
   title: "GordyUI/MediaList",
@@ -24,6 +25,7 @@ export default meta;
 type Story = StoryObj<typeof MediaList>;
 
 const DefaultMediaList = {
+  decorators: [(story) => <LayoutContainer>{story()}</LayoutContainer> ],
   args: {
     strategy: MediaListDummy,
     //className: "my-5 py-4",

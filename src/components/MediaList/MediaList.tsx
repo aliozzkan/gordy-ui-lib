@@ -3,10 +3,9 @@ import React, { FC } from "react";
 import {Swiper, SwiperProps, SwiperRef, SwiperSlide} from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import LIcon from "../lucidIcon/lucidIcon";
-import {H5, Wrapper} from "../ui";
-import { useMediaQuery } from "usehooks-ts";
+import {H4, Wrapper} from "../ui";
 import "./MediaList.css"
-import LayoutContainer from "../LayoutContainer/LayoutContainer";
+import Container from "../Container/Container"
 
 export interface MediaListProps {
   strategy: any;
@@ -67,7 +66,7 @@ const MediaList: FC<MediaListProps> = (props) => {
     slidesPerView: "auto",
     grabCursor: true,
     centeredSlides: true,
-    wrapperClass: medias && medias.length <= 2 ? "grd-justify-center" : pagination && itemLength > 2 ? "grd-pb-10" : "",
+    wrapperClass: medias && medias.length <= 3 ? "grd-justify-center" : pagination && itemLength > 2 ? "grd-pb-10" : "",
     modules: [Pagination, Navigation],
     navigation: {
       enabled: displayArrows,
@@ -90,7 +89,7 @@ const MediaList: FC<MediaListProps> = (props) => {
         slidesPerView: 4,
         centeredSlides: false,
         spaceBetween: 15,
-        wrapperClass: medias && medias.length <= 2 ? "grd-justify-center" : pagination && itemLength > 4 ? "grd-pb-10" : "",
+        wrapperClass: medias && medias.length <= 3 ? "grd-justify-center" : pagination && itemLength > 4 ? "grd-pb-10" : "",
       },
     },
     className: `grd-w-full grd-overflow-hidden swiper-${swiperId} ${props.className || ""}`
@@ -106,97 +105,95 @@ const MediaList: FC<MediaListProps> = (props) => {
   }
 
   return (
-    <LayoutContainer>
-      <Wrapper
-        style={{
-          ...strategy?.visual?.style,
-          width: strategy?.visual?.width,
-          height: fixedHeightValue,
-        }}
-        disabled={props?.disabled}
-        className={`media-list grd-relative grd-flex grd-justify-center grd-items-center grd-mx-auto grd-py-5 ${
-          props.className || ""
-        }`}
-      >
-        <div className="grd-container">
-          <H5
-            className={`title-heading grd-drop-shadow-lg grd-mb-6 ${
-              !strategy?.data?.titleStyle?.fontSize ? "grd-text-2xl" : ""
-            }`}
-            dangerouslySetInnerHTML={{ __html: strategy?.data?.title }}
-            style={{ fontSize: "24px", ...strategy?.data?.titleStyle }}
-          />
+    <Wrapper
+      style={{
+        ...strategy?.visual?.style,
+        width: strategy?.visual?.width,
+        height: fixedHeightValue,
+      }}
+      disabled={props?.disabled}
+      className={`media-list grd-relative grd-flex grd-justify-center grd-items-center grd-mx-auto grd-py-5 ${
+        props.className || ""
+      }`}
+    >
+      <Container>
+        <H4
+          className={`title-heading h4 grd-text-gray-800 grd-drop-shadow-lg grd-mb-6 ${
+            !strategy?.data?.titleStyle?.fontSize ? "grd-text-2xl" : ""
+          }`}
+          dangerouslySetInnerHTML={{ __html: strategy?.data?.title }}
+          style={{ fontSize: "24px", ...strategy?.data?.titleStyle }}
+        />
 
-          <CustomTag {...swiperProps}>
-            {medias.map((media: any, index: number) => {
-              return (
-                <SwiperSlide
-                  key={index}
-                  className={`media-box grd-group @sm:grd-max-w-[336px] grd-w-[75vw] @sm:grd-w-[calc(50vw-26px)] @md:grd-w-auto grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
+        <CustomTag {...swiperProps}>
+          {medias.map((media: any, index: number) => {
+            return (
+              <SwiperSlide
+                key={index}
+                className={`media-box grd-group @sm:grd-max-w-[336px] grd-w-[75vw] @sm:grd-w-[calc(50vw-26px)] @md:grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
                       grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-blue-500`}
-                  style={{ borderRadius: design?.borderRadius }}
+                style={{ borderRadius: design?.borderRadius }}
+              >
+                <a
+                  className="grd-block grd-w-full"
+                  href={media?.itemAction?.link || undefined}
+                  target={media?.itemAction?.target || "_self"}
                 >
-                  <a
-                    className="grd-block grd-w-full"
-                    href={media?.itemAction?.link || undefined}
-                    target={media?.itemAction?.target || "_self"}
+                  <div
+                    className="image-wrapper grd-flex grd-items-center grd-justify-center grd-h-[190px] grd-w-full"
+                    style={{ backgroundColor: media?.backgroundColor }}
                   >
-                    <div
-                      className="image-wrapper grd-flex grd-items-center grd-justify-center grd-h-[190px] grd-w-full"
-                      style={{ backgroundColor: media?.backgroundColor }}
-                    >
-                      {media?.imagePath && (
-                        <img
-                          className="grd-max-w-full grd-max-h-full grd-object-center grd-object-cover"
-                          src={media?.imagePath}
-                          alt={""}
-                        />
-                      )}
-                    </div>
+                    {media?.imagePath && (
+                      <img
+                        className="grd-max-w-full grd-max-h-full grd-object-center grd-object-cover"
+                        src={media?.imagePath}
+                        alt={""}
+                      />
+                    )}
+                  </div>
 
-                    <div className="grd-mt-1 grd-w-full grd-flex grd-flex-col grd-justify-center grd-p-4 grd-h-[78px]">
-                      {media.title && (
-                        <span
-                          style={{
-                            ...media.titleStyle,
-                            textDecoration: design?.link?.style
-                          }}
-                          className="title-area grd-text-base grd-font-semibold grd-text-color-800 grd-truncate grd-transition"
-                          title={media?.title}
-                          dangerouslySetInnerHTML={{ __html: media?.title }}
-                        />
-                      )}
-                      {subtitleSpaces && (
-                        <span
-                          style={{ ...media.subTitleStyle }}
-                          className="grd-mt-0.5 grd-text-sm grd-font-normal grd-text-gray-500 grd-truncate"
-                          title={media?.displaySubTitle ? media?.subTitle : undefined}
-                          dangerouslySetInnerHTML={{ __html: media?.displaySubTitle ? media?.subTitle : undefined }}
-                        />
-                      )}
-                    </div>
-                  </a>
-                </SwiperSlide>
-              );
-            })}
-          </CustomTag>
+                  <div className="grd-mt-1 grd-w-full grd-flex grd-flex-col grd-justify-center grd-p-4 grd-h-[78px]">
+                    {media.title && (
+                      <span
+                        style={{
+                          ...media.titleStyle,
+                          textDecoration: design?.link?.style
+                        }}
+                        className="title-area grd-text-base grd-font-semibold grd-text-color-800 grd-truncate grd-transition"
+                        title={media?.title}
+                        dangerouslySetInnerHTML={{ __html: media?.title }}
+                      />
+                    )}
+                    {subtitleSpaces && (
+                      <span
+                        style={{ ...media.subTitleStyle }}
+                        className="grd-mt-0.5 grd-text-sm grd-font-normal grd-text-gray-500 grd-truncate"
+                        title={media?.displaySubTitle ? media?.subTitle : undefined}
+                        dangerouslySetInnerHTML={{ __html: media?.displaySubTitle ? media?.subTitle : undefined }}
+                      />
+                    )}
+                  </div>
+                </a>
+              </SwiperSlide>
+            );
+          })}
+        </CustomTag>
 
-          {displayArrows && (
-            <div
-              className="swiper-navigation"
-              style={{ ...strategy?.visual?.arrowVisualStyle }}
-            >
-              <div className="swiper-button-prev">
-                <LIcon name="ArrowLeft" />
-              </div>
-              <div className="swiper-button-next">
-                <LIcon name="ArrowRight" />
-              </div>
+        {displayArrows && (
+          <div
+            className="swiper-navigation"
+            style={{ ...strategy?.visual?.arrowVisualStyle }}
+          >
+            <div className="swiper-button-prev">
+              <LIcon name="ArrowLeft" />
             </div>
-          )}
-        </div>
-      </Wrapper>
-    </LayoutContainer>
+            <div className="swiper-button-next">
+              <LIcon name="ArrowRight" />
+            </div>
+          </div>
+        )}
+      </Container>
+    </Wrapper>
   );
 };
 

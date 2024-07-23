@@ -5,6 +5,7 @@ import "../../index.css";
 import ActivityTravelPlanner from "./ActivityTravelPlanner";
 import {activityTravelPlannerStrategy} from "../../data/dummy/activitytravelplanner";
 import {design} from "../../data/dummy/design";
+import LayoutContainer from "../LayoutContainer/LayoutContainer";
 
 const meta = {
   title: "GordyUI/TP Activity",
@@ -41,6 +42,7 @@ export default meta;
 type Story = StoryObj<typeof ActivityTravelPlanner>;
 
 const DefaultActivityTravelPlanner = {
+  decorators: [(story) => <LayoutContainer>{story()}</LayoutContainer> ],
   args: {
     disabled: false,
     strategy: activityTravelPlannerStrategy,

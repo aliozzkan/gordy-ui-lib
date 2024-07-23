@@ -7,7 +7,6 @@ import TPCard from "../TPCard/TPCard";
 import Container from "../Container/Container";
 import {Wrapper, H1, H5, Button, Input} from "../ui";
 import {hexIsLight} from "../../helpers/hexIsLight";
-import LayoutContainer from "../LayoutContainer/LayoutContainer";
 
 const TourTravelPlanner:FC<TourTravelPlannerProps> = ({
     className,
@@ -51,77 +50,74 @@ const TourTravelPlanner:FC<TourTravelPlannerProps> = ({
   const fixedHeightValue = strategy?.visual?.style?.height === 0 ? undefined : strategy?.visual?.style?.height
 
   return (
+    <Wrapper
+      style={{
+        ...strategy.visual?.style,
+        ...wrapperStyle,
+        height: fixedHeightValue,
+      }}
+      disabled={disabled}
+      className={className}>
+      <Container>
+        <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
+        <H5 style={strategy.data?.subTitleStyle} className="grd-mt-2" >{strategy.data?.subTitle}</H5>
+        <TPCard
+          className="grd-mt-6"
+          style={{borderRadius: design?.borderRadius}}
+        >
+          <ButtonGroup disabled={disabled}>
+            {tabButtons && tabButtons.map((list: TabButtonProps, index) => {
 
-    <LayoutContainer>
-      <Wrapper
-        style={{
-          ...strategy.visual?.style,
-          ...wrapperStyle,
-          height: fixedHeightValue,
-        }}
-        disabled={disabled}
-        className={className}>
-        <Container>
-          <H1 style={strategy.data?.titleStyle}>{strategy.data?.title}</H1>
-          <H5 style={strategy.data?.subTitleStyle} className="grd-mt-2" >{strategy.data?.subTitle}</H5>
-          <TPCard
-            className="grd-mt-6"
-            style={{borderRadius: design?.borderRadius}}
-          >
-            <ButtonGroup disabled={disabled}>
-              {tabButtons && tabButtons.map((list: TabButtonProps, index) => {
+              const isActive = ActiveTab === list.value
 
-                const isActive = ActiveTab === list.value
-
-                let style: React.CSSProperties = {
-                  borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
-                  textDecoration: design?.link?.style,
-                }
-                if (isActive){
-                  style = {
-                    ...style,
-                    borderColor: strategy.data?.buttonStyle?.borderColor || design?.button?.borderColor,
-                    color: strategy.data?.buttonStyle?.borderColor || design?.button?.borderColor,}
-                }
+              let style: React.CSSProperties = {
+                borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
+                textDecoration: design?.link?.style,
+              }
+              if (isActive){
+                style = {
+                  ...style,
+                  borderColor: strategy.data?.buttonStyle?.borderColor || design?.button?.borderColor,
+                  color: strategy.data?.buttonStyle?.borderColor || design?.button?.borderColor,}
+              }
 
 
-                return (
-                  <Button key={index}
-                          style={style}
-                          variant={ActiveTab === list.value ? "outline-primary" : "ghost"}
-                          onClick={() => handleTabChange(list)}>{list.label}</Button>
-                )
-              })}
-            </ButtonGroup>
-            <div className="grd-flex grd-gap-4 grd-flex-col @md:grd-flex-row">
-              <div className="grd-w-full grd-flex grd-items-center grd-gap-4 grd-flex-col @md:grd-flex-row">
-                <Input leftIcon={<LIcon size={20} name="Search" />}
-                       onChange={(e: any) => setActiveLocation(e?.target?.value)}
-                       style={{borderRadius: design?.borderRadius}}
-                       placeholder={inputDestinationText || tourTravelPlannerData.inputDestinationText}/>
-                <Input leftIcon={<LIcon size={20} name="Calendar" />}
-                       onChange={(e: any) => setActiveDate(e?.target?.value)}
-                       style={{borderRadius: design?.borderRadius}}
-                       placeholder={inputCheckoutDateText || tourTravelPlannerData.inputCheckoutDateText}/>
-              </div>
-              <div className="grd-min-w-[124px] grd-flex grd-items-center">
-                <Button onClick={() => onSubmit ? onSubmit(handleOnSubmit) : null} className="grd-w-full" variant="primary"
-                        style={{
-                          ...design?.button,
-                          ...strategy.data?.buttonStyle,
-                          borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
-                          backgroundColor: strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor,
-                          color: (!strategy.data?.buttonStyle?.color && !design?.button?.color) ? (hexIsLight(strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor)
-                            ? "black"
-                            : "white") : (strategy.data?.buttonStyle?.color || design?.button?.color),
-                        }}
-                >{strategy.data?.button || tourTravelPlannerStrategy.data.button}</Button>
-              </div>
+              return (
+                <Button key={index}
+                        style={style}
+                        variant={ActiveTab === list.value ? "outline-primary" : "ghost"}
+                        onClick={() => handleTabChange(list)}>{list.label}</Button>
+              )
+            })}
+          </ButtonGroup>
+          <div className="grd-flex grd-gap-4 grd-flex-col @md:grd-flex-row">
+            <div className="grd-w-full grd-flex grd-items-center grd-gap-4 grd-flex-col @md:grd-flex-row">
+              <Input leftIcon={<LIcon size={20} name="Search" />}
+                     onChange={(e: any) => setActiveLocation(e?.target?.value)}
+                     style={{borderRadius: design?.borderRadius}}
+                     placeholder={inputDestinationText || tourTravelPlannerData.inputDestinationText}/>
+              <Input leftIcon={<LIcon size={20} name="Calendar" />}
+                     onChange={(e: any) => setActiveDate(e?.target?.value)}
+                     style={{borderRadius: design?.borderRadius}}
+                     placeholder={inputCheckoutDateText || tourTravelPlannerData.inputCheckoutDateText}/>
             </div>
-          </TPCard>
-        </Container>
-      </Wrapper>
-    </LayoutContainer>
+            <div className="grd-min-w-[124px] grd-flex grd-items-center">
+              <Button onClick={() => onSubmit ? onSubmit(handleOnSubmit) : null} className="grd-w-full" variant="primary"
+                      style={{
+                        ...design?.button,
+                        ...strategy.data?.buttonStyle,
+                        borderRadius: strategy.data?.buttonStyle?.borderRadius || design?.borderRadius,
+                        backgroundColor: strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor,
+                        color: (!strategy.data?.buttonStyle?.color && !design?.button?.color) ? (hexIsLight(strategy.data?.buttonStyle?.backgroundColor || design?.button?.backgroundColor)
+                          ? "black"
+                          : "white") : (strategy.data?.buttonStyle?.color || design?.button?.color),
+                      }}
+              >{strategy.data?.button || tourTravelPlannerStrategy.data.button}</Button>
+            </div>
+          </div>
+        </TPCard>
+      </Container>
+    </Wrapper>
   );
 };
 

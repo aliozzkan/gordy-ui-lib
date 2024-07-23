@@ -4,6 +4,7 @@ import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import TextHtml from "./TextHtml";
 import {TextHtmlDummy} from "../../data/dummy/texthtml"
+import LayoutContainer from "../LayoutContainer/LayoutContainer";
 
 const meta = {
   title: "GordyUI/TextHtml",
@@ -16,7 +17,7 @@ const meta = {
     },
   },
   argTypes: {
-    content: {
+    strategy: {
         disabled: true,
         control: false,
         description: "Raw HTML ve Text girilebilir",
@@ -32,8 +33,9 @@ export default meta;
 type Story = StoryObj<typeof TextHtml>;
 
 const DefaultTextHtml = {
+  decorators: [(story) => <LayoutContainer>{story()}</LayoutContainer> ],
   args: {
-    content: ""
+    strategy: TextHtmlDummy
   },
 } satisfies Story;
 

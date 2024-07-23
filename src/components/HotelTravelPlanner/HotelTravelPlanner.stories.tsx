@@ -5,6 +5,7 @@ import "../../index.css";
 import HotelTravelPlanner from "./HotelTravelPlanner";
 import {hotelTravelPlannerStrategy} from "../../data/dummy/hoteltravelplanner";
 import {design} from "../../data/dummy/design";
+import LayoutContainer from "../LayoutContainer/LayoutContainer";
 
 const meta = {
   title: "GordyUI/TP Hotel",
@@ -46,6 +47,7 @@ export default meta;
 type Story = StoryObj<typeof HotelTravelPlanner>;
 
 const DefaultHotelTravelPlanner = {
+  decorators: [(story) => <LayoutContainer>{story()}</LayoutContainer> ],
   args: {
     disabled: false,
     strategy: hotelTravelPlannerStrategy,

@@ -5,6 +5,7 @@ import "../../index.css";
 import Carousel from "./Carousel";
 import {TabSliderStrategy} from "../../data/dummy/carousel";
 import {design} from "../../data/dummy/design";
+import LayoutContainer from "../LayoutContainer/LayoutContainer";
 
 const meta = {
   title: "GordyUI/Carousel",
@@ -36,6 +37,7 @@ export default meta;
 type Story = StoryObj<typeof Carousel>;
 
 const DefaultCarousel = {
+  decorators: [(story) => <LayoutContainer>{story()}</LayoutContainer> ],
   args: {
     strategy: TabSliderStrategy,
     //activeCategoryId: 0,

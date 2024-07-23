@@ -5,6 +5,7 @@ import "../../index.css";
 import TransferTravelPlanner from "./TransferTravelPlanner";
 import {transferTravelPlannerStrategy} from "../../data/dummy/transfertravelplanner";
 import {design} from "../../data/dummy/design";
+import LayoutContainer from "../LayoutContainer/LayoutContainer";
 
 const meta = {
   title: "GordyUI/TP Transfer",
@@ -57,6 +58,7 @@ export default meta;
 type Story = StoryObj<typeof TransferTravelPlanner>;
 
 const DefaultTransferTravelPlanner = {
+  decorators: [(story) => <LayoutContainer>{story()}</LayoutContainer> ],
   args: {
     disabled: false,
     strategy: transferTravelPlannerStrategy,

@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import Header from "./Header";
+import LayoutContainer from "../LayoutContainer/LayoutContainer";
 
 const meta = {
   title: "GordyUI/Header",
@@ -51,6 +52,7 @@ export default meta;
 type Story = StoryObj<typeof Header>;
 
 const DefaultHeader = {
+  decorators: [(story) => <LayoutContainer>{story()}</LayoutContainer> ],
   args: {
     tabItemList: [
       {label: "Otel", icon: "Home", isActive: true},

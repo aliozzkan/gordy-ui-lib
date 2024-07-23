@@ -1,5 +1,6 @@
 import React, {FC, ComponentProps} from "react";
 import {clsx} from "clsx";
+import "./LayoutContainer.css"
 
 interface LayoutContainerProps extends ComponentProps<"div"> {}
 

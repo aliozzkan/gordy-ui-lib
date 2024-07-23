@@ -7,8 +7,7 @@ import { Navigation, A11y, Parallax, Pagination } from "swiper/modules"
 import LIcon from "../lucidIcon/lucidIcon";
 import {Button} from "../ui";
 import {hexIsLight} from "../../helpers/hexIsLight";
-import LayoutContainer from "../LayoutContainer/LayoutContainer";
-import "./Carousel.css"
+import Container from "../Container/Container";
 
 const SliderCategories = (props: any) => {
   const categoryInfo = props.categoryInfo
@@ -207,8 +206,8 @@ const Sliders = (props: any) => {
                 </div>
               )}
               {slide?.imagePath && (
-                <div className="grd-hidden @sm:grd-flex image-area grd-items-center grd-justify-center grd-overflow-hidden grd-max-h-[450px] grd-w-full">
-                  <img className={`grd-max-w-[inherit] grd-w-full grd-h-full @sm:grd-max-w-full @sm:grd-w-auto @sm:grd-h-auto grd-object-cover grd-object-right @sm:grd-object-center grd-m-auto`} src={slide.imagePath}
+                <div className="grd-flex image-area grd-items-center grd-justify-center grd-overflow-hidden grd-max-h-[450px] grd-w-full">
+                  <img className={`grd-max-w-[inherit] @sm:grd-max-w-full @sm:grd-w-auto @sm:grd-h-auto grd-object-cover grd-object-right @sm:grd-object-center grd-m-auto`} src={slide.imagePath}
                        alt={`grd-swiper img ${slide.uuid}`}/>
                 </div>
               )}
@@ -288,42 +287,40 @@ export const Carousel: FC<CarouselProps> = (props) => {
 
 
   return (
-    <LayoutContainer>
-      <div className="gordy-carousel grd-relative grd-flex grd-flex-col grd-justify-center grd-py-5 grd-overflow-hidden" style={{
-        ...strategy?.visual?.style,
-        width: strategy?.visual?.width,
-        height: fixedHeightValue,
-      }}>
-        {sliders.length > 0 && (
-          <div className="grd-container grd-flex grd-flex-col grd-gap-6">
-            <CategoryWrapper
-              className={`grd-hidden @md:grd-flex`}
-              activeCategoryId={activeCategoryId}
-              itemOnClick={categoryItemOnClick}
-              items={orderedStrategyItems}
-              activeItemStyle={{
-                borderColor: design?.button?.borderColor,
-                color: design?.button?.borderColor,
-              }}
-              itemStyle={{
-                textDecoration: design?.link?.style,
-                borderRadius: design?.borderRadius,
-              }}
-            />
-            <Sliders
-              activeSliderIndex={activeSliderIndex}
-              sliderOnChange={sliderOnChange}
-              sliders={sliders}
-              strategy={strategy}
-              setSwiper={setSwiper}
-              design={design}
-              style={{borderRadius: design?.borderRadius}}
-              slideStyle={{borderRadius: design?.borderRadius}}
-            />
-          </div>
-        )}
-      </div>
-    </LayoutContainer>
+    <div className="gordy-carousel grd-relative grd-flex grd-flex-col grd-justify-center grd-py-5 grd-overflow-hidden" style={{
+      ...strategy?.visual?.style,
+      width: strategy?.visual?.width,
+      height: fixedHeightValue,
+    }}>
+      {sliders.length > 0 && (
+        <Container className="grd-flex grd-flex-col grd-gap-6">
+          <CategoryWrapper
+            className={`grd-hidden @md:grd-flex`}
+            activeCategoryId={activeCategoryId}
+            itemOnClick={categoryItemOnClick}
+            items={orderedStrategyItems}
+            activeItemStyle={{
+              borderColor: design?.button?.borderColor,
+              color: design?.button?.borderColor,
+            }}
+            itemStyle={{
+              textDecoration: design?.link?.style,
+              borderRadius: design?.borderRadius,
+            }}
+          />
+          <Sliders
+            activeSliderIndex={activeSliderIndex}
+            sliderOnChange={sliderOnChange}
+            sliders={sliders}
+            strategy={strategy}
+            setSwiper={setSwiper}
+            design={design}
+            style={{borderRadius: design?.borderRadius}}
+            slideStyle={{borderRadius: design?.borderRadius}}
+          />
+        </Container>
+      )}
+    </div>
   )
 
 }

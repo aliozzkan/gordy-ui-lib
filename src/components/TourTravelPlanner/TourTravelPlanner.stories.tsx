@@ -5,6 +5,7 @@ import "../../index.css";
 import TourTravelPlanner from "./TourTravelPlanner";
 import {tourTravelPlannerStrategy} from "../../data/dummy/tourtravelplanner";
 import {design} from "../../data/dummy/design";
+import LayoutContainer from "../LayoutContainer/LayoutContainer";
 
 const meta = {
   title: "GordyUI/TP Tour",
@@ -88,6 +89,7 @@ export default meta;
 type Story = StoryObj<typeof TourTravelPlanner>;
 
 const DefaultTourTravelPlanner = {
+  decorators: [(story) => <LayoutContainer>{story()}</LayoutContainer> ],
   args: {
     disabled: false,
     tourType: "Kultur",

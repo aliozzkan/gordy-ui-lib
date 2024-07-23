@@ -3,9 +3,9 @@ import React, { FC } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import LIcon from "../lucidIcon/lucidIcon";
-import { Wrapper } from "../ui";
-import { useMediaQuery } from "usehooks-ts";
+import {H4, Wrapper} from "../ui";
 import "./IconList.css"
+import Container from "../Container/Container";
 
 export interface IconListProps {
   maxItemLength: number;
@@ -16,7 +16,6 @@ export interface IconListProps {
 }
 
 const IconList: FC<IconListProps> = (props) => {
-  const matches = useMediaQuery("(max-width: 768px)");
   const { strategy, maxItemLength } = props;
   const design = props?.design
 
@@ -98,20 +97,19 @@ const IconList: FC<IconListProps> = (props) => {
         props.className || ""
       }`}
     >
-      <div className="grd-container">
-        <p
-          className={`grd-text-gray-800 grd-font-semibold grd-drop-shadow-lg ${
+      <Container>
+        <H4
+          className={`title-heading h4 grd-text-gray-800 grd-drop-shadow-lg grd-mb-6 ${
             !strategy?.data?.titleStyle?.fontSize ? "grd-text-2xl" : ""
           }`}
           dangerouslySetInnerHTML={{ __html: strategy?.data?.title }}
           style={{ fontSize: "24px", ...strategy?.data?.titleStyle }}
-        ></p>
-
+        />
         <Swiper {...swiperProps}>
           {Array.apply(null, Array(maxItemLength)).map((val, _index) => {
             return (
               <SwiperSlide className="grd-w-full  grd-min-w-[106px]"
-                     key={_index}>
+                           key={_index}>
                 <a
                   className={`icon-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white grd-text-sm grd-font-medium grd-text-color-800 
                       grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-blue-500 grd-px-2 grd-py-4`}
@@ -151,7 +149,7 @@ const IconList: FC<IconListProps> = (props) => {
             </div>
           </div>
         )}
-      </div>
+      </Container>
     </Wrapper>
   );
 };

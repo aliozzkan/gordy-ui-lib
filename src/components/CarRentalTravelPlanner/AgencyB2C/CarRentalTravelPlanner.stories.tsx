@@ -5,6 +5,7 @@ import "../../../index.css";
 import AgencyCarRentalTravelPlannerProps from "./CarRentalTravelPlanner";
 import {carRentalTravelPlannerAgencyStrategy} from "../../../data/dummy/carrentaltravelplanner";
 import {design} from "../../../data/dummy/design";
+import LayoutContainer from "../../LayoutContainer/LayoutContainer";
 
 const meta = {
   title: "GordyUI/TP Car Rental Agency",
@@ -56,6 +57,7 @@ export default meta;
 type Story = StoryObj<typeof AgencyCarRentalTravelPlannerProps>;
 
 const DefaultAgencyCarRentalTravelPlannerProps = {
+  decorators: [(story) => <LayoutContainer>{story()}</LayoutContainer> ],
   args: {
     disabled: false,
     strategy: carRentalTravelPlannerAgencyStrategy,
