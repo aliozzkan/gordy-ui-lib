@@ -98,6 +98,7 @@ const Sliders = (props: any) => {
 
   const swiperId = Math.floor(Math.random() * 1000000000000)
 
+  const items = strategy?.data?.items
   const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows
   const pagination = strategy?.visual?.paginationStyle?.swipeNavigation
 
@@ -117,11 +118,12 @@ const Sliders = (props: any) => {
   return (
     <>
       <Swiper
-        className={`grd-w-full mx-0 grd-overflow-hidden grd-transition-all ${pagination && strategy?.data?.items && strategy?.data?.items.length ? "grd-pb-10" : ""} swiper-${swiperId} ${props.className || ""}`}
+        className={`grd-w-full mx-0 grd-overflow-hidden grd-transition-all swiper-${swiperId} ${props.className || ""}`}
         //style={{...strategy?.visual?.style}}
         //speed={1000}
         parallax={false}
         spaceBetween={12}
+        wrapperClass={pagination && items.length ? "grd-pb-10" : ""}
         slidesPerView={"auto"}
         speed={1000}
         freeMode={true}

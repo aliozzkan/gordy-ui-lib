@@ -64,16 +64,13 @@ const IconList: FC<IconListProps> = (props) => {
           style={{ fontSize: "24px", ...strategy?.data?.titleStyle }}
         />
         <Swiper {...{
-          className: `grd-w-full grd-overflow-hidden grd-mt-6 swiper-${swiperId} ${
-            pagination && items && items.length > 6
-              ? "grd-pb-10"
-              : ""
-          }`,
+          className: `grd-w-full grd-overflow-hidden grd-mt-6 swiper-${swiperId}`,
           spaceBetween: 12,
           speed: 700,
           slidesPerView: "auto",
           freeMode: true,
           grabCursor: true,
+          wrapperClass: items && items.length < 6 ? "grd-justify-center" : pagination && items.length >= 6 ? "grd-pb-10" : "",
           modules: [Pagination, Navigation],
           navigation: {
             enabled: displayArrows,
