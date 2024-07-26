@@ -4,9 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import LIcon from "../lucidIcon/lucidIcon";
 import {H4, Wrapper} from "../ui";
-import "./IconList.css"
 import Container from "../Container/Container";
-import * as https from "https";
+import "./IconList.css"
 
 export interface IconListProps {
   maxItemLength: number;
@@ -91,7 +90,7 @@ const IconList: FC<IconListProps> = (props) => {
         }}>
           {Array.apply(null, Array(maxItemLength)).map((val, _index) => {
             return (
-              <SwiperSlide className="grd-w-[106px] @sm:grd-w-[160px] grd-select-none"
+              <SwiperSlide className="grd-max-w-[106px] @sm:grd-max-w-[160px] grd-select-none"
                            key={_index}>
                 <a
                   className={`icon-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white grd-text-sm grd-font-medium grd-text-color-800 

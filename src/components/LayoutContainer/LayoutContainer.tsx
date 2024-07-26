@@ -9,7 +9,7 @@ const LayoutContainer: FC<LayoutContainerProps> = ({children, className, ...prop
     <div
       {...props}
       className={
-        clsx(`grd-@container grd-w-full`, className)}>
+        clsx(`grd-@container`, className)}>
       {children}
     </div>
   );
