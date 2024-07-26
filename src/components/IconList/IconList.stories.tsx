@@ -29,7 +29,7 @@ export default meta;
 type Story = StoryObj<typeof IconList>;
 
 const DefaultIconList = {
-  decorators: [(story) => <LayoutContainer>{story()}</LayoutContainer> ],
+  decorators: [(story) => <LayoutContainer className="">{story()}</LayoutContainer> ],
   args: {
     strategy: IconListDummy,
     maxItemLength: IconListDummy.data.items.length,

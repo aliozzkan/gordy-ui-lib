@@ -65,8 +65,7 @@ const MediaList: FC<MediaListProps> = (props) => {
     speed: 700,
     slidesPerView: "auto",
     grabCursor: true,
-    centeredSlides: true,
-    wrapperClass: medias && medias.length <= 3 ? "grd-justify-center" : pagination && itemLength > 2 ? "grd-pb-10" : "",
+    wrapperClass: medias && medias.length < 2 ? "grd-justify-center" : pagination && itemLength > 2 ? "grd-pb-10" : "",
     modules: [Pagination, Navigation],
     navigation: {
       enabled: displayArrows,
@@ -80,18 +79,6 @@ const MediaList: FC<MediaListProps> = (props) => {
         }
         : false
     ,
-    breakpoints: {
-      480: {
-        slidesPerView: 2,
-        centeredSlides: false,
-      },
-      768: {
-        slidesPerView: 4,
-        centeredSlides: false,
-        spaceBetween: 15,
-        wrapperClass: medias && medias.length <= 3 ? "grd-justify-center" : pagination && itemLength > 4 ? "grd-pb-10" : "",
-      },
-    },
     className: `grd-w-full grd-overflow-hidden swiper-${swiperId} ${props.className || ""}`
   }
 
@@ -130,7 +117,7 @@ const MediaList: FC<MediaListProps> = (props) => {
             return (
               <SwiperSlide
                 key={index}
-                className={`media-box grd-group @sm:grd-max-w-[336px] grd-w-[75vw] @sm:grd-w-[calc(50vw-26px)] @md:grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
+                className={`${medias && medias?.length > 2 ? "grd-max-w-[164px]" : "grd-max-w-[89%]" } media-box grd-group @md:grd-max-w-[calc(33.33333%-24px)] grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
                       grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-blue-500`}
                 style={{ borderRadius: design?.borderRadius }}
               >
@@ -140,7 +127,7 @@ const MediaList: FC<MediaListProps> = (props) => {
                   target={media?.itemAction?.target || "_self"}
                 >
                   <div
-                    className="image-wrapper grd-flex grd-items-center grd-justify-center grd-h-[190px] grd-w-full"
+                    className="image-wrapper grd-flex grd-items-center grd-justify-center grd-h-[120px] @md:grd-h-[190px] grd-w-full"
                     style={{ backgroundColor: media?.backgroundColor }}
                   >
                     {media?.imagePath && (

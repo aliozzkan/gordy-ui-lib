@@ -1,4 +1,4 @@
-@media screen and (max-width:1024px) {
+@container (max-width:1024px) {
     .grd-heading-h1 {
         font-size: 24px !important;
     }
@@ -7,13 +7,13 @@
     }
 }
 
-@media screen and (max-width:768px) {
+@container (max-width:768px) {
     /*carousel*/
     .item-text-area {
-        font-size: 6vw !important;
+        font-size: 20px !important;
     }
 }
-@media screen and (max-width:480px) {
+@container (max-width:480px) {
     /*titles*/
     .grd-heading-h1 {
         font-size: 18px !important;

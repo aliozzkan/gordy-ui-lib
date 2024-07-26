@@ -121,88 +121,84 @@ const Header: FC<HeaderProps> = ({
 
 
   return (
-
-    <LayoutContainer>
-      <div className={`main-header grd-mx-auto grd-z-10 ${className}`}>
-        <div className="top-bar grd-border-b grd-border-gray-200 grd-py-3.5">
-          <Container className="grd-flex grd-items-center">
-            <div className="logo-area grd-mr-auto">
-              {showLogo && (
-                <a className="logo grd-flex grd-max-w-[120px] grd-max-h-[40px]" href="javascript;">
-                  <img
-                    className="grd-max-w-full grd-max-h-full grd-object-contain grd-object-left"
-                    src={logoUrl ? logoUrl : "https://place-hold.it/120x40?text=logo bulunamadi"} alt="logo"/>
-                </a>
-              )}
-            </div>
-
-            <nav>
-              <ul className="grd-flex grd-gap-4">
-                {showLanguageMenuItem && (
-                  <li className="grd-flex grd-items-center grd-text-gray-500 grd-text-sm grd-font-medium">
-                    <Button variant="ghost">
-                      <LIcon name="Globe" size={20}/>
-                      <span>Türkçe, TL</span>
-                    </Button>
-                  </li>
-                )}
-
-                {showHelpMenuItem && (
-                  <li className="grd-flex grd-items-center grd-text-gray-500 grd-text-sm grd-font-medium">
-                    <Button variant="ghost">
-                      <LIcon name="HelpCircle" size={20}/>
-                      <span>Yardım</span>
-                    </Button>
-                  </li>
-                )}
-
-                {showMyRequestsMenuItem && (
-                  <li>
-                    <Button variant="outline">
-                      <LIcon name="Inbox" size={20}/>
-                      <span>Taleplerim</span>
-                    </Button>
-                  </li>
-                )}
-
-                {showAccountDropdownItem && (
-                  <li>
-                    <Dropdown items={renderHeaderDropdownItems} className="grd-text-gray-800 grd-text-sm grd-rounded-xl grd-mt-2">
-                      <Button variant="outline">
-                        <LIcon name="User" size={20}/>
-                        <span>Can Yılmaz</span>
-                      </Button>
-                    </Dropdown>
-                  </li>
-                )}
-
-              </ul>
-            </nav>
-          </Container>
-        </div>
-        <div className="bottom-bar">
-          <Container>
-            {showTabBar && (
-              <div className="tab-item-group grd-flex grd-gap-8 grd-text-gray-500 grd-font-medium grd-text-sm">
-                {tabItemList && tabItemList.map((item: any, index: number) => {
-                  return (
-                    <TabButton
-                      key={item.label + index}
-                      onClick={(tabName: any) => {
-                        setActiveTab(tabName)
-                      }} label={item.label} icon={item.icon} size={20}
-                      isActive={ActiveTab === item.label}
-                    />
-                  )
-                })}
-              </div>
+    <div className={`main-header grd-mx-auto grd-z-10 ${className}`}>
+      <div className="top-bar grd-border-b grd-border-gray-200 grd-py-3.5">
+        <Container className="grd-flex grd-items-center">
+          <div className="logo-area grd-mr-auto">
+            {showLogo && (
+              <a className="logo grd-flex grd-max-w-[120px] grd-max-h-[40px]" href="javascript;">
+                <img
+                  className="grd-max-w-full grd-max-h-full grd-object-contain grd-object-left"
+                  src={logoUrl ? logoUrl : "https://place-hold.it/120x40?text=logo bulunamadi"} alt="logo"/>
+              </a>
             )}
+          </div>
 
-          </Container>
-        </div>
+          <nav>
+            <ul className="grd-flex grd-gap-4">
+              {showLanguageMenuItem && (
+                <li className="grd-flex grd-items-center grd-text-gray-500 grd-text-sm grd-font-medium">
+                  <Button variant="ghost">
+                    <LIcon name="Globe" size={20}/>
+                    <span>Türkçe, TL</span>
+                  </Button>
+                </li>
+              )}
+
+              {showHelpMenuItem && (
+                <li className="grd-flex grd-items-center grd-text-gray-500 grd-text-sm grd-font-medium">
+                  <Button variant="ghost">
+                    <LIcon name="HelpCircle" size={20}/>
+                    <span>Yardım</span>
+                  </Button>
+                </li>
+              )}
+
+              {showMyRequestsMenuItem && (
+                <li>
+                  <Button variant="outline">
+                    <LIcon name="Inbox" size={20}/>
+                    <span>Taleplerim</span>
+                  </Button>
+                </li>
+              )}
+
+              {showAccountDropdownItem && (
+                <li>
+                  <Dropdown items={renderHeaderDropdownItems} className="grd-text-gray-800 grd-text-sm grd-rounded-xl grd-mt-2">
+                    <Button variant="outline">
+                      <LIcon name="User" size={20}/>
+                      <span>Can Yılmaz</span>
+                    </Button>
+                  </Dropdown>
+                </li>
+              )}
+
+            </ul>
+          </nav>
+        </Container>
       </div>
-    </LayoutContainer>
+      <div className="bottom-bar">
+        <Container>
+          {showTabBar && (
+            <div className="tab-item-group grd-flex grd-gap-8 grd-text-gray-500 grd-font-medium grd-text-sm">
+              {tabItemList && tabItemList.map((item: any, index: number) => {
+                return (
+                  <TabButton
+                    key={item.label + index}
+                    onClick={(tabName: any) => {
+                      setActiveTab(tabName)
+                    }} label={item.label} icon={item.icon} size={20}
+                    isActive={ActiveTab === item.label}
+                  />
+                )
+              })}
+            </div>
+          )}
 
+        </Container>
+      </div>
+    </div>
   );
 };
 

@@ -124,8 +124,7 @@ const Sliders = (props: any) => {
         spaceBetween={12}
         slidesPerView={"auto"}
         speed={1000}
-        loop={true}
-        centeredSlides={true}
+        freeMode={true}
         initialSlide={props?.activeSliderIndex || 0}
         //slidesPerView={1}
         grabCursor={true}
@@ -150,22 +149,13 @@ const Sliders = (props: any) => {
             }
             : false
         }
-        breakpoints={{
-          480: {
-            loop:false,
-            slidesPerView: 1,
-            spaceBetween: 30,
-            centeredSlides: false,
-            parallax: true,
-          },
-        }}
       >
         {props?.sliders && props?.sliders.map((slide: any, index: number) => {
 
           return (
             <SwiperSlide
               key={index}
-              className={`grd-flex @md:grd-items-center grd-w-10/12 grd-transition-all !grd-h-[200px] @sm:!grd-h-auto @sm:grd-min-h-[240px] grd-overflow-hidden`}
+              className={`grd-flex @md:grd-items-center grd-w-11/12 @sm:grd-w-full !grd-h-[200px] @sm:!grd-h-auto @sm:grd-min-h-[240px] grd-overflow-hidden`}
               style={{
                 ...props?.slideStyle,
                 backgroundColor: slide?.backgroundColor,

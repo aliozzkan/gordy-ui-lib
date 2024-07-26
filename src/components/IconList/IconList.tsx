@@ -6,6 +6,7 @@ import LIcon from "../lucidIcon/lucidIcon";
 import {H4, Wrapper} from "../ui";
 import "./IconList.css"
 import Container from "../Container/Container";
+import * as https from "https";
 
 export interface IconListProps {
   maxItemLength: number;
@@ -29,12 +30,13 @@ const IconList: FC<IconListProps> = (props) => {
       ? undefined
       : strategy?.visual?.style?.height;
 
-  const items = strategy?.data?.items || strategy?.visual;
+  const items = strategy?.data?.items
+  const display = items || strategy?.visual;
   const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows;
   const pagination = strategy?.visual?.paginationStyle?.swipeNavigation;
   const swiperId = Math.floor(Math.random() * 1000000000000);
 
-  if (!items) {
+  if (!display) {
     return <></>;
   }
 
@@ -42,49 +44,6 @@ const IconList: FC<IconListProps> = (props) => {
     return "https://assets-v2.lottiefiles.com/a/490bc92a-1170-11ee-9e35-0f6eacef4099/DBwCBrM6eQ.gif";
   };
 
-  const swiperProps = {
-    className: `grd-w-full grd-overflow-hidden grd-mt-6 -grd-mx-3 grd-px-3 swiper-${swiperId} ${
-      pagination && strategy?.data?.items && strategy?.data?.items.length > 6
-        ? "grd-pb-10"
-        : ""
-    }`,
-    spaceBetween: 12,
-    speed: 700,
-    slidesPerView: 3,
-    grabCursor: true,
-    modules: [Pagination, Navigation],
-    navigation: {
-      enabled: displayArrows,
-      prevEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-prev`,
-      nextEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-next`,
-    },
-    pagination: pagination
-      ? {
-          clickable: true,
-          dynamicBullets: true,
-          dynamicMainBullets: 4,
-        }
-      : false,
-
-    breakpoints:{
-      768: {
-        slidesPerView: strategy?.data?.items
-          ? strategy?.data?.items.length >= 4
-            ? 4
-            : strategy?.data?.items.length
-          : 1,
-        spaceBetween: 16,
-
-      },
-      1024: {
-        slidesPerView: strategy?.data?.items
-          ? strategy?.data?.items.length >= 6
-            ? 6
-            : strategy?.data?.items.length
-          : 1,
-      },
-    }
-  };
 
   return (
     <Wrapper
@@ -105,10 +64,34 @@ const IconList: FC<IconListProps> = (props) => {
           dangerouslySetInnerHTML={{ __html: strategy?.data?.title }}
           style={{ fontSize: "24px", ...strategy?.data?.titleStyle }}
         />
-        <Swiper {...swiperProps}>
+        <Swiper {...{
+          className: `grd-w-full grd-overflow-hidden grd-mt-6 swiper-${swiperId} ${
+            pagination && items && items.length > 6
+              ? "grd-pb-10"
+              : ""
+          }`,
+          spaceBetween: 12,
+          speed: 700,
+          slidesPerView: "auto",
+          freeMode: true,
+          grabCursor: true,
+          modules: [Pagination, Navigation],
+          navigation: {
+            enabled: displayArrows,
+            prevEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-prev`,
+            nextEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-next`,
+          },
+          pagination: pagination
+            ? {
+              clickable: true,
+              dynamicBullets: true,
+              dynamicMainBullets: 4,
+            }
+            : false,
+        }}>
           {Array.apply(null, Array(maxItemLength)).map((val, _index) => {
             return (
-              <SwiperSlide className="grd-w-full  grd-min-w-[106px]"
+              <SwiperSlide className="grd-w-[106px] @sm:grd-w-[160px] grd-select-none"
                            key={_index}>
                 <a
                   className={`icon-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white grd-text-sm grd-font-medium grd-text-color-800 

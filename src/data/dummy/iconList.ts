@@ -100,7 +100,7 @@ export const IconListDummy = {
         "mediaPath": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-9b2dbbe0-b2c4-4466-80eb-154ae2680089.jpg",
         "textLangKey": "060f82a5-b66c-499a-bbbd-5c4fcba9bba2",
         "text": "Bungalovlar",
-        "url": "www.google.com.tr",
+        "url": "https://google.com.tr",
         "target": "_blank",
         "style": {
           "textAlign": null,
