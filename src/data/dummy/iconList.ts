@@ -100,7 +100,7 @@ export const IconListDummy = {
         "mediaPath": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-9b2dbbe0-b2c4-4466-80eb-154ae2680089.jpg",
         "textLangKey": "060f82a5-b66c-499a-bbbd-5c4fcba9bba2",
         "text": "Bungalovlar",
-        "url": "https://google.com.tr",
+        "url": "https://eva-b2c-strategy.platformeva.com/hotel-list?destination=Antalya&destinationId=38140&destinationType=4&destinationTypeName=B%C3%B6lge&checkindate=2024-07-19&checkoutdate=2024-07-25&rooms=0-2",
         "target": "_blank",
         "style": {
           "textAlign": null,
@@ -148,7 +148,7 @@ export const IconListDummy = {
         "mediaPath": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-9b2dbbe0-b2c4-4466-80eb-154ae2680089.jpg",
         "textLangKey": "dcccdfe9-250c-4db3-9072-b87ba8dc4276",
         "text": "Yazlık villalar",
-        "url": "www.google.com",
+        "url": "https://eva-b2c-strategy.platformeva.com/flight-list?originId=38123&originType=4&originName=Ankara%2C+T%C3%BCrkiye%2C+%C4%B0%C3%A7+Anadolu&departureId=38140&departureName=Antalya%2C+T%C3%BCrkiye%2C+Akdeniz+B%C3%B6lgesi&departureType=4&departureTime=2024-05-14&cabinClass=4&flightTripKind=1&passenger=1%2C0&returnTime=2024-08-14",
         "target": "_blank",
         "style": {
           "textAlign": null,

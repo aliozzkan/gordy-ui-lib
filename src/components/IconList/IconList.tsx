@@ -1,11 +1,12 @@
-import React, { FC } from "react";
+import { FC } from "react";
 
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import LIcon from "../lucidIcon/lucidIcon";
-import {H4, Wrapper} from "../ui";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Container from "../Container/Container";
-import "./IconList.css"
+import LIcon from "../lucidIcon/lucidIcon";
+import AdvancedLink from "../ui/advanced-link";
+import { H4, Wrapper } from "../ui";
+import "./IconList.css";
 
 export interface IconListProps {
   maxItemLength: number;
@@ -89,7 +90,7 @@ const IconList: FC<IconListProps> = (props) => {
             return (
               <SwiperSlide className="grd-max-w-[106px] @sm:grd-max-w-[160px] grd-select-none"
                            key={_index}>
-                <a
+                <AdvancedLink
                   className={`icon-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white grd-text-sm grd-font-medium grd-text-color-800 
                       grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-blue-500 grd-px-2 grd-py-4`}
                   style={{
@@ -109,7 +110,7 @@ const IconList: FC<IconListProps> = (props) => {
                   }} className={`grd-block grd-mt-1 grd-truncate grd-max-w-full`}>
                     {(items && items![_index]?.text) || "null"}
                   </span>
-                </a>
+                </AdvancedLink>
               </SwiperSlide>
             );
           })}
