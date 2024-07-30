@@ -1,11 +1,12 @@
 import React, { FC } from "react";
 
-import {Swiper, SwiperProps, SwiperRef, SwiperSlide} from "swiper/react";
+import { Swiper, SwiperProps, SwiperRef, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import LIcon from "../lucidIcon/lucidIcon";
-import {H4, Wrapper} from "../ui";
-import "./MediaList.css"
-import Container from "../Container/Container"
+import { H4, Wrapper } from "../ui";
+import "./MediaList.css";
+import Container from "../Container/Container";
+import AdvancedLink from "../ui/advanced-link";
 
 export interface MediaListProps {
   strategy: any;
@@ -16,14 +17,20 @@ export interface MediaListProps {
 
 const MediaList: FC<MediaListProps> = (props) => {
   const { strategy } = props;
-  const design = props?.design
+  const design = props?.design;
   // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
   const fixedHeightValue =
     strategy?.visual?.height === 0 ? undefined : strategy?.visual?.height;
 
   //styles
-  document.body.style.setProperty("--gordy-link-hover-color", design?.link?.color)
-  document.body.style.setProperty("--swiper-theme-color", design?.button?.backgroundColor || "#007aff")
+  document.body.style.setProperty(
+    "--gordy-link-hover-color",
+    design?.link?.color
+  );
+  document.body.style.setProperty(
+    "--swiper-theme-color",
+    design?.button?.backgroundColor || "#007aff"
+  );
 
   const medias: any = [];
   let itemLength = 0;
@@ -51,44 +58,56 @@ const MediaList: FC<MediaListProps> = (props) => {
   const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows;
   const pagination = strategy?.visual?.paginationStyle?.swipeNavigation;
 
-  let subtitleSpaces = false
+  let subtitleSpaces = false;
 
-  const anySubtitle = medias.find((media: any) => media?.subTitle && media?.subTitle?.length)
-  const anySubtitleDisplay = medias.find((media: any) => media?.subTitle && media?.subTitle?.length && media?.displaySubTitle)
-  if (anySubtitle && anySubtitleDisplay) subtitleSpaces = true
+  const anySubtitle = medias.find(
+    (media: any) => media?.subTitle && media?.subTitle?.length
+  );
+  const anySubtitleDisplay = medias.find(
+    (media: any) =>
+      media?.subTitle && media?.subTitle?.length && media?.displaySubTitle
+  );
+  if (anySubtitle && anySubtitleDisplay) subtitleSpaces = true;
 
   let swiperProps: any = {
     spaceBetween: 12,
     style: {
-      borderRadius: design?.borderRadius
+      borderRadius: design?.borderRadius,
     },
     speed: 700,
     slidesPerView: "auto",
     grabCursor: true,
-    wrapperClass: medias && medias.length < 2 ? "grd-justify-center" : pagination && itemLength > 2 ? "grd-pb-10" : "",
+    wrapperClass:
+      medias && medias.length < 2
+        ? "grd-justify-center"
+        : pagination && itemLength > 2
+        ? "grd-pb-10"
+        : "",
     modules: [Pagination, Navigation],
     navigation: {
       enabled: displayArrows,
       prevEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-prev`,
       nextEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-next`,
     },
-    pagination: pagination ? {
+    pagination: pagination
+      ? {
           clickable: pagination,
           dynamicBullets: true,
           dynamicMainBullets: 4,
         }
-        : false
-    ,
-    className: `grd-w-full grd-overflow-hidden swiper-${swiperId} ${props.className || ""}`
-  }
+      : false,
+    className: `grd-w-full grd-overflow-hidden swiper-${swiperId} ${
+      props.className || ""
+    }`,
+  };
 
-  let CustomTag: any = "div"
-  if (medias && medias.length > 2){
-    CustomTag = Swiper
+  let CustomTag: any = "div";
+  if (medias && medias.length > 2) {
+    CustomTag = Swiper;
   } else {
     swiperProps = {
-      className: `grd-flex grd-gap-4 grd-justify-center grd-flex-col @md:grd-flex-row`
-    }
+      className: `grd-flex grd-gap-4 grd-justify-center grd-flex-col @md:grd-flex-row`,
+    };
   }
 
   return (
@@ -117,11 +136,15 @@ const MediaList: FC<MediaListProps> = (props) => {
             return (
               <SwiperSlide
                 key={index}
-                className={`${medias && medias?.length > 2 ? "grd-max-w-[164px]" : "grd-max-w-[89%]" } media-box grd-group @md:grd-max-w-[calc(33.33333%-24px)] grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
+                className={`${
+                  medias && medias?.length > 2
+                    ? "grd-max-w-[164px]"
+                    : "grd-max-w-[89%]"
+                } media-box grd-group @md:grd-max-w-[calc(33.33333%-24px)] grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
                       grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-blue-500`}
                 style={{ borderRadius: design?.borderRadius }}
               >
-                <a
+                <AdvancedLink
                   className="grd-block grd-w-full"
                   href={media?.itemAction?.link || undefined}
                   target={media?.itemAction?.target || "_self"}
@@ -144,7 +167,7 @@ const MediaList: FC<MediaListProps> = (props) => {
                       <span
                         style={{
                           ...media.titleStyle,
-                          textDecoration: design?.link?.style
+                          textDecoration: design?.link?.style,
                         }}
                         className="title-area grd-text-base grd-font-semibold grd-text-color-800 grd-truncate grd-transition"
                         title={media?.title}
@@ -155,12 +178,18 @@ const MediaList: FC<MediaListProps> = (props) => {
                       <span
                         style={{ ...media.subTitleStyle }}
                         className="grd-mt-0.5 grd-text-sm grd-font-normal grd-text-gray-500 grd-truncate"
-                        title={media?.displaySubTitle ? media?.subTitle : undefined}
-                        dangerouslySetInnerHTML={{ __html: media?.displaySubTitle ? media?.subTitle : undefined }}
+                        title={
+                          media?.displaySubTitle ? media?.subTitle : undefined
+                        }
+                        dangerouslySetInnerHTML={{
+                          __html: media?.displaySubTitle
+                            ? media?.subTitle
+                            : undefined,
+                        }}
                       />
                     )}
                   </div>
-                </a>
+                </AdvancedLink>
               </SwiperSlide>
             );
           })}

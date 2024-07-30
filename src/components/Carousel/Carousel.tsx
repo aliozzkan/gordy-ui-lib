@@ -8,6 +8,7 @@ import LIcon from "../lucidIcon/lucidIcon";
 import {Button} from "../ui";
 import {hexIsLight} from "../../helpers/hexIsLight";
 import Container from "../Container/Container";
+import AdvancedLink from '..//ui/advanced-link';
 
 const SliderCategories = (props: any) => {
   const categoryInfo = props.categoryInfo
@@ -176,7 +177,7 @@ const Sliders = (props: any) => {
                   )
                   }
                   {slide?.buttonText && (
-                    <a className="@md:grd-mt-0 grd-mt-9" href={slide?.buttonActions?.link || undefined} target={slide?.buttonActions?.target || "_self"}>
+                    <AdvancedLink className="@md:grd-mt-0 grd-mt-9" href={slide?.buttonActions?.link || undefined} target={slide?.buttonActions?.target || "_self"}>
                       <Button
                         variant="primary"
                         className="grd-px-8 grd-text-base grd-font-medium @md:grd-mt-6 grd-py-2 grd-h-auto"
@@ -192,7 +193,7 @@ const Sliders = (props: any) => {
                       >
 
                         {slide?.buttonText}</Button>
-                    </a>
+                    </AdvancedLink>
                   )
                   }
                 </div>
