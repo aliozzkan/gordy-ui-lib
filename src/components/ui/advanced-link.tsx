@@ -14,10 +14,10 @@ function AdvancedLink({ href, ...props }: AdvancedLinkProps) {
     if (checkInDataParam) {
       const checkInData = dayjs(checkInDataParam, "YYYY-MM-DD");
       if (checkInData.isValid() && checkInData.isBefore(dayjs())) {
-        urlParams.set("checkindate", dayjs().format("YYYY-MM-DD"));
+        urlParams.set("checkindate", dayjs().add(1, "week").format("YYYY-MM-DD"));
         urlParams.set(
           "checkoutdate",
-          dayjs().add(6, "day").format("YYYY-MM-DD")
+          dayjs().add(1, "week").add(1, "day").format("YYYY-MM-DD")
         );
       }
     }
@@ -27,14 +27,12 @@ function AdvancedLink({ href, ...props }: AdvancedLinkProps) {
     if (departureDateParam) {
       const departureDate = dayjs(departureDateParam, "YYYY-MM-DD");
       if (departureDate.isValid() && departureDate.isBefore(dayjs())) {
-        urlParams.set("departureTime", dayjs().format("YYYY-MM-DD"));
-        urlParams.set("returnTime", dayjs().add(6, "day").format("YYYY-MM-DD"));
+        urlParams.set("departureTime", dayjs().add(1, "week").format("YYYY-MM-DD"));
+        urlParams.set("returnTime", dayjs().add(1, "week").add(1, "day").format("YYYY-MM-DD"));
       }
     }
 
     return decodeURIComponent(urlParams.toString());
-
-    return href;
   }
 
   const newHref = getModifiedHref();
