@@ -167,7 +167,7 @@ const Sliders = (props: any) => {
             }}
             >
               {(slide?.title || slide?.buttonText) && (
-                <CustomTag target={slide?.buttonActions?.target || "_self"} href={slide?.buttonActions?.link || undefined}>
+                <CustomTag className="grd-w-full grd-h-full grd-flex grd-items-center grd-absolute grd-left-0 grd-top-0 grd-z-10" target={slide?.buttonActions?.target || "_self"} href={slide?.buttonActions?.link || undefined}>
                   <div
                     ref={el => sliderTextAreaRef.current[index] = el}
                     className="grd-h-full grd-mb-0 @lg:grd-mb-5 @md:grd-h-auto grd-flex grd-items-start grd-flex-col grd-px-4 @md:grd-px-5 @lg:grd-px-10 grd-py-4 @md:grd-py-8 @lg:grd-py-16 grd-shrink-0 grd-absolute grd-z-10" data-swiper-parallax="20%">

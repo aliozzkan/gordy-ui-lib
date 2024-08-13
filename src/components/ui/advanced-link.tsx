@@ -32,7 +32,8 @@ function AdvancedLink({ href, ...props }: AdvancedLinkProps) {
       }
     }
 
-    return decodeURIComponent(urlParams.toString());
+    if (checkInDataParam || departureDateParam) return decodeURIComponent(urlParams.toString())
+    return href;
   }
 
   const newHref = getModifiedHref();

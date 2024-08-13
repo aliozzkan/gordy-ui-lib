@@ -245,7 +245,7 @@ export const TabSliderStrategy = {
               "textAlign": null,
               "whiteSpace": null
             },
-            "title": "baslik 2 baslik 2 baslik 2 baslik 2 baslik 2 baslik 2 baslik 2 baslik 2 baslik 2 ",
+            //"title": "baslik 2 baslik 2",
             "titleStyle": {
               "textAlign": null,
               "fontSize": "50px",
