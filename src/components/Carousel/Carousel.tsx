@@ -154,6 +154,8 @@ const Sliders = (props: any) => {
         }
       >
         {props?.sliders && props?.sliders.map((slide: any, index: number) => {
+          let CustomTag: any = "div"
+          if(slide?.buttonStyle?.display === "none" && slide?.buttonActions?.link) CustomTag = AdvancedLink
 
           return (
             <SwiperSlide
@@ -165,38 +167,40 @@ const Sliders = (props: any) => {
             }}
             >
               {(slide?.title || slide?.buttonText) && (
-                <div
-                  ref={el => sliderTextAreaRef.current[index] = el}
-                  className="grd-h-full grd-mb-0 @lg:grd-mb-5 @md:grd-h-auto grd-flex grd-flex-col grd-px-4 @md:grd-px-5 @lg:grd-px-10 grd-py-4 @md:grd-py-8 @lg:grd-py-16 grd-shrink-0 grd-absolute grd-z-10" data-swiper-parallax="20%">
-                  {slide?.title && (
-                    <p
-                      data-swiper-parallax="-200"
-                      className={`item-text-area grd-text-white grd-drop-shadow-lg @sm:!grd-leading-[normal] grd-text-xl @md:grd-text-3xl @xl:grd-text-5xl grd-line-clamp-2 @md:grd-line-clamp-none`}
-                      style={slide.titleStyle}
-                      dangerouslySetInnerHTML={{ __html: slide?.title }} />
-                  )
-                  }
-                  {slide?.buttonText && (
-                    <AdvancedLink className="@md:grd-mt-0 grd-mt-9" href={slide?.buttonActions?.link || undefined} target={slide?.buttonActions?.target || "_self"}>
-                      <Button
-                        variant="primary"
-                        className="grd-px-8 grd-text-base grd-font-medium @md:grd-mt-6 grd-py-2 grd-h-auto"
-                        style={{
-                          ...props?.design?.button,
-                          ...slide?.buttonStyle,
-                          borderRadius: slide?.buttonStyle?.borderRadius || design?.borderRadius,
-                          backgroundColor: slide?.buttonStyle?.backgroundColor || design?.button?.backgroundColor,
-                          color: (!slide?.buttonStyle?.color && !design?.button?.color) ? (hexIsLight(design?.button?.backgroundColor || design?.button?.backgroundColor)
-                            ? "black"
-                            : "white") : (slide?.buttonStyle?.color || design?.button?.color),
-                      }}
-                      >
+                <CustomTag target={slide?.buttonActions?.target || "_self"} href={slide?.buttonActions?.link || undefined}>
+                  <div
+                    ref={el => sliderTextAreaRef.current[index] = el}
+                    className="grd-h-full grd-mb-0 @lg:grd-mb-5 @md:grd-h-auto grd-flex grd-items-start grd-flex-col grd-px-4 @md:grd-px-5 @lg:grd-px-10 grd-py-4 @md:grd-py-8 @lg:grd-py-16 grd-shrink-0 grd-absolute grd-z-10" data-swiper-parallax="20%">
+                    {slide?.title && (
+                      <p
+                        data-swiper-parallax="-200"
+                        className={`item-text-area grd-text-white grd-drop-shadow-lg @sm:!grd-leading-[normal] grd-text-xl @md:grd-text-3xl @xl:grd-text-5xl grd-line-clamp-2 @md:grd-line-clamp-none`}
+                        style={slide.titleStyle}
+                        dangerouslySetInnerHTML={{ __html: slide?.title }} />
+                    )}
+                    {slide?.buttonText && (
+                      <AdvancedLink className="@md:grd-mt-0 grd-mt-9" href={slide?.buttonActions?.link || undefined} target={slide?.buttonActions?.target || "_self"}>
+                        <Button
+                          variant="primary"
+                          className="grd-px-8 grd-text-base grd-font-medium @md:grd-mt-6 grd-py-2 grd-h-auto"
+                          style={{
+                            ...props?.design?.button,
+                            ...slide?.buttonStyle,
+                            borderRadius: slide?.buttonStyle?.borderRadius || design?.borderRadius,
+                            backgroundColor: slide?.buttonStyle?.backgroundColor || design?.button?.backgroundColor,
+                            color: (!slide?.buttonStyle?.color && !design?.button?.color) ? (hexIsLight(design?.button?.backgroundColor || design?.button?.backgroundColor)
+                              ? "black"
+                              : "white") : (slide?.buttonStyle?.color || design?.button?.color),
+                          }}
+                        >
 
-                        {slide?.buttonText}</Button>
-                    </AdvancedLink>
-                  )
-                  }
-                </div>
+                          {slide?.buttonText}</Button>
+                      </AdvancedLink>
+                    )
+                    }
+                  </div>
+                </CustomTag>
+
               )}
               {slide?.imagePath && (
                 <div className="grd-flex image-area grd-items-center grd-justify-center grd-overflow-hidden grd-max-h-[450px] grd-w-full">

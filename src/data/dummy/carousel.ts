@@ -209,7 +209,7 @@ export const TabSliderStrategy = {
               "fontSize": null,
               "fontWeight": null,
               "color": null,
-              "display": null,
+              "display": "none",
               "backgroundColor": null,
               "position": null,
               "fontFamily": null,
@@ -348,10 +348,10 @@ export const TabSliderStrategy = {
             "videoUrl": null,
             "backgroundColor": "#b3c5e5",
             "order": 0,
-            //"buttonText": null,
+            "buttonText": "aaa",
             "buttonActions": {
               "target": "_blank",
-              "link": null
+              "link": "www.abc.com"
             },
             "buttonStyle": {
               "fontSize": null,
