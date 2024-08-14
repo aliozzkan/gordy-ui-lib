@@ -166,7 +166,7 @@ const Sliders = (props: any) => {
                 backgroundColor: slide?.backgroundColor,
             }}
             >
-              {(slide?.title || slide?.buttonText) && (
+              {(slide?.title || slide?.buttonActions?.link || slide?.buttonText) && (
                 <CustomTag className="grd-w-full grd-h-full grd-flex grd-items-center grd-absolute grd-left-0 grd-top-0 grd-z-10" target={slide?.buttonActions?.target || "_self"} href={slide?.buttonActions?.link || undefined}>
                   <div
                     ref={el => sliderTextAreaRef.current[index] = el}
