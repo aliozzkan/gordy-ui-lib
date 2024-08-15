@@ -25,7 +25,7 @@ export default meta;
 type Story = StoryObj<typeof MediaList>;
 
 const DefaultMediaList = {
-  decorators: [(story) => <LayoutContainer className="grd-w-[375px] grd-m-auto">{story()}</LayoutContainer> ],
+  decorators: [(story) => <LayoutContainer>{story()}</LayoutContainer> ],
   args: {
     strategy: MediaListDummy,
     //className: "my-5 py-4",
