@@ -11,10 +11,6 @@ const meta = {
   title: "GordyUI/IconList",
   component: IconList,
   argTypes: {
-    maxItemLength: {
-        description: "Gelebilecek en fazla icon listesini alir",
-        defaultValue: { summary: 6 },
-    },
     className: {},
     strategy: {
       description: "strategy alir",
@@ -32,7 +28,6 @@ const DefaultIconList = {
   decorators: [(story) => <LayoutContainer className="">{story()}</LayoutContainer> ],
   args: {
     strategy: IconListDummy,
-    maxItemLength: IconListDummy.data.items.length,
     design: design,
   },
 } satisfies Story;

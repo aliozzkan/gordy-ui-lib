@@ -159,7 +159,6 @@ interface CarouselProps {
 declare const Carousel: FC<CarouselProps>;
 
 interface IconListProps {
-    maxItemLength: number;
     strategy: any;
     className?: string;
     disabled?: boolean;

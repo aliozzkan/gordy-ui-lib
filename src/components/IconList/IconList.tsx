@@ -9,7 +9,6 @@ import { H4, Wrapper } from "../ui";
 import "./IconList.css";
 
 export interface IconListProps {
-  maxItemLength: number;
   strategy: any;
   className?: string;
   disabled?: boolean;
@@ -17,7 +16,7 @@ export interface IconListProps {
 }
 
 const IconList: FC<IconListProps> = (props) => {
-  const { strategy, maxItemLength } = props;
+  const { strategy } = props;
   const design = props?.design
 
   //styles
@@ -30,8 +29,9 @@ const IconList: FC<IconListProps> = (props) => {
       ? undefined
       : strategy?.visual?.style?.height;
 
-  const items = strategy?.data?.items
-  const display = items || strategy?.visual;
+  const data = strategy?.data;
+  const children = strategy?.children;
+  const display = data || strategy?.visual || children;
   const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows;
   const pagination = strategy?.visual?.paginationStyle?.swipeNavigation;
   const swiperId = Math.floor(Math.random() * 1000000000000);
@@ -71,7 +71,7 @@ const IconList: FC<IconListProps> = (props) => {
           slidesPerView: "auto",
           freeMode: true,
           grabCursor: true,
-          wrapperClass: items && items.length < 6 ? "grd-justify-center" : pagination && items.length >= 6 ? "grd-pb-10" : "",
+          wrapperClass: children && children.length < 6 ? "grd-justify-center" : pagination && children?.length >= 6 ? "grd-pb-10" : "",
           modules: [Pagination, Navigation],
           navigation: {
             enabled: displayArrows,
@@ -86,7 +86,7 @@ const IconList: FC<IconListProps> = (props) => {
             }
             : false,
         }}>
-          {Array.apply(null, Array(maxItemLength)).map((val, _index) => {
+          {children?.map((child: any, _index: number) => {
             return (
               <SwiperSlide className="grd-max-w-[106px] @sm:grd-max-w-[160px] grd-select-none"
                            key={_index}>
@@ -94,21 +94,21 @@ const IconList: FC<IconListProps> = (props) => {
                   className={`icon-box grd-group grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white grd-text-sm grd-font-medium grd-text-color-800 
                       grd-cursor-pointer grd-overflow-hidden !grd-transition-all hover:grd-shadow-xl hover:grd-text-blue-500 grd-px-2 grd-py-4`}
                   style={{
-                    ...items![_index]?.style,
+                    ...child?.data?.style,
                     borderRadius: design?.borderRadius,
                   }}
-                  href={items![_index]?.url || undefined}
-                  target={items![_index]?.target || "_blank"}
+                  href={child?.data?.url || undefined}
+                  target={child?.data?.target || "_blank"}
                 >
                   <img
                     className="grd-w-12 grd-h-12 grd-object-center grd-object-contain"
-                    src={(items && items![_index]?.mediaPath) || noImage()}
+                    src={(child?.data && child?.data?.mediaPath) || noImage()}
                     alt={""}
                   />
                   <span style={{
                     textDecoration: design?.link?.style,
                   }} className={`grd-block grd-mt-1 grd-truncate grd-max-w-full`}>
-                    {(items && items![_index]?.text) || "null"}
+                    {(child?.data && child?.data?.text) || "null"}
                   </span>
                 </AdvancedLink>
               </SwiperSlide>
