@@ -19,21 +19,24 @@ const IconList: FC<IconListProps> = (props) => {
   const { strategy } = props;
   const design = props?.design
 
+
+  const data = strategy?.data;
+  const children = strategy?.children;
+  const visual = strategy?.visual;
+
   //styles
   document.body.style.setProperty("--gordy-link-hover-color", design?.link?.color)
   document.body.style.setProperty("--swiper-theme-color", design?.button?.backgroundColor || "#007aff")
 
   // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
   const fixedHeightValue =
-    strategy?.visual?.style?.height === 0
+      visual?.style?.height === 0
       ? undefined
-      : strategy?.visual?.style?.height;
+      : visual?.style?.height;
 
-  const data = strategy?.data;
-  const children = strategy?.children;
-  const display = data || strategy?.visual || children;
-  const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows;
-  const pagination = strategy?.visual?.paginationStyle?.swipeNavigation;
+  const display = data || visual || children;
+  const displayArrows = visual?.arrowVisualStyle?.displayArrows;
+  const pagination = visual?.paginationStyle?.swipeNavigation;
   const swiperId = Math.floor(Math.random() * 1000000000000);
 
   if (!display) {
@@ -48,7 +51,7 @@ const IconList: FC<IconListProps> = (props) => {
   return (
     <Wrapper
       style={{
-        ...strategy?.visual?.style,
+        ...visual?.style,
         height: fixedHeightValue,
       }}
       disabled={props?.disabled}
@@ -59,10 +62,10 @@ const IconList: FC<IconListProps> = (props) => {
       <Container>
         <H4
           className={`title-heading h4 grd-text-gray-800 grd-drop-shadow-lg grd-mb-6 ${
-            !strategy?.data?.titleStyle?.fontSize ? "grd-text-2xl" : ""
+            !data?.titleStyle?.fontSize ? "grd-text-2xl" : ""
           }`}
-          dangerouslySetInnerHTML={{ __html: strategy?.data?.title }}
-          style={{ fontSize: "24px", ...strategy?.data?.titleStyle }}
+          dangerouslySetInnerHTML={{ __html: data?.title }}
+          style={{ fontSize: "24px", ...data?.titleStyle }}
         />
         <Swiper {...{
           className: `grd-w-full grd-overflow-hidden grd-mt-6 swiper-${swiperId}`,
@@ -119,7 +122,7 @@ const IconList: FC<IconListProps> = (props) => {
         {displayArrows && (
           <div
             className="swiper-navigation"
-            style={{ ...strategy?.visual?.arrowVisualStyle }}
+            style={{ ...visual?.arrowVisualStyle }}
           >
             <div className="swiper-button-prev">
               <LIcon name="ArrowLeft" />

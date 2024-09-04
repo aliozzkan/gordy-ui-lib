@@ -11,9 +11,9 @@ import Container from "../Container/Container";
 import AdvancedLink from '..//ui/advanced-link';
 
 const SliderCategories = (props: any) => {
-  const categoryInfo = props.categoryInfo
-  const style = props.style
-  const activeItemStyle = props.activeItemStyle
+  const categoryInfo = props?.categoryInfo
+  const style = props?.style
+  const activeItemStyle = props?.activeItemStyle
   const sliderCategoryName = categoryInfo?.name ? categoryInfo?.name : categoryInfo?.id
 
   let styles = {
@@ -29,7 +29,7 @@ const SliderCategories = (props: any) => {
 
   return <div
     hidden={!categoryInfo?.visible}
-    onClick={() => props.categoryItemOnClick(props.categoryInfo?.id)}
+    onClick={() => props.categoryItemOnClick(categoryInfo?.id)}
     style={{
       ...styles,
     }}
@@ -46,17 +46,19 @@ const CategoryWrapper = (props: any) => {
   const itemStyle = props?.itemStyle
   const activeItemStyle = props?.activeItemStyle
   const items = props?.items
+
   items && items.map((item: any) => {
     // ayni kategoriden olanlari ele
     const findIncludesCategory = categories.find((category: any) => {
-      return category?.id === item?.category?.categoryId
+      return category?.id === item?.data?.category?.categoryId
     })
     if (!findIncludesCategory) {
+      const category = item?.data?.category;
       categories.push({
-        id: item?.category?.categoryId,
-        name: item?.category?.categoryName,
-        order: item?.category?.order,
-        visible: item?.category?.categoryVisible
+        id: category?.categoryId,
+        name: category?.categoryName,
+        order: category?.order,
+        visible: category?.visible,
       })
     }
   })
@@ -100,8 +102,8 @@ const Sliders = (props: any) => {
   const swiperId = Math.floor(Math.random() * 1000000000000)
 
   const items = strategy?.data?.items
-  const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows
-  const pagination = strategy?.visual?.paginationStyle?.swipeNavigation
+  const displayArrows = strategy?.visual?.style?.arrowVisualStyle?.displayArrows
+  const pagination = strategy?.visual?.style?.paginationStyle?.swipeNavigation
 
   //styles
   document.body.style.setProperty("--swiper-theme-color", design?.button?.backgroundColor || "#007aff")
@@ -155,7 +157,7 @@ const Sliders = (props: any) => {
       >
         {props?.sliders && props?.sliders.map((slide: any, index: number) => {
           let CustomTag: any = "div"
-          if(slide?.buttonStyle?.display === "none" && slide?.buttonActions?.link) CustomTag = AdvancedLink
+          if(slide?.button?.visual?.style?.display === "none" && slide?.hyperLink?.data?.href) CustomTag = AdvancedLink
 
           return (
             <SwiperSlide
@@ -163,38 +165,38 @@ const Sliders = (props: any) => {
               className={`grd-flex @md:grd-items-center grd-max-w-[91.666667%] @sm:grd-max-w-full !grd-h-[200px] @sm:!grd-h-auto @sm:grd-min-h-[240px] grd-overflow-hidden`}
               style={{
                 ...props?.slideStyle,
-                backgroundColor: slide?.backgroundColor,
+                ...slide?.styles,
             }}
             >
-              {(slide?.title || slide?.buttonActions?.link || slide?.buttonText) && (
-                <CustomTag className="grd-w-full grd-h-full grd-flex grd-items-center grd-absolute grd-left-0 grd-top-0 grd-z-10" target={slide?.buttonActions?.target || "_self"} href={slide?.buttonActions?.link || undefined}>
+              {(slide?.text?.data?.text || slide?.hyperLink?.data?.href || slide?.button?.data?.text) && (
+                <CustomTag className="grd-w-full grd-h-full grd-flex grd-items-center grd-absolute grd-left-0 grd-top-0 grd-z-10" target={slide?.hyperLink?.data?.target || "_self"} href={slide?.hyperLink?.data?.href || undefined}>
                   <div
                     ref={el => sliderTextAreaRef.current[index] = el}
                     className="grd-h-full grd-mb-0 @lg:grd-mb-5 @md:grd-h-auto grd-flex grd-items-start grd-flex-col grd-px-4 @md:grd-px-5 @lg:grd-px-10 grd-py-4 @md:grd-py-8 @lg:grd-py-16 grd-shrink-0 grd-absolute grd-z-10" data-swiper-parallax="20%">
-                    {slide?.title && (
+                    {slide?.text?.data?.text && (
                       <p
                         data-swiper-parallax="-200"
                         className={`item-text-area grd-text-white grd-drop-shadow-lg @sm:!grd-leading-[normal] grd-text-xl @md:grd-text-3xl @xl:grd-text-5xl grd-line-clamp-2 @md:grd-line-clamp-none`}
-                        style={slide.titleStyle}
-                        dangerouslySetInnerHTML={{ __html: slide?.title }} />
+                        style={slide?.text?.visual?.style}
+                        dangerouslySetInnerHTML={{ __html: slide?.text?.data?.text }} />
                     )}
-                    {slide?.buttonText && (
-                      <AdvancedLink className="@md:grd-mt-0 grd-mt-9" href={slide?.buttonActions?.link || undefined} target={slide?.buttonActions?.target || "_self"}>
+                    {slide?.button?.data?.text && (
+                      <AdvancedLink className="@md:grd-mt-0 grd-mt-9" href={slide?.hyperLink?.data?.href || undefined} target={slide?.hyperLink?.data?.target || "_self"}>
                         <Button
                           variant="primary"
                           className="grd-px-8 grd-text-base grd-font-medium @md:grd-mt-6 grd-py-2 grd-h-auto"
                           style={{
                             ...props?.design?.button,
-                            ...slide?.buttonStyle,
-                            borderRadius: slide?.buttonStyle?.borderRadius || design?.borderRadius,
-                            backgroundColor: slide?.buttonStyle?.backgroundColor || design?.button?.backgroundColor,
-                            color: (!slide?.buttonStyle?.color && !design?.button?.color) ? (hexIsLight(design?.button?.backgroundColor || design?.button?.backgroundColor)
+                            ...slide.button?.visual?.style,
+                            borderRadius: slide.button?.visual?.style?.borderRadius || design?.borderRadius,
+                            backgroundColor: slide.button?.visual?.style?.backgroundColor || design?.button?.backgroundColor,
+                            color: (!slide.button?.visual?.style?.color && !design?.button?.color) ? (hexIsLight(design?.button?.backgroundColor || design?.button?.backgroundColor)
                               ? "black"
-                              : "white") : (slide?.buttonStyle?.color || design?.button?.color),
+                              : "white") : (slide.button?.visual?.style?.color || design?.button?.color),
                           }}
                         >
 
-                          {slide?.buttonText}</Button>
+                          {slide.button?.data?.text}</Button>
                       </AdvancedLink>
                     )
                     }
@@ -202,17 +204,17 @@ const Sliders = (props: any) => {
                 </CustomTag>
 
               )}
-              {slide?.imagePath && (
+              {slide?.image?.data?.src && (
                 <div className="grd-flex image-area grd-items-center grd-justify-center grd-overflow-hidden grd-max-h-[450px] grd-w-full">
-                  <img className={`grd-max-w-[inherit] @sm:grd-max-w-full @sm:grd-w-auto @sm:grd-h-auto grd-object-cover grd-object-right @sm:grd-object-center grd-m-auto`} src={slide.imagePath}
-                       alt={`grd-swiper img ${slide.uuid}`}/>
+                  <img className={`grd-max-w-[inherit] @sm:grd-max-w-full @sm:grd-w-auto @sm:grd-h-auto grd-object-cover grd-object-right @sm:grd-object-center grd-m-auto`} src={slide?.image?.data?.src}
+                       alt={`grd-swiper img ${slide?.image?.data?.name}`}/>
                 </div>
               )}
             </SwiperSlide>
           )
         })}
         {displayArrows && (
-          <div className="swiper-navigation" style={{...strategy?.visual?.arrowVisualStyle}}>
+          <div className="swiper-navigation" style={{...strategy?.visual?.style?.arrowVisualStyle}}>
             <div className="swiper-button-prev">
               <LIcon name="ArrowLeft"/>
             </div>
@@ -242,30 +244,38 @@ export const Carousel: FC<CarouselProps> = (props) => {
   const design = props?.design
 
   // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
-  const fixedHeightValue = strategy?.visual?.height === 0 ? undefined : strategy?.visual?.height
-  let orderedStrategyItems = strategy?.data?.items?.sort((a:any, b:any) => (a.category?.order > b.category?.order ? 1 : -1))
+  const fixedHeightValue = strategy?.visual?.style?.height === 0 ? undefined : strategy?.visual?.style?.height
+  let orderedStrategyItems = strategy?.children?.sort((a:any, b:any) => (a?.data?.category?.order - b?.data?.category?.order))
   const categories: any = [],
     sliders: any = []
+
   orderedStrategyItems && orderedStrategyItems?.map((item: any) => {
-    if (item?.sliders) {
-      sliders.push(...item.sliders)
+    if (item?.children || item?.visual) {
+      sliders.push({
+        ...item?.data?.category,
+        image: item.children?.find((child: any) => child?.name === "Image"),
+        text: item.children?.find((child: any) => child?.name === "Text"),
+        button: item.children?.find((child: any) => child?.name === "Button"),
+        hyperLink: item.children?.find((child: any) => child?.name === "Components.Atom.Hyperlink"),
+        styles: {
+          ...item.visual?.style,
+        }
+      })
     }
-    if (item?.category){
-      categories.push(item.category)
+    if (item?.data?.category){
+      categories.push(item?.data?.category)
     }
   })
 
   const categoryItemOnClick = (e: any) => {
     setActiveCategoryId(e)
     const itemIndex = categories.findIndex((category: any) => category?.categoryId == e);
-    //willChangeSlider = orderedStrategyItems && orderedStrategyItems[itemIndex - 1]?.sliders?.length
 
     let willChangeSliderList = [],
       index = 0
-
     do {
       if (itemIndex){
-        willChangeSliderList.push(...orderedStrategyItems[index].sliders);
+        willChangeSliderList.push(orderedStrategyItems[index]);
         index = index + 1
       } else break
     } while (index < itemIndex);
@@ -273,12 +283,10 @@ export const Carousel: FC<CarouselProps> = (props) => {
   }
 
   const sliderOnChange = (e: any) => {
-    orderedStrategyItems.map((item: any) => {
-      item.sliders.map((slider: any) => {
-        if (slider?.id === sliders[e.activeIndex]?.id) {
-          setActiveCategoryId(item?.category?.categoryId)
-        }
-      })
+    orderedStrategyItems.map((children: any) => {
+      if (children?.data?.category?.categoryId === sliders[e.activeIndex]?.categoryId) {
+        setActiveCategoryId(children?.data?.category?.categoryId)
+      }
     })
   }
 
@@ -286,7 +294,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
   return (
     <div className="gordy-carousel grd-relative grd-flex grd-flex-col grd-justify-center grd-py-5 grd-overflow-hidden" style={{
       ...strategy?.visual?.style,
-      width: strategy?.visual?.width,
+      width: strategy?.visual?.style?.width,
       height: fixedHeightValue,
     }}>
       {sliders.length > 0 && (
