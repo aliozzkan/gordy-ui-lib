@@ -58,7 +58,7 @@ const CategoryWrapper = (props: any) => {
         id: category?.categoryId,
         name: category?.categoryName,
         order: category?.order,
-        visible: category?.visible,
+        visible: category?.categoryVisible,
       })
     }
   })
@@ -102,8 +102,8 @@ const Sliders = (props: any) => {
   const swiperId = Math.floor(Math.random() * 1000000000000)
 
   const items = strategy?.data?.items
-  const displayArrows = strategy?.visual?.style?.arrowVisualStyle?.displayArrows
-  const pagination = strategy?.visual?.style?.paginationStyle?.swipeNavigation
+  const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows
+  const pagination = strategy?.visual?.paginationStyle?.swipeNavigation
 
   //styles
   document.body.style.setProperty("--swiper-theme-color", design?.button?.backgroundColor || "#007aff")
@@ -214,7 +214,7 @@ const Sliders = (props: any) => {
           )
         })}
         {displayArrows && (
-          <div className="swiper-navigation" style={{...strategy?.visual?.style?.arrowVisualStyle}}>
+          <div className="swiper-navigation" style={{...strategy?.visual?.arrowVisualStyle}}>
             <div className="swiper-button-prev">
               <LIcon name="ArrowLeft"/>
             </div>
@@ -244,7 +244,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
   const design = props?.design
 
   // todo : be tarafinda fixlendikten sonra silinecek suan 0 geliyor
-  const fixedHeightValue = strategy?.visual?.style?.height === 0 ? undefined : strategy?.visual?.style?.height
+  const fixedHeightValue = strategy?.visual?.height === 0 ? undefined : strategy?.visual?.height
   let orderedStrategyItems = strategy?.children?.sort((a:any, b:any) => (a?.data?.category?.order - b?.data?.category?.order))
   const categories: any = [],
     sliders: any = []
@@ -294,7 +294,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
   return (
     <div className="gordy-carousel grd-relative grd-flex grd-flex-col grd-justify-center grd-py-5 grd-overflow-hidden" style={{
       ...strategy?.visual?.style,
-      width: strategy?.visual?.style?.width,
+      width: strategy?.visual?.width,
       height: fixedHeightValue,
     }}>
       {sliders.length > 0 && (

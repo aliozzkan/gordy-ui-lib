@@ -32,26 +32,19 @@ const MediaList: FC<MediaListProps> = (props) => {
     design?.button?.backgroundColor || "#007aff"
   );
 
-  const medias: any = [];
   let itemLength = 0;
-  strategy?.data?.items &&
-    strategy.data.items.map((item: any) => {
-      if (item?.medias) {
-        medias.push(...item.medias);
-        item.medias.map(() => {
-          itemLength++;
-        });
-      }
-    });
 
   if (
-    !medias.length &&
+    !strategy?.children &&
     !strategy?.visual?.style &&
     !strategy?.data?.title &&
     !strategy?.data?.titleStyle
   ) {
     return <></>;
   }
+
+  /*const activeCategoryMedias = strategy?.children?.filter((child: any) => (child.data?.category?.categoryVisible))*/
+  const sortLikeCategoryId = strategy?.children?.sort((a:any, b:any) => (a.data?.category?.categoryId - b.data?.category?.categoryId))
 
   const swiperId = Math.floor(Math.random() * 1000000000000);
 
@@ -60,12 +53,18 @@ const MediaList: FC<MediaListProps> = (props) => {
 
   let subtitleSpaces = false;
 
-  const anySubtitle = medias.find(
-    (media: any) => media?.subTitle && media?.subTitle?.length
+  const anySubtitle = strategy?.children?.find(
+    (media: any) => {
+      const thisSubText = media?.children?.find((child: any) => child?.name === "Text" && child?.visual?.settings?.className === "subTextComponent")
+      return thisSubText?.data?.text && thisSubText?.data?.text?.length
+    }
   );
-  const anySubtitleDisplay = medias.find(
-    (media: any) =>
-      media?.subTitle && media?.subTitle?.length && media?.displaySubTitle
+  const anySubtitleDisplay = strategy?.children?.find(
+    (media: any) => {
+      const thisSubText = media?.children?.find((child: any) => child?.name === "Text" && child?.visual?.settings?.className === "subTextComponent")
+      thisSubText?.data?.text && thisSubText?.data?.text?.length
+      return thisSubText?.data?.text && thisSubText?.data?.text?.length && thisSubText?.visual?.style?.display !== "none"
+    }
   );
   if (anySubtitle && anySubtitleDisplay) subtitleSpaces = true;
 
@@ -78,7 +77,7 @@ const MediaList: FC<MediaListProps> = (props) => {
     slidesPerView: "auto",
     grabCursor: true,
     wrapperClass:
-      medias && medias.length < 2
+      strategy?.children && strategy?.children.length < 2
         ? "grd-justify-center"
         : pagination && itemLength > 2
         ? "grd-pb-10"
@@ -102,7 +101,7 @@ const MediaList: FC<MediaListProps> = (props) => {
   };
 
   let CustomTag: any = "div";
-  if (medias && medias.length > 2) {
+  if (strategy?.children && strategy?.children.length > 2) {
     CustomTag = Swiper;
   } else {
     swiperProps = {
@@ -132,12 +131,16 @@ const MediaList: FC<MediaListProps> = (props) => {
         />
 
         <CustomTag {...swiperProps}>
-          {medias.map((media: any, index: number) => {
+          {sortLikeCategoryId?.map((media: any, index: number) => {
+            const thisImage = media?.children?.find((child: any) => child?.name === "Image")
+            const thisText = media?.children?.find((child: any) => child?.name === "Text" && child?.visual?.settings?.className === "textComponent")
+            const thisSubText = media?.children?.find((child: any) => child?.name === "Text" && child?.visual?.settings?.className === "subTextComponent")
+            const thisHyperLink = media?.children?.find((child: any) => child?.name === "Components.Atom.Hyperlink")
             return (
               <SwiperSlide
                 key={index}
                 className={`${
-                  medias && medias?.length > 2
+                  strategy?.children && strategy?.children?.length > 2
                     ? "grd-max-w-[164px]"
                     : "grd-max-w-[89%]"
                 } media-box grd-group @md:grd-max-w-[calc(33.33333%-24px)] grd-w-full grd-flex grd-flex-col grd-items-center grd-border grd-border-gray-200 grd-bg-white
@@ -146,32 +149,32 @@ const MediaList: FC<MediaListProps> = (props) => {
               >
                 <AdvancedLink
                   className="grd-block grd-w-full"
-                  href={media?.itemAction?.link || undefined}
-                  target={media?.itemAction?.target || "_self"}
+                  href={thisHyperLink?.data?.href || undefined}
+                  target={thisHyperLink?.data?.target || "_blank"}
                 >
                   <div
                     className="image-wrapper grd-flex grd-items-center grd-justify-center grd-h-[120px] @md:grd-h-[190px] grd-w-full"
-                    style={{ backgroundColor: media?.backgroundColor }}
+                    style={thisImage?.visual?.style}
                   >
-                    {media?.imagePath && (
+                    {thisImage?.data?.src && (
                       <img
                         className="grd-max-w-full grd-max-h-full grd-object-center grd-object-cover"
-                        src={media?.imagePath}
-                        alt={""}
+                        src={thisImage?.data?.src}
+                        alt={thisImage?.data?.name}
                       />
                     )}
                   </div>
 
                   <div className="grd-mt-1 grd-w-full grd-flex grd-flex-col grd-justify-center grd-p-4 grd-h-[78px]">
-                    {media.title && (
+                    {thisText?.data?.text && (
                       <span
                         style={{
-                          ...media.titleStyle,
+                          ...thisText?.visual?.style,
                           textDecoration: design?.link?.style,
                         }}
                         className="title-area grd-text-base grd-font-semibold grd-text-color-800 grd-truncate grd-transition"
-                        title={media?.title}
-                        dangerouslySetInnerHTML={{ __html: media?.title }}
+                        title={thisText?.data?.text}
+                        dangerouslySetInnerHTML={{ __html: thisText?.data?.text }}
                       />
                     )}
                     {subtitleSpaces && (
@@ -179,11 +182,11 @@ const MediaList: FC<MediaListProps> = (props) => {
                         style={{ ...media.subTitleStyle }}
                         className="grd-mt-0.5 grd-text-sm grd-font-normal grd-text-gray-500 grd-truncate"
                         title={
-                          media?.displaySubTitle ? media?.subTitle : undefined
+                          thisSubText?.visual?.style?.display !== "none" ? thisSubText?.data?.text : undefined
                         }
                         dangerouslySetInnerHTML={{
-                          __html: media?.displaySubTitle
-                            ? media?.subTitle
+                          __html: thisSubText?.visual?.style?.display !== "none"
+                            ? thisSubText?.data?.text
                             : undefined,
                         }}
                       />
