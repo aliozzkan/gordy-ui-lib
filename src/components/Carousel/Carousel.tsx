@@ -101,7 +101,7 @@ const Sliders = (props: any) => {
 
   const swiperId = Math.floor(Math.random() * 1000000000000)
 
-  const items = strategy?.data?.items
+  const items = strategy?.children
   const displayArrows = strategy?.visual?.arrowVisualStyle?.displayArrows
   const pagination = strategy?.visual?.paginationStyle?.swipeNavigation
 
@@ -126,7 +126,7 @@ const Sliders = (props: any) => {
         //speed={1000}
         parallax={false}
         spaceBetween={12}
-        wrapperClass={pagination && items.length ? "grd-pb-10" : ""}
+        wrapperClass={pagination && items.length > 1 ? "grd-pb-10" : ""}
         slidesPerView={"auto"}
         speed={1000}
         freeMode={true}
@@ -145,15 +145,7 @@ const Sliders = (props: any) => {
           prevEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-prev`,
           nextEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-next`,
         }}
-        pagination={
-          pagination
-            ? {
-              clickable: pagination,
-              dynamicBullets: true,
-              dynamicMainBullets: 4,
-            }
-            : false
-        }
+        pagination={true}
       >
         {props?.sliders && props?.sliders.map((slide: any, index: number) => {
           let CustomTag: any = "div"

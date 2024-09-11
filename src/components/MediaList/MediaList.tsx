@@ -32,7 +32,7 @@ const MediaList: FC<MediaListProps> = (props) => {
     design?.button?.backgroundColor || "#007aff"
   );
 
-  let itemLength = 0;
+  let itemLength = strategy?.children && strategy?.children?.length || 0;
 
   if (
     !strategy?.children &&
