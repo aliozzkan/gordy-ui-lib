@@ -135,9 +135,10 @@ const Sliders = (props: any) => {
         grabCursor={true}
         style={props?.style}
         autoHeight={true}
-        onSlideChange={props.sliderOnChange}
+        onSlideChange={props?.sliderOnChange}
         modules={[Parallax, Pagination, A11y, Navigation]}
         onInit={(ev) => {
+          if (props?.sliderOnChange) props.sliderOnChange(ev)
           props.setSwiper(ev);
         }}
         navigation={{
@@ -145,7 +146,15 @@ const Sliders = (props: any) => {
           prevEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-prev`,
           nextEl: `.swiper-${swiperId} .swiper-navigation .swiper-button-next`,
         }}
-        pagination={true}
+        pagination={
+          pagination
+            ? {
+              clickable: pagination,
+              dynamicBullets: true,
+              dynamicMainBullets: 4,
+            }
+            : false
+        }
       >
         {props?.sliders && props?.sliders.map((slide: any, index: number) => {
           let CustomTag: any = "div"
@@ -172,7 +181,7 @@ const Sliders = (props: any) => {
                         style={slide?.text?.visual?.style}
                         dangerouslySetInnerHTML={{ __html: slide?.text?.data?.text }} />
                     )}
-                    {slide?.button?.data?.text && (
+                    {slide?.button?.data?.text || slide?.hyperLink?.data?.href && (
                       <AdvancedLink className="@md:grd-mt-0 grd-mt-9" href={slide?.hyperLink?.data?.href || undefined} target={slide?.hyperLink?.data?.target || "_self"}>
                         <Button
                           variant="primary"
@@ -225,6 +234,7 @@ export interface CarouselProps {
   activeCategoryId?: number,
   activeSliderIndex?: number,
   design?: any,
+  onSlideChange?(e: any): any;
 }
 
 export const Carousel: FC<CarouselProps> = (props) => {
@@ -278,6 +288,10 @@ export const Carousel: FC<CarouselProps> = (props) => {
     orderedStrategyItems.map((children: any) => {
       if (children?.data?.category?.categoryId === sliders[e.activeIndex]?.categoryId) {
         setActiveCategoryId(children?.data?.category?.categoryId)
+        if(props?.onSlideChange){
+          e.data = children
+          props.onSlideChange(e)
+        }
       }
     })
   }

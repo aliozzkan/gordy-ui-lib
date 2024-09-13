@@ -155,6 +155,7 @@ interface CarouselProps {
     activeCategoryId?: number;
     activeSliderIndex?: number;
     design?: any;
+    onSlideChange?(e: any): any;
 }
 declare const Carousel: FC<CarouselProps>;
 
