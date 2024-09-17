@@ -181,7 +181,7 @@ const Sliders = (props: any) => {
                         style={slide?.text?.visual?.style}
                         dangerouslySetInnerHTML={{ __html: slide?.text?.data?.text }} />
                     )}
-                    {slide?.button?.data?.text || slide?.hyperLink?.data?.href && (
+                    {(slide?.button?.data?.text || slide?.hyperLink?.data?.href) && (
                       <AdvancedLink className="@md:grd-mt-0 grd-mt-9" href={slide?.hyperLink?.data?.href || undefined} target={slide?.hyperLink?.data?.target || "_self"}>
                         <Button
                           variant="primary"
