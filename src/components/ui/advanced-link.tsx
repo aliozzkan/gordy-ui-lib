@@ -32,7 +32,33 @@ function AdvancedLink({ href, ...props }: AdvancedLinkProps) {
       }
     }
 
-    if (checkInDataParam || departureDateParam) return decodeURIComponent(urlParams.toString())
+    const checkInDateParam2 = urlParams.get("checkInDate");
+
+    if (checkInDateParam2) {
+      const checkInData = dayjs(checkInDateParam2, "YYYY-MM-DD");
+      if (checkInData.isValid() && checkInData.isBefore(dayjs())) {
+        urlParams.set("checkInDate", dayjs().add(1, "week").format("YYYY-MM-DD"));
+        urlParams.set(
+          "checkOutDate",
+          dayjs().add(1, "week").add(1, "day").format("YYYY-MM-DD")
+        );
+      }
+    }
+
+    const checkInDateParam3 = urlParams.get("checkinDate");
+
+    if (checkInDateParam3) {
+      const checkInData = dayjs(checkInDateParam3, "YYYY-MM-DD");
+      if (checkInData.isValid() && checkInData.isBefore(dayjs())) {
+        urlParams.set("checkinDate", dayjs().add(1, "week").format("YYYY-MM-DD"));
+        urlParams.set(
+          "checkoutDate",
+          dayjs().add(1, "week").add(1, "day").format("YYYY-MM-DD")
+        );
+      }
+    }
+
+    if (checkInDataParam || checkInDateParam2 || checkInDateParam3 || departureDateParam) return decodeURIComponent(urlParams.toString())
     return href;
   }
 
