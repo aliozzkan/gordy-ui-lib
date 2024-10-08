@@ -111,7 +111,7 @@ const IconList: FC<IconListProps> = (props) => {
                   <span style={{
                     textDecoration: design?.link?.style,
                   }} className={`grd-block grd-mt-1 grd-truncate grd-max-w-full`}>
-                    {(child?.data && child?.data?.text) || "null"}
+                    {child?.data && child?.data?.text}
                   </span>
                 </AdvancedLink>
               </SwiperSlide>
