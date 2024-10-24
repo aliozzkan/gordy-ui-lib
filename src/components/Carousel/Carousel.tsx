@@ -193,7 +193,7 @@ const Sliders = (props: any) => {
             return (
               <SwiperSlide
                 key={index}
-                className={`grd-flex @md:grd-items-center grd-max-w-[91.666667%] @sm:grd-max-w-full !grd-h-[200px] @sm:!grd-h-auto @sm:grd-min-h-[240px] grd-overflow-hidden`}
+                className={`grd-flex @md:grd-items-center grd-w-full !grd-h-[200px] @sm:!grd-h-auto @sm:grd-min-h-[240px] grd-overflow-hidden`}
                 style={{
                   ...props?.slideStyle,
                   ...{
@@ -267,7 +267,7 @@ const Sliders = (props: any) => {
                 {slide?.image?.data?.src && (
                   <div className="grd-flex image-area grd-items-center grd-justify-center grd-overflow-hidden grd-max-h-[450px] grd-w-full">
                     <img
-                      className={`grd-max-w-[inherit] @sm:grd-max-w-full @sm:grd-w-auto @sm:grd-h-auto grd-object-cover grd-object-right @sm:grd-object-center grd-m-auto`}
+                      className={`grd-max-w-full @sm:grd-w-auto @sm:grd-h-auto grd-object-cover grd-object-right @sm:grd-object-center grd-m-auto`}
                       src={slide?.image?.data?.src}
                       alt={`grd-swiper img ${slide?.image?.data?.name}`}
                     />
