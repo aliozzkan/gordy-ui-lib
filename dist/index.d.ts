@@ -19,6 +19,7 @@ interface HeaderProps {
     showAccountDropdownItem?: boolean;
     showLogo?: boolean;
     showTabBar?: boolean;
+    design?: any;
 }
 declare const Header: FC<HeaderProps>;
 

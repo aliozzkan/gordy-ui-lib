@@ -4,6 +4,7 @@ import {Button, Dropdown} from "../ui";
 import Container from "../Container/Container";
 import {icons} from "lucide-react";
 import LayoutContainer from "../LayoutContainer/LayoutContainer";
+import "./Header.css"
 
 
 export interface TabItemListProps {
@@ -14,13 +15,14 @@ export interface TabItemListProps {
 export interface HeaderProps {
   className?: string;
   tabItemList?: TabItemListProps[];
-  logoUrl?: string
-  showLanguageMenuItem?: boolean
-  showHelpMenuItem?: boolean
-  showMyRequestsMenuItem?: boolean
-  showAccountDropdownItem?: boolean
-  showLogo?: boolean
-  showTabBar?: boolean
+  logoUrl?: string;
+  showLanguageMenuItem?: boolean;
+  showHelpMenuItem?: boolean;
+  showMyRequestsMenuItem?: boolean;
+  showAccountDropdownItem?: boolean;
+  showLogo?: boolean;
+  showTabBar?: boolean;
+  design?: any;
 }
 export interface HeaderTabBarProps {
   icon: keyof typeof icons;
@@ -28,17 +30,27 @@ export interface HeaderTabBarProps {
   size?: number;
   label?: string;
   isActive?: boolean;
+  design?: any;
   onClick?(label: string | undefined): void;
 }
 
 export const TabButton = (props: HeaderTabBarProps) => {
-  const {className = ""} = props
+  const {
+    className = "",
+    design
+  } = props
+
+  //styles
+  document.body.style.setProperty("--gordy-link-hover-color", design?.link?.color)
 
   return <div
     onClick={() => props.onClick && props.onClick(props.label)}
-    className={`tab-button grd-relative grd-flex grd-items-center grd-gap-2 grd-py-4 grd-px-2 grd-cursor-pointer grd-transition grd-duration-400 ${className}
-    after:grd-absolute after:grd-w-full after:grd-bottom-0 after:grd-left-0 after:grd-border-b-2 after:grd-border-transparent after:grd-transition after:grd-duration-400
-    ${props?.isActive ? "grd-text-blue-500 after:grd-content-[''] after:!grd-border-blue-500" : ""}`}>
+    className={`${props?.isActive ? `active ` : ""}tab-button grd-relative grd-flex grd-items-center grd-gap-2 grd-py-4 grd-px-2 grd-cursor-pointer grd-transition grd-duration-400 ${className}
+    after:grd-absolute after:grd-w-full after:grd-bottom-0 after:grd-left-0 after:grd-border-b-2 after:grd-border-transparent after:grd-transition after:grd-duration-400 after:grd-content-[''] after:grd-custom-style`}
+    style={{
+      color: props?.isActive ? (design?.link?.color || "#2e90fa") : null,
+    }}
+  >
     <LIcon name={props.icon} size={props.size || 20} />
     <span>{props.label}</span>
   </div>
@@ -53,7 +65,8 @@ const Header: FC<HeaderProps> = ({
    showMyRequestsMenuItem = true,
    showAccountDropdownItem = true,
    showTabBar = true,
-   showLogo = true}) => {
+   showLogo = true,
+   design}) => {
 
   const [ActiveTab, setActiveTab] = useState(tabItemList && tabItemList.find(item => item.isActive)!.label)
 
@@ -186,6 +199,8 @@ const Header: FC<HeaderProps> = ({
                 return (
                   <TabButton
                     key={item.label + index}
+                    design={design}
+                    className="header-tab-btn"
                     onClick={(tabName: any) => {
                       setActiveTab(tabName)
                     }} label={item.label} icon={item.icon} size={20}

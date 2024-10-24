@@ -4,6 +4,7 @@ import { ThemeProviderDecorators } from "../../storybook/Decorator";
 import "../../index.css";
 import Header from "./Header";
 import LayoutContainer from "../LayoutContainer/LayoutContainer";
+import {design} from "../../data/dummy/design";
 
 const meta = {
   title: "GordyUI/Header",
@@ -66,6 +67,7 @@ const DefaultHeader = {
     showAccountDropdownItem: true,
     showLogo: true,
     showTabBar: true,
+    design: design,
   },
 } satisfies Story;
 

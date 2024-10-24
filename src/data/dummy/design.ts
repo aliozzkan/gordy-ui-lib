@@ -7,7 +7,7 @@ export const design = {
   },
   "fontFamily": "Nunito",
   "link": {
-    "color": "orange",
+    "color": "#c4e073",
     "name": "Altı Çizgili",
     "style": "underline"
   },

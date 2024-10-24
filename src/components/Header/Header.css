@@ -1,0 +1,3 @@
+.header-tab-btn.active.after\:grd-custom-style::after {
+  border-color: var(--gordy-link-hover-color) !important;
+}
