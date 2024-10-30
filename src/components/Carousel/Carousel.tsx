@@ -193,7 +193,7 @@ const Sliders = (props: any) => {
             return (
               <SwiperSlide
                 key={index}
-                className={`grd-flex @md:grd-items-center grd-w-full !grd-h-[200px] @sm:!grd-h-auto @sm:grd-min-h-[240px] grd-overflow-hidden`}
+                className={`grd-flex @md:grd-items-center grd-w-full !grd-h-[100px] @sm:!grd-h-auto @sm:grd-min-h-[240px] grd-overflow-hidden`}
                 style={{
                   ...props?.slideStyle,
                   ...{
@@ -212,7 +212,7 @@ const Sliders = (props: any) => {
                   >
                     <div
                       ref={(el) => (sliderTextAreaRef.current[index] = el)}
-                      className="grd-h-full grd-mb-0 @lg:grd-mb-5 @md:grd-h-auto grd-flex grd-items-start grd-flex-col grd-px-4 @md:grd-px-5 @lg:grd-px-10 grd-py-4 @md:grd-py-8 @lg:grd-py-16 grd-shrink-0 grd-absolute grd-z-10"
+                      className="grd-mb-0 @lg:grd-mb-5 grd-h-auto grd-flex grd-items-start grd-flex-col grd-px-4 @md:grd-px-5 @lg:grd-px-10 grd-py-4 @md:grd-py-8 @lg:grd-py-16 grd-shrink-0 grd-absolute grd-z-10"
                       data-swiper-parallax="20%"
                     >
                       {slide?.text?.data?.text && (

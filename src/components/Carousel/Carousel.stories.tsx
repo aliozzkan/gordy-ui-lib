@@ -43,7 +43,7 @@ const DefaultCarousel = {
     //activeCategoryId: 0,
     activeSliderIndex: 0,
     design: design,
-    onSlideChange: e => console.log(e)
+    /*onSlideChange: e => console.log(e)*/
   },
 } satisfies Story;
 
