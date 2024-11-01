@@ -193,7 +193,7 @@ const Sliders = (props: any) => {
             return (
               <SwiperSlide
                 key={index}
-                className={`grd-flex @md:grd-items-center grd-w-full !grd-h-[100px] @sm:!grd-h-auto @sm:grd-min-h-[240px] grd-overflow-hidden`}
+                className={`grd-relative grd-flex @md:grd-items-center grd-w-full !grd-min-h-[150px] @sm:!grd-min-h-[240px] @sm:!grd-h-auto grd-overflow-hidden`}
                 style={{
                   ...props?.slideStyle,
                   ...{
@@ -206,13 +206,14 @@ const Sliders = (props: any) => {
                   slide?.hyperLink?.data?.href ||
                   slide?.button?.data?.text) && (
                   <CustomTag
-                    className="grd-w-full grd-h-full grd-flex grd-items-center grd-absolute grd-left-0 grd-top-0 grd-z-10"
+                    className="grd-w-full grd-h-full grd-flex grd-items-center grd-absolute grd-overflow-hidden grd-left-0 grd-top-0 grd-z-10 !grd-min-h-max"
+                    style={{minHeight: "unset"}}
                     target={slide?.hyperLink?.data?.target || "_self"}
                     href={slide?.hyperLink?.data?.href || undefined}
                   >
                     <div
                       ref={(el) => (sliderTextAreaRef.current[index] = el)}
-                      className="grd-mb-0 @lg:grd-mb-5 grd-h-auto grd-flex grd-items-start grd-flex-col grd-px-4 @md:grd-px-5 @lg:grd-px-10 grd-py-4 @md:grd-py-8 @lg:grd-py-16 grd-shrink-0 grd-absolute grd-z-10"
+                      className="grd-mb-0 grd-max-h-full grd-overflow-hidden @lg:grd-mb-5 grd-h-auto grd-flex grd-items-start grd-flex-col grd-px-4 @md:grd-px-5 @lg:grd-px-10 grd-py-4 @md:grd-py-8 @lg:grd-py-16 grd-shrink-0 grd-absolute grd-z-10"
                       data-swiper-parallax="20%"
                     >
                       {slide?.text?.data?.text && (
@@ -228,7 +229,7 @@ const Sliders = (props: any) => {
                       {(slide?.button?.data?.text ||
                         slide?.hyperLink?.data?.href) && (
                         <AdvancedLink
-                          className="@md:grd-mt-0 grd-mt-9"
+                          className="@md:grd-mt-0 grd-mt-6"
                           href={slide?.hyperLink?.data?.href || undefined}
                           target={slide?.hyperLink?.data?.target || "_self"}
                         >
@@ -267,7 +268,7 @@ const Sliders = (props: any) => {
                 {slide?.image?.data?.src && (
                   <div className="grd-flex image-area grd-items-center grd-justify-center grd-overflow-hidden grd-max-h-[450px] grd-w-full">
                     <img
-                      className={`grd-max-w-full @sm:grd-w-auto @sm:grd-h-auto grd-object-cover grd-object-right @sm:grd-object-center grd-m-auto`}
+                      className={`grd-max-w-full @sm:grd-w-auto @sm:grd-h-auto grd-object-cover grd-object-right grd-max-h-[450px] @sm:grd-object-center grd-m-auto`}
                       src={slide?.image?.data?.src}
                       alt={`grd-swiper img ${slide?.image?.data?.name}`}
                     />

@@ -10,6 +10,7 @@
 @container (max-width:768px) {
     /*carousel*/
     .item-text-area {
+        display: -webkit-box;
         font-size: 20px !important;
     }
 }

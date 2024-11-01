@@ -136,7 +136,7 @@ export const TabSliderStrategy = {
       "className": null,
       "name": null
     },
-    "code": "c28eed36-3dd6-4f99-94bb-8bfe54ed80be",
+    "code": "a66a599c-fddf-40e1-9cfe-2c78f0a87a94",
     "outputData": null,
     "type": 1,
     "name": "Visual.Molecule.TabSliderVisual",
@@ -144,7 +144,7 @@ export const TabSliderStrategy = {
   },
   "data": {
     "title": "",
-    "titleLangKey": "cc809c1b-bded-4415-84bc-39dd86dd48c9",
+    "titleLangKey": "b89001b3-fe8a-4329-b77b-a53777563a26",
     "titleStyle": {
       "textAlign": null,
       "fontSize": null,
@@ -186,14 +186,14 @@ export const TabSliderStrategy = {
       "width": null,
       "whiteSpace": null
     },
-    "code": "49f8da88-a1b8-44a8-bd0a-99704afda1ad",
+    "code": "853cc0ce-83e8-43ed-95a7-9821564a18e9",
     "outputData": null,
     "type": 2,
     "name": "Data.Molecule.TabSlider",
     "status": 1
   },
   "event": null,
-  "code": "ac408043-7558-408a-947f-469e81e5b72f",
+  "code": "2a22942f-d369-4602-9bb2-b18cf586f51a",
   "children": [
     {
       "visual": {
@@ -241,7 +241,7 @@ export const TabSliderStrategy = {
           "className": null,
           "name": null
         },
-        "code": "ed761b94-d94f-48e9-9721-bf7a2e817538",
+        "code": "80f40ab2-55c7-4467-a5ee-4bea3adc232b",
         "outputData": null,
         "type": 1,
         "name": null,
@@ -249,19 +249,19 @@ export const TabSliderStrategy = {
       },
       "data": {
         "category": {
-          "categoryId": 129,
-          "order": 1,
-          "categoryName": "Kategoriler",
+          "categoryId": 183,
+          "order": 2,
+          "categoryName": "Kategori2",
           "categoryVisible": true
         },
-        "code": "e90fedee-d292-412f-8dec-20163990f3d5",
+        "code": "4c1727da-234d-448e-9ee4-abb179ab9191",
         "outputData": null,
         "type": 2,
         "name": "Data.Atom.SliderData",
         "status": 1
       },
       "event": null,
-      "code": "ff45dd21-78ab-4b4d-8384-1187d57349e5",
+      "code": "2de61125-70bc-4acb-9304-aa0602a96de6",
       "children": [
         {
           "visual": {
@@ -312,7 +312,793 @@ export const TabSliderStrategy = {
               "className": null,
               "name": null
             },
-            "code": "7fbc3ab3-a3a1-409f-8303-791ab32de3ce",
+            "code": "81347815-5868-4e97-bbb9-8619ec845246",
+            "outputData": null,
+            "type": 1,
+            "name": "Visual.Atom.ImageVisual",
+            "status": 1
+          },
+          "data": {
+            "name": "1-.png",
+            "src": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/300/file-8136e286-00ea-400b-adb0-3edd310b7c1d.png",
+            "code": "3ad411ea-f304-4e1a-ab55-29dddebcb607",
+            "outputData": null,
+            "type": 2,
+            "status": 1
+          },
+          "event": null,
+          "code": "556dc1dc-9f7d-4332-86c8-aa6da6715609",
+          "outputData": null,
+          "type": 5,
+          "name": "Image",
+          "status": 1
+        },
+        {
+          "name": "Text",
+          "code": "new-f9bcf1ad-4da5-43bf-bb1f-ee62c4909687",
+          "visual": {
+            "settings": {},
+            "style": {
+              "fontSize": "71px",
+              "fontWeight": "bold",
+              "color": "#d9b608",
+              "display": "block"
+            }
+          },
+          "data": {
+            "text": "asdasda sda sd asdasdasd asd asd asd"
+          }
+        },
+        {
+          "name": "Button",
+          "code": "new-267eccdc-e988-487c-8f5d-95c6f0fecf3a",
+          "data": {
+            "text": "Otel ara"
+          },
+          "visual": {
+            "style": null
+          }
+        },
+        {
+          "name": "Components.Atom.Hyperlink",
+          "code": "new-5632484d-14b4-4688-a492-871f275109cd",
+          "data": {
+            "target": "_blank"
+          }
+        }
+      ],
+      "outputData": null,
+      "type": 5,
+      "name": "Slider",
+      "status": 1
+    },
+    {
+      "visual": {
+        "style": {
+          "borderRadius": null,
+          "backgroundColor": null,
+          "color": null,
+          "position": null,
+          "fontWeight": null,
+          "fontFamily": null,
+          "fontSize": null,
+          "lineHeight": null,
+          "zIndex": null,
+          "opacity": null,
+          "paddingRight": null,
+          "paddingTop": null,
+          "paddingBottom": null,
+          "paddingLeft": null,
+          "marginRight": null,
+          "marginTop": null,
+          "marginBottom": null,
+          "marginLeft": null,
+          "left": null,
+          "top": null,
+          "right": null,
+          "bottom": null,
+          "cursor": null,
+          "borderBottom": null,
+          "borderTop": null,
+          "borderRight": null,
+          "borderLeft": null,
+          "gap": null,
+          "display": null,
+          "alignItems": null,
+          "padding": null,
+          "border": null,
+          "justifyContent": null,
+          "margin": null,
+          "flexDirection": null,
+          "width": null,
+          "textAlign": null,
+          "whiteSpace": null
+        },
+        "settings": {
+          "className": null,
+          "name": null
+        },
+        "code": "e0b1e291-e73f-4d24-94c3-fb311f570460",
+        "outputData": null,
+        "type": 1,
+        "name": null,
+        "status": 1
+      },
+      "data": {
+        "category": {
+          "categoryId": 183,
+          "order": 2,
+          "categoryName": "Kategori2",
+          "categoryVisible": true
+        },
+        "code": "92078091-af77-4ad9-80b6-dbd1c71c4f82",
+        "outputData": null,
+        "type": 2,
+        "name": "Data.Atom.SliderData",
+        "status": 1
+      },
+      "event": null,
+      "code": "1ef18017-5fe1-4dc1-94db-4b307505d955",
+      "children": [
+        {
+          "visual": {
+            "height": null,
+            "width": null,
+            "loading": null,
+            "style": {
+              "backgroundColor": null,
+              "color": null,
+              "position": null,
+              "fontWeight": null,
+              "fontFamily": null,
+              "borderRadius": null,
+              "fontSize": null,
+              "lineHeight": null,
+              "zIndex": null,
+              "opacity": null,
+              "paddingRight": null,
+              "paddingTop": null,
+              "paddingBottom": null,
+              "paddingLeft": null,
+              "marginRight": null,
+              "marginTop": null,
+              "marginBottom": null,
+              "marginLeft": null,
+              "left": null,
+              "top": null,
+              "right": null,
+              "bottom": null,
+              "cursor": null,
+              "borderBottom": null,
+              "borderTop": null,
+              "borderRight": null,
+              "borderLeft": null,
+              "gap": null,
+              "display": null,
+              "alignItems": null,
+              "padding": null,
+              "border": null,
+              "justifyContent": null,
+              "margin": null,
+              "flexDirection": null,
+              "width": null,
+              "textAlign": null,
+              "whiteSpace": null
+            },
+            "settings": {
+              "className": null,
+              "name": null
+            },
+            "code": "1924da59-1efc-4321-a13a-f92bd83d67a3",
+            "outputData": null,
+            "type": 1,
+            "name": "Visual.Atom.ImageVisual",
+            "status": 1
+          },
+          "data": {
+            "name": "M2-.png",
+            "src": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/300/file-4030df19-77ae-49f9-82c1-1cabe5423d5e.png",
+            "code": "f2f1de12-cfd6-4942-b881-829a5df5294b",
+            "outputData": null,
+            "type": 2,
+            "status": 1
+          },
+          "event": null,
+          "code": "854118db-5974-4cd4-97bf-06722f52ff9f",
+          "outputData": null,
+          "type": 5,
+          "name": "Image",
+          "status": 1
+        },
+        {
+          "name": "Text",
+          "code": "new-f6804437-ae95-4adb-8ef6-dcc79bfffea8",
+          "visual": {
+            "settings": {},
+            "style": {
+              "fontSize": "48px",
+              "fontWeight": "normal",
+              "color": "#ffffff",
+              "display": "block"
+            }
+          },
+          "data": {
+            "text": "ghf ghfgh gfh "
+          }
+        },
+        {
+          "name": "Button",
+          "code": "new-d272653e-6c41-4cee-a88e-64d977614eb1",
+          "data": {
+            "text": "Otel araaas"
+          },
+          "visual": {
+            "style": null
+          }
+        },
+        {
+          "name": "Components.Atom.Hyperlink",
+          "code": "new-831e6d81-7e5c-44f4-b1e2-fc68c57b4830",
+          "data": {
+            "target": "_blank"
+          }
+        }
+      ],
+      "outputData": null,
+      "type": 5,
+      "name": "Slider",
+      "status": 1
+    },
+    {
+      "visual": {
+        "style": {
+          "borderRadius": null,
+          "backgroundColor": null,
+          "color": null,
+          "position": null,
+          "fontWeight": null,
+          "fontFamily": null,
+          "fontSize": null,
+          "lineHeight": null,
+          "zIndex": null,
+          "opacity": null,
+          "paddingRight": null,
+          "paddingTop": null,
+          "paddingBottom": null,
+          "paddingLeft": null,
+          "marginRight": null,
+          "marginTop": null,
+          "marginBottom": null,
+          "marginLeft": null,
+          "left": null,
+          "top": null,
+          "right": null,
+          "bottom": null,
+          "cursor": null,
+          "borderBottom": null,
+          "borderTop": null,
+          "borderRight": null,
+          "borderLeft": null,
+          "gap": null,
+          "display": null,
+          "alignItems": null,
+          "padding": null,
+          "border": null,
+          "justifyContent": null,
+          "margin": null,
+          "flexDirection": null,
+          "width": null,
+          "textAlign": null,
+          "whiteSpace": null
+        },
+        "settings": {
+          "className": null,
+          "name": null
+        },
+        "code": "bbbaebe0-3ffb-4f72-9be7-b3b4929ca8e6",
+        "outputData": null,
+        "type": 1,
+        "name": null,
+        "status": 1
+      },
+      "data": {
+        "category": {
+          "categoryId": 183,
+          "order": 2,
+          "categoryName": "Kategori2",
+          "categoryVisible": true
+        },
+        "code": "0fa5653a-d424-433f-938f-764cba11b063",
+        "outputData": null,
+        "type": 2,
+        "name": "Data.Atom.SliderData",
+        "status": 1
+      },
+      "event": null,
+      "code": "15f939fd-ee73-41c4-8ac5-6b1e0373b74d",
+      "children": [
+        {
+          "visual": {
+            "height": null,
+            "width": null,
+            "loading": null,
+            "style": {
+              "backgroundColor": null,
+              "color": null,
+              "position": null,
+              "fontWeight": null,
+              "fontFamily": null,
+              "borderRadius": null,
+              "fontSize": null,
+              "lineHeight": null,
+              "zIndex": null,
+              "opacity": null,
+              "paddingRight": null,
+              "paddingTop": null,
+              "paddingBottom": null,
+              "paddingLeft": null,
+              "marginRight": null,
+              "marginTop": null,
+              "marginBottom": null,
+              "marginLeft": null,
+              "left": null,
+              "top": null,
+              "right": null,
+              "bottom": null,
+              "cursor": null,
+              "borderBottom": null,
+              "borderTop": null,
+              "borderRight": null,
+              "borderLeft": null,
+              "gap": null,
+              "display": null,
+              "alignItems": null,
+              "padding": null,
+              "border": null,
+              "justifyContent": null,
+              "margin": null,
+              "flexDirection": null,
+              "width": null,
+              "textAlign": null,
+              "whiteSpace": null
+            },
+            "settings": {
+              "className": null,
+              "name": null
+            },
+            "code": "09794ded-3c88-4acc-9e3a-4987a60b2c77",
+            "outputData": null,
+            "type": 1,
+            "name": "Visual.Atom.ImageVisual",
+            "status": 1
+          },
+          "data": {
+            "name": "P3-.png",
+            "src": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/300/file-15fbed6a-8cf5-4216-aa53-e3b620c54020.png",
+            "code": "e735a52a-24ea-4c55-b2a5-ab99bfe4c342",
+            "outputData": null,
+            "type": 2,
+            "status": 1
+          },
+          "event": null,
+          "code": "264d1d3d-05e4-4068-bce9-3e2eb36b6a12",
+          "outputData": null,
+          "type": 5,
+          "name": "Image",
+          "status": 1
+        }
+      ],
+      "outputData": null,
+      "type": 5,
+      "name": "Slider",
+      "status": 1
+    },
+    {
+      "visual": {
+        "style": {
+          "borderRadius": null,
+          "backgroundColor": null,
+          "color": null,
+          "position": null,
+          "fontWeight": null,
+          "fontFamily": null,
+          "fontSize": null,
+          "lineHeight": null,
+          "zIndex": null,
+          "opacity": null,
+          "paddingRight": null,
+          "paddingTop": null,
+          "paddingBottom": null,
+          "paddingLeft": null,
+          "marginRight": null,
+          "marginTop": null,
+          "marginBottom": null,
+          "marginLeft": null,
+          "left": null,
+          "top": null,
+          "right": null,
+          "bottom": null,
+          "cursor": null,
+          "borderBottom": null,
+          "borderTop": null,
+          "borderRight": null,
+          "borderLeft": null,
+          "gap": null,
+          "display": null,
+          "alignItems": null,
+          "padding": null,
+          "border": null,
+          "justifyContent": null,
+          "margin": null,
+          "flexDirection": null,
+          "width": null,
+          "textAlign": null,
+          "whiteSpace": null
+        },
+        "settings": {
+          "className": null,
+          "name": null
+        },
+        "code": "5f733bcf-72f8-4e6c-8c8f-f7f6e7b2482c",
+        "outputData": null,
+        "type": 1,
+        "name": null,
+        "status": 1
+      },
+      "data": {
+        "category": {
+          "categoryId": 183,
+          "order": 2,
+          "categoryName": "Kategori2",
+          "categoryVisible": true
+        },
+        "code": "19fcb405-49bb-40ce-91d4-f8eee05d24af",
+        "outputData": null,
+        "type": 2,
+        "name": "Data.Atom.SliderData",
+        "status": 1
+      },
+      "event": null,
+      "code": "6b44e54c-b26e-48aa-8b67-17a6701c89b8",
+      "children": [
+        {
+          "visual": {
+            "height": null,
+            "width": null,
+            "loading": null,
+            "style": {
+              "backgroundColor": null,
+              "color": null,
+              "position": null,
+              "fontWeight": null,
+              "fontFamily": null,
+              "borderRadius": null,
+              "fontSize": null,
+              "lineHeight": null,
+              "zIndex": null,
+              "opacity": null,
+              "paddingRight": null,
+              "paddingTop": null,
+              "paddingBottom": null,
+              "paddingLeft": null,
+              "marginRight": null,
+              "marginTop": null,
+              "marginBottom": null,
+              "marginLeft": null,
+              "left": null,
+              "top": null,
+              "right": null,
+              "bottom": null,
+              "cursor": null,
+              "borderBottom": null,
+              "borderTop": null,
+              "borderRight": null,
+              "borderLeft": null,
+              "gap": null,
+              "display": null,
+              "alignItems": null,
+              "padding": null,
+              "border": null,
+              "justifyContent": null,
+              "margin": null,
+              "flexDirection": null,
+              "width": null,
+              "textAlign": null,
+              "whiteSpace": null
+            },
+            "settings": {
+              "className": null,
+              "name": null
+            },
+            "code": "37d9bd7c-81e3-473b-80ae-67d4340a67b2",
+            "outputData": null,
+            "type": 1,
+            "name": "Visual.Atom.ImageVisual",
+            "status": 1
+          },
+          "data": {
+            "name": "Y4-.png",
+            "src": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/300/file-acc760c1-dc95-41c2-bd9c-3ffc334d0625.png",
+            "code": "e5eee32c-83d7-452c-ba6b-9aedc31d614b",
+            "outputData": null,
+            "type": 2,
+            "status": 1
+          },
+          "event": null,
+          "code": "f9637cd6-8b96-431c-8415-30ddc2442daa",
+          "outputData": null,
+          "type": 5,
+          "name": "Image",
+          "status": 1
+        }
+      ],
+      "outputData": null,
+      "type": 5,
+      "name": "Slider",
+      "status": 1
+    },
+    {
+      "visual": {
+        "style": {
+          "borderRadius": null,
+          "backgroundColor": null,
+          "color": null,
+          "position": null,
+          "fontWeight": null,
+          "fontFamily": null,
+          "fontSize": null,
+          "lineHeight": null,
+          "zIndex": null,
+          "opacity": null,
+          "paddingRight": null,
+          "paddingTop": null,
+          "paddingBottom": null,
+          "paddingLeft": null,
+          "marginRight": null,
+          "marginTop": null,
+          "marginBottom": null,
+          "marginLeft": null,
+          "left": null,
+          "top": null,
+          "right": null,
+          "bottom": null,
+          "cursor": null,
+          "borderBottom": null,
+          "borderTop": null,
+          "borderRight": null,
+          "borderLeft": null,
+          "gap": null,
+          "display": null,
+          "alignItems": null,
+          "padding": null,
+          "border": null,
+          "justifyContent": null,
+          "margin": null,
+          "flexDirection": null,
+          "width": null,
+          "textAlign": null,
+          "whiteSpace": null
+        },
+        "settings": {
+          "className": null,
+          "name": null
+        },
+        "code": "af6b1f12-8ab1-4314-b3f9-d8a130ddd984",
+        "outputData": null,
+        "type": 1,
+        "name": null,
+        "status": 1
+      },
+      "data": {
+        "category": {
+          "categoryId": 183,
+          "order": 2,
+          "categoryName": "Kategori2",
+          "categoryVisible": true
+        },
+        "code": "21dba1c7-3199-448c-9fe0-43f0649b2779",
+        "outputData": null,
+        "type": 2,
+        "name": "Data.Atom.SliderData",
+        "status": 1
+      },
+      "event": null,
+      "code": "58940a45-7fb1-43c7-bccd-d9683f51d024",
+      "children": [
+        {
+          "visual": {
+            "height": null,
+            "width": null,
+            "loading": null,
+            "style": {
+              "backgroundColor": null,
+              "color": null,
+              "position": null,
+              "fontWeight": null,
+              "fontFamily": null,
+              "borderRadius": null,
+              "fontSize": null,
+              "lineHeight": null,
+              "zIndex": null,
+              "opacity": null,
+              "paddingRight": null,
+              "paddingTop": null,
+              "paddingBottom": null,
+              "paddingLeft": null,
+              "marginRight": null,
+              "marginTop": null,
+              "marginBottom": null,
+              "marginLeft": null,
+              "left": null,
+              "top": null,
+              "right": null,
+              "bottom": null,
+              "cursor": null,
+              "borderBottom": null,
+              "borderTop": null,
+              "borderRight": null,
+              "borderLeft": null,
+              "gap": null,
+              "display": null,
+              "alignItems": null,
+              "padding": null,
+              "border": null,
+              "justifyContent": null,
+              "margin": null,
+              "flexDirection": null,
+              "width": null,
+              "textAlign": null,
+              "whiteSpace": null
+            },
+            "settings": {
+              "className": null,
+              "name": null
+            },
+            "code": "e3a7f93b-cbf0-4037-8ff7-a1bb806f1330",
+            "outputData": null,
+            "type": 1,
+            "name": "Visual.Atom.ImageVisual",
+            "status": 1
+          },
+          "data": {
+            "name": "S5-.png",
+            "src": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/300/file-dbddbd87-6f3f-4ea0-b50c-8bcad96cb273.png",
+            "code": "277f2c0a-f136-4e18-93c6-f268f2844067",
+            "outputData": null,
+            "type": 2,
+            "status": 1
+          },
+          "event": null,
+          "code": "6e8adfac-6bf6-4007-adfb-7712698eed14",
+          "outputData": null,
+          "type": 5,
+          "name": "Image",
+          "status": 1
+        }
+      ],
+      "outputData": null,
+      "type": 5,
+      "name": "Slider",
+      "status": 1
+    },
+    {
+      "visual": {
+        "style": {
+          "borderRadius": null,
+          "backgroundColor": null,
+          "color": null,
+          "position": null,
+          "fontWeight": null,
+          "fontFamily": null,
+          "fontSize": null,
+          "lineHeight": null,
+          "zIndex": null,
+          "opacity": null,
+          "paddingRight": null,
+          "paddingTop": null,
+          "paddingBottom": null,
+          "paddingLeft": null,
+          "marginRight": null,
+          "marginTop": null,
+          "marginBottom": null,
+          "marginLeft": null,
+          "left": null,
+          "top": null,
+          "right": null,
+          "bottom": null,
+          "cursor": null,
+          "borderBottom": null,
+          "borderTop": null,
+          "borderRight": null,
+          "borderLeft": null,
+          "gap": null,
+          "display": null,
+          "alignItems": null,
+          "padding": null,
+          "border": null,
+          "justifyContent": null,
+          "margin": null,
+          "flexDirection": null,
+          "width": null,
+          "textAlign": null,
+          "whiteSpace": null
+        },
+        "settings": {
+          "className": null,
+          "name": null
+        },
+        "code": "cbdcac71-ea73-43b8-8db4-05ac5d41d391",
+        "outputData": null,
+        "type": 1,
+        "name": null,
+        "status": 1
+      },
+      "data": {
+        "category": {
+          "categoryId": 129,
+          "order": 1,
+          "categoryName": "Kategoriler",
+          "categoryVisible": true
+        },
+        "code": "8997a4c9-516f-470a-8bdd-da82cb46f4b7",
+        "outputData": null,
+        "type": 2,
+        "name": "Data.Atom.SliderData",
+        "status": 1
+      },
+      "event": null,
+      "code": "3b0f8f6d-afeb-4374-9ed9-a456d65336d4",
+      "children": [
+        {
+          "visual": {
+            "height": null,
+            "width": null,
+            "loading": null,
+            "style": {
+              "backgroundColor": null,
+              "color": null,
+              "position": null,
+              "fontWeight": null,
+              "fontFamily": null,
+              "borderRadius": null,
+              "fontSize": null,
+              "lineHeight": null,
+              "zIndex": null,
+              "opacity": null,
+              "paddingRight": null,
+              "paddingTop": null,
+              "paddingBottom": null,
+              "paddingLeft": null,
+              "marginRight": null,
+              "marginTop": null,
+              "marginBottom": null,
+              "marginLeft": null,
+              "left": null,
+              "top": null,
+              "right": null,
+              "bottom": null,
+              "cursor": null,
+              "borderBottom": null,
+              "borderTop": null,
+              "borderRight": null,
+              "borderLeft": null,
+              "gap": null,
+              "display": null,
+              "alignItems": null,
+              "padding": null,
+              "border": null,
+              "justifyContent": null,
+              "margin": null,
+              "flexDirection": null,
+              "width": null,
+              "textAlign": null,
+              "whiteSpace": null
+            },
+            "settings": {
+              "className": null,
+              "name": null
+            },
+            "code": "76fe3e63-50ad-422e-a8db-8f77936b418c",
             "outputData": null,
             "type": 1,
             "name": "Visual.Atom.ImageVisual",
@@ -320,14 +1106,14 @@ export const TabSliderStrategy = {
           },
           "data": {
             "name": "hotellacasa_logo_transparent.png",
-            "src": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-e6a992c3-5e90-4f8a-b976-9ce9d20fb14c.png",
-            "code": "8639c513-4a84-47fc-ba7b-9e243c41bc47",
+            "src": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-f4434501-e763-4841-9267-5ff203752986.png",
+            "code": "341b3104-6af9-4f38-b01d-9340a4174e79",
             "outputData": null,
             "type": 2,
             "status": 1
           },
           "event": null,
-          "code": "250b554f-ad40-401f-a4a3-6dcac75cdd2f",
+          "code": "ac8e6578-eb81-4510-9c7e-71c977adc872",
           "outputData": null,
           "type": 5,
           "name": "Image",
@@ -337,7 +1123,342 @@ export const TabSliderStrategy = {
           "visual": {
             "style": {
               "backgroundColor": null,
-              "color": "#f00000",
+              "color": "#d76565",
+              "position": null,
+              "fontWeight": "normal",
+              "fontFamily": null,
+              "borderRadius": null,
+              "fontSize": "48px",
+              "lineHeight": null,
+              "zIndex": null,
+              "opacity": null,
+              "paddingRight": null,
+              "paddingTop": null,
+              "paddingBottom": null,
+              "paddingLeft": null,
+              "marginRight": null,
+              "marginTop": null,
+              "marginBottom": null,
+              "marginLeft": null,
+              "left": null,
+              "top": null,
+              "right": null,
+              "bottom": null,
+              "cursor": null,
+              "borderBottom": null,
+              "borderTop": null,
+              "borderRight": null,
+              "borderLeft": null,
+              "gap": null,
+              "display": null,
+              "alignItems": null,
+              "padding": null,
+              "border": null,
+              "justifyContent": null,
+              "margin": null,
+              "flexDirection": null,
+              "width": null,
+              "textAlign": null,
+              "whiteSpace": null
+            },
+            "settings": {
+              "className": null,
+              "name": null
+            },
+            "code": "08d2df05-0664-42b6-b58a-e0a9163bc55a",
+            "outputData": null,
+            "type": 1,
+            "name": "Visual.Atom.TextVisual",
+            "status": 1
+          },
+          "data": {
+            "text": "test içerik  asdasd asdas dasd as dasd asd asd asd asd asd asd asd asd sd test içerik  asdasd asdas dasd as dasd asd asd asd asd asd asd asd asd sd   asdasd asdas dasd as dasd asd asd asd asd asd asd asd asd sd test içerik  asdasd asdas dasd as dasd asd asd asd asd asd asd asd asd sd   asdasd asdas dasd as dasd asd asd asd asd asd asd asd asd sd test içerik  asdasd asdas dasd as dasd asd asd asd asd asd asd asd asd sd   asdasd asdas dasd as dasd asd asd asd asd asd asd asd asd sd test içerik  asdasd asdas dasd as dasd asd asd asd asd asd asd asd asd sd sonn",
+            "code": "14a446e9-b6fe-40e9-b56b-33d744ba3c73",
+            "outputData": null,
+            "type": 2,
+            "name": "Data.Atom.TextData",
+            "status": 1
+          },
+          "event": null,
+          "code": "8fca3c77-c465-48b7-8b89-8e006782170f",
+          "outputData": null,
+          "type": 5,
+          "name": "Text",
+          "status": 1
+        },
+        {
+          "name": "Button",
+          "code": "new-5ebdcdd4-a036-45f7-a0f5-9699506e71e7",
+          "data": {
+            "text": "Otel Title"
+          },
+          "visual": {
+            "style": null
+          }
+        },
+        {
+          "name": "Components.Atom.Hyperlink",
+          "code": "new-0f7deff1-afa8-4872-bd24-d925efb739ca",
+          "data": {
+            "target": "_blank"
+          }
+        }
+      ],
+      "outputData": null,
+      "type": 5,
+      "name": "Slider",
+      "status": 1
+    },
+    {
+      "visual": {
+        "style": {
+          "borderRadius": null,
+          "backgroundColor": null,
+          "color": null,
+          "position": null,
+          "fontWeight": null,
+          "fontFamily": null,
+          "fontSize": null,
+          "lineHeight": null,
+          "zIndex": null,
+          "opacity": null,
+          "paddingRight": null,
+          "paddingTop": null,
+          "paddingBottom": null,
+          "paddingLeft": null,
+          "marginRight": null,
+          "marginTop": null,
+          "marginBottom": null,
+          "marginLeft": null,
+          "left": null,
+          "top": null,
+          "right": null,
+          "bottom": null,
+          "cursor": null,
+          "borderBottom": null,
+          "borderTop": null,
+          "borderRight": null,
+          "borderLeft": null,
+          "gap": null,
+          "display": null,
+          "alignItems": null,
+          "padding": null,
+          "border": null,
+          "justifyContent": null,
+          "margin": null,
+          "flexDirection": null,
+          "width": null,
+          "textAlign": null,
+          "whiteSpace": null
+        },
+        "settings": {
+          "className": null,
+          "name": null
+        },
+        "code": "3cb8fff8-f302-4636-a3fd-20ff910e3ae4",
+        "outputData": null,
+        "type": 1,
+        "name": null,
+        "status": 1
+      },
+      "data": {
+        "category": {
+          "categoryId": 129,
+          "order": 1,
+          "categoryName": "Kategoriler",
+          "categoryVisible": true
+        },
+        "code": "9f1c2ac4-7aaf-460f-b964-6045f07788db",
+        "outputData": null,
+        "type": 2,
+        "name": "Data.Atom.SliderData",
+        "status": 1
+      },
+      "event": null,
+      "code": "94ad5716-dd6e-4292-bee8-d53c09b61d59",
+      "children": [
+        {
+          "visual": {
+            "height": null,
+            "width": null,
+            "loading": null,
+            "style": {
+              "backgroundColor": null,
+              "color": null,
+              "position": null,
+              "fontWeight": null,
+              "fontFamily": null,
+              "borderRadius": null,
+              "fontSize": null,
+              "lineHeight": null,
+              "zIndex": null,
+              "opacity": null,
+              "paddingRight": null,
+              "paddingTop": null,
+              "paddingBottom": null,
+              "paddingLeft": null,
+              "marginRight": null,
+              "marginTop": null,
+              "marginBottom": null,
+              "marginLeft": null,
+              "left": null,
+              "top": null,
+              "right": null,
+              "bottom": null,
+              "cursor": null,
+              "borderBottom": null,
+              "borderTop": null,
+              "borderRight": null,
+              "borderLeft": null,
+              "gap": null,
+              "display": null,
+              "alignItems": null,
+              "padding": null,
+              "border": null,
+              "justifyContent": null,
+              "margin": null,
+              "flexDirection": null,
+              "width": null,
+              "textAlign": null,
+              "whiteSpace": null
+            },
+            "settings": {
+              "className": null,
+              "name": null
+            },
+            "code": "dc03be2b-8a80-45a8-9c51-0c89c5bb5e7a",
+            "outputData": null,
+            "type": 1,
+            "name": "Visual.Atom.ImageVisual",
+            "status": 1
+          },
+          "data": {
+            "name": "5600653_7262.jpg",
+            "src": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-5ee00dd7-103a-4419-9b0d-8be3e7f35852.jpg",
+            "code": "3e437cf1-6796-4e68-abc9-ae48835e6b59",
+            "outputData": null,
+            "type": 2,
+            "status": 1
+          },
+          "event": null,
+          "code": "9b4de54b-267f-4806-abfe-ef94b929d116",
+          "outputData": null,
+          "type": 5,
+          "name": "Image",
+          "status": 1
+        },
+        {
+          "name": "Text",
+          "code": "new-2b30e241-ef3e-4fcd-a5ec-44b9849e1bd2",
+          "visual": {
+            "settings": {},
+            "style": {
+              "fontSize": "48px",
+              "fontWeight": "normal",
+              "color": "#ffffff",
+              "display": "block"
+            }
+          },
+          "data": {
+            "text": "asda sda sd"
+          }
+        },
+        {
+          "name": "Button",
+          "code": "new-2f8898cc-6969-462a-82b3-9451ee58a76c",
+          "data": {
+            "text": "Otel Title"
+          },
+          "visual": {
+            "style": null
+          }
+        },
+        {
+          "name": "Components.Atom.Hyperlink",
+          "code": "new-b88eedc7-1257-45ff-a4e0-a77624ae65ef",
+          "data": {
+            "target": "_blank"
+          }
+        }
+      ],
+      "outputData": null,
+      "type": 5,
+      "name": "Slider",
+      "status": 1
+    },
+    {
+      "visual": {
+        "style": {
+          "borderRadius": null,
+          "backgroundColor": "#51db62",
+          "color": null,
+          "position": null,
+          "fontWeight": null,
+          "fontFamily": null,
+          "fontSize": null,
+          "lineHeight": null,
+          "zIndex": null,
+          "opacity": null,
+          "paddingRight": null,
+          "paddingTop": null,
+          "paddingBottom": null,
+          "paddingLeft": null,
+          "marginRight": null,
+          "marginTop": null,
+          "marginBottom": null,
+          "marginLeft": null,
+          "left": null,
+          "top": null,
+          "right": null,
+          "bottom": null,
+          "cursor": null,
+          "borderBottom": null,
+          "borderTop": null,
+          "borderRight": null,
+          "borderLeft": null,
+          "gap": null,
+          "display": null,
+          "alignItems": null,
+          "padding": null,
+          "border": null,
+          "justifyContent": null,
+          "margin": null,
+          "flexDirection": null,
+          "width": null,
+          "textAlign": null,
+          "whiteSpace": null
+        },
+        "settings": {
+          "className": null,
+          "name": null
+        },
+        "code": "120283dc-259f-482c-8aec-7a51d42705a6",
+        "outputData": null,
+        "type": 1,
+        "name": null,
+        "status": 1
+      },
+      "data": {
+        "category": {
+          "categoryId": 130,
+          "order": 2,
+          "categoryName": "ensar test",
+          "categoryVisible": true
+        },
+        "code": "9c08550f-2d12-43fe-819c-0bbf90625f2f",
+        "outputData": null,
+        "type": 2,
+        "name": "Data.Atom.SliderData",
+        "status": 1
+      },
+      "event": null,
+      "code": "5810393f-16f0-432c-8aa7-ad919cf37440",
+      "children": [
+        {
+          "visual": {
+            "style": {
+              "backgroundColor": null,
+              "color": "#ffffff",
               "position": null,
               "fontWeight": "normal",
               "fontFamily": null,
@@ -379,313 +1500,25 @@ export const TabSliderStrategy = {
               "className": null,
               "name": null
             },
-            "code": "910ac9b1-715b-448d-896b-3f7f307321a0",
+            "code": "c4509f44-9734-4908-85df-2b9a4b7fda74",
             "outputData": null,
             "type": 1,
             "name": "Visual.Atom.TextVisual",
             "status": 1
           },
           "data": {
-            "text": "test text",
-            "code": "e050780b-b4d9-484c-9700-dc80ba126f5e",
+            "text": "text test two",
+            "code": "87b11770-3036-4a9c-b53d-ba8e0d343393",
             "outputData": null,
             "type": 2,
             "name": "Data.Atom.TextData",
             "status": 1
           },
           "event": null,
-          "code": "c69ba0de-20c1-4243-817d-f906a4652bf6",
+          "code": "45091d1b-98f9-413a-85ad-a33ef6c8efb1",
           "outputData": null,
           "type": 5,
           "name": "Text",
-          "status": 1
-        }
-      ],
-      "outputData": null,
-      "type": 5,
-      "name": "Slider",
-      "status": 1
-    },
-    {
-      "visual": {
-        "style": {
-          "borderRadius": null,
-          "backgroundColor": null,
-          "color": null,
-          "position": null,
-          "fontWeight": null,
-          "fontFamily": null,
-          "fontSize": null,
-          "lineHeight": null,
-          "zIndex": null,
-          "opacity": null,
-          "paddingRight": null,
-          "paddingTop": null,
-          "paddingBottom": null,
-          "paddingLeft": null,
-          "marginRight": null,
-          "marginTop": null,
-          "marginBottom": null,
-          "marginLeft": null,
-          "left": null,
-          "top": null,
-          "right": null,
-          "bottom": null,
-          "cursor": null,
-          "borderBottom": null,
-          "borderTop": null,
-          "borderRight": null,
-          "borderLeft": null,
-          "gap": null,
-          "display": null,
-          "alignItems": null,
-          "padding": null,
-          "border": null,
-          "justifyContent": null,
-          "margin": null,
-          "flexDirection": null,
-          "width": null,
-          "textAlign": null,
-          "whiteSpace": null
-        },
-        "settings": {
-          "className": null,
-          "name": null
-        },
-        "code": "da269ed5-150b-481b-b0a9-c048ba27952b",
-        "outputData": null,
-        "type": 1,
-        "name": null,
-        "status": 1
-      },
-      "data": {
-        "category": {
-          "categoryId": 129,
-          "order": 1,
-          "categoryName": "Kategoriler",
-          "categoryVisible": true
-        },
-        "code": "6a7934fc-bdc6-408d-9958-85e55a528fed",
-        "outputData": null,
-        "type": 2,
-        "name": "Data.Atom.SliderData",
-        "status": 1
-      },
-      "event": null,
-      "code": "f7cf73dd-8df1-45c8-98c5-38540cced557",
-      "children": [
-        {
-          "visual": {
-            "height": null,
-            "width": null,
-            "loading": null,
-            "style": {
-              "backgroundColor": null,
-              "color": null,
-              "position": null,
-              "fontWeight": null,
-              "fontFamily": null,
-              "borderRadius": null,
-              "fontSize": null,
-              "lineHeight": null,
-              "zIndex": null,
-              "opacity": null,
-              "paddingRight": null,
-              "paddingTop": null,
-              "paddingBottom": null,
-              "paddingLeft": null,
-              "marginRight": null,
-              "marginTop": null,
-              "marginBottom": null,
-              "marginLeft": null,
-              "left": null,
-              "top": null,
-              "right": null,
-              "bottom": null,
-              "cursor": null,
-              "borderBottom": null,
-              "borderTop": null,
-              "borderRight": null,
-              "borderLeft": null,
-              "gap": null,
-              "display": null,
-              "alignItems": null,
-              "padding": null,
-              "border": null,
-              "justifyContent": null,
-              "margin": null,
-              "flexDirection": null,
-              "width": null,
-              "textAlign": null,
-              "whiteSpace": null
-            },
-            "settings": {
-              "className": null,
-              "name": null
-            },
-            "code": "6c006b26-b48f-4834-ac5c-b74f3221d0d8",
-            "outputData": null,
-            "type": 1,
-            "name": "Visual.Atom.ImageVisual",
-            "status": 1
-          },
-          "data": {
-            "name": "5600653_7262.jpg",
-            "src": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-3519b191-0699-4b35-a16b-2dc7ec7b6b2f.jpg",
-            "code": "3266bdee-4ef7-49a0-961c-52f5c8e6c834",
-            "outputData": null,
-            "type": 2,
-            "status": 1
-          },
-          "event": null,
-          "code": "6de42f55-4b92-46f4-920c-fb99f20f83c0",
-          "outputData": null,
-          "type": 5,
-          "name": "Image",
-          "status": 1
-        }
-      ],
-      "outputData": null,
-      "type": 5,
-      "name": "Slider",
-      "status": 1
-    },
-    {
-      "visual": {
-        "style": {
-          "borderRadius": null,
-          "backgroundColor": null,
-          "color": null,
-          "position": null,
-          "fontWeight": null,
-          "fontFamily": null,
-          "fontSize": null,
-          "lineHeight": null,
-          "zIndex": null,
-          "opacity": null,
-          "paddingRight": null,
-          "paddingTop": null,
-          "paddingBottom": null,
-          "paddingLeft": null,
-          "marginRight": null,
-          "marginTop": null,
-          "marginBottom": null,
-          "marginLeft": null,
-          "left": null,
-          "top": null,
-          "right": null,
-          "bottom": null,
-          "cursor": null,
-          "borderBottom": null,
-          "borderTop": null,
-          "borderRight": null,
-          "borderLeft": null,
-          "gap": null,
-          "display": null,
-          "alignItems": null,
-          "padding": null,
-          "border": null,
-          "justifyContent": null,
-          "margin": null,
-          "flexDirection": null,
-          "width": null,
-          "textAlign": null,
-          "whiteSpace": null
-        },
-        "settings": {
-          "className": null,
-          "name": null
-        },
-        "code": "20c9120b-099d-4018-9818-d2328293f319",
-        "outputData": null,
-        "type": 1,
-        "name": null,
-        "status": 1
-      },
-      "data": {
-        "category": {
-          "categoryId": 130,
-          "order": 2,
-          "categoryName": "ensar test",
-          "categoryVisible": true
-        },
-        "code": "4acbb8a9-648b-4ca7-8e74-9459a55200cf",
-        "outputData": null,
-        "type": 2,
-        "name": "Data.Atom.SliderData",
-        "status": 1
-      },
-      "event": null,
-      "code": "a57bf199-ae63-4bff-9922-a2e7c8c5957a",
-      "children": [
-        {
-          "visual": {
-            "height": null,
-            "width": null,
-            "loading": null,
-            "style": {
-              "backgroundColor": null,
-              "color": null,
-              "position": null,
-              "fontWeight": null,
-              "fontFamily": null,
-              "borderRadius": null,
-              "fontSize": null,
-              "lineHeight": null,
-              "zIndex": null,
-              "opacity": null,
-              "paddingRight": null,
-              "paddingTop": null,
-              "paddingBottom": null,
-              "paddingLeft": null,
-              "marginRight": null,
-              "marginTop": null,
-              "marginBottom": null,
-              "marginLeft": null,
-              "left": null,
-              "top": null,
-              "right": null,
-              "bottom": null,
-              "cursor": null,
-              "borderBottom": null,
-              "borderTop": null,
-              "borderRight": null,
-              "borderLeft": null,
-              "gap": null,
-              "display": null,
-              "alignItems": null,
-              "padding": null,
-              "border": null,
-              "justifyContent": null,
-              "margin": null,
-              "flexDirection": null,
-              "width": null,
-              "textAlign": null,
-              "whiteSpace": null
-            },
-            "settings": {
-              "className": null,
-              "name": null
-            },
-            "code": "9771e142-1077-4861-a20c-401a4fceee0c",
-            "outputData": null,
-            "type": 1,
-            "name": "Visual.Atom.ImageVisual",
-            "status": 1
-          },
-          "data": {
-            "name": "eucalyptus-silver-dollar-white-marble-banner.jpg",
-            "src": "https://gordiosdatatest.blob.core.windows.net/files/eva/e584ce10-503d-4662-bbb6-f3e111f4e3f4/5/file-2c3e2d89-fe12-40a7-9779-7c44bce4cc1d.jpg",
-            "code": "5e88a0ba-b4a6-4cc2-8d76-3a87fdcc4281",
-            "outputData": null,
-            "type": 2,
-            "status": 1
-          },
-          "event": null,
-          "code": "d4c7a4ed-64c5-4871-9c66-c4ca07d88d3d",
-          "outputData": null,
-          "type": 5,
-          "name": "Image",
           "status": 1
         }
       ],
@@ -700,4 +1533,3 @@ export const TabSliderStrategy = {
   "name": "Tab Slider",
   "status": 1
 }
-
