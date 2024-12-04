@@ -4,9 +4,13 @@ import { Swiper, SwiperProps, SwiperRef, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import LIcon from "../lucidIcon/lucidIcon";
 import { H4, Wrapper } from "../ui";
-import "./MediaList.css";
 import Container from "../Container/Container";
 import AdvancedLink from "../ui/advanced-link";
+import "./MediaList.css";
+
+import "../../utils/swiper/swiper.min.css";
+import "../../utils/swiper/swiper-pagination.min.css";
+import "../../utils/swiper/swiper-navigation.min.css";
 
 export interface MediaListProps {
   strategy: any;
@@ -32,7 +36,7 @@ const MediaList: FC<MediaListProps> = (props) => {
     design?.button?.backgroundColor || "#007aff"
   );
 
-  let itemLength = strategy?.children && strategy?.children?.length || 0;
+  let itemLength = (strategy?.children && strategy?.children?.length) || 0;
 
   if (
     !strategy?.children &&
@@ -44,7 +48,10 @@ const MediaList: FC<MediaListProps> = (props) => {
   }
 
   /*const activeCategoryMedias = strategy?.children?.filter((child: any) => (child.data?.category?.categoryVisible))*/
-  const sortLikeCategoryId = strategy?.children?.sort((a:any, b:any) => (a.data?.category?.categoryId - b.data?.category?.categoryId))
+  const sortLikeCategoryId = strategy?.children?.sort(
+    (a: any, b: any) =>
+      a.data?.category?.categoryId - b.data?.category?.categoryId
+  );
 
   const swiperId = Math.floor(Math.random() * 1000000000000);
 
@@ -53,19 +60,27 @@ const MediaList: FC<MediaListProps> = (props) => {
 
   let subtitleSpaces = false;
 
-  const anySubtitle = strategy?.children?.find(
-    (media: any) => {
-      const thisSubText = media?.children?.find((child: any) => child?.name === "Text" && child?.visual?.settings?.className === "subTextComponent")
-      return thisSubText?.data?.text && thisSubText?.data?.text?.length
-    }
-  );
-  const anySubtitleDisplay = strategy?.children?.find(
-    (media: any) => {
-      const thisSubText = media?.children?.find((child: any) => child?.name === "Text" && child?.visual?.settings?.className === "subTextComponent")
-      thisSubText?.data?.text && thisSubText?.data?.text?.length
-      return thisSubText?.data?.text && thisSubText?.data?.text?.length && thisSubText?.visual?.style?.display !== "none"
-    }
-  );
+  const anySubtitle = strategy?.children?.find((media: any) => {
+    const thisSubText = media?.children?.find(
+      (child: any) =>
+        child?.name === "Text" &&
+        child?.visual?.settings?.className === "subTextComponent"
+    );
+    return thisSubText?.data?.text && thisSubText?.data?.text?.length;
+  });
+  const anySubtitleDisplay = strategy?.children?.find((media: any) => {
+    const thisSubText = media?.children?.find(
+      (child: any) =>
+        child?.name === "Text" &&
+        child?.visual?.settings?.className === "subTextComponent"
+    );
+    thisSubText?.data?.text && thisSubText?.data?.text?.length;
+    return (
+      thisSubText?.data?.text &&
+      thisSubText?.data?.text?.length &&
+      thisSubText?.visual?.style?.display !== "none"
+    );
+  });
   if (anySubtitle && anySubtitleDisplay) subtitleSpaces = true;
 
   let swiperProps: any = {
@@ -132,10 +147,22 @@ const MediaList: FC<MediaListProps> = (props) => {
 
         <CustomTag {...swiperProps}>
           {sortLikeCategoryId?.map((media: any, index: number) => {
-            const thisImage = media?.children?.find((child: any) => child?.name === "Image")
-            const thisText = media?.children?.find((child: any) => child?.name === "Text" && child?.visual?.settings?.className === "textComponent")
-            const thisSubText = media?.children?.find((child: any) => child?.name === "Text" && child?.visual?.settings?.className === "subTextComponent")
-            const thisHyperLink = media?.children?.find((child: any) => child?.name === "Components.Atom.Hyperlink")
+            const thisImage = media?.children?.find(
+              (child: any) => child?.name === "Image"
+            );
+            const thisText = media?.children?.find(
+              (child: any) =>
+                child?.name === "Text" &&
+                child?.visual?.settings?.className === "textComponent"
+            );
+            const thisSubText = media?.children?.find(
+              (child: any) =>
+                child?.name === "Text" &&
+                child?.visual?.settings?.className === "subTextComponent"
+            );
+            const thisHyperLink = media?.children?.find(
+              (child: any) => child?.name === "Components.Atom.Hyperlink"
+            );
             return (
               <SwiperSlide
                 key={index}
@@ -174,7 +201,9 @@ const MediaList: FC<MediaListProps> = (props) => {
                         }}
                         className="title-area grd-text-base grd-font-semibold grd-text-color-800 grd-truncate grd-transition"
                         title={thisText?.data?.text}
-                        dangerouslySetInnerHTML={{ __html: thisText?.data?.text }}
+                        dangerouslySetInnerHTML={{
+                          __html: thisText?.data?.text,
+                        }}
                       />
                     )}
                     {subtitleSpaces && (
@@ -182,12 +211,15 @@ const MediaList: FC<MediaListProps> = (props) => {
                         style={{ ...media.subTitleStyle }}
                         className="grd-mt-0.5 grd-text-sm grd-font-normal grd-text-gray-500 grd-truncate"
                         title={
-                          thisSubText?.visual?.style?.display !== "none" ? thisSubText?.data?.text : undefined
+                          thisSubText?.visual?.style?.display !== "none"
+                            ? thisSubText?.data?.text
+                            : undefined
                         }
                         dangerouslySetInnerHTML={{
-                          __html: thisSubText?.visual?.style?.display !== "none"
-                            ? thisSubText?.data?.text
-                            : undefined,
+                          __html:
+                            thisSubText?.visual?.style?.display !== "none"
+                              ? thisSubText?.data?.text
+                              : undefined,
                         }}
                       />
                     )}

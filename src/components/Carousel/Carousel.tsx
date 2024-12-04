@@ -4,6 +4,10 @@ import React, { FC, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, A11y, Parallax, Pagination } from "swiper/modules";
 
+import "../../utils/swiper/swiper.min.css";
+import "../../utils/swiper/swiper-pagination.min.css";
+import "../../utils/swiper/swiper-navigation.min.css";
+
 import LIcon from "../lucidIcon/lucidIcon";
 import { Button } from "../ui";
 import { hexIsLight } from "../../helpers/hexIsLight";
@@ -157,7 +161,7 @@ const Sliders = (props: any) => {
         grabCursor={true}
         style={{
           ...props?.style,
-          borderRadius: undefined
+          borderRadius: undefined,
         }}
         autoHeight={true}
         onSlideChange={props?.sliderOnChange}
@@ -207,7 +211,7 @@ const Sliders = (props: any) => {
                   slide?.button?.data?.text) && (
                   <CustomTag
                     className="grd-w-full grd-h-full grd-flex grd-items-center grd-absolute grd-overflow-hidden grd-left-0 grd-top-0 grd-z-10 !grd-min-h-max"
-                    style={{minHeight: "unset"}}
+                    style={{ minHeight: "unset" }}
                     target={slide?.hyperLink?.data?.target || "_self"}
                     href={slide?.hyperLink?.data?.href || undefined}
                   >

@@ -1,14 +1,8 @@
-@import "node_modules/swiper/swiper.css";
-@import "node_modules/swiper/modules/pagination.css";
-@import "node_modules/swiper/modules/navigation.css";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-    --font-multiplier-value: 0.0691666666666667;
-    --font-unit: vmax;
+  --font-multiplier-value: 0.0691666666666667;
+  --font-unit: vmax;
 }
-

@@ -1,4 +1,4 @@
-import "./index.css"
+import "./index.css";
 
 export { default as Header } from "./components/Header/Header";
 export { default as HotelTravelPlanner } from "./components/HotelTravelPlanner/HotelTravelPlanner";
