@@ -12,15 +12,23 @@ const TextHtml:FC<TextHtmlProps> = (props) => {
 
   const {strategy} = props
 
+
+  const wrapperStyle = strategy.data?.backgroundImagePath ? {
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundImage: strategy.data?.backgroundImagePath ? `url("${strategy.data.backgroundImagePath}")` : undefined,
+  } : {}
+
   const fixedHeightValue =
-    strategy?.visual?.height === 0 ? undefined : strategy?.visual?.height;
+    strategy?.visual?.style?.height === 0 ? undefined : strategy?.visual?.style?.height;
 
   return (
 
     <Wrapper
       style={{
         ...strategy?.visual?.style,
-        width: strategy?.visual?.width,
+        ...wrapperStyle,
         height: fixedHeightValue,
       }}
       disabled={props?.disabled}
@@ -32,7 +40,6 @@ const TextHtml:FC<TextHtmlProps> = (props) => {
         <H1
           style={strategy.data?.titleStyle}
           dangerouslySetInnerHTML={{ __html: strategy?.data?.title }} />
-
         <div className="min-h-12 mt-6" dangerouslySetInnerHTML={{__html: strategy?.data?.html}}/>
 
       </Container>
