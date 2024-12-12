@@ -134,7 +134,7 @@ const Header: FC<HeaderProps> = ({
 
 
   return (
-    <div className={`main-header grd-mx-auto grd-z-10 ${className}`}>
+    <div className={`main-header grd-max-w-full grd-mx-auto grd-z-10 ${className}`}>
       <div className="top-bar grd-border-b grd-border-gray-200 grd-py-3.5">
         <Container className="grd-flex grd-items-center">
           <div className="logo-area grd-mr-auto">
