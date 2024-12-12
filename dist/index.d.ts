@@ -180,6 +180,7 @@ interface TextHtmlProps {
     strategy?: any;
     className?: string;
     disabled?: boolean;
+    design?: any;
 }
 declare const TextHtml: FC<TextHtmlProps>;
 

@@ -7,11 +7,13 @@ export interface TextHtmlProps {
   strategy?: any;
   className?: string;
   disabled?: boolean;
+  design?: any;
 }
 
 const TextHtml:FC<TextHtmlProps> = (props) => {
 
   const {strategy} = props
+  const design = props?.design;
 
 
   const wrapperStyle = strategy.data?.backgroundImagePath ? {
@@ -37,11 +39,14 @@ const TextHtml:FC<TextHtmlProps> = (props) => {
         props.className || ""
       }`}
     >
-      <Container className="flex flex-col p-5">
+      <Container
+        style={{borderRadius: design?.borderRadius}}
+        className="flex flex-col p-5">
         <H1
           style={strategy.data?.titleStyle}
           dangerouslySetInnerHTML={{ __html: strategy?.data?.title }} />
-        <div className="min-h-12 mt-6" dangerouslySetInnerHTML={{__html: strategy?.data?.html}}/>
+        <div className="min-h-12 mt-6"
+             dangerouslySetInnerHTML={{__html: strategy?.data?.html}}/>
 
       </Container>
     </Wrapper>

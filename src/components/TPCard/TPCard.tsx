@@ -1,8 +1,9 @@
 import {PropsWithChildren} from "react";
+import * as React from "react";
 
 interface TPCardProps extends PropsWithChildren {
   className?: string
-  style?: any
+  style?: React.CSSProperties;
 }
 
 

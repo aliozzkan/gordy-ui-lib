@@ -10,7 +10,7 @@ interface InputProps {
   onChange?(e: any): void
   placeholder?: string
   defaultValue?: string
-  style?: any
+  style?: React.CSSProperties;
 }
 
 const Input = ({
