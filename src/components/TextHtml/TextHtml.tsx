@@ -1,6 +1,7 @@
 import React, {FC} from "react";
 import Container from "../Container/Container";
 import {H1, Wrapper} from "../ui";
+import "./TextHtml.css"
 
 export interface TextHtmlProps {
   strategy?: any;
