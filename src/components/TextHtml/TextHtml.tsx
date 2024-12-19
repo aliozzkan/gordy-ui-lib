@@ -35,18 +35,18 @@ const TextHtml:FC<TextHtmlProps> = (props) => {
         height: fixedHeightValue,
       }}
       disabled={props?.disabled}
-      className={`text-html grd-relative grd-flex grd-justify-center grd-items-center grd-mx-auto grd-py-5 ${
+      className={`text-html ql-snow grd-relative grd-flex grd-justify-center grd-items-center grd-mx-auto grd-py-5 ${
         props.className || ""
       }`}
     >
       <Container
         style={{borderRadius: design?.borderRadius}}
-        className="flex flex-col p-5">
-        <H1
-          style={strategy.data?.titleStyle}
-          dangerouslySetInnerHTML={{ __html: strategy?.data?.title }} />
-        <div className="min-h-12 mt-6"
-             dangerouslySetInnerHTML={{__html: strategy?.data?.html}}/>
+        className="ql-editor grd-text-gray-600">
+          <H1
+            style={strategy.data?.titleStyle}
+            dangerouslySetInnerHTML={{ __html: strategy?.data?.title }} />
+          <div className="mt-6"
+               dangerouslySetInnerHTML={{__html: strategy?.data?.html}}/>
 
       </Container>
     </Wrapper>
