@@ -1,4 +1,4 @@
-@import 'react-quill/dist/quill.snow.css';
+@import '../../utils/quill/quill.core.css';
 
 .ql-container {
     font-size: inherit;
