@@ -1,7 +1,8 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 import Container from "../Container/Container";
-import {H1, Wrapper} from "../ui";
-import "./TextHtml.css"
+import { H1, Wrapper } from "../ui";
+import "../../utils/quill/quill.core.css";
+import "./TextHtml.css";
 
 export interface TextHtmlProps {
   strategy?: any;
@@ -10,24 +11,27 @@ export interface TextHtmlProps {
   design?: any;
 }
 
-const TextHtml:FC<TextHtmlProps> = (props) => {
-
-  const {strategy} = props
+const TextHtml: FC<TextHtmlProps> = (props) => {
+  const { strategy } = props;
   const design = props?.design;
 
-
-  const wrapperStyle = strategy.data?.backgroundImagePath ? {
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundImage: strategy.data?.backgroundImagePath ? `url("${strategy.data.backgroundImagePath}")` : undefined,
-  } : {}
+  const wrapperStyle = strategy.data?.backgroundImagePath
+    ? {
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundImage: strategy.data?.backgroundImagePath
+          ? `url("${strategy.data.backgroundImagePath}")`
+          : undefined,
+      }
+    : {};
 
   const fixedHeightValue =
-    strategy?.visual?.style?.height === 0 ? undefined : strategy?.visual?.style?.height;
+    strategy?.visual?.style?.height === 0
+      ? undefined
+      : strategy?.visual?.style?.height;
 
   return (
-
     <Wrapper
       style={{
         ...strategy?.visual?.style,
@@ -40,18 +44,20 @@ const TextHtml:FC<TextHtmlProps> = (props) => {
       }`}
     >
       <Container
-        style={{borderRadius: design?.borderRadius}}
-        className="ql-editor grd-text-gray-600">
-          <H1
-            style={strategy.data?.titleStyle}
-            dangerouslySetInnerHTML={{ __html: strategy?.data?.title }} />
-          <div className="mt-6"
-               dangerouslySetInnerHTML={{__html: strategy?.data?.html}}/>
-
+        style={{ borderRadius: design?.borderRadius }}
+        className="ql-editor grd-text-gray-600"
+      >
+        <H1
+          style={strategy.data?.titleStyle}
+          dangerouslySetInnerHTML={{ __html: strategy?.data?.title }}
+        />
+        <div
+          className="mt-6"
+          dangerouslySetInnerHTML={{ __html: strategy?.data?.html }}
+        />
       </Container>
     </Wrapper>
-  )
-}
+  );
+};
 
-
-export default TextHtml
+export default TextHtml;
