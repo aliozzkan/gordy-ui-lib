@@ -193,7 +193,6 @@ const Sliders = (props: any) => {
               slide?.hyperLink?.data?.href
             )
               CustomTag = AdvancedLink;
-
             return (
               <SwiperSlide
                 key={index}
@@ -239,7 +238,7 @@ const Sliders = (props: any) => {
                         >
                           <Button
                             variant="primary"
-                            className="grd-px-8 grd-text-base grd-font-medium @md:grd-mt-6 grd-py-2 grd-h-auto"
+                            className="grd-px-2.5 @md:grd-px-8 grd-text-base grd-font-medium @md:grd-mt-6 grd-py-2 grd-h-auto"
                             style={{
                               ...props?.design?.button,
                               ...slide.button?.visual?.style,
