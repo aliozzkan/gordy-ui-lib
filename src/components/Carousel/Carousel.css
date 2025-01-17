@@ -1,0 +1,5 @@
+@container (max-width:480px) {
+    .swiper-slide {
+        border-radius: 0 !important;
+    }
+}
