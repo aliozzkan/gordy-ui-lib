@@ -199,7 +199,7 @@ const Sliders = (props: any) => {
             return (
               <SwiperSlide
                 key={index}
-                className={`grd-relative !grd-flex @md:grd-items-center grd-w-full !grd-min-h-[150px] @md:!grd-min-h-[242px] @md:!grd-h-auto grd-overflow-hidden`}
+                className={`grd-relative !grd-flex @md:grd-items-center grd-w-full !grd-min-h-[150px] @md:!grd-min-h-[300px] @md:!grd-h-auto grd-overflow-hidden`}
                 style={{
                   ...props?.slideStyle,
                   ...{
