@@ -5,9 +5,12 @@ interface AdvancedLinkProps extends ComponentProps<"a"> {}
 
 function AdvancedLink({ href, ...props }: AdvancedLinkProps) {
   function getModifiedHref() {
+    debugger;
     if (!href) return href;
 
-    const urlParams = new URLSearchParams(href);
+    const qsUrl = href.includes("?") ? href.split("?")[1] : href;
+
+    const urlParams = new URLSearchParams(qsUrl);
 
     const checkInDataParam = urlParams.get("checkindate");
 
