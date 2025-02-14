@@ -73,7 +73,9 @@ function AdvancedLink({ href, ...props }: AdvancedLinkProps) {
 
         urlParams.set(
           "checkoutDate",
-          dayjs().add(1, isTourLink ? "year" : "week").format("YYYY-MM-DD")
+          dayjs()
+            .add(1, isTourLink ? "year" : "week")
+            .format("YYYY-MM-DD")
         );
       }
     }
@@ -83,8 +85,10 @@ function AdvancedLink({ href, ...props }: AdvancedLinkProps) {
       checkInDateParam2 ||
       checkInDateParam3 ||
       departureDateParam
-    )
-      return decodeURIComponent(urlParams.toString());
+    ) {
+      const newUrl = `${href.split("?")[0]}?${urlParams.toString()}`;
+      return newUrl;
+    }
     return href;
   }
 
